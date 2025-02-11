@@ -1,6 +1,7 @@
 package com.birselepik._1_part_javatypes;
 
 public class _03_JavaPrimitiveTypes {
+    // Primitive Tupes: 8 tanedir, null değer alamazsınız.
 
     public static void main(String[] args) {
         // Veri değişken isimlerini yazarken;
@@ -25,7 +26,7 @@ public class _03_JavaPrimitiveTypes {
         double d2=3.14;
         System.out.println("double: "+d2);
 
-        // boolean
+        // boolean (mantıksal, ilk değeri false olarak alır)
         boolean b3=true;
         System.out.println("boolean: "+b3);
 
@@ -33,6 +34,11 @@ public class _03_JavaPrimitiveTypes {
         char c4= '\u4125';
         System.out.println("char: "+c4);
 
+        // Matemetik dünyasında sadece Toplama var. Çıkartma, çarpma, bölme yok.
+        // Çıkartma - 2 ye tümleme
+        // Çarpma  - kaydırarak toplama yapıyor.
+        // Bölme - Çarpma ve kaydırma yapıyor.
+        // Bilgisayar dünyası 2 lik sayısal sistemde çalışan, sadece 0 ve 1 lerden oluşan yapılardır.
     }
 }
 

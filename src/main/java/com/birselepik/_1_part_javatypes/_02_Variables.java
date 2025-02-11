@@ -35,15 +35,15 @@ public class _02_Variables {
         // yazamazsınız
         //int schoolNumber=11; // aynı isimde yazamazsınız
         //int 44schoolNumber=11; // sayıyla başlayamazsınız.
-        //int ~schoolNumber=11;   // özel simgeyle başlayamazsınız.
+        //int ~schoolNumber=11;   // özel simgeyle başlayamazsınız. (_ ve $ hariç)
         //int ``schoolNumber=11;   // özel simgeyle başlayamazsınız.
-        //int   school-number=99;    // kebab-case yazamazsınız.
+        //int school-number=99;    // kebab-case yazamazsınız.
         //System.out.println(school-number);
         //int school number=66;  // değişkenlerde boşluk kullanılamaz
 
         // yazmayalım
-        float totalSalary = 14.5355f;
-        System.out.println(totalSalary);
+        float TotalSalary = 14.5355f;
+        System.out.println(TotalSalary);
 
         // SABIT
         final int MAX_STUDENTS = 100;

@@ -9,6 +9,6 @@ public class _01_JavaPsvm {
     public static void main(String[] args) {
         // Çıktı
         //sout => tab
-        System.out.println("MSc Birsel Epik");
+        System.out.println("Her Şey Çok Güzel Olacak!");
     } // end psvm
 }//end class
