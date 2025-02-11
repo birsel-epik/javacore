@@ -1,4 +1,4 @@
-package com.birselepik._1_part_javatypes;
+package com.birselepik._1_week;
 
 // single comment
 /*

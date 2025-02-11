@@ -1,4 +1,4 @@
-package com.birselepik._1_part_javatypes;
+package com.birselepik._1_week;
 
 public class _02_Variables {
 
@@ -45,7 +45,7 @@ public class _02_Variables {
         float TotalSalary = 14.5355f;
         System.out.println(TotalSalary);
 
-        // SABIT
+        // SABIT (Sınıfın içerisinde sabit kişi sayısı. Sabit sayılar)
         final int MAX_STUDENTS = 100;
         System.out.println(MAX_STUDENTS);
     }
