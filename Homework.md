@@ -22,7 +22,6 @@ PascalCase yazım nedir ?
 snace_case yazım nedir ?
 kebab-case yazım nedir ?
 
-
 > int number1=10;
 > number1++;
 > System.out.println(number1);

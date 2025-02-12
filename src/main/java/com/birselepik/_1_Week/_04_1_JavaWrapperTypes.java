@@ -1,6 +1,7 @@
 package com.birselepik._1_Week;
 
 public class _04_1_JavaWrapperTypes {
+    // Heap Memory kullanılır.
 
     public static void main(String[] args) {
         // PRIMITIVE TYPE
