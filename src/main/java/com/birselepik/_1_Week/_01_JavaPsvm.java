@@ -1,4 +1,4 @@
-package com.birselepik._1_week;
+package com.birselepik._1_Week;
 
 // single comment
 /*

@@ -1,4 +1,4 @@
-# IBB Ecodation Java Core
+# Java Core
 [GitHub](https://github.com/hamitmizrak/ibb_ecodation_javacore.git)
 [JDK](https://www.oracle.com/tr/java/technologies/downloads/#jdk23-windows)
 [Intellij Idea Community](https://www.jetbrains.com/idea/download/?section=windows)
@@ -45,7 +45,9 @@ Java case sensitive bir dildir. (Küçük büyük harfe duyarlı yüksek seviyed
 ```
 ---
 ### **1. Maven Nedir?**
-Maven, Java projelerini oluşturmak, yönetmek ve otomatikleştirmek için kullanılan bir **build automation** (inşa otomasyonu) aracıdır. Apache tarafından geliştirilmiştir ve özellikle Java projelerinde bağımlılık yönetimi, derleme, test etme ve dağıtım süreçlerini kolaylaştırır. Maven, XML tabanlı bir yapılandırma dosyası olan `pom.xml` kullanarak projenin yapılandırmasını ve bağımlılıklarını yönetir.
+Maven, Java projelerini oluşturmak, yönetmek ve otomatikleştirmek için kullanılan bir **build automation** (inşa otomasyonu) aracıdır. 
+Apache tarafından geliştirilmiştir ve özellikle Java projelerinde bağımlılık yönetimi, derleme, test etme ve dağıtım süreçlerini kolaylaştırır. 
+Maven, XML tabanlı bir yapılandırma dosyası olan `pom.xml` kullanarak projenin yapılandırmasını ve bağımlılıklarını yönetir.
 
 **Maven’in Sağladıkları:**
 - **Bağımlılık Yönetimi:** Projeye eklenmesi gereken kütüphaneleri otomatik olarak indirir.
@@ -212,7 +214,7 @@ Integer obj = Integer.valueOf(num);
 - **`char -> Character`**
 - **`boolean -> Boolean`**
 
-Wrapper class’lar **Java Collections API’lerinde** kullanılır çünkü koleksiyonlar yalnızca nesne saklayabilir.
+Wrapper class’lar **Java Collections API’lerinde** kullanılır. Çünkü kolleksiyonlar yalnızca nesne saklayabilir.
 
 
 ## Java Core (Primitive Types)
@@ -485,6 +487,7 @@ Bu kurallara uymak, kodunuzu daha **anlaşılır, düzenli ve sürdürülebilir*
 # **Java'da Primitive Type (İlkel Veri Tipleri) - Detaylı Açıklama**
 
 Java'da **Primitive Types (İlkel Veri Tipleri)**, temel ve hafif veri tipleridir. Java'nın **hafıza yönetimi**, **hızlı işlem yapabilme** ve **düşük bellek tüketimi** sağlaması için kullanılırlar. Primitive türler, doğrudan bellekte saklanır ve nesne (`Object`) değildirler.
+(Primitive türler null değer almazlar.)
 
 Java’da **8 adet** primitive type vardır:
 - **Tam sayı tipleri:** `byte`, `short`, `int`, `long`

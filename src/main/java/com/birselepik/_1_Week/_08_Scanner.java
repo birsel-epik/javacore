@@ -1,6 +1,4 @@
-package com.birselepik._1_week;
-
-import java.util.Scanner;
+package com.birselepik._1_Week;
 
 public class _08_Scanner {
 

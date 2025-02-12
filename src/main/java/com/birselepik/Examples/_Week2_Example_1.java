@@ -1,4 +1,4 @@
-package com.birselepik.examples;
+package com.birselepik.Examples;
 
 import java.util.Scanner;
 

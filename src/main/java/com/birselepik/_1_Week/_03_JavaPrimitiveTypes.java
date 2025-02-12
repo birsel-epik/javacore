@@ -1,4 +1,4 @@
-package com.birselepik._1_week;
+package com.birselepik._1_Week;
 
 public class _03_JavaPrimitiveTypes {
     // Primitive Tupes: 8 tanedir, null değer alamazsınız.

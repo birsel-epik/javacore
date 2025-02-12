@@ -1,6 +1,6 @@
-package com.birselepik._1_week;
+package com.birselepik._1_Week;
 
-public class _04_JavaWrapperTypes {
+public class _04_2_JavaWrapperTypes {
     // PRIMITIVE TYPE
     // Veri değişken isimlerini yazarken;
 
