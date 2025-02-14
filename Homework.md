@@ -42,11 +42,14 @@ kebab-case yazım nedir ?
 > Stack Memory - Heap Memory
 > Escape Character
 
-> Ödev 2 -> -> ( _Week1_Example_3 )
+> Ödev 3 -> ( _Week1_Example_3 , _Week1_Example_4 )
 > Scanner Class bakmanızı
 
-**String'ten int geçerken Scanner nasıl çözebiliriz ?**
+
+> Ödev 4 -> ( _Week1_Example_5 )
+**String'ten int geçerken Scanner nasıl çözebiliriz ?** ( _Week1_Example_5 )
 System.out.println("Bildiğiniz Diller & Teknolojiler");
 language=klavye.nextInt();
 
-null değeri ne zaman kullanabilirim ?
+> Ödev 5 ->  ( _Week1_Example_6 )
+> null değeri ne zaman kullanabilirim ?
