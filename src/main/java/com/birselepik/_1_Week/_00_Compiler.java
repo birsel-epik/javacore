@@ -4,7 +4,7 @@ public class _00_Compiler {
     public static void main(String[] args) {
         System.out.println("Merhabalar JAVA");
 
-        // Terminalde aşağıdaki satırları yazarak, bu dosyayı Compiler yapara .class dosyasını oluşturuyoruz.
+        // Terminalde aşağıdaki satırları yazarak, bu dosyayı Compiler yaparak .class dosyasını oluşturuyoruz.
         // Compiler bütün projeyi tek seferde derliyor (Derleyici - Tercüme)
         // Interpeter projeyi satır satır yorumluyor
 

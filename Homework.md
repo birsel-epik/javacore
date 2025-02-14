@@ -22,6 +22,7 @@ PascalCase yazım nedir ?
 snace_case yazım nedir ?
 kebab-case yazım nedir ?
 
+> Ödev 1: ( _Week1_Example_1 )
 > int number1=10;
 > number1++;
 > System.out.println(number1);
@@ -30,15 +31,19 @@ kebab-case yazım nedir ?
 > ++number2;
 > System.out.println(number2);
 
-> Stack Memory - Heap Memory
-
-Escape Character
-Scanner Class bakmanızı
 ---
+
 
 ## 3.Ders Ödevi (8 Şubat)
 > System.out.println("Lütfen soyadınız giriniz:");
 > surname=klavye.nextLine();
+
+> Ödev 2 -> ( _Week1_Example_2 )
+> Stack Memory - Heap Memory
+> Escape Character
+
+> Ödev 2 -> -> ( _Week1_Example_3 )
+> Scanner Class bakmanızı
 
 **String'ten int geçerken Scanner nasıl çözebiliriz ?**
 System.out.println("Bildiğiniz Diller & Teknolojiler");
