@@ -13,7 +13,7 @@ public class _06_Math {
         System.out.println("Karekök: " + Math.sqrt(+25));
         System.out.println("Karekök: " + Math.sqrt(Math.abs(-25))); // - değerin karakökü NaN değer alacağından önce Mutlak Değerini aldık, daha sonra karakekönü aldık.
 
-        System.out.println("Üslü: " + Math.pow(2, 5));
+        System.out.println("Üslü: " + Math.pow(2, 5)); // 2 nin 5. kuvveti
 
         System.out.println("Alt yuvarla: " + Math.floor(2.9)); // Matematik deki virgül, yazılımda . dır.
         System.out.println("Üste yuvarla: " + Math.ceil(2.1));

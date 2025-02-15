@@ -3,15 +3,15 @@
 ## 1.Ders Ödevi (4 Şubat 2025)
 - Maven Nedir ?
 - pom.xml nedir ?
-- JDK nedir ?
-- JRE nedir ?
-- Compiler nedir ?
-- JVM nedir ?
+- JDK  nedir ?
+- JRE  nedir ?
+- Compiler  nedir ?
+- JVM  nedir ?
 - Interpreter nedir ?
 - Java nedir ?
 - Java Özellikleri nelerdir ?
-- Data types nedir ?
-- primitive types nedir ?
+- Data types  nedir ?
+- primitive types  nedir ?
 - Wrapper types nedir ?
 - jar ile war arasındaki farklar nelerdir ?
 ---
@@ -22,58 +22,51 @@ PascalCase yazım nedir ?
 snace_case yazım nedir ?
 kebab-case yazım nedir ?
 
-- Ödev 1: ( _Week1_Example_1 )
-- int number1=10;
-- number1++;
-- System.out.println(number1);
 
-- int number2=10;
-- ++number2;
-- System.out.println(number2);
+> int number1=10;
+> number1++;
+> System.out.println(number1);
 
+> int number2=10;
+> ++number2;
+> System.out.println(number2);
+
+> Stack Memory - Heap Memory
+
+Escape Character
+Scanner Class bakmanızı
 ---
 
+## 3.Ders Ödevi (8 Şubat)
+> System.out.println("Lütfen soyadınız giriniz:");
+> surname=klavye.nextLine();
 
-## 3.Ders Ödevi (8 Şubat 2025)
-- System.out.println("Lütfen soyadınız giriniz:");
-- surname=klavye.nextLine();
+**String'ten int geçerken Scanner nasıl çözebiliriz ?**
+System.out.println("Bildiğiniz Diller & Teknolojiler");
+language=klavye.nextInt();
 
-- Ödev 2 -> ( _Week1_Example_2 )
-- Stack Memory - Heap Memory
-- scape Character
+null değeri ne zaman kullanabilirim ?
 ---
 
-- Ödev 3 -> ( _Week1_Example_3 , _Week1_Example_4 )
-- Scanner Class bakmanızı
----
+## 4.Ders Ödevi (11 Şubat)
+> switch-case ile if-elseif-else arasındaki farklar nelerdir ?
+> for ile while arasındaki fark ?
+> String Birleştirme (Concatenation) türleri, Concat, StrinBuilder, StringBuffer
+> return, continue, break nedir ? aralarındaki farklar nelerdir ?
+> static yapı nedir ?
+> Overloading nedir ?
+> Override nedir ?
+> String kelime= new String(); , String kelime= "";  iki yapı arasındaki fark ?
+> vocabulary1== vocabulary2 ile vocabulary1.equals(vocabulary2));
+> vocabulary1== vocabulary2 (String kelime= new String();)
+> ile vocabulary1.equals(vocabulary2)) (String kelime= "";)
 
-- Ödev 4 -> ( _Week1_Example_5 )
-- **String'ten int geçerken Scanner nasıl çözebiliriz ?** ( _Week1_Example_5 )
-- System.out.println("Bildiğiniz Diller & Teknolojiler");
-- language=klavye.nextInt();
----
+## 5.Ders Ödevi (13 Şubat)
+> parametre ile argüman arasında farklar nelerdir ?
+> Integer.valueOf(cast4String) ile  Integer.parseInt(cast4String) arasındaki fark ?
+> Neden Java 8 bilmek zorundayım ?
+> Java 8 ile gelen özellikler nelerdir ?
+>
 
-- Ödev 5 ->  ( _Week1_Example_6 )
-- null değeri ne zaman kullanabilirim ?
----
-
-## 4.Ders Ödevi (11 Şubat 2025)
-- switch-case ile if-elseif-else arasındaki farklar nelerdir ?
-- for ile while arasındaki fark ?
-- String Birleşt-irme (Concatenation) türleri, Concat, StrinBuilder, StringBuffer
-- return, continue, break nedir ? aralarındaki farklar nelerdir ?
-- static yapı nedir ?
-- Overloading nedir ?
-- Override nedir ?
-- String kelime= new String(); , String kelime= "";  iki yapı arasındaki fark ?
-- vocabulary1== vocabulary2 ile vocabulary1.equals(vocabulary2));
-- vocabulary1== vocabulary2 (String kelime= new String();)
-- ile vocabulary1.equals(vocabulary2)) (String kelime= "";)
-
----
-
-## 5.Ders Ödevi (13 Şubat 2025)
-- parametre ile argüman arasında farklar nelerdir ?
-- Integer.valueOf(cast4String) ile  Integer.parseInt(cast4String) arasındaki fark ?
-- Neden Java 8 bilmek zorundayım ?
-- Java 8 ile gelen özellikler nelerdir ?
+## 6.Ders Ödevi (15 Şubat)
+> Array => foreach ile iterative for döngü arasındaki farklar nelerdir ?

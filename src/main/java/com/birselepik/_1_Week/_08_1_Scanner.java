@@ -47,6 +47,6 @@ public class _08_1_Scanner {
 
         System.out.println("Girdiğiniz metin: " + content);
 
-        scanner.close(); // Scanner'ı kapat */
+        scanner.close(); // Scanner'ı kapat. Ram i meşgul ediyor. */
     }
 }
