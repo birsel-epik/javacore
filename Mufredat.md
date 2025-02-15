@@ -1,4 +1,3 @@
-
 https://kommunity.com/techistanbul/events/java-ile-yazilim-gelistirme-bootcamp-programi-c97618fa
 
 ### Ders Programı
@@ -10,7 +9,7 @@ son 2 hafta öğrenilen yerlerle ilgili sıfırdan  ATM projesi, oop, database, 
 ---
 
 ### 1. Hafta
-Salı (4 Şubat) - 3 Saat
+🚀 Salı (4 Şubat) - 3 Saat
 - Giriş ve Kurulum
   . Java Nedir?
   . Java’nın Tarihçesi ve Sürümleri
@@ -21,6 +20,7 @@ Perşembe (6 Şubat) - 3 Saat
 - Temel Java Sözdizimi
   . Değişkenler ve Veri Tipleri
   . Operatörler (Aritmetik, Karşılaştırma, Mantıksal vb.)
+  . Escape Character
   . Cast(Dönüşüm)
 
 Cumartesi (8 Şubat) - 4 Saat
@@ -33,9 +33,9 @@ Cumartesi (8 Şubat) - 4 Saat
 ### 2. Hafta
 Salı (11 Şubat) - 3 Saat
 - String & String metotları
+- Formatter
 - Metotlar (Yöntemler)
   . Parametre kullanımı, dönüş değerleri, overloading, override
-
 
 Perşembe (13 Şubat) - 3 Saat
 - Date(Tarih)
@@ -45,9 +45,10 @@ Perşembe (13 Şubat) - 3 Saat
 - Throw, Throws
   . Özel Exception sınıfları yazma
 
-
 Cumartesi (15 Şubat) - 4 Saat
 - Arrays
+  . Tek boyutlu diziler
+  . Çift boyutlu diziler
 ----------------------------------------------------------------------
 ### 3. Hafta
 Salı (18 Şubat) - 3 Saat
@@ -73,8 +74,8 @@ Cumartesi (22 Şubat) - 4 Saat
 ----------------------------------------------------------------------
 ### 4. Hafta
 Salı (25 Şubat) - 3 Saat
-- Optional Sınıfı
-  . Yeni Tarih ve Zaman API (java.time)
+🚀- Optional Sınıfı
+. Yeni Tarih ve Zaman API (java.time)
 
 
 Perşembe (27 Şubat) - 3 Saat
