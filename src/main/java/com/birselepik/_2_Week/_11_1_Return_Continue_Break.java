@@ -1,6 +1,4 @@
-package com.birselepik.Examples;
-
-import java.util.Scanner;
+package com.birselepik._2_Week;
 
 /*
 Kullanıcının Verdiği pozitif bir sayıya kadar toplamını yapan hesaplayan Algoritma ?
@@ -9,7 +7,9 @@ Kullanıcının Verdiği pozitif bir sayıya kadar toplamını yapan hesaplayan 
 Çıkan sonuç tek mi ? Çift mi ?
 */
 
-public class _Week2_Example_2 {
+import java.util.Scanner;
+
+public class _11_1_Return_Continue_Break {
     public static void main(String[] args) {
         Scanner inputValue = new Scanner(System.in);
         System.out.println("Lütfen pozitif bir sayı giriniz: ");
@@ -47,3 +47,4 @@ public class _Week2_Example_2 {
         inputValue.close();
     } // end psvm
 } // end class
+
