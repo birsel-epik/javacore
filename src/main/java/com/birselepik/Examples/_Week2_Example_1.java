@@ -36,20 +36,57 @@ public class _Week2_Example_1 {
         // 2-) Kullanıcı harf girerse
         // 3-) Sıfır (Çift)
 
-        if(number<0) {
+        if (number < 0) {
             System.out.println("Negatif bir sayı girdiniz");
-        }
-        else {
+        } else {
             System.out.println("Pozitif bir sayı girdiniz");
         }
 
-        if(number%2==0) {
-            System.out.println(number+" sayı Çift sayıdır");
-        }
-        else {
-            System.out.println(number+" sayı Tek sayıdır");
+        if (number % 2 == 0) {
+            System.out.println(number + " sayı Çift sayıdır");
+        } else {
+            System.out.println(number + " sayı Tek sayıdır");
         }
 
 
+        // 4. Örnek Sayının durumunu kontrol ediliyor
+        // Validation
+        // 1-) Kullanıcı pozitif bir sayı girmezse? (Math.abs(), Negatif sayı çarp)
+        // 2-) Kullanıcı harf girerse
+        // 3-) Sıfır (Çift)
+        Scanner inputValue = new Scanner(System.in);
+        System.out.println("Bir sayı girin");
+
+        // Kullanıcının girdiği değeri al
+        String input = inputValue.nextLine();
+
+        try{
+            // Girdiği değeri tam sayıya çevir
+            int number2 = Integer.parseInt(input);
+
+            // Pozitif, negatif veya sıfır kontrolü
+            if (number2 > 0) {
+                System.out.println("Girilen sayı pozitiftir.");
+            }
+            else if (number2 < 0) {
+                System.out.println("Girilen sayı negatiftir.");
+            }
+            else {
+                System.out.println("Sıfır çift bir sayıdır.");
+            }
+        }
+        catch (NumberFormatException e) {
+            // Hatalı giriş durumunda
+            System.out.println("Lütfen bir sayı girin");
+        }
+
+        /* if (number < 0) {
+            System.out.println("Negatif bir sayı girdiniz");
+            //number=Math.abs(number);
+            number = number * (-1);
+        } */
+
+        klavye.close();
+        inputValue.close();
     }
 }
