@@ -32,7 +32,7 @@ public class _Week2_Example_1 {
 
         // 3. Örnek Sayının durumunu kontrol ediliyor
         // Validation
-        // 1-) Kullanıcı pozitif bir syı girmezse? (Math.abs(), Negatif sayı çarp)
+        // 1-) Kullanıcı pozitif bir sayı girmezse? (Math.abs(), Negatif sayı çarp)
         // 2-) Kullanıcı harf girerse
         // 3-) Sıfır (Çift)
 

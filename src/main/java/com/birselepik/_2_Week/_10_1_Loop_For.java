@@ -11,11 +11,24 @@ public class _10_1_Loop_For {
             System.out.println(i + " ");
         }
 
+        System.out.println("\n ____________________________________ \n");
+
         for (int i = 1; i <= 20; i++) {
             System.out.print(i + " - ");
         }
 
+        System.out.println("\n ____________________________________ \n");
+
         // for döngüsü sonsuzluk
         // for(;;) {}
+        int number = 1;
+        for (; ; ) {
+            System.out.print(number + " ");
+            number++;
+            if (number >= 50)
+                break;
+            ;
+        }
+
     }
 }
