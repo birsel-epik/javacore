@@ -26,7 +26,7 @@ public class _13_1_MethodIsNotReturn {
         System.out.println("Adınız: " + name + " Soyadınız :" + surname);
     }
 
-    // new
+    // new ???
 
     // static (duran) (Proje içerisinde ortak metotları, bileşenleri kullanacağımız zaman static yapıyı kullanıyoruz. Diğer yazılımcılarda kuşşanabilir.
     // Güvenliği ihlal edecek yapılarda kulanmıyoruz.)
