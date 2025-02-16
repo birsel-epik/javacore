@@ -3,24 +3,9 @@ package com.birselepik._2_Week;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class _14_1_Exception {
+public class _14_1_Exception_Throw {
 
-    // 1. Örnek - Hata döndürdü
-    // public static void main(String[] args) {
-    //     int number1 = 25;
-    //     int number2 = 0;
-    //     int result = number1 / number2;
-    //     /*
-    //     Exception in thread "main" java.lang.ArithmeticException: / by zero
-    //  at com.birselepik._2_Week._14_1_Exception.main(_14_1_Exception.java:7)
-    //      */
-    //     System.out.println(result);
-    //     System.out.println("Son 10.00 satır");
-    // }
-
-
-    // 2. Örnek (throws - > hata gelebileceğini önceden bildiriyoruz)
-    public static void main(String[] args) throws ArithmeticException, IOException {
+    public static void calcula() throws ArithmeticException {
         Scanner inputValue = new Scanner(System.in);
         int number1, number2;
 
@@ -44,10 +29,15 @@ public class _14_1_Exception {
         }
 
         System.out.println("Son 10.00 satır");
-        /*
-        java.lang.ArithmeticException: / by zero
-        at com.birselepik._2_Week._14_1_Exception.main(_14_1_Exception.java:35)
-        */
+
     }
+
+    public static void main(String[] args) throws IOException {
+        calcula();
+        System.out.println("-------------------------");
+        // Bilerek istisna gönder
+        throw new NullPointerException("Neden boş verdiniz?");
+    }
+
 
 }
