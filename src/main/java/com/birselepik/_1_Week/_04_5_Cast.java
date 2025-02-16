@@ -51,10 +51,5 @@ public class _04_5_Cast {
         String cast7String = String.valueOf(cast6Int);
         System.out.println(cast7String);
 
-        // 2. Örnek
-        String cast6String6 = cast7String.toString();
-        System.out.println(cast6String6);
-
-
     }
 }
