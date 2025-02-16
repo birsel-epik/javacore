@@ -1,7 +1,6 @@
 package com.birselepik._2_Week;
 
 import java.io.IOException;
-import java.lang.reflect.Executable;
 import java.util.Scanner;
 
 public class _14_1_Exception {
@@ -25,10 +24,10 @@ public class _14_1_Exception {
         Scanner inputValue = new Scanner(System.in);
         int number1, number2;
 
-        System.out.println("Number 1 giriniz");
+        System.out.println("Number 1 giriniz:");
         number1 = inputValue.nextInt();
 
-        System.out.println("Number 2 giriniz");
+        System.out.println("Number 2 giriniz:");
         number2 = inputValue.nextInt();
 
         try {
