@@ -21,7 +21,7 @@ Perşembe (6 Şubat) - 3 Saat
   . Değişkenler ve Veri Tipleri
   . Operatörler (Aritmetik, Karşılaştırma, Mantıksal vb.)
   . Escape Character
-  . Cast(Dönüşüm)
+  . Cast (Dönüşüm)
 
 Cumartesi (8 Şubat) - 4 Saat
 - Kontrol Yapıları

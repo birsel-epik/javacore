@@ -9,8 +9,8 @@ public class _13_2_MethodIsReturn {
     }
 
     // 4-) Return lu Parametreli -1
-    public String metorReturnluParametreli1(String name, String surname) {
-        return "Adınız: " + name + "Soyadınız :" + surname;
+    public String metorReturnluParametreli1(String name, Integer number) {
+        return "Adınız: " + name + "Numaranız :" + number;
     }
 
     // 5-) Return lu Parametreli - 2
@@ -25,7 +25,7 @@ public class _13_2_MethodIsReturn {
         String result1 = isReturn1.metotReturnluParametresiz();
         System.out.println(result1);
 
-        String result2 = isReturn1.metorReturnluParametreli1("Birsel", "Epik");
+        String result2 = isReturn1.metorReturnluParametreli1("Birsel ", 1369);
         System.out.println(result2);
 
         Integer result3 = isReturn1.metorReturnluParametreli2(123456);
