@@ -1,6 +1,6 @@
 package com.birselepik._2_Week;
 
-public class _13_2_MethodIsReturn {
+public class _13_2_Method_IsReturn {
 
     // 3-) Return lu Parametresiz
     // İşlem sonunda geriye bir değer dönecekse, başka yere gönderecek bir şey döndürecekse "Return" kullanılır.
@@ -20,7 +20,7 @@ public class _13_2_MethodIsReturn {
 
     // PSVM
     public static void main(String[] args) {
-        _13_2_MethodIsReturn isReturn1 = new _13_2_MethodIsReturn();
+        _13_2_Method_IsReturn isReturn1 = new _13_2_Method_IsReturn();
 
         String result1 = isReturn1.metotReturnluParametresiz();
         System.out.println(result1);

@@ -2,7 +2,7 @@ package com.birselepik._1_Week;
 
 public class _00_Compiler {
     public static void main(String[] args) {
-        System.out.println("Merhabalar JAVA");
+        System.out.println("Balık tutmayı öğreniyorum");
 
         // Terminalde aşağıdaki satırları yazarak, bu dosyayı Compiler yaparak .class dosyasını oluşturuyoruz.
         // Compiler bütün projeyi tek seferde derliyor (Derleyici - Tercüme)

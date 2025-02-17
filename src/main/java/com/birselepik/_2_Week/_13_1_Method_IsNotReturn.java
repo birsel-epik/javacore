@@ -1,6 +1,6 @@
 package com.birselepik._2_Week;
 
-public class _13_1_MethodIsNotReturn {
+public class _13_1_Method_IsNotReturn {
 
     // 1- METOTLAR (Returnsuz Parametresiz)
     // İşlem sonunda geriye birşey döndürmeyecekse "Void" kullanılır.
@@ -31,11 +31,11 @@ public class _13_1_MethodIsNotReturn {
     // static (duran) (Proje içerisinde ortak metotları, bileşenleri kullanacağımız zaman static yapıyı kullanıyoruz. Diğer yazılımcılarda kuşşanabilir.
     // Güvenliği ihlal edecek yapılarda kulanmıyoruz.)
     public static void main(String[] args) {
-        _13_1_MethodIsNotReturn data1 = new _13_1_MethodIsNotReturn();
+        _13_1_Method_IsNotReturn data1 = new _13_1_Method_IsNotReturn();
         data1.metotReturnsuzParametresiz();
 
         // instance (new) oladan (sadece static olanları çağırabiliriz)
-        _13_1_MethodIsNotReturn.metotReturnsuzParametreli2("Static Yapı: Birsel");
-        _13_1_MethodIsNotReturn.metotReturnsuzParametreli3("Birsel", "Epik");
+        _13_1_Method_IsNotReturn.metotReturnsuzParametreli2("Static Yapı: Birsel");
+        _13_1_Method_IsNotReturn.metotReturnsuzParametreli3("Birsel", "Epik");
     }
 }
