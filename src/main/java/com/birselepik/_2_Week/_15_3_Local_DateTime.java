@@ -2,7 +2,6 @@ package com.birselepik._2_Week;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 
 public class _15_3_Local_DateTime {

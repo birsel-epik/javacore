@@ -55,7 +55,7 @@ public class _12_1_String1 {
 
         System.out.println("------------------------");
 
-        //subString: parçalama 2 yöntem var.
+        // subString: parçalama 2 yöntem var.
         // 1: Süpürme
         // 2: Aralarında
         System.out.println("subString: " + vocabulary1.substring(1));
@@ -79,7 +79,7 @@ public class _12_1_String1 {
         System.out.println("Geçiyor mu?: " + vocabulary1.contains("Java"));
 
 
-        // Split
+        // Split ???
 
 
         // Replace (Değiştirme)
@@ -120,8 +120,6 @@ public class _12_1_String1 {
         System.out.println(vocabulary1.hashCode());
         System.out.println(vocabulary2.hashCode());
         System.out.println(vocabulary3.hashCode());
-
-
 
     }
 }
