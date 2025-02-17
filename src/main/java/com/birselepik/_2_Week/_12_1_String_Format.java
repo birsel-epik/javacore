@@ -69,9 +69,18 @@ public class _12_1_String_Format {
         System.out.printf("formatter6-5: Merhabalar Adınız: %s, T.C: %d, Fiyat: %.3f", name, tcNumber, price); // %.3f Ondalık sayılarda virgülden sonra kaç karakter olsun
     }
 
-    // formatter7 (Best Practice) [Special_Color]
+    // formatter7 (Best Practice) [Special Color - 1]
     public static void formatter7() {
         String formatterString = String.format("formatter7: Merhabalar Adınız: %s, T.C: %d, Fiyat: %f", "Birsel", 10203040, 34.44);
+        System.out.println(_15_4_Special_Color.YELLOW + formatterString + _15_4_Special_Color.RESET);
+        System.out.println();
+        System.out.println(formatterString);
+    }
+
+    // formatter8 (Best Practice) [Special Color - 2]
+    public static void formatter8() {
+        String formatterString =
+                String.format("Merhabalar" + _15_4_Special_Color.GREEN + " Adınız:%s " + _15_4_Special_Color.RESET + "|" + _15_4_Special_Color.RED + " T.C: %d " + _15_4_Special_Color.RESET + "|" + _15_4_Special_Color.BLUE + " Fiyat: %.3f " + _15_4_Special_Color.RESET + "", "Birsel", 10203040, 34.44);
         System.out.println(_15_4_Special_Color.YELLOW + formatterString + _15_4_Special_Color.RESET);
         System.out.println();
         System.out.println(formatterString);
@@ -85,6 +94,7 @@ public class _12_1_String_Format {
         // formatter4();
         // formatter5();
         // formatter6();
-        formatter7();
+        // formatter7();
+        formatter8();
     }
 }
