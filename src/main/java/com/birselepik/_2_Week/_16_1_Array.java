@@ -123,16 +123,37 @@ public class _16_1_Array {
         return rndInt;
     }
 
-    // fill
+    // fill : metodu tek bir değeri dizinin tüm elemanlarına atamak için tasarlanmıştır
     // 2. YÖNTEM
     public static void arrayMethod9() {
         int[] number = new int[7]; // her defasında sayılar değişsin
 
-        // iterative for
         Arrays.fill(number, randomNumber()); // 5 sayısı ile doldur
 
         for (int temp : number) { // temp = Geçici data
             System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
+        }
+    }
+
+    // fill
+    // 3 - 1. YÖNTEM (iterative for)
+    public static void arrayMethod10() {
+        int[] number = new int[7]; // her defasında FARKLI sayılar değişsin
+
+        // fill metodu tek bir değeri dizinin tüm elemanlarına atamak için tasarlanmıştır
+        Arrays.fill(number, randomNumber());
+
+        // iterative for ile her defasında farklı bir sayı gelsin
+        for (int i = 0; i < number.length; i++) {
+            // 1. Yöntem
+            number[i] = randomNumber();
+
+            // 2. Yöntem (Arrow function yapısı, arka planda çalışan ve kısaltmak için kullanılan yapılardır)
+            Arrays.setAll(number, data -> randomNumber());
+        }
+
+        for (int temp : number) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.RED + temp + _15_4_Special_Color.RESET);
         }
     }
 
@@ -147,6 +168,7 @@ public class _16_1_Array {
         // arrayMethod6();
         // arrayMethod7();
         // arrayMethod8();
-        arrayMethod9();
+        // arrayMethod9();
+        arrayMethod10();
     }
 } // end class
