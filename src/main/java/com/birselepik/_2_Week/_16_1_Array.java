@@ -1,5 +1,7 @@
 package com.birselepik._2_Week;
 
+import java.util.Arrays;
+
 public class _16_1_Array {
 
     // Array
@@ -22,10 +24,12 @@ public class _16_1_Array {
         return city; // String diziyi döndürüyoruz
     }
 
+
     // Array
     // 2. YÖNTEM
-    public static String[] arrayMethod2() throws ArrayIndexOutOfBoundsException {
-        String[] city = {"Malatya", "İstanbul", "Malatya", "Elazığ", "İzmir", "Ankara"}; // içinde olmayan data yoksa, null yazmak zorunda değiliz yazmasakta çalışır
+    public static String[] arrayMethod2() throws NullPointerException {
+        // String[] city = {"İstanbul", "Malatya", "Elazığ", "İzmir", null ,"Ankara"}; // içinde olmayan data yoksa, null yazmak zorunda değiliz, yazmasakta çalışır
+        String[] city = {"İstanbul", "Malatya", "Elazığ", "İzmir", "", "Ankara"};
 
         System.out.println(city);
         System.out.println("Eleman Sayısı: " + city.length); // Dizinin eleman sayısı
@@ -40,8 +44,23 @@ public class _16_1_Array {
         String[] city = arrayMethod1(); // yukarıdaki String dizisini çağırıyoruz
     }
 
-    // for each
+
+    // iterative for yöntemi ile dizileri gösterme (iterative = iteklemek)
     public static void arrayMethod4() {
+        String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
+
+        System.out.println();
+        System.out.println(_15_4_Special_Color.RED + "iterative for" + _15_4_Special_Color.RESET);
+
+        // iterative for döngüsü
+        for (int i = 0; i < city.length; i++) {
+            System.out.println(_15_4_Special_Color.YELLOW + city[i] + _15_4_Special_Color.RESET);
+        }
+    }
+
+
+    // for each yöntemi ile dizileri gösterme
+    public static void arrayMethod5() {
         String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
 
         // for each döngüsü
@@ -50,8 +69,22 @@ public class _16_1_Array {
         }
 
         System.out.println();
+        System.out.println(_15_4_Special_Color.RED + "for each" + _15_4_Special_Color.RESET);
 
         // Döngünün renklendirilmiş versiyonu
+        for (String temp : city) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+        }
+    }
+
+    // for each - Sıralama
+    public static void arrayMethod6() {
+        String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
+
+        // Dizilerde Sıralama (küçükten büyüğe doğru sıralama)
+        //if (city != null)
+        Arrays.sort(city);
+
         for (String temp : city) { // temp = Geçici data
             System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
         }
@@ -63,6 +96,8 @@ public class _16_1_Array {
         // arrayMethod1();
         // arrayMethod2();
         // arrayMethod3();
-        arrayMethod4();
+        // arrayMethod4();
+        // arrayMethod5();
+        arrayMethod6();
     }
 } // end class
