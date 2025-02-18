@@ -12,7 +12,9 @@ import java.util.Scanner;
    Validation-2: Kullanıcı Sıfırdan küçük sayı verirse döngü dursun(break)
    Validation-3: Kullanıcı eğer virgüllü sayı verirse, kullanıcıya tekrardan sayı girilmesi beklensin, Eğer kullanıcı 3 kere virgülü sayı girerse kullanıcın hakkı kalmadığından sistemden atsın(System.exit(0)).
    Çözüm:
-   hasNext - nedir?
+   hasNext... - Bir dosyadan veri okurken, dosyada daha fazla veri olup olmadığını kontrol etmek için de kullanılır.
+   hasNext() metodu, veri akışını kontrol etmek için kullanışlıdır ve kullanıcıdan veya dosyadan sürekli veri okumak için döngülerde sıklıkla kullanılır.
+   Dosyada satır kaldığı sürece okumaya devam eder.
 */
 
 public class _Week2_Example_3 {
