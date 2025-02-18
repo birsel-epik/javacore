@@ -1,6 +1,6 @@
-package com.birselepik._2_Week;
+package com.birselepik.utils;
 
-public class _15_4_Special_Color {
+public class SpecialColor {
     /*
   ⚠️ Önemli Notlar
   ❌ Eclipse gibi IDE'lerde ANSI renkleri desteklenmez.

@@ -1,92 +1,81 @@
 package com.birselepik.Examples;
 
-import java.util.InputMismatchException;
+import com.birselepik.utils.SpecialColor;
+
 import java.util.Scanner;
 
+/*
+   Kullanıcıdan Girilen Sayının Faktoriyelini Bulma
+   Soru:
+   Kullanıcıdan bir tam sayı alarak faktöriyelini hesaplayan iterative ve recursive metota göre  programı yazınız.
+   Validation-1:Kullanıcı Sıfırdan küçük bir sayı verene kadar hesaplama yapsın ?
+   Validation-2: Kullanıcı Sıfırdan küçük sayı verirse döngü dursun(break)
+   Validation-3: Kullanıcı eğer virgüllü sayı verirse, kullanıcıya tekrardan sayı girilmesi beklensin, Eğer kullanıcı 3 kere virgülü sayı girerse kullanıcın hakkı kalmadığından sistemden atsın(System.exit(0)).
+   Çözüm:
+   hasNext - nedir?
+*/
+
 public class _Week2_Example_3 {
-
-    /*
-    Kullanıcıdan Girilen Sayının Faktoriyelini Bulma
-    Soru:
-    Kullanıcıdan bir tam sayı alarak faktöriyelini hesaplayan iterative ve recursive metota göre  programı yazınız.
-    Kullanıcı sıfırdan küçük sayı verene kadar hesalama yapsın
-    */
-
-    /* Hocanın Çözümü */
-
     public static void main(String[] args) {
+
         // Iterative
         // Variables
         // result:1 vermeliyiz ki, 1 sayısı çarpmada etkisizdir ve başlangıç değerimizdir.
-        long number, result=1;
+        long number, result = 1;
+        byte doubleRemainingRight = 3; // Ondalıklı sayı giriş hakkı
+        boolean isActive=true;
 
         // Scanner
         Scanner scanner = new Scanner(System.in);
 
-        //Sonsuz Döngü
+        // Sonsuz Döngü
         while (true) {
+            if (doubleRemainingRight > 0) {
+                System.out.println("\nLütfen pozitif bir sayı giriniz");
 
-        }
-    }
-
-
-    /// /////////////////////////////////
-
-    /*
-    Kullanıcıdan Girilen Sayının Faktoriyelini Bulma
-    Soru:
-    Kullanıcıdan bir tam sayı alarak faktöriyelini hesaplayan iterative ve recursive metota göre  programı yazınız.
-    */
-
-    /* Benim Çözümüm */
-    public static void main2(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int number = -1; // Başlangıç değeri, geçersiz bir durumu temsil eder.
-
-        // Kullanıcıdan geçerli bir tam sayı al
-        while (true) { // sonsz döngü
-            System.out.println("Bir pozitif tam sayı girin: ");
-            try {
-                number = scanner.nextInt();
-                if (number < 0) {
-                    System.out.println("Hata: Negatif bir sayı girdiniz. Lütfen pozitif bir tam sayı girin.");
-                } else {
-                    break; // Geçerli bir sayı alındığında döngüden çık
+                // Kullanıcıdan ondalıklı sayı girip girmediğini kontrol edelim
+                if (scanner.hasNextInt()) {
+                    number = scanner.nextLong();
+                    if (number < 0) {
+                        System.out.println(SpecialColor.RED + "Sıfırdan küçük bir sayı girdiniz sistem kapatılıyor" + SpecialColor.RESET);
+                        //number = Math.abs(number);
+                        break;             // 1.YOL(Yalnızca bulunduğu döngü veya switch bloğu etkiliyor)
+                        //System.exit(0); // 2.YOL (JVM'yi kapatarak programı tamamem sonlandırıyor.)
+                    } else if (number == 0) {
+                        System.out.println(number + SpecialColor.BLUE + " sayısının faktöriyeli= 1");
+                        result = 1;
+                    } else {
+                        result = 1;
+                        for (int i = 1; i <= number; i++) {
+                            //result=result*i;
+                            result *= i;
+                        }
+                        System.out.println(number + SpecialColor.YELLOW + " sayısının " + number + "!=" + result + SpecialColor.RESET);
+                    }
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Hata: Geçersiz giriş. Lütfen bir tam sayı girin.");
-                scanner.next(); // Hatalı girişi temizle
+                else if (scanner.hasNextDouble()) {
+                    //doubleRemainingRight= (byte) (doubleRemainingRight-1);
+                    doubleRemainingRight--; // Best practice
+                    System.out.println(SpecialColor.RED + "Ondalıklı bir sayı girdiniz kalan hakkınız: "+doubleRemainingRight + SpecialColor.RESET);
+
+                    if(doubleRemainingRight ==0){
+                        System.out.println("üç defa ondalıklı sayı girdiğinizde dolayı Program sonlandı");
+                        isActive=false;
+                        System.exit(0);
+                    }
+                    scanner.next(); // Geçersiz girdileri temizlemek içindir
+                } else {
+                    System.out.println(SpecialColor.RED + "Harf girdiniz." + SpecialColor.RESET);
+                    //break;
+                    scanner.next(); // Geçersiz girdileri temizlemek içindir
+                } //end harf
+            } else {
+                System.out.println("Virgüllü sayı kalan hakkınız kalmadı ve program sonlanıyor(JVM) tarafından");
+                System.exit(0);
             }
-        }
-
-        // Faktöriyel hesaplama
-        long iterativeSonuc = fektoriyelIterative(number);
-        long recursiveSonuc = faktoriyelRecursive(number);
-
-        System.out.println(number + " sayısının faktöriyeli (iteratif): " + iterativeSonuc);
-        System.out.println(number + " sayısının faktöriyeli (özyinelemeli): " + recursiveSonuc);
-
-        scanner.close(); // Scanner'ı kapat
+        } //end while
+        // Scanner Close
+        scanner.close();
     }
 
-
-    // iterative yöntemle faktöriyel hesaplama
-    public static long fektoriyelIterative(int n) {
-        long sonuc = 1;
-        for (int i = 0; i <= n; i++) {
-            sonuc *= i;
-        }
-        return sonuc;
-    }
-
-
-    // recursive yöntemle faktöriyel hesaplama
-    public static long faktoriyelRecursive(int n) {
-        if (n == 0 || n == 1) {
-            return 1;
-        } else {
-            return n * faktoriyelRecursive(n - 1);
-        }
-    }
-
-}
+} // end class

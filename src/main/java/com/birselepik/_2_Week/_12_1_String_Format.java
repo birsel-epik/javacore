@@ -12,6 +12,8 @@ package com.birselepik._2_Week;
     Kapatınca RAM i temizliyor. Kapatılmazsa cache belleği kullanmaya devam ediyor.
 */
 
+import com.birselepik.utils.SpecialColor;
+
 import java.util.Formatter;
 
 public class _12_1_String_Format {
@@ -72,7 +74,7 @@ public class _12_1_String_Format {
     // formatter7 (Best Practice) [Special Color - 1]
     public static void formatter7() {
         String formatterString = String.format("formatter7: Merhabalar Adınız: %s, T.C: %d, Fiyat: %f", "Birsel", 10203040, 34.44);
-        System.out.println(_15_4_Special_Color.YELLOW + formatterString + _15_4_Special_Color.RESET);
+        System.out.println(SpecialColor.YELLOW + formatterString + SpecialColor.RESET);
         System.out.println();
         System.out.println(formatterString);
     }
@@ -80,8 +82,8 @@ public class _12_1_String_Format {
     // formatter8 (Best Practice) [Special Color - 2]
     public static void formatter8() {
         String formatterString =
-                String.format("Merhabalar" + _15_4_Special_Color.GREEN + " Adınız:%s " + _15_4_Special_Color.RESET + "|" + _15_4_Special_Color.RED + " T.C: %d " + _15_4_Special_Color.RESET + "|" + _15_4_Special_Color.BLUE + " Fiyat: %.3f " + _15_4_Special_Color.RESET + "", "Birsel", 10203040, 34.44);
-        System.out.println(_15_4_Special_Color.YELLOW + formatterString + _15_4_Special_Color.RESET);
+                String.format("Merhabalar" + SpecialColor.GREEN + " Adınız:%s " + SpecialColor.RESET + "|" + SpecialColor.RED + " T.C: %d " + SpecialColor.RESET + "|" + SpecialColor.BLUE + " Fiyat: %.3f " + SpecialColor.RESET + "", "Birsel", 10203040, 34.44);
+        System.out.println(SpecialColor.YELLOW + formatterString + SpecialColor.RESET);
         System.out.println();
         System.out.println(formatterString);
     }

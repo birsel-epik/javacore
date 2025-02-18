@@ -1,5 +1,7 @@
 package com.birselepik._2_Week;
 
+import com.birselepik.utils.SpecialColor;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -52,11 +54,11 @@ public class _16_1_Array {
         String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
 
         System.out.println();
-        System.out.println(_15_4_Special_Color.RED + "iterative for" + _15_4_Special_Color.RESET);
+        System.out.println(SpecialColor.RED + "iterative for" + SpecialColor.RESET);
 
         // iterative for döngüsü
         for (int i = 0; i < city.length; i++) {
-            System.out.println(_15_4_Special_Color.YELLOW + city[i] + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.YELLOW + city[i] + SpecialColor.RESET);
         }
     }
 
@@ -71,11 +73,11 @@ public class _16_1_Array {
         }
 
         System.out.println();
-        System.out.println(_15_4_Special_Color.RED + "for each" + _15_4_Special_Color.RESET);
+        System.out.println(SpecialColor.RED + "for each" + SpecialColor.RESET);
 
         // Döngünün renklendirilmiş versiyonu
         for (String temp : city) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.BLUE + temp + SpecialColor.RESET);
         }
     }
 
@@ -88,7 +90,7 @@ public class _16_1_Array {
         Arrays.sort(city);
 
         for (String temp : city) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.GREEN + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.GREEN + temp + SpecialColor.RESET);
         }
     }
 
@@ -103,7 +105,7 @@ public class _16_1_Array {
         Arrays.sort(city, Collections.reverseOrder());
 
         for (String temp : city) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.BLUE + temp + SpecialColor.RESET);
         }
     }
 
@@ -115,7 +117,7 @@ public class _16_1_Array {
         Arrays.fill(number, 5); // 5 sayısı ile doldur
 
         for (int temp : number) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.YELLOW + temp + SpecialColor.RESET);
         }
     }
 
@@ -137,7 +139,7 @@ public class _16_1_Array {
         Arrays.fill(number, randomNumber()); // 5 sayısı ile doldur
 
         for (int temp : number) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.YELLOW + temp + SpecialColor.RESET);
         }
     }
 
@@ -159,7 +161,7 @@ public class _16_1_Array {
         }
 
         for (int temp : number) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.RED + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.RED + temp + SpecialColor.RESET);
         }
     }
 
@@ -184,16 +186,16 @@ public class _16_1_Array {
         // Arrays.sort(cloneCity, Collections.reverseOrder()); // (büyükten küçüğe doğru sıralama)
 
         for (String temp : cloneCity) { // temp = Geçici data
-            System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.BLUE + temp + SpecialColor.RESET);
         }
 
         // Binary Search
         String searchCity = "Bursa"; // aradığımız data içinde var mı yok mu?
         int index = Arrays.binarySearch(cloneCity, searchCity);
         if (index >= 0) {
-            System.out.println(_15_4_Special_Color.YELLOW + searchCity + " bu ili bulunmaktadır." + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.YELLOW + searchCity + " bu ili bulunmaktadır." + SpecialColor.RESET);
         } else {
-            System.out.println(_15_4_Special_Color.RED + searchCity + " bu il bulunmamaktadır!" + _15_4_Special_Color.RESET);
+            System.out.println(SpecialColor.RED + searchCity + " bu il bulunmamaktadır!" + SpecialColor.RESET);
         }
 
     }
