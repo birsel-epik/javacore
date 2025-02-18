@@ -92,6 +92,9 @@ public class _16_1_Array {
         }
     }
 
+    /// /////////////////////////////////
+
+
     // Arrays.sort - Sıralama (büyükten küçüğe doğru sıralama)
     public static void arrayMethod7() {
         String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
@@ -115,6 +118,9 @@ public class _16_1_Array {
             System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
         }
     }
+
+    /// ////////////////////////////////////
+
 
     // Random yapısı
     public static int randomNumber() {
@@ -158,6 +164,41 @@ public class _16_1_Array {
     }
 
 
+    /// //////////////////////////////////////////
+
+    public static String[] arrayMethod11() {
+        String[] city = {"İstanbul", "Malatya", "Elazığ", "İzmir", "Ankara", "Aydın", "Mersin", "Adana", "Antalya", "Bursa", "Balıkesir", "Çanakkale"};
+        System.out.println(city);
+        return city; // String diziyi döndürüyoruz
+    }
+
+    public static void arrayMethod12() {
+        // Original
+        String[] originalCity = arrayMethod11(); // yukarıdaki String dizisini çağırıyoruz
+
+        // Clone
+        String[] cloneCity = Arrays.copyOf(originalCity, originalCity.length); // originalCity nin length ine kadar diziyi kopyala
+
+        // Dizilerde Sıralama (küçükten büyüğe doğru sıralama)
+        Arrays.sort(cloneCity);
+        // Arrays.sort(cloneCity, Collections.reverseOrder()); // (büyükten küçüğe doğru sıralama)
+
+        for (String temp : cloneCity) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+        }
+
+        // Binary Search
+        String searchCity = "Bursa"; // aradığımız data içinde var mı yok mu?
+        int index = Arrays.binarySearch(cloneCity, searchCity);
+        if (index >= 0) {
+            System.out.println(_15_4_Special_Color.YELLOW + searchCity + " bu ili bulunmaktadır." + _15_4_Special_Color.RESET);
+        } else {
+            System.out.println(_15_4_Special_Color.RED + searchCity + " bu il bulunmamaktadır!" + _15_4_Special_Color.RESET);
+        }
+
+    }
+
+
     // PSVM
     public static void main(String[] args) {
         // arrayMethod1();
@@ -169,6 +210,8 @@ public class _16_1_Array {
         // arrayMethod7();
         // arrayMethod8();
         // arrayMethod9();
-        arrayMethod10();
+        // arrayMethod10();
+        // arrayMethod11();
+        arrayMethod12();
     }
 } // end class
