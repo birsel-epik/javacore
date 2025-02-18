@@ -17,7 +17,7 @@ import java.util.Scanner;
    Dosyada satır kaldığı sürece okumaya devam eder.
 */
 
-public class _Week2_Example_3 {
+public class _Week2_Example_3_1 {
     public static void main(String[] args) {
 
         // Iterative
