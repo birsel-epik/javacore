@@ -1,6 +1,8 @@
 package com.birselepik._2_Week;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 public class _16_1_Array {
 
@@ -77,7 +79,7 @@ public class _16_1_Array {
         }
     }
 
-    // for each - Sıralama
+    // Arrays.sort - Sıralama (küçükten büyüğe doğru sıralama)
     public static void arrayMethod6() {
         String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
 
@@ -86,7 +88,51 @@ public class _16_1_Array {
         Arrays.sort(city);
 
         for (String temp : city) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.GREEN + temp + _15_4_Special_Color.RESET);
+        }
+    }
+
+    // Arrays.sort - Sıralama (büyükten küçüğe doğru sıralama)
+    public static void arrayMethod7() {
+        String[] city = arrayMethod2(); // yukarıdaki String dizisini çağırıyoruz
+
+        // Dizilerde Sıralama (büyükten küçüğe doğru sıralama)
+        Arrays.sort(city, Collections.reverseOrder());
+
+        for (String temp : city) { // temp = Geçici data
             System.out.println(_15_4_Special_Color.BLUE + temp + _15_4_Special_Color.RESET);
+        }
+    }
+
+
+    // fill (Oto kontrol yapabiliriz. Örn: Boş gelen değer yerine bizim verdiğimiz değeri yazdırabiliriz.)
+    // 1. YÖNTEM
+    public static void arrayMethod8() {
+        int[] number = new int[7];
+        Arrays.fill(number, 5); // 5 sayısı ile doldur
+
+        for (int temp : number) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
+        }
+    }
+
+    // Random yapısı
+    public static int randomNumber() {
+        Random random = new Random();
+        int rndInt = random.nextInt(9) + 1;
+        return rndInt;
+    }
+
+    // fill
+    // 2. YÖNTEM
+    public static void arrayMethod9() {
+        int[] number = new int[7]; // her defasında sayılar değişsin
+
+        // iterative for
+        Arrays.fill(number, randomNumber()); // 5 sayısı ile doldur
+
+        for (int temp : number) { // temp = Geçici data
+            System.out.println(_15_4_Special_Color.YELLOW + temp + _15_4_Special_Color.RESET);
         }
     }
 
@@ -98,6 +144,9 @@ public class _16_1_Array {
         // arrayMethod3();
         // arrayMethod4();
         // arrayMethod5();
-        arrayMethod6();
+        // arrayMethod6();
+        // arrayMethod7();
+        // arrayMethod8();
+        arrayMethod9();
     }
 } // end class
