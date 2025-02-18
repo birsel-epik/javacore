@@ -100,16 +100,16 @@ public class _12_1_String1 {
 
 
         // Birleştirme (StringBuilder)
-        // (API ler ile çalışılırken, karşı tarafdan gelen verinin türünü bilmiyorak StringBuilder yapısı kullanılır. Daha hızlıdır)
+        // (API ler ile çalışılırken, karşı taraftan gelen verinin türünü bilmiyorak StringBuilder yapısı kullanılır. Daha hızlıdır)
         // Tek bir döngüde birleştirme işlemi yapıyor
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(vocabulary1).append(" jsp").append(" jsf");
-        String dataToString1 = stringBuilder.toString(); // dataToString -> Stringe çevir
+        String dataToString1 = stringBuilder.toString(); // toString -> Stringe çevir
         System.out.println(dataToString1);
 
 
         // Birleştirme (StringBuffer)
-        // (API ler ile çalışılırken, karşı tarafdan gelen verinin türünü bilmiyorak StringBuilder yapısı kullanılır. Daha eski ve yavaş yöntem. Tür güvenliği için daha önemli)
+        // (API ler ile çalışılırken, karşı tarafdan gelen verinin türünü bilmiyorak StringBuffer yapısı kullanılır. Daha eski ve yavaş yöntem. Tür güvenliği için daha önemli)
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(vocabulary1).append(" jsp").append(" jsf");
         String dataToString2 = stringBuffer.toString();

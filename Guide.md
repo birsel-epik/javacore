@@ -972,13 +972,13 @@ public class MemoryTest {
     public static void main(String[] args) {
         int a = 5;
         Integer b = new Integer(5);
-
+        
         modify(a, b);
-
+        
         System.out.println("a: " + a);  // 5
         System.out.println("b: " + b);  // 5
     }
-
+    
     public static void modify(int x, Integer y) {
         x = 10;       // Stack içindeki x değişir
         y = new Integer(10); // Yeni bir nesne oluşturulur (Heap)
@@ -1092,13 +1092,13 @@ public class ShortComparison {
     public static void main(String[] args) {
         Short wrapperTypeShort1 = new Short((short) 127);
         Short wrapperTypeShort2 = 127; // Autoboxing
-
+        
         Short wrapperTypeShort3 = new Short((short) 127);
         Short wrapperTypeShort4 = 127; // Autoboxing
-
+        
         System.out.println(wrapperTypeShort1 == wrapperTypeShort3); // false (Heap'te farklı nesneler)
         System.out.println(wrapperTypeShort2 == wrapperTypeShort4); // true (Cache mekanizması sayesinde aynı nesne)
-
+        
         Short wrapperTypeShort5 = 32767;
         Short wrapperTypeShort6 = 32767;
 
@@ -1467,7 +1467,7 @@ public class WideningExample {
     public static void main(String[] args) {
         int sayi = 100;
         double genisSayi = sayi; // Otomatik dönüşüm (int → double)
-
+        
         System.out.println("int değer: " + sayi);
         System.out.println("double değere dönüştü: " + genisSayi);
     }
@@ -1632,10 +1632,10 @@ Kedi kedi = (Kedi) hayvan; // HATA! hayvan nesnesi aslında bir Kedi değil.
 
 ```java
 if (hayvan instanceof Kedi) {
-Kedi kedi = (Kedi) hayvan;
+    Kedi kedi = (Kedi) hayvan;
     kedi.miyavla();
 } else {
-        System.out.println("Nesne Kedi türüne ait değil.");
+    System.out.println("Nesne Kedi türüne ait değil.");
 }
 ```
 
@@ -1673,7 +1673,7 @@ public class StringToIntExample {
     public static void main(String[] args) {
         String sayiStr = "123"; // String veri
         int sayi = Integer.parseInt(sayiStr); // String → int dönüşümü
-
+        
         System.out.println("String: " + sayiStr);
         System.out.println("int: " + sayi);
     }
@@ -1703,7 +1703,7 @@ public class ValueOfExample {
     public static void main(String[] args) {
         String sayiStr = "456";
         int sayi = Integer.valueOf(sayiStr); // String → Integer
-
+        
         System.out.println("int değeri: " + sayi);
     }
 }
@@ -1723,7 +1723,7 @@ public class IntToStringExample {
     public static void main(String[] args) {
         int sayi = 789;
         String sayiStr = String.valueOf(sayi); // int → String
-
+        
         System.out.println("int: " + sayi);
         System.out.println("String: " + sayiStr);
     }
@@ -1739,7 +1739,7 @@ public class IntToStringExample2 {
     public static void main(String[] args) {
         int sayi = 1234;
         String sayiStr = Integer.toString(sayi); // int → String
-
+        
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1757,7 +1757,7 @@ public class PlusStringExample {
     public static void main(String[] args) {
         int sayi = 500;
         String sayiStr = sayi + ""; // int → String
-
+        
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1817,8 +1817,8 @@ Math sınıfı **mutlak değer, maksimum, minimum gibi işlemleri** kolayca yapa
 
 ```java
 System.out.println(Math.abs(-15)); // 15
-        System.out.println(Math.max(100, 200)); // 200
-        System.out.println(Math.min(50, 30)); // 30
+System.out.println(Math.max(100, 200)); // 200
+System.out.println(Math.min(50, 30)); // 30
 ```
 
 ---
@@ -1834,10 +1834,10 @@ System.out.println(Math.abs(-15)); // 15
 
 ```java
 System.out.println(Math.sqrt(16)); // 4.0
-        System.out.println(Math.pow(2, 5)); // 32.0
-        System.out.println(Math.exp(1)); // 2.718
-        System.out.println(Math.log(Math.E)); // 1.0
-        System.out.println(Math.log10(1000)); // 3.0
+System.out.println(Math.pow(2, 5)); // 32.0
+System.out.println(Math.exp(1)); // 2.718
+System.out.println(Math.log(Math.E)); // 1.0
+System.out.println(Math.log10(1000)); // 3.0
 ```
 
 ---
@@ -1853,8 +1853,8 @@ Java Math sınıfı **yuvarlama işlemleri için** farklı fonksiyonlar sunar.
 
 ```java
 System.out.println(Math.round(4.5)); // 5
-        System.out.println(Math.ceil(3.2)); // 4.0
-        System.out.println(Math.floor(6.8)); // 6.0
+System.out.println(Math.ceil(3.2)); // 4.0
+System.out.println(Math.floor(6.8)); // 6.0
 ```
 ---
 
@@ -1872,8 +1872,8 @@ Trigonometri fonksiyonları **radyan cinsinden** hesaplama yapar.
 
 ```java
 System.out.println(Math.sin(Math.PI/2)); // 1.0
-        System.out.println(Math.cos(0)); // 1.0
-        System.out.println(Math.tan(Math.PI/4)); // 1.0
+System.out.println(Math.cos(0)); // 1.0
+System.out.println(Math.tan(Math.PI/4)); // 1.0
 ```
 
 ---
@@ -1884,8 +1884,8 @@ System.out.println(Math.sin(Math.PI/2)); // 1.0
 **Örnek Kullanımlar:**
 ```java
 System.out.println(Math.random()); // 0.0 ile 1.0 arasında rastgele sayı
-        System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
-        System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
+System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
+System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
 ```
 
 ---
@@ -2304,16 +2304,16 @@ import java.util.Scanner;
 public class ScannerLoopExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        
         while (true) {
             System.out.print("Bir sayı girin (Çıkış için -1): ");
             int sayi = scanner.nextInt();
-
+            
             if (sayi == -1) {
                 System.out.println("Çıkış yapıldı.");
                 break;
             }
-
+            
             System.out.println("Girdiğiniz sayı: " + sayi);
         }
 
@@ -2388,7 +2388,7 @@ Java'da kullanılan başlıca koşullu ifadeler şunlardır:
 public class IfExample {
     public static void main(String[] args) {
         int sayi = 10;
-
+        
         if (sayi > 5) { // Koşul doğru mu? Evet!
             System.out.println("Sayı 5'ten büyüktür.");
         }
@@ -2412,7 +2412,7 @@ Sayı 5'ten büyüktür.
 public class IfElseExample {
     public static void main(String[] args) {
         int sayi = 3;
-
+        
         if (sayi > 5) {
             System.out.println("Sayı 5'ten büyüktür.");
         } else {
@@ -2614,8 +2614,8 @@ Bu döngülerle birlikte **`break` ve `continue`** gibi kontrol ifadeleri kullan
 **Yapısı:**
 ```java
 for (başlangıç_değeri; koşul; artırma/azaltma) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 1: 1'den 5'e kadar yazdırma**
@@ -2672,8 +2672,8 @@ public class EvenNumbers {
 **Yapısı:**
 ```java
 while (koşul) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 3: `while` ile Sayı Yazdırma**
@@ -2681,7 +2681,7 @@ while (koşul) {
 public class WhileLoopExample {
     public static void main(String[] args) {
         int i = 1;
-
+        
         while (i <= 5) {
             System.out.println("i: " + i);
             i++; // i artırılıyor, yoksa sonsuz döngü olur.
@@ -2744,8 +2744,8 @@ Döngü sonlandı.
 **Yapısı:**
 ```java
 do {
-        // Döngü bloğu
-        } while (koşul);
+    // Döngü bloğu
+} while (koşul);
 ```
 
 ### **Örnek 5: `do-while` ile Kullanıcıdan Şifre Alma**
@@ -2784,8 +2784,8 @@ Giriş başarılı!
 **Yapısı:**
 ```java
 for (VeriTipi eleman : Dizi/Koleksiyon) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 6: `for-each` ile Dizi Elemanlarını Yazdırma**
@@ -2899,7 +2899,7 @@ Java'da `for` ve `while` döngüleri, tekrar eden işlemleri gerçekleştirmek i
 
 ```java
 for (int i = 0; i < 5; i++) {
-        System.out.println("i değeri: " + i);
+    System.out.println("i değeri: " + i);
 }
 ```
 ✅ **Avantajı**: Döngü değişkeni (`i`) döngü içinde tanımlandığı için **lokal kalır** ve kod daha okunaklıdır.
@@ -2913,9 +2913,9 @@ for (int i = 0; i < 5; i++) {
 ```java
 int i = 0;
 while (i < 5) {
-        System.out.println("i değeri: " + i);
-i++;
-        }
+    System.out.println("i değeri: " + i);
+    i++;
+}
 ```
 ✅ **Avantajı**: **Esnektir**, koşul başka bir yerden değiştirilebilir.
 
@@ -2942,9 +2942,9 @@ i++;
 ```java
 int i = 0;
 do {
-        System.out.println("i değeri: " + i);
-i++;
-        } while (i < 5);
+    System.out.println("i değeri: " + i);
+    i++;
+} while (i < 5);
 ```
 ✅ **Avantajı**: Kullanıcıdan giriş alırken veya en az bir kez çalışması gereken işlemlerde idealdir.
 
@@ -3523,7 +3523,7 @@ System.out.println(text.length()); // 17
 ```java
 String text = "Java";
 System.out.println(text.charAt(0)); // J
-        System.out.println(text.charAt(2)); // v
+System.out.println(text.charAt(2)); // v
 ```
 
 ---
@@ -3532,7 +3532,7 @@ System.out.println(text.charAt(0)); // J
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.substring(8)); // "Dünya"
-        System.out.println(text.substring(0, 7)); // "Merhaba"
+System.out.println(text.substring(0, 7)); // "Merhaba"
 ```
 
 ---
@@ -3541,7 +3541,7 @@ System.out.println(text.substring(8)); // "Dünya"
 ```java
 String text = "Java";
 System.out.println(text.toUpperCase()); // "JAVA"
-        System.out.println(text.toLowerCase()); // "java"
+System.out.println(text.toLowerCase()); // "java"
 ```
 
 ---
@@ -3552,7 +3552,7 @@ String a = "Java";
 String b = "java";
 
 System.out.println(a.equals(b)); // false
-        System.out.println(a.equalsIgnoreCase(b)); // true
+System.out.println(a.equalsIgnoreCase(b)); // true
 ```
 📌 **Neden `==` kullanılmamalı?**
 - `==`, **referansları** karşılaştırır.
@@ -3565,14 +3565,14 @@ System.out.println(a.equals(b)); // false
 ```java
 String text = "Java öğrenmek çok eğlenceli!";
 System.out.println(text.contains("Java")); // true
-        System.out.println(text.contains("Python")); // false
+System.out.println(text.contains("Python")); // false
 ```
 
 #### **`startsWith()` & `endsWith()` → Başlangıç ve Bitiş Kontrolü**
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.startsWith("Merhaba")); // true
-        System.out.println(text.endsWith("Dünya")); // true
+System.out.println(text.endsWith("Dünya")); // true
 ```
 
 ---
@@ -3583,7 +3583,7 @@ String metin = "Java,Python,C++";
 String[] diller = metin.split(",");
 
 for (String dil : diller) {
-        System.out.println(dil);
+    System.out.println(dil);
 }
 ```
 **Çıktı:**
@@ -3723,11 +3723,11 @@ Java'da `switch-case` ve `if-else if` yapıları, akış kontrolü sağlamak iç
 int sayi = 5;
 
 if (sayi > 0 && sayi <= 10) {
-        System.out.println("Sayı 1 ile 10 arasında");
+    System.out.println("Sayı 1 ile 10 arasında");
 } else if (sayi > 10 && sayi <= 20) {
-        System.out.println("Sayı 11 ile 20 arasında");
+    System.out.println("Sayı 11 ile 20 arasında");
 } else {
-        System.out.println("Sayı 20’den büyük");
+    System.out.println("Sayı 20’den büyük");
 }
 ```
 ✅ **Avantaj**: Aralık bazlı kontroller için uygundur.
@@ -3738,16 +3738,16 @@ if (sayi > 0 && sayi <= 10) {
 ```java
 int gun = 3;
 switch (gun) {
-        case 1:
+    case 1:
         System.out.println("Pazartesi");
         break;
-                case 2:
-                System.out.println("Salı");
+    case 2:
+        System.out.println("Salı");
         break;
-                case 3:
-                System.out.println("Çarşamba");
+    case 3:
+        System.out.println("Çarşamba");
         break;
-default:
+    default:
         System.out.println("Geçersiz gün");
 }
 ```
@@ -3778,14 +3778,14 @@ Java'da `switch-case` ve `if-else if` yapılarının algoritmik analizi için **
 ### **İf-Else If-Else**
 ```java
 if (x == 1) {
-        // İşlem 1
-        } else if (x == 2) {
-        // İşlem 2
-        } else if (x == 3) {
-        // İşlem 3
-        } else {
-        // Varsayılan işlem
-        }
+    // İşlem 1
+} else if (x == 2) {
+    // İşlem 2
+} else if (x == 3) {
+    // İşlem 3
+} else {
+    // Varsayılan işlem
+}
 ```
 - **En iyi durum (Best Case) - O(1)**: Eğer ilk `if` koşulu doğruysa, yalnızca bir kontrol yapılır.
 - **En kötü durum (Worst Case) - O(n)**: Tüm `if` blokları kontrol edildikten sonra `else` bloğuna ulaşılırsa **n adet karşılaştırma** yapılır.
@@ -3798,18 +3798,18 @@ if (x == 1) {
 ### **Switch-Case**
 ```java
 switch (x) {
-        case 1:
+    case 1:
         // İşlem 1
         break;
-        case 2:
+    case 2:
         // İşlem 2
         break;
-        case 3:
+    case 3:
         // İşlem 3
         break;
-default:
+    default:
         // Varsayılan işlem
-        }
+}
 ```
 Switch-case’in algoritmik analizi derleyici tarafından nasıl optimize edildiğine bağlıdır:
 
@@ -4168,7 +4168,7 @@ public class PrimitiveStackExample {
         int a = 10;
         int b = a; // b, a'nın değerini alır (Kopyalanır, adres paylaşımı olmaz)
         b = 20;
-
+        
         System.out.println("a: " + a); // 10
         System.out.println("b: " + b); // 20
     }
@@ -4267,7 +4267,7 @@ araba1.model = "Audi";
 Araba araba2 = araba1; // Aynı heap adresini gösterir
 araba2.model = "Tesla";
 
-        System.out.println(araba1.model); // Tesla
+System.out.println(araba1.model); // Tesla
 ```
 
 ### **📌 Deep Copy (Derin Kopyalama - Yeni Bir Nesne Oluşturur)**
@@ -4280,7 +4280,7 @@ araba2.model = araba1.model; // Yeni nesneye ayrı değer atanıyor.
 
 araba2.model = "Tesla";
 
-        System.out.println(araba1.model); // Audi (Değişmez!)
+System.out.println(araba1.model); // Audi (Değişmez!)
 System.out.println(araba2.model); // Tesla
 ```
 ✅ **Deep Copy kullanarak heap bellekte farklı nesneler oluşturmuş olduk.**
@@ -4349,7 +4349,7 @@ public class DateFormatExample {
     public static void main(String[] args) {
         Date tarih = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
+        
         String formatliTarih = sdf.format(tarih);
         System.out.println("Formatlı Tarih: " + formatliTarih);
     }
@@ -4407,7 +4407,7 @@ public class LocalDateExample {
     public static void main(String[] args) {
         LocalDate bugun = LocalDate.now(); // Bugünün tarihi
         System.out.println("Bugünün Tarihi: " + bugun);
-
+        
         LocalDate ozelTarih = LocalDate.of(2025, 2, 12); // Özel bir tarih
         System.out.println("Özel Tarih: " + ozelTarih);
     }
@@ -4789,8 +4789,8 @@ System.out.println(metin); // null
 - Ancak, **kullanılmadan önce `null` kontrolü yapılmalıdır**:
 ```java
 if (metin != null) {
-        System.out.println(metin.length()); // NullPointerException'ı önler
-        }
+    System.out.println(metin.length()); // NullPointerException'ı önler
+}
 ```
 
 ---
@@ -4835,8 +4835,8 @@ System.out.println(kelime.length()); // 🚨 NullPointerException Hatası!
 **Çözüm:** `null` kontrolü yapın:
 ```java
 if (kelime != null) {
-        System.out.println(kelime.length());
-        }
+    System.out.println(kelime.length());
+}
 ```
 
 ---
@@ -4873,6 +4873,397 @@ String mesaj = ""; // NullPointerException riski yok
 
 ✅ **Sonuç:** `null` dikkatli kullanılmalıdır. **Gereksiz `null` kullanımı yerine `Optional<T>`, varsayılan değerler veya boş nesneler kullanılabilir.** 🚀
 
+
+## Formatter
+```sh 
+
+```
+---
+# **📌 Java `Formatter` Nedir? (Detaylı Anlatım)**
+`Formatter` sınıfı, Java'da metinleri **biçimlendirmek (formatlamak)** için kullanılan bir sınıftır. `printf()`, `String.format()` gibi yöntemlerle çalışır ve sayıları, tarihleri, metinleri özel formatlara sokmak için kullanılır.
+
+### **📌 Kullanım Alanları**
+✅ **Metin biçimlendirme** (`String.format()` ve `printf()`)  
+✅ **Sayıları belirli ondalık hassasiyette göstermek**  
+✅ **Tarih ve saat biçimlendirme**  
+✅ **Tablolar, raporlar veya dosya çıktıları için veri düzenleme**
+
+---
+
+# **1️⃣ Formatter Kullanımı**
+`java.util.Formatter` doğrudan kullanılabilir. Ancak genellikle `String.format()` veya `System.out.printf()` ile dolaylı olarak kullanılır.
+
+```java
+import java.util.Formatter;
+
+public class Main {
+    public static void main(String[] args) {
+        Formatter formatter = new Formatter();
+        formatter.format("Merhaba %s, yaşınız %d", "Ahmet", 25);
+        System.out.println(formatter);
+        formatter.close();
+    }
+}
+```
+**🎯 Çıktı:**
+```
+Merhaba Ahmet, yaşınız 25
+```
+
+### **📌 Açıklamalar:**
+- `%s` → **String** türü için yer tutucu.
+- `%d` → **Tam sayı** türü için yer tutucu.
+- `formatter.close();` → Formatter’ı kapatarak belleği serbest bırakır.
+
+---
+
+# **2️⃣ `String.format()` ile Kullanım (Önerilen)**
+`Formatter` kullanmanın en yaygın yolu `String.format()` metodudur. Bu yöntemle **formatlı bir String döndürülür**.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String formattedString = String.format("Merhaba %s, yaşınız %d", "Ayşe", 30);
+        System.out.println(formattedString);
+    }
+}
+```
+**🎯 Çıktı:**
+```
+Merhaba Ayşe, yaşınız 30
+```
+**📌 `String.format()` kullanmanın avantajı:**
+✅ Tek satırda formatlama sağlar.  
+✅ `Formatter` nesnesi oluşturmaya gerek kalmaz.  
+✅ Daha az bellek tüketir.
+
+---
+
+# **3️⃣ `printf()` ile Kullanım**
+Eğer doğrudan **ekrana yazdırmak** istiyorsanız `System.out.printf()` kullanabilirsiniz.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.printf("Merhaba %s, yaşınız %d\n", "Mehmet", 40);
+    }
+}
+```
+**🎯 Çıktı:**
+```
+Merhaba Mehmet, yaşınız 40
+```
+
+---
+
+# **4️⃣ Biçimlendirme (`Format Specifiers`)**
+Java `Formatter`'da kullanılan temel format belirteçleri şunlardır:
+
+| **Belirteç** | **Açıklama** | **Örnek Kullanım** | **Çıktı** |
+|-------------|-------------|---------------------|-----------|
+| `%d`  | Tam sayı | `System.out.printf("%d", 25);` | `25` |
+| `%f`  | Ondalıklı sayı | `System.out.printf("%.2f", 3.14159);` | `3.14` |
+| `%s`  | String | `System.out.printf("%s", "Merhaba");` | `Merhaba` |
+| `%c`  | Tek karakter | `System.out.printf("%c", 'A');` | `A` |
+| `%b`  | Boolean | `System.out.printf("%b", true);` | `true` |
+| `%n`  | Yeni satır | `System.out.printf("Merhaba%nDünya");` | `Merhaba` (alt satır) `Dünya` |
+
+---
+
+## **5️⃣ Ondalıklı Sayılar için Biçimlendirme**
+```java
+public class Main {
+    public static void main(String[] args) {
+        double pi = 3.14159265359;
+        System.out.printf("Pi sayısı: %.2f\n", pi); // 2 ondalık basamak göster
+    }
+}
+```
+**🎯 Çıktı:**
+```
+Pi sayısı: 3.14
+```
+✔ `%.2f` → **Ondalıklı sayıyı iki basamağa yuvarlar.**  
+✔ `%.3f` → **Üç basamak gösterir.**
+
+---
+
+## **6️⃣ Sayıları Sağdan ve Soldan Hizalama**
+Metinleri hizalamak için **`%10s` veya `%-10s`** gibi formatlar kullanılabilir.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.printf("|%10s|%n", "Merhaba");  // Sağdan hizalar
+        System.out.printf("|%-10s|%n", "Merhaba"); // Soldan hizalar
+    }
+}
+```
+**🎯 Çıktı:**
+```
+|   Merhaba|
+|Merhaba   |
+```
+✔ `%10s` → **Sağdan hizalar ve boşluk ekler.**  
+✔ `%-10s` → **Soldan hizalar ve boşluk ekler.**
+
+---
+
+## **7️⃣ Sayıları Sıfır ile Doldurma**
+Sayının önüne sıfır eklemek için `%0Xd` kullanılabilir (`X` karakter sayısıdır).
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.printf("%05d\n", 42);
+    }
+}
+```
+**🎯 Çıktı:**
+```
+00042
+```
+✔ `%05d` → **5 haneli yapar ve eksik kısımları `0` ile doldurur.**
+
+---
+
+## **8️⃣ Para Birimi Formatlama**
+`Locale` kullanarak farklı ülkelerin para birimini formatlayabiliriz.
+
+```java
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class Main {
+    public static void main(String[] args) {
+        double amount = 1234567.89;
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        System.out.println(currencyFormatter.format(amount)); // ABD formatı
+    }
+}
+```
+**🎯 Çıktı:**
+```
+$1,234,567.89
+```
+✔ `Locale.US` → Amerikan dolar formatına göre gösterir.  
+✔ `Locale.FRANCE` → Fransız para formatına çevirir.
+
+---
+
+## **9️⃣ Tarih ve Saat Formatlama**
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        System.out.println(sdf.format(now));
+    }
+}
+```
+**🎯 Çıktı:**
+```
+15-02-2025 14:45:30
+```
+
+---
+
+## **🔍 Formatter mı, String.format() mı?**
+| **Özellik** | **Formatter** | **String.format()** |
+|-------------|--------------|---------------------|
+| Nesne oluşturma | `Formatter formatter = new Formatter();` | `String.format()` ile tek satır |
+| Bellek tüketimi | Daha fazla bellek kullanır | Daha az bellek kullanır |
+| Kullanım kolaylığı | Daha karmaşık | Daha kolay |
+
+📌 **Genellikle `String.format()` önerilir!**
+
+---
+
+## **✅ Özet**
+- **`Formatter`**, Java'da metin, sayı ve tarih biçimlendirmek için kullanılır.
+- **`String.format()` ve `printf()`**, `Formatter` sınıfını kullanmanın en yaygın yollarıdır.
+- **Sayıları ve tarihleri formatlamak**, ondalık hassasiyet eklemek, hizalama yapmak için çok kullanışlıdır.
+
+Java'da **biçimlendirilmiş çıktılar** oluşturmak için `Formatter` sınıfını etkili şekilde kullanabilirsin! 🚀
+
+## Renk Çıktıları
+```sh 
+
+```
+---
+Java'nın standart `System.out.println()` veya `System.out.printf()` çıktıları **renkli desteklemez**, ancak **ANSI kaçış kodları** (`ANSI Escape Codes`) kullanarak terminalde renkli metinler yazdırabilirsiniz. 🚀
+
+---
+
+## **📌 1️⃣ ANSI Kaçış Kodları ile Renkli Çıktılar**
+Java'da terminale renkli metin yazdırmak için aşağıdaki ANSI kodlarını kullanabilirsiniz:
+
+### **🟢 Renk Kodu Tablosu**
+| **Renk** | **Kod** |
+|----------|--------|
+| **🔴 Kırmızı** | `\033[31m` |
+| **🟢 Yeşil** | `\033[32m` |
+| **🟡 Sarı** | `\033[33m` |
+| **🔵 Mavi** | `\033[34m` |
+| **🟣 Mor** | `\033[35m` |
+| **🔵 Açık Mavi** | `\033[36m` |
+| **⚪ Beyaz** | `\033[37m` |
+| **🖤 Siyah** | `\033[30m` |
+| **⚫ Arkaplan Siyah** | `\033[40m` |
+| **🔴 Arkaplan Kırmızı** | `\033[41m` |
+| **🟢 Arkaplan Yeşil** | `\033[42m` |
+| **🔵 Arkaplan Mavi** | `\033[44m` |
+
+**⚠️ Önemli Not:** Bu yöntem **Windows Terminal, macOS, Linux, IntelliJ IDEA ve bazı IDE'lerde** çalışır, ancak **Eclipse gibi IDE'lerde desteklenmeyebilir**.
+
+---
+
+### **🛠 Örnek: Java'da Renkli Çıktı**
+```java
+public class Main {
+    // ANSI Renk Kodları
+    public static final String RESET = "\033[0m";  // Renk sıfırlama
+    public static final String RED = "\033[31m";   // Kırmızı
+    public static final String GREEN = "\033[32m"; // Yeşil
+    public static final String YELLOW = "\033[33m";// Sarı
+    public static final String BLUE = "\033[34m";  // Mavi
+    public static final String PURPLE = "\033[35m";// Mor
+    public static final String CYAN = "\033[36m";  // Açık Mavi
+
+    public static void main(String[] args) {
+        System.out.println(RED + "Bu kırmızı renkte!" + RESET);
+        System.out.println(GREEN + "Bu yeşil renkte!" + RESET);
+        System.out.println(YELLOW + "Bu sarı renkte!" + RESET);
+        System.out.println(BLUE + "Bu mavi renkte!" + RESET);
+        System.out.println(PURPLE + "Bu mor renkte!" + RESET);
+        System.out.println(CYAN + "Bu açık mavi renkte!" + RESET);
+    }
+}
+```
+
+**🎯 Çıktı (Terminalde)**:
+```
+🔴 Bu kırmızı renkte!
+🟢 Bu yeşil renkte!
+🟡 Bu sarı renkte!
+🔵 Bu mavi renkte!
+🟣 Bu mor renkte!
+🔵 Bu açık mavi renkte!
+```
+✔ `RESET` → **Yazdırdıktan sonra rengi sıfırlar**.  
+✔ **Her rengin sonunda `+ RESET` eklenmelidir, yoksa sonraki tüm çıktılar o renkte kalır.**
+
+---
+
+## **📌 2️⃣ String.format() ile Renkli Çıktı**
+`String.format()` ile de renk kodlarını kullanabiliriz:
+
+```java
+public class Main {
+    public static final String GREEN = "\033[32m"; // Yeşil
+    public static final String RESET = "\033[0m";  // Renk sıfırlama
+
+    public static void main(String[] args) {
+        String formattedString = String.format(GREEN + "Merhaba %s, yaşınız %d" + RESET, "Hamit", 30);
+        System.out.println(formattedString);
+    }
+}
+```
+**🎯 Çıktı (Terminalde Yeşil Renkli)**
+```
+Merhaba Hamit, yaşınız 30
+```
+
+---
+
+## **📌 3️⃣ System.out.printf() ile Renkli Çıktı**
+Aynı yöntemi `printf()` ile de uygulayabiliriz:
+
+```java
+public class Main {
+    public static final String RED = "\033[31m";   // Kırmızı
+    public static final String RESET = "\033[0m";  // Sıfırlama
+
+    public static void main(String[] args) {
+        System.out.printf(RED + "Hata: %s dosyası bulunamadı!%n" + RESET, "config.txt");
+    }
+}
+```
+**🎯 Çıktı (Kırmızı Renk)**
+```
+Hata: config.txt dosyası bulunamadı!
+```
+
+---
+
+## **📌 4️⃣ Renkli Metin Formatlama Metodu**
+Tekrar eden renk kodlarından kurtulmak için bir metot yazabiliriz:
+
+```java
+public class Main {
+    public static final String RESET = "\033[0m";
+    public static final String BLUE = "\033[34m";
+    public static final String GREEN = "\033[32m";
+    public static final String RED = "\033[31m";
+
+    public static String colorText(String text, String color) {
+        return color + text + RESET;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(colorText("Bu mavi renkte!", BLUE));
+        System.out.println(colorText("Bu yeşil renkte!", GREEN));
+        System.out.println(colorText("Bu kırmızı renkte!", RED));
+    }
+}
+```
+✔ **`colorText()` metodu ile her seferinde renk kodlarını eklemeye gerek kalmaz.**  
+✔ **Kod daha okunaklı hale gelir.** 🚀
+
+---
+
+## **📌 5️⃣ Renkli Arkaplan Kullanalım!**
+Metin rengi yerine **arkaplan rengini değiştirebiliriz**:
+
+```java
+public class Main {
+    public static final String RESET = "\033[0m";
+    public static final String BLACK_BG = "\033[40m"; // Siyah Arkaplan
+    public static final String RED_BG = "\033[41m";   // Kırmızı Arkaplan
+    public static final String GREEN_BG = "\033[42m"; // Yeşil Arkaplan
+
+    public static void main(String[] args) {
+        System.out.println(RED_BG + "Bu metnin arka planı kırmızı!" + RESET);
+        System.out.println(GREEN_BG + "Bu metnin arka planı yeşil!" + RESET);
+    }
+}
+```
+**🎯 Çıktı (Terminalde Arkaplan Renkli)**
+```
+🟥 Bu metnin arka planı kırmızı!
+🟩 Bu metnin arka planı yeşil!
+```
+
+---
+
+## **⚠️ Önemli Notlar**
+❌ **Eclipse gibi IDE'lerde ANSI renkleri desteklenmez.**  
+✅ **Terminal, IntelliJ IDEA ve VS Code Terminal'de çalışır.**  
+✅ **Windows 10+ veya Linux/macOS’ta desteklenir.**  
+✅ **Windows'ta CMD yerine `PowerShell` veya `Windows Terminal` kullanmalısınız.**
+
+---
+
+## **🎯 Sonuç**
+✔ **Java'da renkli metinler yazdırmak için ANSI kaçış kodlarını kullanabilirsin.**  
+✔ **String.format(), printf() ve System.out.println() ile renkli çıktı alınabilir.**  
+✔ **Renk kodlarını metodlaştırarak daha temiz bir kod yazabilirsin.**  
+✔ **Arkaplan renkleri de desteklenir!**
+
+Bu yöntemle **Java çıktılarınızı daha okunaklı ve şık hale getirebilirsiniz!** 🚀✨
 
 
 
@@ -4917,7 +5308,7 @@ int[] sayilar = {10, 20, 30, 40, 50};
 
 🚫 **Hatalı Tanımlama**
 ```java
-int[] dizi;
+int[] dizi; 
 dizi = {1, 2, 3, 4}; // HATA! Doğrudan böyle atama yapılamaz.
 ```
 
@@ -4939,10 +5330,10 @@ public class DiziErisim {
 
         // Dizinin 0. elemanını yazdırma
         System.out.println("İlk eleman: " + sayilar[0]); // 10
-
+        
         // Dizinin 2. elemanını değiştirme
         sayilar[2] = 100;
-
+        
         System.out.println("Yeni 2. eleman: " + sayilar[2]); // 100
     }
 }
@@ -5029,9 +5420,9 @@ int[][] matris = new int[3][3]; // 3x3'lük bir matris
 public class IkiBoyutluDizi {
     public static void main(String[] args) {
         int[][] matris = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
         };
 
         System.out.println("Orta Eleman: " + matris[1][1]); // 5
@@ -5047,9 +5438,9 @@ public class IkiBoyutluDizi {
 public class MatrisYazdirma {
     public static void main(String[] args) {
         int[][] matris = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
         };
 
         for (int i = 0; i < matris.length; i++) {
@@ -5130,7 +5521,673 @@ public class ArraysExample {
 📌 **Java’da diziler, veri saklama ve yönetme açısından oldukça önemli yapılardır! 🚀**
 
 
-## Erişim Belirleyiciler
+## Array (Diziler) Devam
+```sh 
+
+```
+---
+### **Java'da Diziler (Arrays) Detaylı Açıklama**
+Java'da **diziler (arrays)**, aynı türdeki verileri belirli bir sıralamada saklamak için kullanılan veri yapılarıdır. Java'daki diziler, **sabit boyutlu, sıralı ve indeks tabanlı veri yapılarıdır**.
+
+---
+
+## **1. Dizi Tanımlama ve Başlatma**
+Bir dizi, belirli bir veri tipindeki elemanları saklayan nesne olarak oluşturulur.
+
+### **1.1. Dizi Tanımlama (Declaration)**
+Bir dizi değişkeni tanımlamak için aşağıdaki sözdizimi kullanılır:
+
+```java
+veri_tipi[] dizi_adi;  // Tercih edilen kullanım
+veri_tipi dizi_adi[];  // Alternatif kullanım
+```
+
+Örnek:
+```java
+int[] sayilar; // Tercih edilen kullanım
+double ondaliklar[]; // Alternatif kullanım
+```
+
+### **1.2. Dizi Oluşturma (Instantiation)**
+Java'da diziler, `new` anahtar kelimesi kullanılarak oluşturulur. **Dizinin boyutu sabittir ve sonradan değiştirilemez.**
+
+```java
+dizi_adi = new veri_tipi[boyut];
+```
+
+Örnek:
+```java
+sayilar = new int[5]; // 5 elemanlı bir int dizisi oluşturuldu.
+```
+
+Tek satırda tanımlama ve oluşturma:
+```java
+int[] sayilar = new int[5];
+```
+
+---
+
+## **2. Diziye Değer Atama**
+Bir diziye değer atamak için **indeks (index) numarası** kullanılır. Java'da diziler **0'dan başlar**.
+
+Örnek:
+```java
+int[] sayilar = new int[5]; 
+
+sayilar[0] = 10;
+sayilar[1] = 20;
+sayilar[2] = 30;
+sayilar[3] = 40;
+sayilar[4] = 50;
+```
+
+Alternatif olarak, diziyi doğrudan başlatabilirsiniz:
+```java
+int[] sayilar = {10, 20, 30, 40, 50};
+```
+
+---
+
+## **3. Dizinin Uzunluğunu Bulma**
+Dizinin uzunluğu `.length` özelliği ile bulunur:
+```java
+System.out.println("Dizinin uzunluğu: " + sayilar.length);
+```
+
+---
+
+## **4. Dizi Elemanlarını Döngüyle Erişme**
+Dizilerde elemanlara erişmek için **for** ve **foreach** döngüleri kullanılabilir.
+
+### **4.1. For Döngüsü ile Erişim**
+```java
+for (int i = 0; i < sayilar.length; i++) {
+    System.out.println("Eleman " + i + ": " + sayilar[i]);
+}
+```
+
+### **4.2. Foreach Döngüsü ile Erişim**
+```java
+for (int eleman : sayilar) {
+    System.out.println(eleman);
+}
+```
+
+---
+
+## **5. Çok Boyutlu Diziler**
+Java'da **çok boyutlu diziler** (matrisler) oluşturulabilir.
+
+### **5.1. İki Boyutlu Dizi Tanımlama**
+```java
+int[][] matris = new int[3][3]; // 3x3 boyutunda bir matris
+```
+
+### **5.2. Matris İçin Değer Atama**
+```java
+matris[0][0] = 1;
+matris[0][1] = 2;
+matris[0][2] = 3;
+matris[1][0] = 4;
+matris[1][1] = 5;
+matris[1][2] = 6;
+matris[2][0] = 7;
+matris[2][1] = 8;
+matris[2][2] = 9;
+```
+
+### **5.3. Matris İçin Döngü Kullanımı**
+```java
+for (int i = 0; i < matris.length; i++) { //satır
+    for (int j = 0; j < matris[i].length; j++) { //sutun
+        System.out.print(matris[i][j] + " ");
+    }
+    System.out.println();
+}
+```
+
+---
+
+## **6. Dizi ile İlgili Önemli Metotlar**
+Java'da diziler için bazı kullanışlı metotlar `Arrays` sınıfı ile sağlanır.
+
+```java
+import java.util.Arrays;
+
+public class DiziMetotlari {
+    public static void main(String[] args) {
+        int[] sayilar = {5, 3, 8, 1, 2};
+
+        // Diziyi sıralama
+        Arrays.sort(sayilar);
+        System.out.println("Sıralanmış dizi: " + Arrays.toString(sayilar));
+
+        // Belirli bir elemanı arama (binary search)
+        int index = Arrays.binarySearch(sayilar, 3);
+        System.out.println("3 sayısının indeksi: " + index);
+
+        // Diziyi belirli bir değerle doldurma
+        Arrays.fill(sayilar, 7);
+        System.out.println("Dizi 7 ile dolduruldu: " + Arrays.toString(sayilar));
+    }
+}
+```
+
+---
+
+## **7. Dizi Kullanımında Dikkat Edilmesi Gerekenler**
+1. **Dizilerin Boyutu Sabittir:** Java'da diziler **dinamik değildir**, yani oluşturulduktan sonra boyutları değiştirilemez. Daha esnek bir yapı için `ArrayList` kullanılabilir.
+
+2. **Dizilerde Varsayılan Değerler:** Diziler oluşturulduğunda içindeki elemanlar şu varsayılan değerlere sahip olur:
+    - `int` → `0`
+    - `double` → `0.0`
+    - `boolean` → `false`
+    - `String` ve diğer referans tipleri → `null`
+
+3. **ArrayIndexOutOfBoundsException:** Dizinin sınırlarını aşan bir indekse erişmeye çalışırsanız hata alırsınız:
+   ```java
+   int[] dizi = {1, 2, 3};
+   System.out.println(dizi[3]); // Hata: ArrayIndexOutOfBoundsException
+   ```
+
+---
+
+## **8. Alternatif: List Kullanımı (Dizi Yerine)**
+Eğer boyutu değişebilen bir diziye ihtiyacınız varsa, `ArrayList` kullanabilirsiniz:
+```java
+import java.util.ArrayList;
+
+public class DiziAlternatif {
+    public static void main(String[] args) {
+        ArrayList<Integer> sayilar = new ArrayList<>();
+        sayilar.add(10);
+        sayilar.add(20);
+        sayilar.add(30);
+
+        System.out.println("Liste: " + sayilar);
+        sayilar.remove(1); // 2. elemanı siler
+        System.out.println("Güncellenmiş Liste: " + sayilar);
+    }
+}
+```
+
+---
+
+## **Sonuç**
+Java'da diziler, aynı türdeki verileri saklamak için kullanılan **sabit boyutlu** veri yapılarıdır. Temel özellikleri:
+✅ Hızlı ve etkili bellek kullanımı sağlar.  
+✅ Sabit boyutlu oldukları için dinamik değişime uygun değildir.  
+✅ **`Arrays`** sınıfı ile ek işlemler yapılabilir.  
+✅ **Alternatif olarak `ArrayList` gibi koleksiyonlar kullanılabilir.**
+
+Bu detaylı rehberle, Java dizileri hakkında kapsamlı bir bilgiye sahip oldunuz! 🚀
+
+
+## Array Büyükten küçüğe
+```sh 
+
+```
+---
+Java'da bir diziyi **büyükten küçüğe** sıralamak için aşağıdaki yöntemlerden birini kullanabilirsiniz:
+
+---
+
+### **1. `Arrays.sort()` ile Büyükten Küçüğe Sıralama (Tersten Yazdırma)**
+Java'da `Arrays.sort()` metodu **küçükten büyüğe** sıralama yapar. Büyükten küçüğe sıralamak için **tersine çevirmeliyiz**.
+
+#### **Örnek:**
+```java
+import java.util.Arrays;
+import java.util.Collections;
+
+public class BuyuktenKucugeSiralama {
+    public static void main(String[] args) {
+        Integer[] sayilar = {5, 2, 9, 1, 3};
+
+        // Arrays.sort() + Collections.reverseOrder() ile büyükten küçüğe sıralama
+        Arrays.sort(sayilar, Collections.reverseOrder());
+
+        System.out.println("Büyükten Küçüğe Sıralanmış Dizi: " + Arrays.toString(sayilar));
+    }
+}
+```
+
+**Çıktı:**
+```
+Büyükten Küçüğe Sıralanmış Dizi: [9, 5, 3, 2, 1]
+```
+
+---
+
+### **2. `Arrays.sort()` ile Küçükten Büyüğe Sıralayıp Ters Çevirme**
+Eğer **primitive veri tipi** (`int`, `double`) kullanıyorsanız, `Collections.reverseOrder()` çalışmaz. Bu durumda önce `Arrays.sort()` ile küçükten büyüğe sıralayıp, sonra ters çevirebiliriz.
+
+#### **Örnek (Primitive Tiplerle)**
+```java
+import java.util.Arrays;
+
+public class BuyuktenKucugeSiralamaPrimitive {
+    public static void main(String[] args) {
+        int[] sayilar = {5, 2, 9, 1, 3};
+
+        // Küçükten büyüğe sırala
+        Arrays.sort(sayilar);
+
+        // Ters çevirerek büyükten küçüğe yazdır
+        System.out.print("Büyükten Küçüğe Sıralanmış Dizi: ");
+        for (int i = sayilar.length - 1; i >= 0; i--) {
+            System.out.print(sayilar[i] + " ");
+        }
+    }
+}
+```
+
+**Çıktı:**
+```
+Büyükten Küçüğe Sıralanmış Dizi: 9 5 3 2 1
+```
+
+---
+
+### **3. `Arrays.stream().boxed()` ile Büyükten Küçüğe Sıralama (Java 8+)**
+Java 8 ve üstü sürümlerde **Streams API** kullanarak sıralama yapabilirsiniz.
+
+#### **Örnek (Lambda ile)**
+```java
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class StreamSirala {
+    public static void main(String[] args) {
+        int[] sayilar = {5, 2, 9, 1, 3};
+
+        // Stream ile büyükten küçüğe sıralama
+        int[] sirali = Arrays.stream(sayilar)
+                             .boxed()
+                             .sorted(Comparator.reverseOrder())
+                             .mapToInt(Integer::intValue)
+                             .toArray();
+
+        System.out.println("Büyükten Küçüğe Sıralanmış Dizi: " + Arrays.toString(sirali));
+    }
+}
+```
+
+**Çıktı:**
+```
+Büyükten Küçüğe Sıralanmış Dizi: [9, 5, 3, 2, 1]
+```
+
+---
+
+### **Hangi Yöntemi Kullanmalıyım?**
+| **Yöntem** | **Kullanım Durumu** |
+|------------|--------------------|
+| `Arrays.sort()` + `Collections.reverseOrder()` | `Integer[]` dizisi için en hızlı yöntem. |
+| `Arrays.sort()` + `for` döngüsüyle ters yazdırma | `int[]` dizisi için uygun (primitive tip). |
+| `Streams API (Java 8+)` | Modern ve kısa kod yazmak isteyenler için. |
+
+Eğer `int[]` kullanıyorsanız **2. yöntemi**, `Integer[]` kullanıyorsanız **1. yöntemi** tercih edebilirsiniz. Java 8 ve sonrası için **3. yöntem** daha okunaklıdır.
+
+Hangi yöntemi seçerseniz seçin, büyükten küçüğe sıralamayı başarıyla yapabilirsiniz! 🚀
+
+
+## Zaman Karmaşıklığı Uzay Karmaşıklığı
+```sh 
+
+```
+---
+
+### **Zaman Karmaşıklığı (Time Complexity) ve Uzay Karmaşıklığı (Space Complexity) Nedir?**
+
+Bir algoritmanın performansını ölçerken iki temel faktörü dikkate alırız:
+1. **Zaman Karmaşıklığı (Time Complexity)**
+2. **Uzay Karmaşıklığı (Space Complexity)**
+
+Bu kavramlar, bir algoritmanın **verimliliğini** anlamamıza yardımcı olur.
+
+---
+
+## **1. Zaman Karmaşıklığı (Time Complexity)**
+Bir algoritmanın **çalışma süresinin**, **girdi büyüklüğüne (n)** bağlı olarak nasıl değiştiğini ifade eder.
+
+### **Zaman Karmaşıklığı Nasıl Ölçülür?**
+- Bir algoritmadaki temel işlemlerin (toplama, çarpma, döngü işlemleri vb.) **kaç kez çalıştığını** hesaplarız.
+- Büyük veri kümeleriyle çalışırken, sabit zamanlı işlemler yerine **en kötü senaryo analizi (Big-O Notasyonu)** kullanılır.
+- **Big-O Notasyonu**, algoritmanın çalıştığı süreyi büyüme oranı olarak ifade eder.
+
+### **Zaman Karmaşıklığı Türleri**
+| **Big-O** | **Açıklama** | **Örnek Algoritma** |
+|-----------|-------------|---------------------|
+| **O(1) - Sabit Zaman** | Girdi büyüklüğünden bağımsızdır, hep aynı sürede çalışır. | Dizinin ilk elemanına erişim (`arr[0]`) |
+| **O(log n) - Logaritmik Zaman** | Her adımda girdi miktarını yarıya indirir. | Binary Search (İkili Arama) |
+| **O(n) - Doğrusal Zaman** | Girdi büyüklüğü arttıkça işlem süresi aynı oranda artar. | Bir dizinin tüm elemanlarını toplama |
+| **O(n log n) - Lineer Logaritmik Zaman** | Genellikle sıralama algoritmalarında görülür. | Merge Sort, Quick Sort |
+| **O(n²) - Karesel Zaman** | İç içe döngüler varsa oluşur. | Çift döngülü algoritmalar (Bubble Sort) |
+| **O(2ⁿ) - Üstel Zaman** | Her adımda işlemler katlanarak artar. | Fibonacci’nin basit özyinelemeli (recursive) hesaplanması |
+| **O(n!) - Faktöriyel Zaman** | Girdi arttıkça işlem süresi çok hızlı artar. | Gezgin Satıcı Problemi (TSP) gibi bazı kombinatorik algoritmalar |
+
+---
+
+### **Zaman Karmaşıklığı Örnekleri**
+#### **Örnek 1: O(1) - Sabit Zaman**
+```java
+int firstElement(int[] arr) {
+    return arr[0];  // Her zaman sabit sürede çalışır
+}
+```
+Bu fonksiyon **O(1)** karmaşıklığına sahiptir, çünkü girdi ne kadar büyük olursa olsun **tek işlemde** çalışır.
+
+#### **Örnek 2: O(n) - Doğrusal Zaman**
+```java
+int sumArray(int[] arr) {
+    int sum = 0;
+    for (int num : arr) {
+        sum += num;
+    }
+    return sum;
+}
+```
+Bu fonksiyon **O(n)** karmaşıklığına sahiptir, çünkü dizide **n** eleman varsa, **n** kez toplama işlemi yapılır.
+
+#### **Örnek 3: O(n²) - Karesel Zaman**
+```java
+void printPairs(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = 0; j < arr.length; j++) {
+            System.out.println(arr[i] + ", " + arr[j]);
+        }
+    }
+}
+```
+Bu algoritma **iç içe geçmiş döngüler içerdiğinden**, **O(n²)** karmaşıklığa sahiptir. Çünkü her bir eleman için tekrar tüm elemanlar dolaşılır.
+
+---
+
+## **2. Uzay Karmaşıklığı (Space Complexity)**
+Bir algoritmanın **çalışması için ihtiyaç duyduğu bellek miktarının**, girdi büyüklüğüne **(n)** bağlı olarak nasıl değiştiğini ifade eder.
+
+### **Uzay Karmaşıklığı Nasıl Ölçülür?**
+- Algoritmanın kullandığı **değişkenler, diziler, veri yapıları** gibi ek bellek ihtiyacını hesaplarız.
+- **Big-O Notasyonu** burada da kullanılır.
+- Bellek tüketimi **sabit (O(1)), doğrusal (O(n)), karesel (O(n²))** gibi değerlendirilebilir.
+
+### **Uzay Karmaşıklığı Türleri**
+| **Big-O** | **Açıklama** | **Örnek Algoritma** |
+|-----------|-------------|---------------------|
+| **O(1) - Sabit Uzay** | Sabit miktarda bellek kullanır. | Tek değişken kullanımı (`int a = 5;`) |
+| **O(n) - Doğrusal Uzay** | Girdi büyüklüğüne bağlı olarak ek bellek kullanır. | Bir dizinin kopyalanması |
+| **O(n²) - Karesel Uzay** | Bir matris gibi iç içe veri saklanması gerektiğinde ortaya çıkar. | Dinamik programlama tablosu |
+
+---
+
+### **Uzay Karmaşıklığı Örnekleri**
+#### **Örnek 1: O(1) - Sabit Uzay**
+```java
+int add(int a, int b) {
+    return a + b; // Sadece iki değişken kullanılıyor
+}
+```
+Bu algoritma **O(1)** uzay karmaşıklığına sahiptir çünkü sadece **sabit** miktarda bellek kullanır.
+
+#### **Örnek 2: O(n) - Doğrusal Uzay**
+```java
+int[] copyArray(int[] arr) {
+    int[] newArr = new int[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+        newArr[i] = arr[i];
+    }
+    return newArr;
+}
+```
+Bu algoritma **O(n)** uzay karmaşıklığına sahiptir çünkü **n** elemanlık yeni bir dizi oluşturuyor.
+
+#### **Örnek 3: O(n²) - Karesel Uzay**
+```java
+int[][] createMatrix(int n) {
+    int[][] matrix = new int[n][n];  // n*n boyutunda matris
+    return matrix;
+}
+```
+Bu algoritma **O(n²)** uzay karmaşıklığına sahiptir, çünkü **n × n** boyutunda bir matris bellekte tutulur.
+
+---
+
+## **Özet**
+| **Kavram** | **Tanım** | **Ölçüm Kriteri** | **Örnek Algoritmalar** |
+|-----------|----------|----------------|----------------|
+| **Zaman Karmaşıklığı** | Algoritmanın çalışma süresi | İşlem sayısı (**n**'e bağlı) | Sıralama algoritmaları, arama algoritmaları |
+| **Uzay Karmaşıklığı** | Algoritmanın bellek tüketimi | Ek bellek miktarı | Matris işlemleri, dinamik programlama |
+
+### **Genel Pratikler**
+1. **Zaman karmaşıklığını** optimize etmek için döngüleri azaltın, daha hızlı algoritmalar kullanın.
+2. **Uzay karmaşıklığını** azaltmak için gereksiz dizi kopyalamalardan kaçının, mümkünse sabit miktarda bellek kullanın.
+3. Büyük veri kümeleriyle çalışıyorsanız **O(log n) veya O(n log n) zaman karmaşıklığı** olan algoritmaları tercih edin.
+
+Bu bilgilerle, bir algoritmanın **verimli olup olmadığını** anlayabilir ve hangi durumlarda hangi yöntemlerin daha uygun olduğunu belirleyebilirsiniz! 🚀
+
+
+
+## Erişim Belirleyiciler Devam-1
+```sh 
+
+```
+---
+# **Java'da Access Modifier (Erişim Belirleyiciler) Detaylı Anlatım**
+
+Java'da **access modifier (erişim belirleyiciler)**, bir sınıfın, değişkenin, metodun veya yapıcı (constructor) metodun **nerelerden erişilebileceğini** belirler. Erişim belirleyiciler, **nesne yönelimli programlama (OOP) prensipleri** gereği **bilgi gizleme (encapsulation)** sağlamak için kullanılır.
+
+Java'da **dört** temel erişim belirleyici vardır:
+
+| **Modifier** | **Açıklama** | **Aynı Sınıf** | **Aynı Paket** | **Farklı Paket - Alt Sınıf** | **Farklı Paket - Alt Sınıf Olmayan** |
+|-------------|-------------|--------------|-------------|----------------------|----------------------|
+| `public`    | Her yerden erişilebilir | ✅ | ✅ | ✅ | ✅ |
+| `protected` | Aynı paket ve alt sınıflardan erişilebilir | ✅ | ✅ | ✅ | ❌ |
+| `default` (Hiçbir şey yazılmaz) | Sadece aynı paket içinden erişilebilir | ✅ | ✅ | ❌ | ❌ |
+| `private`   | Sadece tanımlandığı sınıf içinden erişilebilir | ✅ | ❌ | ❌ | ❌ |
+
+---
+
+## **1. `public` Access Modifier**
+**`public` anahtar kelimesi, bir sınıf, metod veya değişkenin her yerden erişilebilir olmasını sağlar.**
+
+📌 **Kullanım Alanları:**
+- Genel (public) API'ler oluştururken
+- Sınıfların dışarıdan erişilebilir olmasını istersek
+- Ana metod (`main`) için zorunludur.
+
+### **Örnek: `public` Kullanımı**
+```java
+// Public Class: Her yerden erişilebilir
+public class PublicExample {
+    // Public Method: Her yerden erişilebilir
+    public void showMessage() {
+        System.out.println("Bu bir public metod!");
+    }
+}
+```
+Başka bir sınıftan erişim:
+```java
+public class Test {
+    public static void main(String[] args) {
+        PublicExample example = new PublicExample();
+        example.showMessage();  // ✅ Başarıyla çalışır
+    }
+}
+```
+
+✅ **`public` ile tanımlanan değişken, metod veya sınıf herhangi bir paket veya sınıftan erişilebilir.**
+
+---
+
+## **2. `protected` Access Modifier**
+**`protected` erişim belirleyicisi, aynı paketteki tüm sınıflardan ve farklı paketlerdeki alt sınıflardan erişime izin verir.**
+
+📌 **Kullanım Alanları:**
+- Kalıtım (Inheritance) kullanılarak oluşturulan alt sınıflar arasında veri paylaşımı yapmak için idealdir.
+- Pakete özgü erişim sağlamak ve yalnızca alt sınıfların erişimini açmak için kullanılır.
+
+### **Örnek: `protected` Kullanımı**
+```java
+package package1;
+
+public class Parent {
+    protected String protectedMessage = "Bu bir protected mesajdır!";
+}
+```
+Başka bir sınıfta (aynı pakette):
+```java
+package package1;
+
+public class SamePackageTest {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        System.out.println(parent.protectedMessage);  // ✅ Erişebilir
+    }
+}
+```
+Farklı bir pakette bir alt sınıf:
+```java
+package package2;
+import package1.Parent;
+
+public class Child extends Parent {
+    public void display() {
+        System.out.println(protectedMessage);  // ✅ Erişebilir (Kalıtım olduğu için)
+    }
+}
+```
+Farklı pakette ve **kalıtım (extends) olmadan** erişmeye çalışırsak:
+```java
+package package2;
+import package1.Parent;
+
+public class Test {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        System.out.println(parent.protectedMessage);  // ❌ Hata! (Protected erişim yok)
+    }
+}
+```
+✅ **Özet:**
+- Aynı pakette **herkes erişebilir.**
+- Farklı pakette yalnızca **alt sınıflar erişebilir.**
+
+---
+
+## **3. `default` (Paket-Özel) Access Modifier**
+**Eğer bir erişim belirleyici belirtilmezse (`public`, `protected`, `private` yazılmazsa), Java bunu `default` olarak kabul eder.**  
+Bu durumda **yalnızca aynı paketteki sınıflar erişebilir, farklı paketlerdeki sınıflar erişemez.**
+
+📌 **Kullanım Alanları:**
+- Yalnızca bir paketin içinde çalışacak bileşenler oluştururken
+- Modüler bir yapı içinde, dış paketlerden erişimi kısıtlamak için
+
+### **Örnek: `default` Kullanımı**
+```java
+package package1;
+
+class DefaultExample {
+    void showMessage() {
+        System.out.println("Bu bir default metod!");
+    }
+}
+```
+Aynı pakette başka bir sınıftan erişim:
+```java
+package package1;
+
+public class SamePackageTest {
+    public static void main(String[] args) {
+        DefaultExample example = new DefaultExample();
+        example.showMessage();  // ✅ Erişebilir
+    }
+}
+```
+Farklı paketten erişmeye çalışırsak:
+```java
+package package2;
+import package1.DefaultExample;
+
+public class Test {
+    public static void main(String[] args) {
+        DefaultExample example = new DefaultExample();  // ❌ Hata! (default erişim yok)
+    }
+}
+```
+✅ **Özet:**
+- **Aynı paketten erişilebilir.**
+- **Farklı paketlerden erişilemez.**
+
+---
+
+## **4. `private` Access Modifier**
+**`private` ile tanımlanan değişkenler, metotlar ve constructor’lar yalnızca tanımlandıkları sınıf içinde erişilebilir.**  
+Dış sınıflar veya alt sınıflar **kesinlikle erişemez**.
+
+📌 **Kullanım Alanları:**
+- **Encapsulation (Kapsülleme)** sağlamak için
+- Dışarıdan erişilmesini istemediğimiz verileri saklamak için
+
+### **Örnek: `private` Kullanımı**
+```java
+public class PrivateExample {
+    private String secretMessage = "Bu bir private mesajdır!";
+
+    private void showMessage() {
+        System.out.println(secretMessage);
+    }
+
+    public void accessPrivateMethod() {
+        showMessage();  // Sınıf içinden erişim var
+    }
+}
+```
+Başka bir sınıftan erişmeye çalışırsak:
+```java
+public class Test {
+    public static void main(String[] args) {
+        PrivateExample example = new PrivateExample();
+        System.out.println(example.secretMessage);  // ❌ Hata! (Private değişkene erişim yok)
+        example.showMessage();  // ❌ Hata! (Private metoda erişim yok)
+    }
+}
+```
+✅ **Çözüm:** `getter` ve `setter` metodları kullanarak erişim sağlamak:
+```java
+public class PrivateExample {
+    private String secretMessage = "Bu bir private mesajdır!";
+
+    public String getSecretMessage() {
+        return secretMessage;  // Getter metodu
+    }
+}
+```
+Başka bir sınıfta:
+```java
+public class Test {
+    public static void main(String[] args) {
+        PrivateExample example = new PrivateExample();
+        System.out.println(example.getSecretMessage());  // ✅ Getter ile erişim var
+    }
+}
+```
+✅ **Özet:**
+- `private` olan bir değişken veya metoda **yalnızca aynı sınıf içerisinden** erişilebilir.
+
+---
+
+## **Sonuç ve Karşılaştırma**
+| Modifier | Aynı Sınıf | Aynı Paket | Farklı Paket (Alt Sınıf) | Farklı Paket (Alt Sınıf Olmayan) |
+|----------|-----------|------------|-----------------|------------------|
+| `public` | ✅ | ✅ | ✅ | ✅ |
+| `protected` | ✅ | ✅ | ✅ | ❌ |
+| `default` | ✅ | ✅ | ❌ | ❌ |
+| `private` | ✅ | ❌ | ❌ | ❌ |
+
+Bu detaylı anlatım, **Java'daki erişim belirleyicilerin kullanımını** tam anlamıyla kavramanızı sağlayacaktır. 🚀
+
+## Erişim Belirleyiciler Devam-2
 ```sh 
 
 ```
@@ -5370,11 +6427,267 @@ DefaultOrnek nesne = new DefaultOrnek(); // HATA! Çünkü başka paketteyiz.
 **📌 Paketler ve erişim belirleyiciler, Java’da kodun organize edilmesi ve güvenliği açısından büyük önem taşır! 🚀**
 
 
+
+## Javada Class Tanımı
+```sh 
+
+```
+---
+
+# **Java'da Class (Sınıf) Tanımı - Detaylı Açıklama**
+
+## **1. Class (Sınıf) Nedir?**
+Java'da **class (sınıf)**, **nesne yönelimli programlama (OOP)** yaklaşımında **nesnelerin şablonu** veya **kalıbı** olarak kullanılır.  
+Bir sınıf; **verileri (değişkenler)** ve **bu verilere uygulanan işlemleri (metodlar)** içinde barındıran bir yapıdır.
+
+Sınıflar sayesinde **kod tekrarını önleyerek** daha **düzenli, modüler ve ölçeklenebilir yazılım** geliştirilir.
+
+### **Özetle bir sınıf:**
+- **Özellikler (attributes/fields)**
+- **Davranışlar (methods/behaviors)**
+- **Kapsülleme (Encapsulation)**
+- **Soyutlama (Abstraction)**
+
+İçerir ve **nesne** (object) oluşturmak için bir **şablon** görevi görür.
+
+---
+
+## **2. Java'da Sınıf Tanımlama**
+Java'da bir sınıf tanımlamak için `class` anahtar kelimesi kullanılır:
+
+### **Temel Sınıf Tanımı**
+```java
+class Araba {
+    // Özellikler (Fields)
+    String marka;
+    String model;
+    int yil;
+
+    // Metotlar (Davranışlar)
+    void bilgileriGoster() {
+        System.out.println("Marka: " + marka);
+        System.out.println("Model: " + model);
+        System.out.println("Yıl: " + yil);
+    }
+}
+```
+Bu sınıf, **Araba (Car)** isimli bir nesne oluşturmak için kullanılabilir.
+
+---
+
+## **3. Nesne (Object) Oluşturma**
+Bir sınıftan nesne türetmek için `new` anahtar kelimesi kullanılır.
+
+### **Örnek: `Araba` Sınıfından Nesne Oluşturma**
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Araba sınıfından bir nesne oluşturma
+        Araba araba1 = new Araba();
+        
+        // Nesne özelliklerine değer atama
+        araba1.marka = "Toyota";
+        araba1.model = "Corolla";
+        araba1.yil = 2022;
+        
+        // Metodu çağırma
+        araba1.bilgileriGoster();
+    }
+}
+```
+📌 **Çıktı:**
+```
+Marka: Toyota
+Model: Corolla
+Yıl: 2022
+```
+Bu kodda, `Araba` sınıfından `araba1` isimli bir nesne oluşturulmuş ve bu nesnenin **özellikleri atanarak** ekrana yazdırılmıştır.
+
+---
+
+## **4. Constructor (Yapıcı Metot) Kullanımı**
+Java'da bir sınıfın nesnesi oluşturulurken **otomatik olarak çalışan özel bir metod** vardır, buna **constructor (yapıcı metot)** denir.
+
+### **Constructor Tanımı**
+- **Nesne oluşturulduğunda çağrılır.**
+- **Sınıf ismi ile aynı olmalıdır.**
+- **Geri dönüş tipi (return type) içermez.**
+- **Parametre alarak nesneye ilk değerleri atayabilir.**
+
+### **Örnek: Constructor Kullanımı**
+```java
+class Araba {
+    String marka;
+    String model;
+    int yil;
+
+    // Yapıcı Metot (Constructor)
+    Araba(String marka, String model, int yil) {
+        this.marka = marka;
+        this.model = model;
+        this.yil = yil;
+    }
+
+    void bilgileriGoster() {
+        System.out.println("Marka: " + marka);
+        System.out.println("Model: " + model);
+        System.out.println("Yıl: " + yil);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Constructor ile nesne oluşturma
+        Araba araba1 = new Araba("BMW", "X5", 2023);
+        araba1.bilgileriGoster();
+    }
+}
+```
+📌 **Çıktı:**
+```
+Marka: BMW
+Model: X5
+Yıl: 2023
+```
+Bu kodda **constructor** sayesinde `araba1` nesnesi oluşturulurken **ilk değerler atanmış** oldu.
+
+---
+
+## **5. Access Modifiers (Erişim Belirleyiciler) ile Sınıf Kullanımı**
+Erişim belirleyiciler (`public`, `private`, `protected`, `default`) sınıfın bileşenlerine **erişimi kontrol eder**.
+
+### **Özel Değişkenler ve Getter-Setter Kullanımı**
+Genellikle **kapsülleme (encapsulation)** için **değişkenler `private` yapılır** ve dışarıdan erişim `getter` ve `setter` metotları ile sağlanır.
+
+```java
+class Araba {
+    private String marka;
+    private String model;
+    private int yil;
+
+    // Constructor
+    Araba(String marka, String model, int yil) {
+        this.marka = marka;
+        this.model = model;
+        this.yil = yil;
+    }
+
+    // Getter metodu (Bilgi almak için)
+    public String getMarka() {
+        return marka;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getYil() {
+        return yil;
+    }
+
+    // Setter metodu (Değer değiştirmek için)
+    public void setYil(int yil) {
+        if (yil > 1885) { // İlk otomobil 1886'da üretildi, mantıklı bir kontrol ekleyelim.
+            this.yil = yil;
+        } else {
+            System.out.println("Geçersiz yıl!");
+        }
+    }
+
+    void bilgileriGoster() {
+        System.out.println("Marka: " + marka);
+        System.out.println("Model: " + model);
+        System.out.println("Yıl: " + yil);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Araba araba1 = new Araba("Mercedes", "E-Class", 2022);
+        
+        // Getter kullanarak değerleri al
+        System.out.println("Marka: " + araba1.getMarka());
+        System.out.println("Model: " + araba1.getModel());
+        System.out.println("Yıl: " + araba1.getYil());
+
+        // Setter ile yıl değerini değiştirelim
+        araba1.setYil(2025);
+        System.out.println("Güncellenmiş Yıl: " + araba1.getYil());
+    }
+}
+```
+📌 **Çıktı:**
+```
+Marka: Mercedes
+Model: E-Class
+Yıl: 2022
+Güncellenmiş Yıl: 2025
+```
+Burada **getter ve setter metotları** kullanarak `private` olan değişkenlere güvenli bir şekilde erişim sağladık.
+
+---
+
+## **6. Kalıtım (Inheritance) ile Sınıf Kullanımı**
+Java’da **bir sınıf başka bir sınıfın özelliklerini ve metotlarını miras alabilir.**  
+Bu işleme **kalıtım (inheritance)** denir ve `extends` anahtar kelimesi kullanılır.
+
+### **Örnek: Kalıtım Kullanımı**
+```java
+// Üst Sınıf (Parent Class)
+class Arac {
+    String yakitTuru = "Benzin";
+    
+    void hareketEt() {
+        System.out.println("Araç hareket ediyor...");
+    }
+}
+
+// Alt Sınıf (Child Class) - Arac sınıfından miras alır
+class Araba extends Arac {
+    int kapiSayisi = 4;
+
+    void bilgileriGoster() {
+        System.out.println("Yakıt Türü: " + yakitTuru);
+        System.out.println("Kapı Sayısı: " + kapiSayisi);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Araba araba = new Araba();
+        araba.hareketEt();  // Üst sınıf metodunu çağırdı
+        araba.bilgileriGoster();
+    }
+}
+```
+📌 **Çıktı:**
+```
+Araç hareket ediyor...
+Yakıt Türü: Benzin
+Kapı Sayısı: 4
+```
+✅ **Özet:** Kalıtım sayesinde **`Arac` sınıfının özelliklerini `Araba` sınıfına miras aldık** ve kod tekrarını önledik.
+
+---
+
+## **Sonuç**
+- **Sınıflar**, Java'da nesne yönelimli programlamanın temel taşlarıdır.
+- **Nesneler**, sınıflardan türetilir.
+- **Encapsulation (kapsülleme)** ile veri güvenliği sağlanır.
+- **Inheritance (kalıtım)** ile kod tekrarını azaltabiliriz.
+- **Constructor** kullanarak nesneleri başlatabiliriz.
+
+Java'da sınıflar, büyük ölçekli projelerde **düzeni ve okunabilirliği artırarak** programlamayı daha etkili hale getirir. 🚀
+
+
+
+
 ## Cipher (AES/DES/RSA/HASHING)
 ```sh 
 
 ```
 ---
+
 
 
 ## Diğer
