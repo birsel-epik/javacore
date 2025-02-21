@@ -1,0 +1,8 @@
+Şub 21, 2025 9:16:24 ÖS com.birselepik.Examples._Week3_Examples_1 measureIterativeFactorial
+INFO: İteratif faktöriyel hesaplandı: 41! = -2894979756195840000
+Şub 21, 2025 9:16:31 ÖS com.birselepik.Examples._Week3_Examples_1 runFactorialProgram
+WARNING: Recursive fonksiyon sınırı aşıldı: 68
+Şub 21, 2025 9:34:43 ÖS com.birselepik.Examples._Week3_Examples_1 runFactorialProgram
+INFO: Program sonlandırıldı.
+Şub 21, 2025 9:35:00 ÖS com.birselepik.Examples._Week3_Examples_1 measureIterativeFactorial
+INFO: İteratif faktöriyel hesaplandı: 4! = 24

@@ -29,33 +29,33 @@ Kod tekrarını önlemek için **metotlar, sınıflar ve modüller** kullanılma
 🚫 **Yanlış Kullanım (Kod Tekrarı İçeriyor - DRY Prensibine Aykırı)**
 ```java
 class Ogrenci {
-    String ad;
-    int yas;
+   String ad;
+   int yas;
 
-    public Ogrenci(String ad, int yas) {
-        this.ad = ad;
-        this.yas = yas;
-    }
+   public Ogrenci(String ad, int yas) {
+      this.ad = ad;
+      this.yas = yas;
+   }
 
-    public void bilgiGoster() {
-        System.out.println("Öğrenci Adı: " + ad);
-        System.out.println("Öğrenci Yaşı: " + yas);
-    }
+   public void bilgiGoster() {
+      System.out.println("Öğrenci Adı: " + ad);
+      System.out.println("Öğrenci Yaşı: " + yas);
+   }
 }
 
 class Ogretmen {
-    String ad;
-    int yas;
+   String ad;
+   int yas;
 
-    public Ogretmen(String ad, int yas) {
-        this.ad = ad;
-        this.yas = yas;
-    }
+   public Ogretmen(String ad, int yas) {
+      this.ad = ad;
+      this.yas = yas;
+   }
 
-    public void bilgiGoster() {
-        System.out.println("Öğretmen Adı: " + ad);
-        System.out.println("Öğretmen Yaşı: " + yas);
-    }
+   public void bilgiGoster() {
+      System.out.println("Öğretmen Adı: " + ad);
+      System.out.println("Öğretmen Yaşı: " + yas);
+   }
 }
 ```
 Bu kod, **kod tekrarına** neden olur çünkü hem `Ogrenci` hem de `Ogretmen` sınıfları aynı işlemi yapıyor.
@@ -63,30 +63,30 @@ Bu kod, **kod tekrarına** neden olur çünkü hem `Ogrenci` hem de `Ogretmen` s
 ✅ **Doğru Kullanım (DRY Prensibine Uygun)**
 ```java
 class Kisi {
-    protected String ad;
-    protected int yas;
+   protected String ad;
+   protected int yas;
 
-    public Kisi(String ad, int yas) {
-        this.ad = ad;
-        this.yas = yas;
-    }
+   public Kisi(String ad, int yas) {
+      this.ad = ad;
+      this.yas = yas;
+   }
 
-    public void bilgiGoster() {
-        System.out.println("Ad: " + ad);
-        System.out.println("Yaş: " + yas);
-    }
+   public void bilgiGoster() {
+      System.out.println("Ad: " + ad);
+      System.out.println("Yaş: " + yas);
+   }
 }
 
 class Ogrenci extends Kisi {
-    public Ogrenci(String ad, int yas) {
-        super(ad, yas);
-    }
+   public Ogrenci(String ad, int yas) {
+      super(ad, yas);
+   }
 }
 
 class Ogretmen extends Kisi {
-    public Ogretmen(String ad, int yas) {
-        super(ad, yas);
-    }
+   public Ogretmen(String ad, int yas) {
+      super(ad, yas);
+   }
 }
 ```
 Bu sayede `Ogrenci` ve `Ogretmen` sınıfları **kod tekrarını önleyerek** `Kisi` sınıfından miras alır.
@@ -100,15 +100,15 @@ Kod ne kadar **karmaşıksa**, hata yapma ihtimali o kadar yüksek olur.
 🚫 **Yanlış Kullanım (Gereksiz Karmaşıklık)**
 ```java
 public class Hesaplama {
-    public static double alanHesapla(String sekil, double... parametreler) {
-        if ("kare".equals(sekil)) {
-            return parametreler[0] * parametreler[0];
-        } else if ("dikdortgen".equals(sekil)) {
-            return parametreler[0] * parametreler[1];
-        } else {
-            return 0;
-        }
-    }
+   public static double alanHesapla(String sekil, double... parametreler) {
+      if ("kare".equals(sekil)) {
+         return parametreler[0] * parametreler[0];
+      } else if ("dikdortgen".equals(sekil)) {
+         return parametreler[0] * parametreler[1];
+      } else {
+         return 0;
+      }
+   }
 }
 ```
 Bu kod **gereksiz koşul ifadeleri** kullanıyor. Daha basit hale getirilebilir.
@@ -116,34 +116,34 @@ Bu kod **gereksiz koşul ifadeleri** kullanıyor. Daha basit hale getirilebilir.
 ✅ **Doğru Kullanım (KISS Prensibine Uygun)**
 ```java
 interface Sekil {
-    double alanHesapla();
+   double alanHesapla();
 }
 
 class Kare implements Sekil {
-    private double kenar;
+   private double kenar;
 
-    public Kare(double kenar) {
-        this.kenar = kenar;
-    }
+   public Kare(double kenar) {
+      this.kenar = kenar;
+   }
 
-    @Override
-    public double alanHesapla() {
-        return kenar * kenar;
-    }
+   @Override
+   public double alanHesapla() {
+      return kenar * kenar;
+   }
 }
 
 class Dikdortgen implements Sekil {
-    private double uzunluk, genislik;
+   private double uzunluk, genislik;
 
-    public Dikdortgen(double uzunluk, double genislik) {
-        this.uzunluk = uzunluk;
-        this.genislik = genislik;
-    }
+   public Dikdortgen(double uzunluk, double genislik) {
+      this.uzunluk = uzunluk;
+      this.genislik = genislik;
+   }
 
-    @Override
-    public double alanHesapla() {
-        return uzunluk * genislik;
-    }
+   @Override
+   public double alanHesapla() {
+      return uzunluk * genislik;
+   }
 }
 ```
 Kod, daha sade ve genişletilebilir hale getirilmiştir.
@@ -156,17 +156,17 @@ YAGNI prensibi, **ihtiyaç duyulmadan önce bir özelliğin geliştirilmemesi** 
 🚫 **Yanlış Kullanım (Gereksiz Özellik Eklemek)**
 ```java
 class Kullanici {
-    String isim;
-    String email;
-    String telefon;
-    String sosyalMedyaHesabi;  // Kullanılmıyor ama eklenmiş!
+   String isim;
+   String email;
+   String telefon;
+   String sosyalMedyaHesabi;  // Kullanılmıyor ama eklenmiş!
 
-    public Kullanici(String isim, String email, String telefon, String sosyalMedyaHesabi) {
-        this.isim = isim;
-        this.email = email;
-        this.telefon = telefon;
-        this.sosyalMedyaHesabi = sosyalMedyaHesabi;
-    }
+   public Kullanici(String isim, String email, String telefon, String sosyalMedyaHesabi) {
+      this.isim = isim;
+      this.email = email;
+      this.telefon = telefon;
+      this.sosyalMedyaHesabi = sosyalMedyaHesabi;
+   }
 }
 ```
 Burada `sosyalMedyaHesabi` özelliği **gereksizdir**, çünkü kullanılmayabilir.
@@ -174,15 +174,15 @@ Burada `sosyalMedyaHesabi` özelliği **gereksizdir**, çünkü kullanılmayabil
 ✅ **Doğru Kullanım (YAGNI Prensibine Uygun)**
 ```java
 class Kullanici {
-    String isim;
-    String email;
-    String telefon;
+   String isim;
+   String email;
+   String telefon;
 
-    public Kullanici(String isim, String email, String telefon) {
-        this.isim = isim;
-        this.email = email;
-        this.telefon = telefon;
-    }
+   public Kullanici(String isim, String email, String telefon) {
+      this.isim = isim;
+      this.email = email;
+      this.telefon = telefon;
+   }
 }
 ```
 **Sadece gerekli özellikler eklenmiştir**.
@@ -196,32 +196,32 @@ Bir nesne, **başka bir nesnenin iç yapısına erişmemelidir**.
 🚫 **Yanlış Kullanım (Demeter Yasasına Aykırı)**
 ```java
 class Universite {
-    private Bolum bolum;
+   private Bolum bolum;
 
-    public Bolum getBolum() {
-        return bolum;
-    }
+   public Bolum getBolum() {
+      return bolum;
+   }
 }
 
 class Bolum {
-    private Ogrenci ogrenci;
+   private Ogrenci ogrenci;
 
-    public Ogrenci getOgrenci() {
-        return ogrenci;
-    }
+   public Ogrenci getOgrenci() {
+      return ogrenci;
+   }
 }
 
 class Ogrenci {
-    public void bilgiGoster() {
-        System.out.println("Öğrenci Bilgileri");
-    }
+   public void bilgiGoster() {
+      System.out.println("Öğrenci Bilgileri");
+   }
 }
 
 public class Main {
-    public static void main(String[] args) {
-        Universite universite = new Universite();
-        universite.getBolum().getOgrenci().bilgiGoster();  // Kötü Tasarım!
-    }
+   public static void main(String[] args) {
+      Universite universite = new Universite();
+      universite.getBolum().getOgrenci().bilgiGoster();  // Kötü Tasarım!
+   }
 }
 ```
 Burada, `Main` sınıfı **fazla bağımlılık içeriyor**.
@@ -229,32 +229,32 @@ Burada, `Main` sınıfı **fazla bağımlılık içeriyor**.
 ✅ **Doğru Kullanım (LoD Prensibine Uygun)**
 ```java
 class Universite {
-    private Bolum bolum;
+   private Bolum bolum;
 
-    public void ogrenciBilgiGoster() {
-        bolum.ogrenciBilgiGoster();
-    }
+   public void ogrenciBilgiGoster() {
+      bolum.ogrenciBilgiGoster();
+   }
 }
 
 class Bolum {
-    private Ogrenci ogrenci;
+   private Ogrenci ogrenci;
 
-    public void ogrenciBilgiGoster() {
-        ogrenci.bilgiGoster();
-    }
+   public void ogrenciBilgiGoster() {
+      ogrenci.bilgiGoster();
+   }
 }
 
 class Ogrenci {
-    public void bilgiGoster() {
-        System.out.println("Öğrenci Bilgileri");
-    }
+   public void bilgiGoster() {
+      System.out.println("Öğrenci Bilgileri");
+   }
 }
 
 public class Main {
-    public static void main(String[] args) {
-        Universite universite = new Universite();
-        universite.ogrenciBilgiGoster(); // Daha iyi tasarım!
-    }
+   public static void main(String[] args) {
+      Universite universite = new Universite();
+      universite.ogrenciBilgiGoster(); // Daha iyi tasarım!
+   }
 }
 ```
 Burada, `Main` sınıfı yalnızca `Universite` sınıfıyla etkileşime giriyor.
@@ -432,9 +432,9 @@ class BankaHesabi {
 **Özet:**
 - **Yazılımın sorumluluklarını belirlerken bazı genel ilkeleri tanımlar.**
 - **Temel ilkeleri şunlardır:**
-    - **Information Expert:** Veriye sahip olan sınıf, veriyi işleyen metodu da içermelidir.
-    - **Creator:** Bir nesne başka bir nesneyi kullanacaksa, onu oluşturan sınıf olmalıdır.
-    - **Controller:** Kullanıcıdan gelen istekleri yönetmelidir.
+   - **Information Expert:** Veriye sahip olan sınıf, veriyi işleyen metodu da içermelidir.
+   - **Creator:** Bir nesne başka bir nesneyi kullanacaksa, onu oluşturan sınıf olmalıdır.
+   - **Controller:** Kullanıcıdan gelen istekleri yönetmelidir.
 
 ✅ **Örnek (GRASP - Information Expert)**
 ```java
@@ -517,24 +517,24 @@ SOLID, nesne yönelimli programlamada (OOP) daha esnek, ölçeklenebilir ve bak�
 
 ### **SOLID Prensipleri:**
 1. **S - Single Responsibility Principle (Tek Sorumluluk Prensibi)**
-    - Bir sınıfın yalnızca **tek bir sorumluluğu** olmalıdır.
-    - Bir sınıfın değişme sebebi **tek bir neden** olmalıdır.
+   - Bir sınıfın yalnızca **tek bir sorumluluğu** olmalıdır.
+   - Bir sınıfın değişme sebebi **tek bir neden** olmalıdır.
 
 2. **O - Open/Closed Principle (Açık/Kapalı Prensibi)**
-    - Bir sınıf, **genişletilmeye açık**, ancak değiştirilmeye kapalı olmalıdır.
-    - Yeni özellikler eklemek için mevcut kodu değiştirmek yerine, genişletebilir şekilde yazılmalıdır.
+   - Bir sınıf, **genişletilmeye açık**, ancak değiştirilmeye kapalı olmalıdır.
+   - Yeni özellikler eklemek için mevcut kodu değiştirmek yerine, genişletebilir şekilde yazılmalıdır.
 
 3. **L - Liskov Substitution Principle (Liskov'un Yerine Koyma Prensibi)**
-    - Bir alt sınıf, **türetilmiş olduğu üst sınıfın yerine** kullanılabilmelidir.
-    - Alt sınıflar, üst sınıfların yerine **hata vermeden** çalışabilmelidir.
+   - Bir alt sınıf, **türetilmiş olduğu üst sınıfın yerine** kullanılabilmelidir.
+   - Alt sınıflar, üst sınıfların yerine **hata vermeden** çalışabilmelidir.
 
 4. **I - Interface Segregation Principle (Arayüz Ayrımı Prensibi)**
-    - Bir sınıf, **ihtiyaç duymadığı** metotları içeren büyük arayüzleri **uygulamak zorunda kalmamalıdır**.
-    - Küçük ve özelleşmiş arayüzler tanımlanmalıdır.
+   - Bir sınıf, **ihtiyaç duymadığı** metotları içeren büyük arayüzleri **uygulamak zorunda kalmamalıdır**.
+   - Küçük ve özelleşmiş arayüzler tanımlanmalıdır.
 
 5. **D - Dependency Inversion Principle (Bağımlılıkların Ters Çevrilmesi Prensibi)**
-    - Üst seviyedeki modüller, alt seviyedeki modüllere **doğrudan bağımlı olmamalıdır**.
-    - Bağımlılıklar, soyutlamalar aracılığıyla tanımlanmalıdır.
+   - Üst seviyedeki modüller, alt seviyedeki modüllere **doğrudan bağımlı olmamalıdır**.
+   - Bağımlılıklar, soyutlamalar aracılığıyla tanımlanmalıdır.
 
 ---
 
@@ -763,16 +763,16 @@ Bu kod örnekleri, **SOLID prensiplerine uygun olarak Öğrenci Bilgi Sistemi'ni
 Tasarım desenleri, kullanım amaçlarına göre **üç ana kategoriye** ayrılır:
 
 1. **Yaratımsal (Creational) Desenler:**
-    - Nesne oluşturma sürecini yönetir.
-    - **Örnekler:** Singleton, Factory Method, Abstract Factory, Builder, Prototype.
+   - Nesne oluşturma sürecini yönetir.
+   - **Örnekler:** Singleton, Factory Method, Abstract Factory, Builder, Prototype.
 
 2. **Yapısal (Structural) Desenler:**
-    - Sınıfların ve nesnelerin arasındaki ilişkileri düzenler.
-    - **Örnekler:** Adapter, Bridge, Composite, Decorator, Facade, Proxy, Flyweight.
+   - Sınıfların ve nesnelerin arasındaki ilişkileri düzenler.
+   - **Örnekler:** Adapter, Bridge, Composite, Decorator, Facade, Proxy, Flyweight.
 
 3. **Davranışsal (Behavioral) Desenler:**
-    - Nesneler arası iletişimi ve etkileşimi yönetir.
-    - **Örnekler:** Observer, Strategy, Command, State, Chain of Responsibility, Mediator, Memento.
+   - Nesneler arası iletişimi ve etkileşimi yönetir.
+   - **Örnekler:** Observer, Strategy, Command, State, Chain of Responsibility, Mediator, Memento.
 
 ---
 

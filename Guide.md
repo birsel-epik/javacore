@@ -972,13 +972,13 @@ public class MemoryTest {
     public static void main(String[] args) {
         int a = 5;
         Integer b = new Integer(5);
-        
+
         modify(a, b);
-        
+
         System.out.println("a: " + a);  // 5
         System.out.println("b: " + b);  // 5
     }
-    
+
     public static void modify(int x, Integer y) {
         x = 10;       // Stack içindeki x değişir
         y = new Integer(10); // Yeni bir nesne oluşturulur (Heap)
@@ -992,7 +992,7 @@ public class MemoryTest {
 3. `modify(a, b);` metoduna çağrılırken:
     - `x` → yeni bir stack değişkeni olarak **5 değerini kopyalar** (pass by value).
     - `y` → referans olarak **yeni bir Integer nesnesi alır**.
-4. `x = 10;` → **Stack içinde yeni bir değişken yaratılır ve değer değiştirilir.**
+4. `x = 10;` → **Stack içinde yeni bir değişken oluşturulur ve değer değiştirilir.**
 5. `y = new Integer(10);` → **Heap’te yeni bir Integer nesnesi oluşturulur, ancak bu `modify` metodu içinde kalır ve main metodundaki `b` değişkenini etkilemez.**
 6. `main` metodu bittiğinde, `a` hâlâ `5`, `b` hâlâ `5` olarak kalır.
 
@@ -1065,7 +1065,7 @@ Bu iki yaklaşımın arasındaki temel farklar şunlardır:
 Short wrapperTypeShort1 = new Short((short) 32767);
 ```
 - `new` anahtar kelimesi kullanıldığı için **her çağrıldığında yeni bir nesne oluşturulur**.
-- **Heap bellekte ayrı bir nesne** yaratılır.
+- **Heap bellekte ayrı bir nesne** oluşturılır.
 - **Garbage Collector (GC)** tarafından temizlenmesi gerekir.
 - **Bellek tüketimi ve performans açısından dezavantajlıdır.**
 - **`==` operatörü ile karşılaştırıldığında farklı nesneler olduğu için false dönebilir.**
@@ -1092,13 +1092,13 @@ public class ShortComparison {
     public static void main(String[] args) {
         Short wrapperTypeShort1 = new Short((short) 127);
         Short wrapperTypeShort2 = 127; // Autoboxing
-        
+
         Short wrapperTypeShort3 = new Short((short) 127);
         Short wrapperTypeShort4 = 127; // Autoboxing
-        
+
         System.out.println(wrapperTypeShort1 == wrapperTypeShort3); // false (Heap'te farklı nesneler)
         System.out.println(wrapperTypeShort2 == wrapperTypeShort4); // true (Cache mekanizması sayesinde aynı nesne)
-        
+
         Short wrapperTypeShort5 = 32767;
         Short wrapperTypeShort6 = 32767;
 
@@ -1467,7 +1467,7 @@ public class WideningExample {
     public static void main(String[] args) {
         int sayi = 100;
         double genisSayi = sayi; // Otomatik dönüşüm (int → double)
-        
+
         System.out.println("int değer: " + sayi);
         System.out.println("double değere dönüştü: " + genisSayi);
     }
@@ -1632,10 +1632,10 @@ Kedi kedi = (Kedi) hayvan; // HATA! hayvan nesnesi aslında bir Kedi değil.
 
 ```java
 if (hayvan instanceof Kedi) {
-    Kedi kedi = (Kedi) hayvan;
+Kedi kedi = (Kedi) hayvan;
     kedi.miyavla();
 } else {
-    System.out.println("Nesne Kedi türüne ait değil.");
+        System.out.println("Nesne Kedi türüne ait değil.");
 }
 ```
 
@@ -1673,7 +1673,7 @@ public class StringToIntExample {
     public static void main(String[] args) {
         String sayiStr = "123"; // String veri
         int sayi = Integer.parseInt(sayiStr); // String → int dönüşümü
-        
+
         System.out.println("String: " + sayiStr);
         System.out.println("int: " + sayi);
     }
@@ -1703,7 +1703,7 @@ public class ValueOfExample {
     public static void main(String[] args) {
         String sayiStr = "456";
         int sayi = Integer.valueOf(sayiStr); // String → Integer
-        
+
         System.out.println("int değeri: " + sayi);
     }
 }
@@ -1723,7 +1723,7 @@ public class IntToStringExample {
     public static void main(String[] args) {
         int sayi = 789;
         String sayiStr = String.valueOf(sayi); // int → String
-        
+
         System.out.println("int: " + sayi);
         System.out.println("String: " + sayiStr);
     }
@@ -1739,7 +1739,7 @@ public class IntToStringExample2 {
     public static void main(String[] args) {
         int sayi = 1234;
         String sayiStr = Integer.toString(sayi); // int → String
-        
+
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1757,7 +1757,7 @@ public class PlusStringExample {
     public static void main(String[] args) {
         int sayi = 500;
         String sayiStr = sayi + ""; // int → String
-        
+
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1817,8 +1817,8 @@ Math sınıfı **mutlak değer, maksimum, minimum gibi işlemleri** kolayca yapa
 
 ```java
 System.out.println(Math.abs(-15)); // 15
-System.out.println(Math.max(100, 200)); // 200
-System.out.println(Math.min(50, 30)); // 30
+        System.out.println(Math.max(100, 200)); // 200
+        System.out.println(Math.min(50, 30)); // 30
 ```
 
 ---
@@ -1834,10 +1834,10 @@ System.out.println(Math.min(50, 30)); // 30
 
 ```java
 System.out.println(Math.sqrt(16)); // 4.0
-System.out.println(Math.pow(2, 5)); // 32.0
-System.out.println(Math.exp(1)); // 2.718
-System.out.println(Math.log(Math.E)); // 1.0
-System.out.println(Math.log10(1000)); // 3.0
+        System.out.println(Math.pow(2, 5)); // 32.0
+        System.out.println(Math.exp(1)); // 2.718
+        System.out.println(Math.log(Math.E)); // 1.0
+        System.out.println(Math.log10(1000)); // 3.0
 ```
 
 ---
@@ -1853,8 +1853,8 @@ Java Math sınıfı **yuvarlama işlemleri için** farklı fonksiyonlar sunar.
 
 ```java
 System.out.println(Math.round(4.5)); // 5
-System.out.println(Math.ceil(3.2)); // 4.0
-System.out.println(Math.floor(6.8)); // 6.0
+        System.out.println(Math.ceil(3.2)); // 4.0
+        System.out.println(Math.floor(6.8)); // 6.0
 ```
 ---
 
@@ -1872,8 +1872,8 @@ Trigonometri fonksiyonları **radyan cinsinden** hesaplama yapar.
 
 ```java
 System.out.println(Math.sin(Math.PI/2)); // 1.0
-System.out.println(Math.cos(0)); // 1.0
-System.out.println(Math.tan(Math.PI/4)); // 1.0
+        System.out.println(Math.cos(0)); // 1.0
+        System.out.println(Math.tan(Math.PI/4)); // 1.0
 ```
 
 ---
@@ -1884,8 +1884,8 @@ System.out.println(Math.tan(Math.PI/4)); // 1.0
 **Örnek Kullanımlar:**
 ```java
 System.out.println(Math.random()); // 0.0 ile 1.0 arasında rastgele sayı
-System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
-System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
+        System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
+        System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
 ```
 
 ---
@@ -1996,14 +1996,14 @@ Bu bir alt satıra geçti.
 ```java
 public class EscapeExample {
     public static void main(String[] args) {
-        System.out.println("İsim:\tAhmet");
+        System.out.println("İsim:\tHamit");
         System.out.println("Soyisim:\tYılmaz");
     }
 }
 ```
 **Çıktı:**
 ```
-İsim:     Ahmet
+İsim:     Hamit
 Soyisim:  Yılmaz
 ```
 
@@ -2260,7 +2260,7 @@ import java.util.Scanner;
 
 public class ScannerDelimiterExample {
     public static void main(String[] args) {
-        String veri = "Ahmet,Mehmet,Ayşe,Fatma";
+        String veri = "Hamit,Mehmet,Ayşe,Fatma";
         Scanner scanner = new Scanner(veri);
         scanner.useDelimiter(",");
 
@@ -2274,7 +2274,7 @@ public class ScannerDelimiterExample {
 ```
 ### **Çıktı:**
 ```
-Ahmet
+Hamit
 Mehmet
 Ayşe
 Fatma
@@ -2304,16 +2304,16 @@ import java.util.Scanner;
 public class ScannerLoopExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         while (true) {
             System.out.print("Bir sayı girin (Çıkış için -1): ");
             int sayi = scanner.nextInt();
-            
+
             if (sayi == -1) {
                 System.out.println("Çıkış yapıldı.");
                 break;
             }
-            
+
             System.out.println("Girdiğiniz sayı: " + sayi);
         }
 
@@ -2388,7 +2388,7 @@ Java'da kullanılan başlıca koşullu ifadeler şunlardır:
 public class IfExample {
     public static void main(String[] args) {
         int sayi = 10;
-        
+
         if (sayi > 5) { // Koşul doğru mu? Evet!
             System.out.println("Sayı 5'ten büyüktür.");
         }
@@ -2412,7 +2412,7 @@ Sayı 5'ten büyüktür.
 public class IfElseExample {
     public static void main(String[] args) {
         int sayi = 3;
-        
+
         if (sayi > 5) {
             System.out.println("Sayı 5'ten büyüktür.");
         } else {
@@ -2614,8 +2614,8 @@ Bu döngülerle birlikte **`break` ve `continue`** gibi kontrol ifadeleri kullan
 **Yapısı:**
 ```java
 for (başlangıç_değeri; koşul; artırma/azaltma) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 1: 1'den 5'e kadar yazdırma**
@@ -2672,8 +2672,8 @@ public class EvenNumbers {
 **Yapısı:**
 ```java
 while (koşul) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 3: `while` ile Sayı Yazdırma**
@@ -2681,7 +2681,7 @@ while (koşul) {
 public class WhileLoopExample {
     public static void main(String[] args) {
         int i = 1;
-        
+
         while (i <= 5) {
             System.out.println("i: " + i);
             i++; // i artırılıyor, yoksa sonsuz döngü olur.
@@ -2744,8 +2744,8 @@ Döngü sonlandı.
 **Yapısı:**
 ```java
 do {
-    // Döngü bloğu
-} while (koşul);
+        // Döngü bloğu
+        } while (koşul);
 ```
 
 ### **Örnek 5: `do-while` ile Kullanıcıdan Şifre Alma**
@@ -2784,8 +2784,8 @@ Giriş başarılı!
 **Yapısı:**
 ```java
 for (VeriTipi eleman : Dizi/Koleksiyon) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 6: `for-each` ile Dizi Elemanlarını Yazdırma**
@@ -2899,7 +2899,7 @@ Java'da `for` ve `while` döngüleri, tekrar eden işlemleri gerçekleştirmek i
 
 ```java
 for (int i = 0; i < 5; i++) {
-    System.out.println("i değeri: " + i);
+        System.out.println("i değeri: " + i);
 }
 ```
 ✅ **Avantajı**: Döngü değişkeni (`i`) döngü içinde tanımlandığı için **lokal kalır** ve kod daha okunaklıdır.
@@ -2913,9 +2913,9 @@ for (int i = 0; i < 5; i++) {
 ```java
 int i = 0;
 while (i < 5) {
-    System.out.println("i değeri: " + i);
-    i++;
-}
+        System.out.println("i değeri: " + i);
+i++;
+        }
 ```
 ✅ **Avantajı**: **Esnektir**, koşul başka bir yerden değiştirilebilir.
 
@@ -2942,9 +2942,9 @@ while (i < 5) {
 ```java
 int i = 0;
 do {
-    System.out.println("i değeri: " + i);
-    i++;
-} while (i < 5);
+        System.out.println("i değeri: " + i);
+i++;
+        } while (i < 5);
 ```
 ✅ **Avantajı**: Kullanıcıdan giriş alırken veya en az bir kez çalışması gereken işlemlerde idealdir.
 
@@ -3044,7 +3044,7 @@ Bu iki yaklaşım arasındaki farkları inceleyelim.
 String kelime1 = new String("Merhaba");
 ```
 - **Heap bellekte yeni bir `String` nesnesi oluşturur.**
-- **String pool'u kullanmaz**, her seferinde **yeni bir nesne yaratılır**.
+- **String pool'u kullanmaz**, her seferinde **yeni bir nesne oluşturılır**.
 - Daha fazla bellek tüketebilir ve gereksiz nesne oluşturulmasına sebep olabilir.
 
 ---
@@ -3523,7 +3523,7 @@ System.out.println(text.length()); // 17
 ```java
 String text = "Java";
 System.out.println(text.charAt(0)); // J
-System.out.println(text.charAt(2)); // v
+        System.out.println(text.charAt(2)); // v
 ```
 
 ---
@@ -3532,7 +3532,7 @@ System.out.println(text.charAt(2)); // v
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.substring(8)); // "Dünya"
-System.out.println(text.substring(0, 7)); // "Merhaba"
+        System.out.println(text.substring(0, 7)); // "Merhaba"
 ```
 
 ---
@@ -3541,7 +3541,7 @@ System.out.println(text.substring(0, 7)); // "Merhaba"
 ```java
 String text = "Java";
 System.out.println(text.toUpperCase()); // "JAVA"
-System.out.println(text.toLowerCase()); // "java"
+        System.out.println(text.toLowerCase()); // "java"
 ```
 
 ---
@@ -3552,7 +3552,7 @@ String a = "Java";
 String b = "java";
 
 System.out.println(a.equals(b)); // false
-System.out.println(a.equalsIgnoreCase(b)); // true
+        System.out.println(a.equalsIgnoreCase(b)); // true
 ```
 📌 **Neden `==` kullanılmamalı?**
 - `==`, **referansları** karşılaştırır.
@@ -3565,14 +3565,14 @@ System.out.println(a.equalsIgnoreCase(b)); // true
 ```java
 String text = "Java öğrenmek çok eğlenceli!";
 System.out.println(text.contains("Java")); // true
-System.out.println(text.contains("Python")); // false
+        System.out.println(text.contains("Python")); // false
 ```
 
 #### **`startsWith()` & `endsWith()` → Başlangıç ve Bitiş Kontrolü**
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.startsWith("Merhaba")); // true
-System.out.println(text.endsWith("Dünya")); // true
+        System.out.println(text.endsWith("Dünya")); // true
 ```
 
 ---
@@ -3583,7 +3583,7 @@ String metin = "Java,Python,C++";
 String[] diller = metin.split(",");
 
 for (String dil : diller) {
-    System.out.println(dil);
+        System.out.println(dil);
 }
 ```
 **Çıktı:**
@@ -3723,11 +3723,11 @@ Java'da `switch-case` ve `if-else if` yapıları, akış kontrolü sağlamak iç
 int sayi = 5;
 
 if (sayi > 0 && sayi <= 10) {
-    System.out.println("Sayı 1 ile 10 arasında");
+        System.out.println("Sayı 1 ile 10 arasında");
 } else if (sayi > 10 && sayi <= 20) {
-    System.out.println("Sayı 11 ile 20 arasında");
+        System.out.println("Sayı 11 ile 20 arasında");
 } else {
-    System.out.println("Sayı 20’den büyük");
+        System.out.println("Sayı 20’den büyük");
 }
 ```
 ✅ **Avantaj**: Aralık bazlı kontroller için uygundur.
@@ -3738,16 +3738,16 @@ if (sayi > 0 && sayi <= 10) {
 ```java
 int gun = 3;
 switch (gun) {
-    case 1:
+        case 1:
         System.out.println("Pazartesi");
         break;
-    case 2:
-        System.out.println("Salı");
+                case 2:
+                System.out.println("Salı");
         break;
-    case 3:
-        System.out.println("Çarşamba");
+                case 3:
+                System.out.println("Çarşamba");
         break;
-    default:
+default:
         System.out.println("Geçersiz gün");
 }
 ```
@@ -3778,14 +3778,14 @@ Java'da `switch-case` ve `if-else if` yapılarının algoritmik analizi için **
 ### **İf-Else If-Else**
 ```java
 if (x == 1) {
-    // İşlem 1
-} else if (x == 2) {
-    // İşlem 2
-} else if (x == 3) {
-    // İşlem 3
-} else {
-    // Varsayılan işlem
-}
+        // İşlem 1
+        } else if (x == 2) {
+        // İşlem 2
+        } else if (x == 3) {
+        // İşlem 3
+        } else {
+        // Varsayılan işlem
+        }
 ```
 - **En iyi durum (Best Case) - O(1)**: Eğer ilk `if` koşulu doğruysa, yalnızca bir kontrol yapılır.
 - **En kötü durum (Worst Case) - O(n)**: Tüm `if` blokları kontrol edildikten sonra `else` bloğuna ulaşılırsa **n adet karşılaştırma** yapılır.
@@ -3798,18 +3798,18 @@ if (x == 1) {
 ### **Switch-Case**
 ```java
 switch (x) {
-    case 1:
+        case 1:
         // İşlem 1
         break;
-    case 2:
+        case 2:
         // İşlem 2
         break;
-    case 3:
+        case 3:
         // İşlem 3
         break;
-    default:
+default:
         // Varsayılan işlem
-}
+        }
 ```
 Switch-case’in algoritmik analizi derleyici tarafından nasıl optimize edildiğine bağlıdır:
 
@@ -3943,14 +3943,14 @@ public class MetotOrnek {
     }
 
     public static void main(String[] args) {
-        selamVer("Ahmet"); // Parametre olarak "Ahmet" gönderildi
+        selamVer("Hamit"); // Parametre olarak "Hamit" gönderildi
         selamVer("Ayşe");  // Parametre olarak "Ayşe" gönderildi
     }
 }
 ```
 **Çıktı:**
 ```
-Merhaba, Ahmet!
+Merhaba, Hamit!
 Merhaba, Ayşe!
 ```
 📌 **Metot farklı girişlerle farklı sonuçlar üretebilir.**
@@ -4168,7 +4168,7 @@ public class PrimitiveStackExample {
         int a = 10;
         int b = a; // b, a'nın değerini alır (Kopyalanır, adres paylaşımı olmaz)
         b = 20;
-        
+
         System.out.println("a: " + a); // 10
         System.out.println("b: " + b); // 20
     }
@@ -4267,7 +4267,7 @@ araba1.model = "Audi";
 Araba araba2 = araba1; // Aynı heap adresini gösterir
 araba2.model = "Tesla";
 
-System.out.println(araba1.model); // Tesla
+        System.out.println(araba1.model); // Tesla
 ```
 
 ### **📌 Deep Copy (Derin Kopyalama - Yeni Bir Nesne Oluşturur)**
@@ -4280,7 +4280,7 @@ araba2.model = araba1.model; // Yeni nesneye ayrı değer atanıyor.
 
 araba2.model = "Tesla";
 
-System.out.println(araba1.model); // Audi (Değişmez!)
+        System.out.println(araba1.model); // Audi (Değişmez!)
 System.out.println(araba2.model); // Tesla
 ```
 ✅ **Deep Copy kullanarak heap bellekte farklı nesneler oluşturmuş olduk.**
@@ -4349,7 +4349,7 @@ public class DateFormatExample {
     public static void main(String[] args) {
         Date tarih = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        
+
         String formatliTarih = sdf.format(tarih);
         System.out.println("Formatlı Tarih: " + formatliTarih);
     }
@@ -4407,7 +4407,7 @@ public class LocalDateExample {
     public static void main(String[] args) {
         LocalDate bugun = LocalDate.now(); // Bugünün tarihi
         System.out.println("Bugünün Tarihi: " + bugun);
-        
+
         LocalDate ozelTarih = LocalDate.of(2025, 2, 12); // Özel bir tarih
         System.out.println("Özel Tarih: " + ozelTarih);
     }
@@ -4789,8 +4789,8 @@ System.out.println(metin); // null
 - Ancak, **kullanılmadan önce `null` kontrolü yapılmalıdır**:
 ```java
 if (metin != null) {
-    System.out.println(metin.length()); // NullPointerException'ı önler
-}
+        System.out.println(metin.length()); // NullPointerException'ı önler
+        }
 ```
 
 ---
@@ -4835,8 +4835,8 @@ System.out.println(kelime.length()); // 🚨 NullPointerException Hatası!
 **Çözüm:** `null` kontrolü yapın:
 ```java
 if (kelime != null) {
-    System.out.println(kelime.length());
-}
+        System.out.println(kelime.length());
+        }
 ```
 
 ---
@@ -4899,7 +4899,7 @@ import java.util.Formatter;
 public class Main {
     public static void main(String[] args) {
         Formatter formatter = new Formatter();
-        formatter.format("Merhaba %s, yaşınız %d", "Ahmet", 25);
+        formatter.format("Merhaba %s, yaşınız %d", "Hamit", 25);
         System.out.println(formatter);
         formatter.close();
     }
@@ -4907,7 +4907,7 @@ public class Main {
 ```
 **🎯 Çıktı:**
 ```
-Merhaba Ahmet, yaşınız 25
+Merhaba Hamit, yaşınız 25
 ```
 
 ### **📌 Açıklamalar:**
@@ -5308,7 +5308,7 @@ int[] sayilar = {10, 20, 30, 40, 50};
 
 🚫 **Hatalı Tanımlama**
 ```java
-int[] dizi; 
+int[] dizi;
 dizi = {1, 2, 3, 4}; // HATA! Doğrudan böyle atama yapılamaz.
 ```
 
@@ -5330,10 +5330,10 @@ public class DiziErisim {
 
         // Dizinin 0. elemanını yazdırma
         System.out.println("İlk eleman: " + sayilar[0]); // 10
-        
+
         // Dizinin 2. elemanını değiştirme
         sayilar[2] = 100;
-        
+
         System.out.println("Yeni 2. eleman: " + sayilar[2]); // 100
     }
 }
@@ -5420,9 +5420,9 @@ int[][] matris = new int[3][3]; // 3x3'lük bir matris
 public class IkiBoyutluDizi {
     public static void main(String[] args) {
         int[][] matris = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
 
         System.out.println("Orta Eleman: " + matris[1][1]); // 5
@@ -5438,9 +5438,9 @@ public class IkiBoyutluDizi {
 public class MatrisYazdirma {
     public static void main(String[] args) {
         int[][] matris = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
 
         for (int i = 0; i < matris.length; i++) {
@@ -5572,7 +5572,7 @@ Bir diziye değer atamak için **indeks (index) numarası** kullanılır. Java'd
 
 Örnek:
 ```java
-int[] sayilar = new int[5]; 
+int[] sayilar = new int[5];
 
 sayilar[0] = 10;
 sayilar[1] = 20;
@@ -5602,14 +5602,14 @@ Dizilerde elemanlara erişmek için **for** ve **foreach** döngüleri kullanıl
 ### **4.1. For Döngüsü ile Erişim**
 ```java
 for (int i = 0; i < sayilar.length; i++) {
-    System.out.println("Eleman " + i + ": " + sayilar[i]);
+        System.out.println("Eleman " + i + ": " + sayilar[i]);
 }
 ```
 
 ### **4.2. Foreach Döngüsü ile Erişim**
 ```java
 for (int eleman : sayilar) {
-    System.out.println(eleman);
+        System.out.println(eleman);
 }
 ```
 
@@ -5639,10 +5639,10 @@ matris[2][2] = 9;
 ### **5.3. Matris İçin Döngü Kullanımı**
 ```java
 for (int i = 0; i < matris.length; i++) { //satır
-    for (int j = 0; j < matris[i].length; j++) { //sutun
+        for (int j = 0; j < matris[i].length; j++) { //sutun
         System.out.print(matris[i][j] + " ");
     }
-    System.out.println();
+            System.out.println();
 }
 ```
 
@@ -5803,10 +5803,10 @@ public class StreamSirala {
 
         // Stream ile büyükten küçüğe sıralama
         int[] sirali = Arrays.stream(sayilar)
-                             .boxed()
-                             .sorted(Comparator.reverseOrder())
-                             .mapToInt(Integer::intValue)
-                             .toArray();
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .mapToInt(Integer::intValue)
+                .toArray();
 
         System.out.println("Büyükten Küçüğe Sıralanmış Dizi: " + Arrays.toString(sirali));
     }
@@ -6110,7 +6110,7 @@ public class GarbageCollectorExample {
 public class TimeExample {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        
+
         // 1 milyon döngü çalıştır
         for (int i = 0; i < 1_000_000; i++) { }
 
@@ -6265,9 +6265,9 @@ Burada `break` olmasaydı, `case 3` de çalışmaya devam ederdi.
 public class ExitExample {
     public static void main(String[] args) {
         System.out.println("Program başlıyor...");
-        
+
         System.exit(0); // Program burada tamamen sonlanır
-        
+
         System.out.println("Bu satır çalışmaz.");
     }
 }
@@ -7098,6 +7098,408 @@ Kapı Sayısı: 4
 
 Java'da sınıflar, büyük ölçekli projelerde **düzeni ve okunabilirliği artırarak** programlamayı daha etkili hale getirir. 🚀
 
+## if(name!=null && !name.isEmpty())
+```sh 
+
+```
+---
+
+Kodunuzdaki şu satır:
+
+```java
+if(name!=null && !name.isEmpty())
+```
+
+### **Ne İşe Yarar?**
+Bu kod, `name` değişkeninin **boş (empty) veya null olup olmadığını kontrol eder**.
+
+1. **`name != null`**
+    - Eğer `name` değişkeni `null` ise, `NullPointerException` hatasını önlemek için işlem yapmadan devam eder.
+
+2. **`!name.isEmpty()`**
+    - `name` değişkeni boş bir string (`""`) içeriyorsa, işlemi yapmadan devam eder. `isEmpty()` metodu, stringin **hiçbir karakter içermediğini** kontrol eder.
+
+### **Örnek Senaryolar**
+| `name` Değeri     | `name != null` | `!name.isEmpty()` | Koşul Sonucu (`true/false`) |
+|-------------------|--------------|-----------------|-----------------|
+| `"Hamit"`        | `true`       | `true`          | ✅ `true` (Çalışır) |
+| `""` (boş string) | `true`       | `false`         | ❌ `false` (Çalışmaz) |
+| `null`           | `false`      | (Kontrol edilmez) | ❌ `false` (Çalışmaz) |
+
+### **Neden Kullanılır?**
+- **NullPointerException hatasından kaçınmak için.**
+- **Boş string üzerinde gereksiz işlemler yapmamak için.**
+
+Bu sayede `setName` metodunda `null` veya boş bir string girişi olduğunda hatasız bir şekilde `" "` olarak atanmasını sağlayabiliriz.
+
+## POJO
+```sh 
+
+```
+---
+### **Java'da POJO (Plain Old Java Object) Nedir?**
+
+POJO, **"Plain Old Java Object"** teriminin kısaltmasıdır ve özellikle Java dünyasında, basit, standart Java sınıflarını tanımlamak için kullanılır. POJO'lar, belirli bir çerçeveye (framework) veya Java'nın özel kütüphanelerine bağlı olmayan, genellikle yalnızca değişkenler (fields), getter ve setter metodları, yapıcı metodlar (constructors) ve bazı temel işlemleri içeren sınıflardır.
+
+---
+
+## **POJO'nun Genel Özellikleri**
+POJO sınıfları, bazı temel özellikleri taşımalıdır:
+
+1. **Java SE Bağımsızdır:** POJO sınıfları, Java SE'nin (Java Standard Edition) temel özelliklerine dayanır ve özel bir kütüphaneye veya API'ye bağımlı olmadan çalışabilir.
+2. **Getter ve Setter Metodları İçerir:** Nesne özelliklerine erişmek ve değiştirmek için getter ve setter metodları kullanılabilir.
+3. **Constructor (Yapıcı Metod) Bulundurur:** Parametreli veya parametresiz yapıcı metodlar olabilir.
+4. **Serileştirilebilir (Opsiyonel):** POJO nesneleri, eğer kalıcı olarak saklanacaksa veya ağ üzerinden taşınacaksa `Serializable` arayüzünü uygulayabilir.
+5. **Annotations (Ek Açıklamalar) Kullanmaya Zorunlu Değildir:** POJO'lar, herhangi bir özel açıklama (annotation) kullanmak zorunda değildir.
+6. **Özel Bir Kütüphaneye veya Framework’e Bağlı Değildir:** Örneğin, EJB (Enterprise Java Beans) gibi ağır yapılar içermez.
+7. **İçinde İş Mantığı (Business Logic) Olmaz:** Genellikle sadece verileri tutar ve işler.
+
+---
+
+## **POJO'nun Kullanım Amaçları**
+POJO sınıfları, genellikle veri taşımak ve depolamak için kullanılır. Bu sınıflar, veri modeli oluştururken temel taşlardır ve aşağıdaki alanlarda yaygın olarak kullanılır:
+
+1. **Veri Transferi (DTO - Data Transfer Object)**
+    - Bir katmandan diğerine veri iletmek için kullanılır.
+    - Örneğin, bir veritabanından çekilen kullanıcı bilgilerini içeren bir `User` POJO nesnesi oluşturulabilir.
+
+2. **Veritabanı İşlemleri (ORM - Object-Relational Mapping)**
+    - Hibernate gibi ORM araçları, veritabanı tablolarını POJO nesneleri ile eşleştirir.
+    - Örneğin, `Employee` sınıfı bir veritabanı tablosuna karşılık gelebilir.
+
+3. **JSON veya XML Serileştirme**
+    - Spring Boot ve REST API’lerde POJO nesneleri JSON veya XML olarak kullanılabilir.
+    - Örneğin, bir REST API çağrısında dönen JSON verisi bir POJO nesnesine dönüştürülebilir.
+
+4. **JavaBeans Yapısına Alternatif Olarak**
+    - JavaBeans, özel kuralları (örneğin, `Serializable` olmak, varsayılan yapıcıya sahip olmak vb.) gerektiren daha ağır bir yapı sunarken, POJO'lar daha hafif ve bağımsızdır.
+
+---
+
+## **POJO'nun Örnek Kullanımı**
+
+Aşağıda temel bir **POJO (Plain Old Java Object)** sınıfı örneği verilmiştir:
+
+```java
+public class Employee {
+    private int id;
+    private String name;
+    private double salary;
+
+    // Parametresiz Yapıcı (No-Args Constructor)
+    public Employee() {}
+
+    // Parametreli Yapıcı (All-Args Constructor)
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Getter ve Setter Metodları
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // toString Metodu
+    @Override
+    public String toString() {
+        return "Employee{id=" + id + ", name='" + name + "', salary=" + salary + "}";
+    }
+}
+```
+
+Bu `Employee` sınıfı basit bir POJO’dur. İçinde sadece:
+
+- `id`, `name` ve `salary` gibi alanlar (fields)
+- Getter ve setter metodları
+- Parametreli ve parametresiz yapıcı metodlar
+- `toString()` metodu bulunur.
+
+Herhangi bir özel çerçeveye veya kütüphaneye bağımlı değildir.
+
+---
+
+## **POJO ile İlgili Özel Konular**
+
+### **1. POJO ile JavaBeans Farkı**
+POJO, **JavaBeans** ile sıkça karıştırılır. Ancak aralarındaki farklar şunlardır:
+
+| Özellik         | POJO                          | JavaBeans                      |
+|----------------|--------------------------------|--------------------------------|
+| Bağımsızlık    | Herhangi bir kurala bağlı değildir. | JavaBeans spesifik kurallara sahiptir. |
+| Serializable   | Opsiyoneldir. | JavaBeans için zorunludur. |
+| No-Arg Constructor | Opsiyoneldir. | Zorunludur. |
+| Getter/Setter | Genellikle kullanılır ama zorunlu değildir. | Zorunludur. |
+| Framework Kullanımı | ORM, DTO, REST API vb. | Genellikle GUI uygulamalarında kullanılır. |
+
+### **2. POJO ve Lombok Kullanımı**
+Java'da POJO sınıfları genellikle getter, setter ve constructor gibi birçok tekrar eden kod içerdiğinden, **Lombok** kütüphanesi POJO'ları daha az kod ile yazmayı sağlar.
+
+Örneğin, yukarıdaki `Employee` sınıfını **Lombok** ile yazarsak:
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employee {
+    private int id;
+    private String name;
+    private double salary;
+}
+```
+
+Burada:
+- `@Data` → Getter, Setter, `toString()`, `equals()` ve `hashCode()` metodlarını otomatik ekler.
+- `@NoArgsConstructor` → Parametresiz yapıcıyı oluşturur.
+- `@AllArgsConstructor` → Parametreli yapıcıyı oluşturur.
+
+Bu sayede, POJO'nun gereksiz kodlarını yazmadan aynı fonksiyonelliği elde ederiz.
+
+---
+
+## **Sonuç**
+POJO (Plain Old Java Object), Java'da temel veri taşıyıcı sınıfları oluşturmanın standart ve bağımsız bir yoludur. Çeşitli alanlarda, özellikle **DTO (Data Transfer Object)**, **ORM (Hibernate gibi)**, **JSON/XML Serileştirme** gibi yerlerde yaygın olarak kullanılır.
+
+- POJO, herhangi bir özel Java kütüphanesine veya çerçeveye bağlı değildir.
+- Getter ve setter metodları ile çalışır.
+- JavaBeans kadar sıkı kurallara sahip değildir.
+- Lombok gibi araçlarla daha az kod yazmamızı sağlar.
+
+POJO'lar, Java uygulamalarında veri modellerini oluşturmanın en yaygın ve basit yoludur.
+
+## BEAN
+```sh 
+
+```
+---
+
+### **Java'da Core Bean Nedir?**
+Java'da **Core Bean**, genellikle Spring Framework bağlamında kullanılan bir kavramdır. **Bean**, temel olarak Spring Container tarafından yönetilen ve uygulamanın bir parçası olarak kullanılan bir nesnedir. Spring uygulamalarında, özellikle **IoC (Inversion of Control)** ve **Dependency Injection (Bağımlılık Enjeksiyonu)** mekanizmaları sayesinde Bean nesneleri merkezi bir yönetim altına alınır.
+
+Spring Framework'ün ana bileşeni olan **ApplicationContext** veya **BeanFactory** gibi bileşenler, Core Bean'leri yönetir. Core Bean’ler, uygulamanın farklı bileşenleri arasında bağımlılıkları yönetmek için kullanılır.
+
+---
+
+## **1. Core Bean Kavramı**
+Core Bean, genellikle aşağıdaki bileşenleri içeren temel Spring nesnelerini ifade eder:
+
+1. **Service Beans** → İş mantığını içeren servis nesneleri.
+2. **Repository Beans** → Veritabanı işlemlerini yöneten bileşenler.
+3. **Controller Beans** → MVC mimarisinde kullanılan kontrol bileşenleri.
+4. **Configuration Beans** → Yapılandırma ve özelleştirme bileşenleri.
+5. **Component Beans** → Genel bileşen olarak kullanılan özel sınıflar.
+
+---
+
+## **2. Bean Tanımlama Yöntemleri**
+Spring içinde bir **Core Bean** tanımlamanın birkaç yolu vardır:
+
+### **2.1. XML Tabanlı Tanımlama**
+Spring’in eski sürümlerinde Bean tanımlamak için XML kullanılıyordu.
+
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myBean" class="com.example.MyService"/>
+</beans>
+```
+Bu XML dosyasında, `MyService` sınıfı bir Bean olarak tanımlanmıştır ve `id="myBean"` ile erişilebilir.
+
+---
+
+### **2.2. Java Anotasyonları ile Bean Tanımlama**
+Günümüzde XML yerine anotasyon tabanlı tanımlamalar daha yaygın kullanılıyor.
+
+#### **2.2.1. `@Component` ile Bean Tanımlama**
+Spring, `@Component` anotasyonu ile sınıfları otomatik olarak bir Bean olarak yönetir.
+
+```java
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyService {
+    public void serve() {
+        System.out.println("Service is working...");
+    }
+}
+```
+- Bu sınıf bir Bean olarak tanımlanır ve Spring tarafından otomatik olarak yönetilir.
+- **Component Scanning** özelliği ile, Spring `@Component` olan sınıfları tarar ve otomatik olarak bir Bean olarak kaydeder.
+
+---
+
+#### **2.2.2. `@Service`, `@Repository`, `@Controller` ile Bean Tanımlama**
+Spring, **Component Scanning** mekanizmasını daha anlamlı hale getirmek için aşağıdaki özel anotasyonları sağlar:
+
+1. `@Service` → Servis katmanında kullanılan sınıflar.
+2. `@Repository` → Veritabanı erişim katmanında kullanılan sınıflar.
+3. `@Controller` → Web katmanında (Spring MVC) kullanılan kontrolcüler.
+
+```java
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    public String getUser() {
+        return "John Doe";
+    }
+}
+```
+
+Bu anotasyonlar da `@Component` ile aynı işlevi görür ancak semantik olarak daha anlamlıdır.
+
+---
+
+#### **2.2.3. `@Bean` ile Bean Tanımlama**
+Spring’de Bean tanımlamanın bir başka yöntemi de **`@Bean`** anotasyonudur.
+
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+Burada:
+- `@Configuration` sınıfı, Spring için yapılandırma sınıfı olduğunu belirtir.
+- `@Bean` anotasyonu ile bir Bean nesnesi manuel olarak tanımlanmıştır.
+
+---
+
+## **3. Bean Yaşam Döngüsü**
+Spring Bean’leri, belirli bir yaşam döngüsü içerisindedir. Bu süreç **Spring Container** tarafından yönetilir.
+
+1. **Bean Tanımlama:** Spring, konfigürasyon dosyası veya anotasyonlar aracılığıyla Bean'i algılar.
+2. **Bean Oluşturma:** Bean örneği oluşturulur (new operatörü gibi).
+3. **Bağımlılıkların Enjekte Edilmesi:** `@Autowired` gibi anotasyonlarla bağımlılıklar enjekte edilir.
+4. **İlk Aşama İşlemleri (Initializing Bean):** Bean ilk oluşturulduğunda bazı başlangıç işlemleri yapılır.
+5. **Kullanım:** Bean, Spring Container tarafından yönetilir ve kullanılabilir hale gelir.
+6. **Yıkım:** Uygulama kapanırken Bean yok edilir.
+
+---
+
+## **4. Bean Scope (Kapsamı)**
+Spring, Bean nesneleri için farklı **kapsamlar (scope)** sunar.
+
+### **4.1. Singleton Scope (Varsayılan)**
+- **Tüm uygulama içinde yalnızca bir tane nesne oluşturulur.**
+- Aynı Bean tekrar çağrılsa bile aynı nesne döndürülür.
+
+```java
+@Component
+@Scope("singleton")
+public class SingletonBean {
+}
+```
+
+### **4.2. Prototype Scope**
+- **Her çağrıldığında yeni bir nesne oluşturulur.**
+- Singleton’ın aksine, her istekte yeni bir nesne döner.
+
+```java
+@Component
+@Scope("prototype")
+public class PrototypeBean {
+}
+```
+
+### **4.3. Request Scope (Web Uygulamaları için)**
+- **Her HTTP isteğinde yeni bir nesne oluşturulur.**
+- Sadece Web uygulamalarında kullanılabilir.
+
+```java
+@Component
+@Scope("request")
+public class RequestBean {
+}
+```
+
+### **4.4. Session Scope**
+- **Kullanıcının oturumu boyunca tek bir nesne oluşturulur.**
+
+```java
+@Component
+@Scope("session")
+public class SessionBean {
+}
+```
+
+---
+
+## **5. Core Bean’lerin Kullanımı**
+Bir Bean’i kullanmanın en yaygın yolu **Dependency Injection (Bağımlılık Enjeksiyonu)** ile ona erişmektir.
+
+### **5.1. `@Autowired` ile Bean Enjekte Etme**
+Spring, bağımlılıkları otomatik olarak enjekte etmek için `@Autowired` anotasyonunu kullanır.
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyController {
+
+    private final MyService myService;
+
+    @Autowired
+    public MyController(MyService myService) {
+        this.myService = myService;
+    }
+
+    public void process() {
+        myService.serve();
+    }
+}
+```
+
+- `@Autowired`, `MyService` nesnesini otomatik olarak `MyController` içine enjekte eder.
+
+---
+
+## **Sonuç**
+Java'da **Core Bean**, Spring Framework içerisinde merkezi bir bileşen olarak kullanılan nesnelerdir. **Dependency Injection, IoC, Bean Scope ve Yaşam Döngüsü** gibi kavramlarla entegre çalışır.
+
+Core Bean’ler:
+- XML veya Java tabanlı konfigürasyonla oluşturulabilir.
+- `@Component`, `@Service`, `@Repository`, `@Controller`, `@Bean` gibi anotasyonlarla tanımlanabilir.
+- Singleton, Prototype, Request, Session gibi farklı kapsamlarla kullanılabilir.
+- Dependency Injection mekanizması sayesinde nesnelerin yönetimini Spring üstlenir.
+
+Spring Core Bean mekanizması, uygulamaların yönetilebilir, modüler ve ölçeklenebilir olmasını sağlar.
 
 
 
