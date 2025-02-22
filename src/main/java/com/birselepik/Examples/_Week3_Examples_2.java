@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class _Week3_Examples_2 {
 
     // Kullanıcının Soyisminin ilk üç harfini büyük yazınız ve soyisimi eğer 3 harften fazlaysa geri kalan harflerinin yerine yıldız (*)
-    // Hamit MIZRAK , Hamit MIZ***(Maskeleme)
+    // Birsel EPİK , Birsel EPİ*(Maskeleme)
     // Tip(loop, conditional)
 
 

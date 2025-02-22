@@ -1,6 +1,7 @@
 package com.birselepik._3_week;
 
-// POJO: "Plain Old Java Object" teriminin kısaltmasıdır ve özellikle Java dünyasında, basit, standart Java sınıflarını tanımlamak için kullanılır.
+// POJO: "Plain Old Java Object" teriminin kısaltmasıdır ve
+// özellikle Java dünyasında, basit, standart Java sınıflarını tanımlamak için kullanılır.
 // Sadece fields + getter and setter
 
 

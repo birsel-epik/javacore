@@ -5,15 +5,15 @@ import com.birselepik.utils.SpecialColor;
 import java.util.Date;
 import java.util.Objects;
 
-//Core Bean’ler, uygulamanın farklı bileşenleri arasında bağımlılıkları yönetmek için kullanılır.
+// Java Core Bean’ler, uygulamanın farklı bileşenleri arasında bağımlılıkları yönetmek için kullanılır.
 
 /*
 1. Kullanıcının Soyisminin ilk üç harfini büyük yazınız ve soyisimi eğer 3 harften fazlaysa geri kalan harflerinin yerine yıldız (*)
- Hamit MIZRAK , Hamit MIZ***(Maskeleme)
+ Birsel EPİK , Birsel EPİ*(Maskeleme)
  Tip(loop, conditional)*/
 
 // 2. İsim ayarlanırken, isim baş harfi büyük geri kalan küçük olacak şekilde ayarlanabilir mi?
-// 3. İsim dönen bir metod oluşturulabilir mi? Hamit Mızrak
+// 3. İsim dönen bir metod oluşturulabilir mi? Birsel Epik
 // 4. İsimde noktalama işaretleri olup olmadığını kontrol eden bir doğrulama ekleyebilir miyiz? varsa noktalamadan itibaren silsin
 // 5. İsim veya soyisim boş girildiğinde varsayılan bir değer atanabilir mi?
 // 6. İsim ve soyisimde sadece harfler olup olmadığını kontrol edebilir miyiz?
