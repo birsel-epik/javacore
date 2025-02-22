@@ -4,6 +4,8 @@ import com.birselepik.utils.SpecialColor;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 // Öğrenci Yönetim Sistemi
 public class StudentManagementSystem {
@@ -12,6 +14,9 @@ public class StudentManagementSystem {
     private ArrayList<StudentDto> studentDtoList = new ArrayList<>();
     private int studentCounter = 0;
     private static final String FILE_NAME = "students.txt";
+
+    // Scanner
+    private static final Scanner scanner = new Scanner(System.in);
 
 
     // static
@@ -93,21 +98,156 @@ public class StudentManagementSystem {
 
 
     // Öğrenci Güncelle
-    // ğrenci Sil
+    public void update(int id, StudentDto dto) {
+        for (StudentDto temp : studentDtoList) {
+            if (temp.getId() == id) {
+                temp.setName(dto.getName());
+                temp.setSurname(dto.getSurname());
+                temp.setBirthDate(dto.getBirthDate());
+                temp.setGrade(dto.getGrade());
+                System.out.println(SpecialColor.GREEN + "Öğrenci bilgileri güncellendi!" + SpecialColor.RESET);
+                saveToFile();
+                return;
+            }
+        }
+        System.out.println(SpecialColor.RED + " Öğrenci bulunamadı! " + SpecialColor.RESET);
+    }
+
+
+    // Öğrenci Sil
+    public void delete(int id) {
+        studentDtoList.removeIf(temp -> temp.getId() == id);
+        System.out.println(SpecialColor.BLUE + " Öğrenci bilgileri silindi!" + SpecialColor.RESET);
+        saveToFile();
+    }
+
 
     /// /////////////////////////////////////////
 
-    // FileIO Create
-    // Öğrenci Dosyalarını kaydeden metot
-    // Öğrenci Dosyalarını okuyan metot
-
-    /// /////////////////////////////////////////
 
     // Toplam Öğrenci Sayısı
-    // Öğrenci Not Ortalamasını Hesapla
+    // Rastgele Öğrenci
+    // Öğrenci Not Ortalaması Hesapla
     // En Yüksek veya En Düşük Not Alan Öğrenci
-    // Öğrenci Sıralaması (Doğum Günü)
-    // Console Seçim (Öğrenci Ekle)
+    // Öğrenci Sıralaması (Doğum günü)
+
+
+    /// /////////////////////////////////////////
+
+    // Console Seçim (Öğrenci)
+    public void chooise() {
+        StudentManagementSystem studentManagementSystem = new StudentManagementSystem();
+
+        // Sonsuz while
+        while (true) {
+            System.out.println("\n1. Öğrenci Ekle");
+            System.out.println("\n2. Öğrenci Listele");
+            System.out.println("\n3. Öğrenci Ara");
+            System.out.println("\n4. Öğrenci Güncelle");
+            System.out.println("\n5. Öğrenci Sil");
+            System.out.println("\n6. Öğrenci Toplam Sayısı");
+            System.out.println("\n7. Öğrenci Rastgele Gelsin");
+            System.out.println("\n8. Öğrenci Not Hesapla");
+            System.out.println("\n9. Öğrenci En Yüksek, En Düşük Notları Göster");
+            System.out.println("\n10. Öğrenci Sıralaması Doğum Gününe Göre Göster");
+            System.out.println("\n11. Çıkış");
+            System.out.println("\nLütfen Seçim Yapınız");
+
+            int chooise = scanner.nextInt();
+            scanner.nextLine(); // durma yerimiz
+            StudentDto studentDto = new StudentDto();
+            String name, surname;
+            String birthDate;
+            Double grade;
+
+            switch (chooise) {
+                // add
+                case 1:
+                    System.out.println("Öğrenci Adı");
+                    name = scanner.nextLine();
+                    System.out.println("Öğrenci Soyadı");
+                    surname = scanner.nextLine();
+                    System.out.println("Öğrenci Doğum Tarihi");
+                    birthDate = scanner.next();
+                    System.out.println("Öğrenci Puanı");
+                    grade = scanner.nextDouble();
+
+                    studentDto.setId(studentCounter);
+                    studentDto.setName(name);
+                    studentDto.setSurname(surname);
+                    studentDto.setCreatedDate(new Date(System.currentTimeMillis()));
+                    // studentDto.setBirthDate(birthDate);
+                    // studentDto.setGrade(grade);
+
+                    studentManagementSystem.add(studentDto);
+                    break;
+
+                // list
+                case 2:
+                    studentManagementSystem.list();
+                    break;
+
+                // search
+                case 3:
+                    studentManagementSystem.search(studentDto.getName());
+                    break;
+
+                // update
+                case 4:
+                    studentManagementSystem.update(studentDto.getId(), StudentDto.builder().build());
+                    break;
+
+                // delete
+                case 5:
+                    studentManagementSystem.delete(studentDto.getId());
+                    break;
+
+                // toplam öğrenci sayısı
+                case 6:
+                    break;
+
+
+                // Öğrenci Rastgele Gelsin
+                case 7:
+                    break;
+
+
+                // Öğrenci Not Hesapla
+                case 8:
+                    break;
+
+
+                // Öğrenci En Yüksek, En düşük Notları Göster
+                case 9:
+                    break;
+
+
+                // Öğrenci Öğrenci Sıralaması Doğum Gününe Göre Göster
+                case 10:
+                    break;
+
+
+                // Çıkış
+                case 11:
+                    System.out.println("Program sonlandırışıyor...");
+                    System.exit(0);
+                    // return;
+                    // break;
+
+                default:
+                    System.out.println("Lütfen Seçiminizi yapınız!");
+
+            }
+
+
+        }
+    }
+
+    // PSVM
+    public static void main(String[] args) {
+
+        scanner.close();
+    }
 
 
 } // end class

@@ -29,11 +29,17 @@ public class StudentDto implements Serializable {
     private Double grade; // başarı puanı
 
 
-    // static (Nesne boyunca kere oluşturuluyor)
+    // static (Nesne boyunca 1 kere oluşturuluyor)
     static {
     }
 
+
     // Parametresiz Constructor
+    public StudentDto() {
+
+    }
+
+    //  Parametreli Constructor
     public StudentDto(Integer id, String name, String surname, LocalDate birthDate, Double grade) {
         this.id = id;
         this.name = name;
