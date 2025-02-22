@@ -46,8 +46,6 @@ public class StudentDto implements Serializable {
 
 
     // Getter And Setter
-
-
     public Integer getId() {
         return id;
     }

@@ -6,7 +6,7 @@ public class _04_5_Cast {
     // Daha küçük bir türü daha büyük bir veriye dönüştürmek için kullanılır.
     public static void main(String[] args) {
 
-        // 1-) Widening Cast => Implicit Cast (KApalı )
+        // 1-) Widening Cast => Implicit Cast (Kapalı)
         byte cast1Byte = 100; // Küçük olan veriyi
         int cast1Int = cast1Byte; // Büyük olan verinin içine ekledim (Veri kaybı yoktur)
         System.out.println("cast1Int :" + cast1Int);
