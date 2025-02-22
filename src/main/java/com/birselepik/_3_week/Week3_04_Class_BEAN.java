@@ -92,7 +92,7 @@ public class Week3_04_Class_BEAN {
     }
 
     public void setName(String name) throws IllegalAccessError {
-        if (name != null && name.matches(".*[.,!?;:]+.*")) {
+        if (name != null && !name.isEmpty() && name.matches(".*[.,!?;:]+.*")) {
             // throw new IllegalAccessError("isimde geçersiz karakerler var");
             // System.err.println("isimde geçersiz karakterler var.");
             System.out.println(SpecialColor.RED + "İsimde geçersiz karakterler var, bu karakterden sonraki harfleri silindi" + SpecialColor.RESET);
