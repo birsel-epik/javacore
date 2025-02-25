@@ -25,11 +25,11 @@ public class StudentDto implements Serializable {
     private Integer id;
     private String name;
     private String surname;
-    private Double midTerm;  // Vize notu
-    private Double finalTerm; // Final notu
-    private Double resultTerm;   // Sonuç Notu: (Vize%40 + Final%60)
-    private LocalDate birthDate; // Doğum günü
-    private Date createdDate; // Sistem otomatik tarihi
+    private Double midTerm;         // Vize notu
+    private Double finalTerm;       // Final notu
+    private Double resultTerm;      // Sonuç Notu: (Vize%40 + Final%60)
+    private LocalDate birthDate;   // Doğum günü
+    private Date createdDate;      // Sistem otomatik tarihi
 
 
     // static (Nesne boyunca 1 kere oluşturuluyor)
@@ -51,8 +51,8 @@ public class StudentDto implements Serializable {
         this.midTerm = midTerm;
         this.finalTerm = finalTerm;
         this.birthDate = birthDate;
-        this.createdDate= new Date(System.currentTimeMillis());
-        this.resultTerm= calculateResult();
+        this.createdDate = new Date(System.currentTimeMillis());
+        this.resultTerm = calculateResult();
     }
 
     // Metotlar
