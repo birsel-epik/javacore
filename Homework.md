@@ -46,7 +46,7 @@ Escape Character
 System.out.println("Bildiğiniz Diller & Teknolojiler");
 language=klavye.nextInt();
 
-null değeri ne zaman kullanabilirim ?
+
 
 - Ödev 2 -> ( _Week1_Example_2 )
 - Stack Memory - Heap Memory
@@ -63,42 +63,42 @@ null değeri ne zaman kullanabilirim ?
 - language=klavye.nextInt();
 
 ---
-
-- Ödev 5 ->  ( _Week1_Example_6 )
 - null değeri ne zaman kullanabilirim ?
+- Ödev 5 ->  ( _Week1_Example_6 )
+
 
 ---
 
 ## 4.Ders Ödevi (11 Şubat)
 
-> switch-case ile if-elseif-else arasındaki farklar nelerdir ?
-> for ile while arasındaki fark ?
-> String Birleştirme (Concatenation) türleri, Concat, StrinBuilder, StringBuffer
-> return, continue, break nedir ? aralarındaki farklar nelerdir ?
-> static yapı nedir ?
-> Overloading nedir ?
-> Override nedir ?
-> String kelime= new String(); , String kelime= ""; iki yapı arasındaki fark ?
-> vocabulary1== vocabulary2 ile vocabulary1.equals(vocabulary2));
-> vocabulary1== vocabulary2 (String kelime= new String();)
-> ile vocabulary1.equals(vocabulary2)) (String kelime= "";)
+- switch-case ile if-elseif-else arasındaki farklar nelerdir ?
+- for ile while arasındaki fark ?
+- String Birleştirme (Concatenation) türleri, Concat, StrinBuilder, StringBuffer
+- return, continue, break nedir ? aralarındaki farklar nelerdir ?
+- static yapı nedir ?
+- Overloading nedir ?
+- Override nedir ?
+- String kelime= new String(); , String kelime= ""; iki yapı arasındaki fark ?
+- vocabulary1== vocabulary2 ile vocabulary1.equals(vocabulary2));
+- vocabulary1== vocabulary2 (String kelime= new String();)
+- ile vocabulary1.equals(vocabulary2)) (String kelime= "";)
 
 ## 5.Ders Ödevi (13 Şubat)
 
-> parametre ile argüman arasında farklar nelerdir ?
-> Integer.valueOf(cast4String) ile Integer.parseInt(cast4String) arasındaki fark ?
-> Neden Java 8 bilmek zorundayım ?
-> Java 8 ile gelen özellikler nelerdir ?
+- parametre ile argüman arasında farklar nelerdir ?
+- Integer.valueOf(cast4String) ile Integer.parseInt(cast4String) arasındaki fark ?
+- Neden Java 8 bilmek zorundayım ?
+- Java 8 ile gelen özellikler nelerdir ?
 
 ## 6.Ders Ödevi (15 Şubat)
 
-> Array => foreach ile iterative for döngü arasındaki farklar nelerdir ?
+- Array => foreach ile iterative for döngü arasındaki farklar nelerdir ?
 
 ## 7.Ders Ödevi (20 Şubat)
-> constructor ile static {} arasındaki farklar ?
-> if(name!=null && !name.isEmpty())  bu kod ne iş yapar ?
-> name!=null:Kullanıcı hiç birşey girmemişse null,  !name.isEmpty() Eğer yazılımcı String name="";
+- constructor ile static {} arasındaki farklar ?
+- if(name!=null && !name.isEmpty())  bu kod ne iş yapar ?
+- name!=null:Kullanıcı hiç birşey girmemişse null,  !name.isEmpty() Eğer yazılımcı String name="";
 
 
 ## 8.Ders Ödevi (22 Şubat)
-> Apartman Yönetim Sistemi (Kendine Ödev yap)
+- Apartman Yönetim Sistemi (Kendine Ödev yap)
