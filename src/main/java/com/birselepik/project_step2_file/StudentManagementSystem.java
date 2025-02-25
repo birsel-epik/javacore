@@ -23,6 +23,9 @@ public class StudentManagementSystem {
 
     // Parametresiz Constructor
     public StudentManagementSystem() {
+        // Eğer students.txt yoksa otomatik oluştur
+        createFileIfNotExist();
+
         // Program başlarken Öğrenci Listesini hemen yüklesin
         loadStudentsListFromFile();
     }
@@ -32,7 +35,24 @@ public class StudentManagementSystem {
     // Register
 
     /// /////////////////////////////////////////
-    // FileIO Create
+    // FileIO
+
+    // File If Not Exists (Eğer students.txt yoksa, oluştur)
+    private void createFileIfNotExist() {
+        // student.txt
+        File file = new File(FILE_NAME);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println(SpecialColor.PURPLE + FILE_NAME + " adında dosya oluşturuldu " + SpecialColor.RESET);
+
+            } catch (IOException ioException) {
+                System.out.println(SpecialColor.CYAN + " Dosya oluşturulurken hata oluştu " + SpecialColor.RESET);
+                ioException.printStackTrace();
+            }
+        }
+    }
+
     // File Create
     private void saveToFile() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
@@ -50,8 +70,9 @@ public class StudentManagementSystem {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             studentDtoList = (ArrayList<StudentDto>) objectInputStream.readObject();
             studentCounter = studentDtoList.size();
+            System.out.println(SpecialColor.BLUE + " Dosyadan yüklenen öğrenci sayısı: " + SpecialColor.RESET);
         } catch (FileNotFoundException fileNotFoundException) {
-            System.out.println(SpecialColor.RED + " Öğrenci kaydı bulunamadı! " + SpecialColor.RESET);
+            System.out.println(SpecialColor.RED + " Dosyadan yüklenen Öğren Kayıdı bulunamadı " + SpecialColor.RESET);
             fileNotFoundException.printStackTrace();
         } catch (IOException io) {
             System.out.println(SpecialColor.RED + " Dosya okuma hatası! " + SpecialColor.RESET);
@@ -69,10 +90,9 @@ public class StudentManagementSystem {
     // Öğrenci Ekle
     public void add(StudentDto dto) {
         studentDtoList.add(
-                new StudentDto(++studentCounter, dto.getName(), dto.getSurname(), dto.getMidTerm(), dto.getFinalTerm(), dto.getBirthDate())
+                new StudentDto(++studentCounter, dto.getName(), dto.getSurname(), dto.getMidTerm(), dto.getFinalTerm(), dto.getBirthDate(), dto.geteStudentType())
         );
         System.out.println(SpecialColor.GREEN + " Öğrenci Eklendi " + SpecialColor.RESET);
-
         // File Ekle
         saveToFile();
     }
@@ -123,9 +143,10 @@ public class StudentManagementSystem {
                 temp.setBirthDate(dto.getBirthDate());
                 temp.setMidTerm(dto.getMidTerm());
                 temp.setFinalTerm(dto.getFinalTerm());
+                temp.seteStudentType(dto.geteStudentType());
 
                 // Güncellenmiş öğrenci bilgileri
-                System.out.println(SpecialColor.GREEN + temp + "Öğrenci bilgileri güncellendi!" + SpecialColor.RESET);
+                System.out.println(SpecialColor.GREEN + temp + "\nÖğrenci bilgileri güncellendi!" + SpecialColor.RESET);
 
                 // Dosya kaydet
                 saveToFile();
@@ -166,6 +187,20 @@ public class StudentManagementSystem {
 
 
     /// /////////////////////////////////////////
+
+    /// Enum Öğrenci Türü Method
+    private EStudentType studentTypeMethod() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(SpecialColor.PURPLE + "Öğrenci türünü seçiniz.\n1-) Lisans\n2-) Yüksek Lisans\n3-) Doktora " + SpecialColor.RESET);
+        int typeChooise = scanner.nextInt();
+        EStudentType switchCaseStudent = switch (typeChooise) {
+            case 1 -> EStudentType.UNDERGRADUATE;
+            case 2 -> EStudentType.GRADUATE;
+            case 3 -> EStudentType.PHD;
+            default -> EStudentType.OTHER;
+        };
+        return switchCaseStudent;
+    }
 
     // Console Seçim (Öğrenci)
     public void chooise() {
@@ -209,7 +244,7 @@ public class StudentManagementSystem {
                     System.out.println("Final Puanı");
                     double finalTerm = scanner.nextDouble();
 
-                    studentManagementSystem.add(new StudentDto(++studentCounter, name, surname, midTerm, finalTerm, birthDate));
+                    studentManagementSystem.add(new StudentDto(++studentCounter, name, surname, midTerm, finalTerm, birthDate, studentTypeMethod()));
                     break;
 
                 // list (Öğrenci Listele)

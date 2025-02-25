@@ -2,6 +2,7 @@
 Example.md
 Mufredat.md
 Guide.md
+src/
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
