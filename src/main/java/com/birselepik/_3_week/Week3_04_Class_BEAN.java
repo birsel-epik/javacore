@@ -155,7 +155,7 @@ public class Week3_04_Class_BEAN {
         bean1.setSurname("Epik");
         //bean1.setSurname("Ada");
         System.out.println(SpecialColor.PURPLE + bean1.getId() + " " + bean1.getName() + " " + bean1.getSurname() + " " + bean1.getCreatedDate() + SpecialColor.RESET);
-        System.out.println(SpecialColor.YELLOW + " " + bean1 + " " + SpecialColor.RESET);
+        System.out.println(SpecialColor.YELLOW + " " + bean1 + " " + SpecialColor.RESET); // içerik toString() yapsından geliyor. (56. satır)
 
         // System.out.println("#################################################################");
 

@@ -3,3 +3,6 @@ Multiple Comment => Shift+Ctrl+/
 Beautify: Ctrl+Alt+L
 Copy and Pase: Ctrl+D
 Hepsini Değiştir: Shift+F6
+Dosya İsmin Değiştirme: Shift + F6
+Sayfadaki Gereksiz Kütüphaneleri Kaldırsın: Ctrl + Alt + O
+Getter + Setter (Sağ Click + Generete) veya Alt + Ins

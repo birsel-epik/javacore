@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class StudentManagementSystem {
 
     // Field
+    // Generic yapılar: Tür güvenliğini sağlayacak, hata yapmayı aza indirgeyecek yapılardır.
+    // Wrapper Türler yazılır (Primitive yazılmaz.)
     private ArrayList<StudentDto> studentDtoList = new ArrayList<>();
     private int studentCounter = 0;
     private static final String FILE_NAME = "students.txt";
