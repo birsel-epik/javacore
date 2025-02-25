@@ -1703,7 +1703,7 @@ public class ValueOfExample {
     public static void main(String[] args) {
         String sayiStr = "456";
         int sayi = Integer.valueOf(sayiStr); // String → Integer
-        
+
         System.out.println("int değeri: " + sayi);
     }
 }
@@ -1723,7 +1723,7 @@ public class IntToStringExample {
     public static void main(String[] args) {
         int sayi = 789;
         String sayiStr = String.valueOf(sayi); // int → String
-        
+
         System.out.println("int: " + sayi);
         System.out.println("String: " + sayiStr);
     }
