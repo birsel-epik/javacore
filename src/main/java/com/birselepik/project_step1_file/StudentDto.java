@@ -1,5 +1,6 @@
 package com.birselepik.project_step1_file;
 
+import com.birselepik.utils.SpecialColor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -24,13 +25,16 @@ public class StudentDto implements Serializable {
     private Integer id;
     private String name;
     private String surname;
-    private LocalDate birthDate;
-    private Date createdDate;
-    private Double grade; // başarı puanı
+    private Double midTerm;  // Vize notu
+    private Double finalTerm; // Final notu
+    private Double resultTerm;   // Sonuç Notu: (Vize%40 + Final%60)
+    private LocalDate birthDate; // Doğum günü
+    private Date createdDate; // Sistem otomatik tarihi
 
 
     // static (Nesne boyunca 1 kere oluşturuluyor)
     static {
+        System.out.println(SpecialColor.BLUE + "static StudentDto Yüklendi" + SpecialColor.RESET);
     }
 
 
@@ -44,11 +48,22 @@ public class StudentDto implements Serializable {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.midTerm = midTerm;
+        this.finalTerm = finalTerm;
         this.birthDate = birthDate;
-        this.grade = grade;
+        this.resultTerm = calculateResukt();
     }
 
     // Metotlar
+
+    // Vize ve Final Calculate
+    private Double calculateResukt() {
+        if (midTerm == null || finalTerm == null)
+            return 0.0;
+        else
+            return (midTerm * 0.4) + (finalTerm * 0.6);
+
+    }
 
 
     // Getter And Setter
@@ -92,11 +107,29 @@ public class StudentDto implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Double getGrade() {
-        return grade;
+    public Double getMidTerm() {
+        return midTerm;
     }
 
-    public void setGrade(Double grade) {
-        this.grade = grade;
+    public void setMidTerm(Double midTerm) {
+        this.midTerm = midTerm;
+        this.resultTerm = calculateResukt();
+    }
+
+    public Double getFinalTerm() {
+        return finalTerm;
+    }
+
+    public void setFinalTerm(Double finalTerm) {
+        this.finalTerm = finalTerm;
+        this.resultTerm = calculateResukt();
+    }
+
+    public Double getResultTerm() {
+        return resultTerm;
+    }
+
+    public void setResultTerm(Double resultTerm) {
+        this.resultTerm = resultTerm;
     }
 } // end Student
