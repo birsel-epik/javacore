@@ -1,4 +1,4 @@
-package com.birselepik.Examples;
+package com.birselepik.examples;
 
 /*
 Java'da constructor ve static blokları, nesne oluşturma ve sınıf başlatma süreçlerinde farklı amaçlara hizmet eder.

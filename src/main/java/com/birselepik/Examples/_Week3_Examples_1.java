@@ -1,4 +1,4 @@
-package com.birselepik.Examples;
+package com.birselepik.examples;
 
 
 import com.birselepik.utils.SpecialColor;

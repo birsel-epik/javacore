@@ -1,4 +1,4 @@
-package com.birselepik.Examples;
+package com.birselepik.examples;
 
 public class _Week1_Examples_1 {
     public static void main(String[] args) {
