@@ -6,6 +6,5 @@ public enum EStudentType {
     GRADUATE,  // Yüksek Lisans
     PHD, // Doktora
     OTHER // Diğerleri
-
 }
 

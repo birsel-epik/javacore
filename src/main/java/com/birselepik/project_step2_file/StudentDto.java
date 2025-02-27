@@ -61,12 +61,17 @@ public class StudentDto implements Serializable {
 
     // Vize ve Final Calculate
     private Double calculateResult() {
-        if (midTerm == null || finalTerm == null)
-            return 0.0;
-        else
-            return (midTerm * 0.4) + (finalTerm * 0.6);
+        if (midTerm == null || finalTerm == null) return 0.0;
+        else return (midTerm * 0.4) + (finalTerm * 0.6);
 
     }
+
+    // Not Validasyon
+//    public void validateGrade(Double grade, String fieldName) {
+//        if (grade < 0 || grade > 100) {
+//            throw new IllegalArgumentException(SpecialColor.RED + fieldName + " 0 ile 100 arasında olmalıdır!" + SpecialColor.RESET);
+//        }
+//    }
 
 
     // Getter And Setter
@@ -83,6 +88,16 @@ public class StudentDto implements Serializable {
     }
 
     public void setName(String name) {
+       /* if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException(SpecialColor.RED + " İsim boş olamaz!" + SpecialColor.RESET);
+        }
+        if (name != null && !name.isEmpty() && name.matches(".*[.,!?;:]+.*")) {
+            System.out.println(SpecialColor.RED + "İsimde geçersiz karakterler var!" + SpecialColor.RESET);
+        }
+        if (name.length() > 30) {
+            throw new IllegalArgumentException(SpecialColor.PURPLE + " İsim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
+        }*/
+
         this.name = name;
     }
 
@@ -91,6 +106,16 @@ public class StudentDto implements Serializable {
     }
 
     public void setSurname(String surname) {
+/*        if (surname == null || surname.trim().isEmpty()) {
+            throw new IllegalArgumentException(SpecialColor.RED + " Soyisim boş olamaz!" + SpecialColor.RESET);
+        }
+        if (surname != null && !surname.isEmpty() && surname.matches(".*[.,!?;:]+.*")) {
+            System.out.println(SpecialColor.RED + "Soyisimde geçersiz karakterler var!" + SpecialColor.RESET);
+        }
+        if (surname.length() > 30) {
+            throw new IllegalArgumentException(SpecialColor.PURPLE + " Soyisim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
+        }*/
+
         this.surname = surname;
     }
 
@@ -99,6 +124,18 @@ public class StudentDto implements Serializable {
     }
 
     public void setBirthDate(LocalDate birthDate) {
+        if (birthDate == null || surname.trim().isEmpty()) {
+            throw new IllegalArgumentException(SpecialColor.RED + " Doğum tarihi boş olamaz!" + SpecialColor.RESET);
+        }
+        LocalDate now = LocalDate.now();
+        if (birthDate.isAfter(now)) {
+            throw new IllegalArgumentException(SpecialColor.PURPLE + " Doğum tarihi bugünden sonra olamaz!" + SpecialColor.RESET);
+        }
+        // Öğrenci en az 18 yaşında olsun
+        if (birthDate.isAfter(now.minusYears(18))) {
+            throw new IllegalArgumentException(SpecialColor.PURPLE + " Öğrenci en az 18 yaşında olmalıdır!" + SpecialColor.RESET);
+        }
+
         this.birthDate = birthDate;
     }
 
@@ -115,7 +152,10 @@ public class StudentDto implements Serializable {
     }
 
     public void setMidTerm(Double midTerm) {
+        // Vize notu validasyonu
+        // validateGrade(midTerm, "Vize notu");
         this.midTerm = midTerm;
+
         this.resultTerm = calculateResult();
     }
 
@@ -124,7 +164,10 @@ public class StudentDto implements Serializable {
     }
 
     public void setFinalTerm(Double finalTerm) {
+        // Final notu validasyonu
+        // validateGrade(finalTerm, "Final notu");
         this.finalTerm = finalTerm;
+
         this.resultTerm = calculateResult();
     }
 

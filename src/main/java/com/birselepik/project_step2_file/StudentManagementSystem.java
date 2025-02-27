@@ -4,11 +4,13 @@ import com.birselepik.utils.SpecialColor;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Öğrenci Yönetim Sistemi
 public class StudentManagementSystem {
+    Scanner scanner = new Scanner(System.in); // Scanner nesnesi oluşturuluyor.
 
     // Field
     // Generic yapılar: Tür güvenliğini sağlayacak, hata yapmayı aza indirgeyecek yapılardır.
@@ -93,6 +95,8 @@ public class StudentManagementSystem {
                 new StudentDto(++studentCounter, dto.getName(), dto.getSurname(), dto.getMidTerm(), dto.getFinalTerm(), dto.getBirthDate(), dto.geteStudentType())
         );
         System.out.println(SpecialColor.GREEN + " Öğrenci Eklendi " + SpecialColor.RESET);
+
+
         // File Ekle
         saveToFile();
     }
@@ -190,16 +194,38 @@ public class StudentManagementSystem {
 
     /// Enum Öğrenci Türü Method
     private EStudentType studentTypeMethod() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(SpecialColor.PURPLE + "Öğrenci türünü seçiniz.\n1-) Lisans\n2-) Yüksek Lisans\n3-) Doktora " + SpecialColor.RESET);
-        int typeChooise = scanner.nextInt();
-        EStudentType switchCaseStudent = switch (typeChooise) {
-            case 1 -> EStudentType.UNDERGRADUATE;
-            case 2 -> EStudentType.GRADUATE;
-            case 3 -> EStudentType.PHD;
-            default -> EStudentType.OTHER;
-        };
-        return switchCaseStudent;
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println(SpecialColor.PURPLE + "Öğrenci türünü seçiniz.\n1-) Lisans\n2-) Yüksek Lisans\n3-) Doktora " + SpecialColor.RESET);
+//        int typeChooise = scanner.nextInt();
+//        EStudentType switchCaseStudent = switch (typeChooise) {
+//            case 1 -> EStudentType.UNDERGRADUATE;
+//            case 2 -> EStudentType.GRADUATE;
+//            case 3 -> EStudentType.PHD;
+//            default -> EStudentType.OTHER;
+//        };
+//        return switchCaseStudent;
+
+        while (true) {
+            System.out.println(SpecialColor.PURPLE + "Öğrenci türünü seçiniz.\n1-) Lisans\n2-) Yüksek Lisans\n3-) Doktora " + SpecialColor.RESET);
+            try {
+                int typeChooise = Integer.parseInt(scanner.nextLine().trim());
+                EStudentType switchCaseStudent = switch (typeChooise) {
+                    case 1 -> EStudentType.UNDERGRADUATE;
+                    case 2 -> EStudentType.GRADUATE;
+                    case 3 -> EStudentType.PHD;
+                    case 4 -> EStudentType.OTHER;
+                    default -> {
+                        System.out.println(SpecialColor.RED + "Geçersiz seçim! Lütfen 1-3 arasında bir sayı giriniz." + SpecialColor.RESET);
+                        yield null;
+                    }
+                };
+                if (switchCaseStudent != null) {
+                    return switchCaseStudent;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(SpecialColor.RED + "Geçersiz giriş! Lütfen bir sayı giriniz." + SpecialColor.RESET);
+            }
+        }
     }
 
     // Console Seçim (Öğrenci)
@@ -220,36 +246,89 @@ public class StudentManagementSystem {
             System.out.println("9. Öğrenci En Yüksek, En Düşük Notları Göster");
             System.out.println("10. Öğrenci Sıralaması Doğum Gününe Göre Göster" + SpecialColor.RESET);
             System.out.println(SpecialColor.RED + "11. Çıkış" + SpecialColor.RESET);
-            System.out.println(SpecialColor.YELLOW + "Lütfen Seçim Yapınız" + SpecialColor.RESET);
+            System.out.println(SpecialColor.BLUE + "Lütfen Seçim Yapınız" + SpecialColor.RESET);
 
             // Seçim yap
-            int chooise = scanner.nextInt();
-            scanner.nextLine(); // durma yerimiz
+            //int chooise = scanner.nextInt();
+            //scanner.nextLine(); // durma yerimiz
+
+            int chooise;
+            try {
+                chooise = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println(SpecialColor.RED + " Geçersiz seçim! Lütfen bir sayı giriniz." + SpecialColor.RESET);
+                continue;
+            }
 
             switch (chooise) {
                 // add (Öğrenci Ekle)
                 case 1:
                     System.out.println("Öğrenci Adı");
                     String name = scanner.nextLine();
+                    try {
+                        name = validateNameInput(scanner.nextLine());
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
 
                     System.out.println("Öğrenci Soyadı");
                     String surname = scanner.nextLine();
 
                     System.out.println("Öğrenci Doğum Tarihi YYYY-MM-DD");
-                    LocalDate birthDate = LocalDate.parse(scanner.nextLine());
+                    //LocalDate birthDate = LocalDate.parse(scanner.nextLine());
+                    LocalDate birthDate;
+                    try {
+                        birthDate = LocalDate.parse(scanner.nextLine());
+                    } catch (DateTimeParseException e) {
+                        System.out.println(SpecialColor.RED + " Geçersiz tarih formatı! Lütfen YYY-MM-DD formatında giriniz." + SpecialColor.RESET);
+                        break;
+                    }
 
-                    System.out.println("Vize Puanı");
-                    double midTerm = scanner.nextDouble();
+                    System.out.println("Vize Puanı (0-100)");
+                    //double midTerm = scanner.nextDouble();
+                    double midTerm;
+                    try {
+                        midTerm = validateDoubleInput(scanner.nextLine());
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
 
-                    System.out.println("Final Puanı");
-                    double finalTerm = scanner.nextDouble();
+                    System.out.println("Final Puanı (0-100)");
+                    //double finalTerm = scanner.nextDouble();
+                    double finalTerm;
+                    try {
+                        finalTerm = validateDoubleInput(scanner.nextLine());
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
+
+                    try {
+                        studentManagementSystem.add(new StudentDto(++studentCounter, name, surname, midTerm, finalTerm, birthDate, studentTypeMethod()));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(SpecialColor.RED + " Hata: " + e.getMessage() + SpecialColor.RESET);
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + " Bir hata oluştu: " + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
 
                     studentManagementSystem.add(new StudentDto(++studentCounter, name, surname, midTerm, finalTerm, birthDate, studentTypeMethod()));
                     break;
 
                 // list (Öğrenci Listele)
                 case 2:
-                    studentManagementSystem.list();
+                    try {
+                        studentManagementSystem.list();
+                        System.out.println(SpecialColor.BLUE + " Aranacak öğrenci ismini yazınız: " + SpecialColor.RESET);
+                        String searchName = scanner.nextLine();
+                        studentManagementSystem.search(searchName);
+                    } catch (StudentNotFoundException e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + " Bir hata oluştu: " + e.getMessage() + SpecialColor.RESET);
+                    }
                     break;
 
 
@@ -264,49 +343,91 @@ public class StudentManagementSystem {
 
                 // update (Öğrenci Güncelle)
                 case 4:
-                    studentManagementSystem.list();
-                    System.out.println(SpecialColor.BLUE + "Güncelleme yapılacak Öğrenci ID'si giriniz" + SpecialColor.RESET);
-                    int id = scanner.nextInt(); // Eğer int sonrası String gelecekse bunu yazmalıyız
-                    scanner.nextLine();
-
-                    System.out.println("Yeni Öğrenci Adı");
-                    String nameUpdate = scanner.nextLine();
-
-                    System.out.println("Yeni Öğrenci Soyadı");
-                    String surnameUpdate = scanner.nextLine();
-
-                    System.out.println("Öğrenci Doğum Tarihi");
-                    LocalDate birthDateUpdate = LocalDate.parse(scanner.nextLine());
-
-                    System.out.println("Vize Puanı");
-                    double midTermUpdate = scanner.nextDouble();
-
-                    System.out.println("Final Puanı");
-                    double finalTermUpdate = scanner.nextDouble();
-
-                    StudentDto studentDtoUpdate = StudentDto.builder()
-                            .name(nameUpdate)
-                            .surname(surnameUpdate)
-                            .midTerm(midTermUpdate)
-                            .finalTerm(finalTermUpdate)
-                            .birthDate(birthDateUpdate)
-                            .build();
-
+                    // studentManagementSystem.list();
+                    // System.out.println(SpecialColor.BLUE + "Güncelleme yapılacak Öğrenci ID'si giriniz" + SpecialColor.RESET);
+                    // int id = scanner.nextInt(); // Eğer int sonrası String gelecekse bunu yazmalıyız
+                    // scanner.nextLine();
                     try {
-                        studentManagementSystem.update(id, studentDtoUpdate);
-                    } catch (StudentNotFoundException e) {
-                        System.out.println(SpecialColor.RED + e.getMessage());
-                        e.printStackTrace();
+                        studentManagementSystem.list();
+                        System.out.println(SpecialColor.BLUE + " Güncelleme yapılacak Öğrenci ID'si giriniz" + SpecialColor.RESET);
+                        int id;
+                        try {
+                            id = Integer.parseInt(scanner.nextLine().trim());
+                        } catch (NumberFormatException e) {
+                            System.out.println(SpecialColor.RED + " Geçersiz ID! Lütfen bir sayı giriniz." + SpecialColor.RESET);
+                            break;
+                        }
+
+                        System.out.println("Yeni Öğrenci Adı");
+                        String nameUpdate = scanner.nextLine();
+
+                        System.out.println("Yeni Öğrenci Soyadı");
+                        String surnameUpdate = scanner.nextLine();
+
+                        System.out.println("Öğrenci Doğum Tarihi");
+                        LocalDate birthDateUpdate = LocalDate.parse(scanner.nextLine());
+
+                        System.out.println("Vize Puanı (0-100)");
+                        double midTermUpdate;
+                        try {
+                            midTermUpdate = validateDoubleInput(scanner.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                            break;
+                        }
+
+
+                        System.out.println("Final Puanı (0-100)");
+                        double finalTermUpdate;
+                        try {
+                            finalTermUpdate = validateDoubleInput(scanner.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                            break;
+                        }
+
+                        StudentDto studentDtoUpdate = StudentDto.builder()
+                                .name(nameUpdate)
+                                .surname(surnameUpdate)
+                                .midTerm(midTermUpdate)
+                                .finalTerm(finalTermUpdate)
+                                .birthDate(birthDateUpdate)
+                                .build();
+
+                        try {
+                            studentManagementSystem.update(id, studentDtoUpdate);
+                        } catch (StudentNotFoundException e) {
+                            System.out.println(SpecialColor.RED + e.getMessage());
+                            //e.printStackTrace();
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(SpecialColor.RED + "Validation Hatası: " + e.getMessage() + SpecialColor.RESET);
+                        }
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + "Bir hata oluştu: " + e.getMessage() + SpecialColor.RESET);
                     }
                     break;
 
 
                 // delete (Öğrenci Sil)
                 case 5:
-                    studentManagementSystem.list();
-                    System.out.println(SpecialColor.BLUE + " Silinecek Öğrenci ID");
-                    int deleteID = scanner.nextInt();
-                    studentManagementSystem.delete(deleteID);
+                    // studentManagementSystem.list();
+                    // System.out.println(SpecialColor.BLUE + " Silinecek Öğrenci ID");
+                    // int deleteID = scanner.nextInt();
+                    // studentManagementSystem.delete(deleteID);
+                    try {
+                        studentManagementSystem.list();
+                        System.out.println(SpecialColor.BLUE + " Silinecek Öğrenci ID" + SpecialColor.RESET);
+                        int deleteID = Integer.parseInt(scanner.nextLine().trim());
+                        try {
+                            deleteID = Integer.parseInt(scanner.nextLine().trim());
+                        } catch (NumberFormatException e) {
+                            System.out.println(SpecialColor.RED + "Geçersiz ID! Lütfen bir sayı giriniz." + SpecialColor.RESET);
+                            break;
+                        }
+                        studentManagementSystem.delete(deleteID);
+                    } catch (NumberFormatException e) {
+                        System.out.println(SpecialColor.RED + "Bir hata oluştu: " + e.getMessage() + SpecialColor.RESET);
+                    }
                     break;
 
 
@@ -349,5 +470,35 @@ public class StudentManagementSystem {
 
         }
     }
+
+    // Double değer validasyonu için yardımcı metod
+    private double validateDoubleInput(String input) {
+        try {
+            double value = Double.parseDouble(input);
+            if (value < 0 || value > 100) {
+                throw new IllegalArgumentException(SpecialColor.RED + " Not değeri 0 ile 100 arasında olmalıdır!" + SpecialColor.RESET);
+            }
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(SpecialColor.RED + " Geçersiz sayı formatı! Lütfen bir sayı giriniz." + SpecialColor.RESET);
+        }
+    }
+
+    private String validateNameInput(String input) {
+        try {
+            String name = input.trim();
+            if (name == null || name.trim().isEmpty()) {
+                throw new IllegalArgumentException(SpecialColor.RED + " İsim boş olamaz!" + SpecialColor.RESET);
+            } else if (name != null && !name.isEmpty() && name.matches(".*[.,!&%*+^'=`|?;:]+.*")) {
+                System.out.println(SpecialColor.RED + " İsimde geçersiz karakterler var!" + SpecialColor.RESET);
+            } else if (name.length() > 30) {
+                throw new IllegalArgumentException(SpecialColor.PURPLE + " İsim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
+            }
+        } catch (Exception e) {
+            throw new StudentNotFoundException(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+        }
+        return input;
+    }
+
 
 } // end class
