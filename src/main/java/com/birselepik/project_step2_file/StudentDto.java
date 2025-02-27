@@ -115,7 +115,6 @@ public class StudentDto implements Serializable {
         if (surname.length() > 30) {
             throw new IllegalArgumentException(SpecialColor.PURPLE + " Soyisim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
         }*/
-
         this.surname = surname;
     }
 
@@ -124,7 +123,7 @@ public class StudentDto implements Serializable {
     }
 
     public void setBirthDate(LocalDate birthDate) {
-        if (birthDate == null || surname.trim().isEmpty()) {
+       /* if (birthDate == null || birthDate.trim().isEmpty()) {
             throw new IllegalArgumentException(SpecialColor.RED + " Doğum tarihi boş olamaz!" + SpecialColor.RESET);
         }
         LocalDate now = LocalDate.now();
@@ -134,8 +133,7 @@ public class StudentDto implements Serializable {
         // Öğrenci en az 18 yaşında olsun
         if (birthDate.isAfter(now.minusYears(18))) {
             throw new IllegalArgumentException(SpecialColor.PURPLE + " Öğrenci en az 18 yaşında olmalıdır!" + SpecialColor.RESET);
-        }
-
+        }*/
         this.birthDate = birthDate;
     }
 

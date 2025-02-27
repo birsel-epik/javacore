@@ -264,7 +264,8 @@ public class StudentManagementSystem {
                 // add (Öğrenci Ekle)
                 case 1:
                     System.out.println("Öğrenci Adı");
-                    String name = scanner.nextLine();
+                    //String name = scanner.nextLine();
+                    String name;
                     try {
                         name = validateNameInput(scanner.nextLine());
                     } catch (Exception e) {
@@ -273,17 +274,30 @@ public class StudentManagementSystem {
                     }
 
                     System.out.println("Öğrenci Soyadı");
-                    String surname = scanner.nextLine();
+                    //String surname = scanner.nextLine();
+                    String surname;
+                    try {
+                        surname = validateSurnameInput(scanner.nextLine());
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
 
                     System.out.println("Öğrenci Doğum Tarihi YYYY-MM-DD");
                     //LocalDate birthDate = LocalDate.parse(scanner.nextLine());
                     LocalDate birthDate;
                     try {
                         birthDate = LocalDate.parse(scanner.nextLine());
+                    } catch (Exception e) {
+                        System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                        break;
+                    }
+                    /*try {
+                        birthDate = LocalDate.parse(scanner.nextLine());
                     } catch (DateTimeParseException e) {
                         System.out.println(SpecialColor.RED + " Geçersiz tarih formatı! Lütfen YYY-MM-DD formatında giriniz." + SpecialColor.RESET);
                         break;
-                    }
+                    }*/
 
                     System.out.println("Vize Puanı (0-100)");
                     //double midTerm = scanner.nextDouble();
@@ -360,9 +374,24 @@ public class StudentManagementSystem {
 
                         System.out.println("Yeni Öğrenci Adı");
                         String nameUpdate = scanner.nextLine();
+                        //System.out.println("Öğrenci Adı");
+                        //String nameUpdate;
+                        try {
+                            nameUpdate = validateNameInput(scanner.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                            break;
+                        }
+
 
                         System.out.println("Yeni Öğrenci Soyadı");
                         String surnameUpdate = scanner.nextLine();
+                        try {
+                            nameUpdate = validateSurnameInput(scanner.nextLine());
+                        } catch (Exception e) {
+                            System.out.println(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+                            break;
+                        }
 
                         System.out.println("Öğrenci Doğum Tarihi");
                         LocalDate birthDateUpdate = LocalDate.parse(scanner.nextLine());
@@ -484,6 +513,7 @@ public class StudentManagementSystem {
         }
     }
 
+    // Name validasyonu için yardımcı metod
     private String validateNameInput(String input) {
         try {
             String name = input.trim();
@@ -493,6 +523,44 @@ public class StudentManagementSystem {
                 System.out.println(SpecialColor.RED + " İsimde geçersiz karakterler var!" + SpecialColor.RESET);
             } else if (name.length() > 30) {
                 throw new IllegalArgumentException(SpecialColor.PURPLE + " İsim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
+            }
+        } catch (Exception e) {
+            throw new StudentNotFoundException(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+        }
+        return input;
+    }
+
+    // Surname validasyonu için yardımcı metod
+    private String validateSurnameInput(String input) {
+        try {
+            String surname = input.trim();
+            if (surname == null || surname.trim().isEmpty()) {
+                throw new IllegalArgumentException(SpecialColor.RED + " Soyisim boş olamaz!" + SpecialColor.RESET);
+            } else if (surname != null && !surname.isEmpty() && surname.matches(".*[.,!&%*+^'=`|?;:]+.*")) {
+                System.out.println(SpecialColor.RED + " Soyisimde geçersiz karakterler var!" + SpecialColor.RESET);
+            } else if (surname.length() > 30) {
+                throw new IllegalArgumentException(SpecialColor.PURPLE + " İsim 30 karakterden fazla olamaz!" + SpecialColor.RESET);
+            }
+        } catch (Exception e) {
+            throw new StudentNotFoundException(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
+        }
+        return input;
+    }
+
+    // Birthday validasyonu için yardımcı metod
+    private String validateBirthdayInput(String input) {
+        try {
+            LocalDate birthDate = LocalDate.parse(input);
+            if (birthDate == null || birthDate.isAfter(LocalDate.now()) || birthDate.toString().isEmpty()) {
+                throw new IllegalArgumentException(SpecialColor.RED + " Doğum tarihi boş olamaz!" + SpecialColor.RESET);
+            }
+            LocalDate now = LocalDate.now();
+            if (birthDate.isAfter(now)) {
+                throw new IllegalArgumentException(SpecialColor.PURPLE + " Doğum tarihi bugünden sonra olamaz!" + SpecialColor.RESET);
+            }
+            // Öğrenci en az 18 yaşında olsun
+            else if (birthDate.isAfter(now.minusYears(18))) {
+                throw new IllegalArgumentException(SpecialColor.PURPLE + " Öğrenci en az 18 yaşında olmalıdır!" + SpecialColor.RESET);
             }
         } catch (Exception e) {
             throw new StudentNotFoundException(SpecialColor.RED + e.getMessage() + SpecialColor.RESET);
