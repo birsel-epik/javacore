@@ -4,39 +4,32 @@ import com.birselepik.dto.StudentDto;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IDaoGenerics<T> {
-    // CRUD OPERATIONS
 
+    // CRUD
     // CREATE
     T create(T t);
 
-    // FIND BY NAME
+    // FIND BY NAME,ID
     T findByName(String name);
+    T  findById(int id);
 
     // LIST
-    ArrayList<T> list();
+    List<T> list();
 
     // UPDATE
-    T update(T t);
+    T update(int id, T t);
 
     // DELETE
-    T delete(T t);
+    T delete(int id);
 
-    //CHOOSE
-    public T choose(T t);
+    // CHOOISE
+    void chooise();
 
-    // BODY METHOD
+    // DATABASE CONNECTION
     default Connection getInterfaceConnection() {
         return null;
     }
-
-    // Öğrenci Güncelle
-    StudentDto update(int id, StudentDto studentDto);
-
-    // Öğrenci Sil
-    StudentDto delete(int id);
-
-    // Console Seçim (Öğrenci)
-    void chooise();
 }

@@ -4,62 +4,56 @@ import com.birselepik.dao.IDaoGenerics;
 import com.birselepik.dao.StudentDao;
 import com.birselepik.dto.StudentDto;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StudentController implements IDaoGenerics<StudentDto> {
 
-    // Injection
-    private StudentDao studentDao;
+    // INJECTION
+    private final StudentDao studentDao;
 
     // Parametresiz Constructor
     public StudentController() {
-        studentDao = new StudentDao();
+        this.studentDao = new StudentDao();
     }
 
-
-    /// ///////////////////////////////////////////////////////////
-    // CRUD
+    // CREATE
     @Override
     public StudentDto create(StudentDto studentDto) {
-        return null;
+        return studentDao.create(studentDto);
     }
 
+    // FIND BY NAME
     @Override
     public StudentDto findByName(String name) {
-        return null;
+        return studentDao.findByName(name);
     }
 
     @Override
-    public ArrayList<StudentDto> list() {
+    public StudentDto findById(int id) {
         return null;
     }
 
+    // LIST
     @Override
-    public StudentDto update(StudentDto studentDto) {
-        return null;
+    public List<StudentDto> list() {
+        return studentDao.list();
     }
 
-    @Override
-    public StudentDto delete(StudentDto studentDto) {
-        return null;
-    }
-
-    @Override
-    public StudentDto choose(StudentDto studentDto) {
-        return null;
-    }
-
+    // UPDATE
     @Override
     public StudentDto update(int id, StudentDto studentDto) {
-        return null;
+        return studentDao.update(id, studentDto);
     }
 
+    // DELETE
     @Override
     public StudentDto delete(int id) {
-        return null;
+        return studentDao.delete(id);
     }
 
+    // CHOOISE(Switch-case)
     @Override
     public void chooise() {
+        studentDao.chooise();
     }
 }

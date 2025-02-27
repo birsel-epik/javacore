@@ -20,7 +20,7 @@ import java.util.Date;
 public class StudentDto implements Serializable {
 
     // Serileştirme
-    private static final long serialVersionUID = 5563646556456565465L;
+    private static final long serialVersionUID = 556364655645656546L;
 
     // Field
     private Integer id;
@@ -35,7 +35,7 @@ public class StudentDto implements Serializable {
 
     // static (Nesne boyunca 1 kere oluşturulur)
     static {
-        System.out.println(SpecialColor.BLUE + "static StudentDto Yüklendi" + SpecialColor.RESET);
+        System.out.println(SpecialColor.BLUE+ "static StudentDto Yüklendi"+SpecialColor.RESET);
     }
 
     // Parametresiz Constructor
@@ -50,18 +50,18 @@ public class StudentDto implements Serializable {
         this.midTerm = midTerm;
         this.finalTerm = finalTerm;
         this.birthDate = birthDate;
-        this.createdDate = new Date(System.currentTimeMillis());
-        this.resultTerm = calculateResult();
-        this.eStudentType = eStudentType;
+        this.createdDate= new Date(System.currentTimeMillis());
+        this.resultTerm= calculateResult();
+        this.eStudentType= eStudentType;
     }
 
     // Metotlar
     // Vize ve Final Calculate
     private Double calculateResult() {
-        if (midTerm == null || finalTerm == null)
+        if(midTerm==null || finalTerm==null)
             return 0.0;
         else
-            return (midTerm * 0.4 + finalTerm * 0.6);
+            return (midTerm*0.4+finalTerm*0.6);
     }
 
     // Getter And Setter
@@ -112,7 +112,7 @@ public class StudentDto implements Serializable {
 
     public void setMidTerm(Double midTerm) {
         this.midTerm = midTerm;
-        this.resultTerm = calculateResult();
+        this.resultTerm= calculateResult();
     }
 
     public Double getFinalTerm() {
@@ -121,7 +121,7 @@ public class StudentDto implements Serializable {
 
     public void setFinalTerm(Double finalTerm) {
         this.finalTerm = finalTerm;
-        this.resultTerm = calculateResult();
+        this.resultTerm= calculateResult();
     }
 
     public Double getResultTerm() {
