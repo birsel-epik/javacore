@@ -5,19 +5,19 @@ import java.io.Serializable;
 /**
  *
  *
- * @param persondto
+ * @param personDto
  * @param subject
  * @param yearsOfExperience
  * @param salary
  * TeacherDto bir Record olarak tanımlanmıştır.
  * Record'lar Javada Immutable (değiştirilemez) veri taşıma nesneleridir.
- * Inheritace (Desteklemez) ancak Composition yöntemi ile PersonDto kullanabiliriz.
+ * Inheritance (Desteklemez) ancak Composition yöntemi ile PersonDto kullanabiliriz.
  */
 
 /*
 Dikkat:
 1-) Record => public record Deneme(PARAMETRELER) {}
-2-) Constructor public Deneme {}
+2-) Constructor => ublic Deneme {}
 */
 
 
