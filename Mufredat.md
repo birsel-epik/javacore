@@ -113,15 +113,15 @@ Cumartesi (1 Mart) - 4 Saat
 🚀  5. Hafta 1-Dersi
 Salı (4 Mart) - 3 Saat
 - Record
-- Inner Class
-- Generics (Tür Belirleyici)
-  . Tip güvenliği
-  . Iterator ve ListIterator
-- Genel Örnek: Öğrenci Bilgi Sistem Devam
+- Lamda Expression
 
 
 🚀  5. Hafta 2-Dersi
 Perşembe (6 Mart) - 3 Saat
+- Generics (Tür Belirleyici)
+  . Tip güvenliği
+  . Iterator ve ListIterator
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
 - Koleksiyonlar (Collections) ve Generics
   . Collection Framework Genel Bakış (List, Set, Map)
   . Temel implementasyonlar (ArrayList, LinkedList vb.)
@@ -129,6 +129,8 @@ Perşembe (6 Mart) - 3 Saat
 
 🚀  5. Hafta 3-Dersi
 Cumartesi (8 Mart) - 4 Saat
+- Annotation
+- Inner Class
 - Cipher (AES/DES/RSA/HASHING)
 - Java 8+ Yenilikleri
   . Lambda İfadeleri
@@ -136,7 +138,6 @@ Cumartesi (8 Mart) - 4 Saat
 - Stream API
   . filter, map, reduce gibi fonksiyonlar
 
-  
 ----------------------------------------------------------------------
 ### 6. Hafta
 🚀  6. Hafta 1-Dersi
