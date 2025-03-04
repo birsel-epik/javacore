@@ -107,54 +107,52 @@ Cumartesi (1 Mart) - 4 Saat
   . Dinamik ve Statik Polimorfizm örnekleri
 - Soyutlama (Abstraction)
   . Abstract sınıflar ve arabirimler (interface)
-- Record
-- Inner Class
-- Çoklu İş Parçacığı (Multithreading)
-  . Thread Oluşturma ve Yönetimi
-  . Senkronizasyon
-- - Eşzamanlılık (Concurrency)
-    . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
-    . Concurrency API
-- Cipher (AES/DES/RSA/HASHING)
 
 ----------------------------------------------------------------------
 ### 5. Hafta
 🚀  5. Hafta 1-Dersi
 Salı (4 Mart) - 3 Saat
+- Record
+- Inner Class
 - Generics (Tür Belirleyici)
   . Tip güvenliği
   . Iterator ve ListIterator
 - Genel Örnek: Öğrenci Bilgi Sistem Devam
 
-- Koleksiyonlar (Collections) ve Generics
-  . Collection Framework Genel Bakış (List, Set, Map)
-  . Temel implementasyonlar (ArrayList, LinkedList vb.)
-- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 🚀  5. Hafta 2-Dersi
 Perşembe (6 Mart) - 3 Saat
 - Koleksiyonlar (Collections) ve Generics
   . Collection Framework Genel Bakış (List, Set, Map)
   . Temel implementasyonlar (ArrayList, LinkedList vb.)
-- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 
 🚀  5. Hafta 3-Dersi
 Cumartesi (8 Mart) - 4 Saat
+- Cipher (AES/DES/RSA/HASHING)
 - Java 8+ Yenilikleri
   . Lambda İfadeleri
   . Fonksiyonel Arabirimler
 - Stream API
   . filter, map, reduce gibi fonksiyonlar
-- Method ve Constructor Reference
-  - Optional Sınıfı
-    . Yeni Tarih ve Zaman API (java.time)
 
-    
+  
 ----------------------------------------------------------------------
 ### 6. Hafta
 🚀  6. Hafta 1-Dersi
 Salı (11 Mart) - 3 Saat
+- Method ve Constructor Reference
+  - Optional Sınıfı
+    . Yeni Tarih ve Zaman API (java.time)
+
+- Çoklu İş Parçacığı (Multithreading)
+  . Thread Oluşturma ve Yönetimi
+  . Senkronizasyon
+- - Eşzamanlılık (Concurrency)
+    . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
+    . Concurrency API
+
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 
 🚀  6. Hafta 2-Dersi

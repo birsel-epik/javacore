@@ -8362,474 +8362,6 @@ Toplama sonucu: 8
 Java Enum, sabit değerleri tanımlamak için güçlü bir yapıdır. Sadece sabit listeleri tutmakla kalmaz, aynı zamanda veri ve metotlar içerebilir, dolayısıyla `enum`'lar nesne yönelimli programlamanın avantajlarından yararlanabilir. Enum'ları uygun şekilde kullanarak, hem kodunuzu daha okunabilir hale getirebilir hem de hata riskini minimize edebilirsiniz.
 
 
-## Record
-```sh 
-
-```
----
-# **Java'da Record (Kayıt) Nedir?**
-Java 14 ile birlikte **Record** yapısı tanıtıldı ve Java 16 itibarıyla **tamamen kararlı (stable)** hale geldi. **Record**, özellikle veri taşıma nesneleri (DTO - Data Transfer Object) için optimize edilmiş, **immutable (değiştirilemez)** ve **daha az kod gerektiren** bir veri yapısıdır.
-
-### **Record Neden Kullanılır?**
-Record’lar, özellikle **veri saklamak** ve **bu verilere erişimi sağlamak** amacıyla kullanılan sınıflardır. Geleneksel Java sınıflarına göre avantajları şunlardır:
-- **Daha az kod yazma gereksinimi**: Getter, constructor, `equals()`, `hashCode()` ve `toString()` gibi metotları otomatik olarak oluşturur.
-- **Immutable (Değiştirilemez) yapı**: Bir Record nesnesinin alanları (`fields`) değiştirilemez.
-- **Daha iyi performans**: JVM tarafından optimize edilmiştir.
-
----
-
-## **Record Tanımlama ve Kullanımı**
-Bir **Record** tanımlamak için `record` anahtar kelimesi kullanılır. İçerisinde **field’ları (alanları)** tanımladıktan sonra, Java otomatik olarak **constructor, getter metotları, `equals()`, `hashCode()` ve `toString()` metotlarını oluşturur.**
-
-Örnek:
-```java
-public record Kisi(String ad, int yas) { }
-```
-Bu tanımlama, aşağıdaki klasik sınıfın yaptığı işi otomatik olarak gerçekleştirir:
-
-```java
-public class Kisi {
-    private final String ad;
-    private final int yas;
-
-    public Kisi(String ad, int yas) {
-        this.ad = ad;
-        this.yas = yas;
-    }
-
-    public String getAd() { return ad; }
-    public int getYas() { return yas; }
-
-    @Override
-    public boolean equals(Object o) { /* eşitlik kontrolü */ }
-    
-    @Override
-    public int hashCode() { /* hash hesaplama */ }
-
-    @Override
-    public String toString() { return "Kisi[ad=" + ad + ", yas=" + yas + "]"; }
-}
-```
-**Görüldüğü gibi `record`, büyük miktarda kod yazmayı önlüyor!**
-
----
-
-## **Record Kullanımı**
-Bir `record` nesnesi oluşturma ve kullanma:
-```java
-public class RecordOrnek {
-    public static void main(String[] args) {
-        Kisi kisi = new Kisi("Ahmet", 25);
-        
-        System.out.println(kisi.ad());  // "Ahmet"
-        System.out.println(kisi.yas()); // 25
-        System.out.println(kisi);       // Kisi[ad=Ahmet, yas=25]
-    }
-}
-```
-### **Çıktı:**
-```
-Ahmet
-25
-Kisi[ad=Ahmet, yas=25]
-```
-
----
-
-## **Record Özellikleri**
-### **1. Getter Metotları**
-Record içindeki değişkenlere erişmek için `getter` metotları kullanılır. Ancak, **getter metotlarının adı, değişken adıyla aynıdır** (Yani `getAd()` yerine doğrudan `ad()` kullanılır):
-
-```java
-public record Kitap(String ad, String yazar) { }
-
-public class Test {
-    public static void main(String[] args) {
-        Kitap kitap = new Kitap("1984", "George Orwell");
-        System.out.println(kitap.ad());   // 1984
-        System.out.println(kitap.yazar()); // George Orwell
-    }
-}
-```
-
-### **2. Immutable (Değiştirilemez) Olması**
-Bir `record` nesnesi **değiştirilemez (immutable)** olduğu için, bir nesne oluşturulduktan sonra **alanları değiştirilemez**:
-
-```java
-Kisi kisi = new Kisi("Mehmet", 30);
-kisi.ad = "Ali"; // HATA! Record'lar immutable’dır.
-```
-Bu özellik sayesinde, Record’lar **veri taşıma nesneleri** (DTO) olarak çok güvenlidir.
-
-### **3. equals(), hashCode() ve toString() Otomatik Oluşturulur**
-Record kullanımı ile Java, `equals()`, `hashCode()` ve `toString()` metotlarını otomatik oluşturur.
-
-Örnek:
-```java
-Kisi kisi1 = new Kisi("Ahmet", 25);
-Kisi kisi2 = new Kisi("Ahmet", 25);
-
-System.out.println(kisi1.equals(kisi2)); // true
-System.out.println(kisi1.hashCode()); // Aynı hashCode üretir
-System.out.println(kisi2.hashCode());
-```
-
-**Çıktı:**
-```
-true
-1034248974
-1034248974
-```
-Bu metotlar **içerik bazlı karşılaştırma** yapar, yani iki nesne içindeki **alanlar aynıysa, nesneler eşit kabul edilir.**
-
----
-
-## **Record İçinde Metot Tanımlama**
-Record'lar içinde normal Java sınıflarında olduğu gibi metotlar tanımlanabilir:
-
-```java
-public record Daire(double yariCap) {
-    public double alan() {
-        return Math.PI * yariCap * yariCap;
-    }
-}
-```
-Kullanımı:
-```java
-Daire daire = new Daire(10);
-System.out.println(daire.alan()); // 314.159...
-```
-
----
-
-## **Record İçinde Statik Alan ve Metotlar**
-Record içinde **static alanlar** ve **static metotlar** kullanılabilir:
-
-```java
-public record Araba(String marka, String model) {
-    static String kategori = "Otomobil";
-
-    public static String getKategori() {
-        return kategori;
-    }
-}
-```
-Kullanımı:
-```java
-System.out.println(Araba.getKategori()); // "Otomobil"
-```
-
----
-
-## **Record İçinde Custom Constructor Kullanımı**
-Record'larda **custom constructor (özelleştirilmiş yapıcı metot)** tanımlanabilir.
-
-Örnek:
-```java
-public record Person(String ad, int yas) {
-    public Person {
-        if (yas < 0) {
-            throw new IllegalArgumentException("Yaş negatif olamaz!");
-        }
-    }
-}
-```
-Eğer negatif bir yaş verilirse, `IllegalArgumentException` fırlatılır:
-
-```java
-Person kisi = new Person("Ali", -5); // HATA!
-```
-**Çıktı:**
-```
-Exception in thread "main" java.lang.IllegalArgumentException: Yaş negatif olamaz!
-```
-
----
-
-## **Record ve Interface Kullanımı**
-Record'lar **interface** implement edebilir:
-
-```java
-interface Sekil {
-    double alan();
-}
-
-public record Dikdortgen(double genislik, double yukseklik) implements Sekil {
-    public double alan() {
-        return genislik * yukseklik;
-    }
-}
-```
-Kullanımı:
-```java
-Dikdortgen dikdortgen = new Dikdortgen(10, 5);
-System.out.println(dikdortgen.alan()); // 50.0
-```
-
----
-
-## **Record'ların Kısıtlamaları**
-1. **Değiştirilemez (Immutable) Olması**
-    - Record içindeki değişkenler `final` olduğu için **değiştirilemez**.
-
-2. **Extends Kullanılamaz (Miras Alamaz)**
-    - Record'lar **kalıtım desteklemez** (`extends` kullanamazsınız). Çünkü zaten `final` olarak tanımlıdır.
-
-   ```java
-   public class AltKisi extends Kisi { } // HATA! Record’lar extend edilemez.
-   ```
-
-3. **Lombok'a Alternatif Ama Her Zaman Uygun Değil**
-    - Record, `Lombok` gibi kütüphanelere bir alternatif olsa da **tüm projeler için uygun olmayabilir**. Eğer mutable (değiştirilebilir) veri modelleri gerekiyorsa, klasik `class` kullanımı daha uygun olur.
-
----
-
-## **Sonuç**
-Java Record'lar, özellikle **veri taşıma nesneleri (DTO)** oluşturmak için harika bir özelliktir. Geleneksel `class`'lara kıyasla **daha az kod** yazarak, **immutable** ve **performanslı** veri yapıları oluşturmanızı sağlar. Eğer **kalıtım gerekmiyorsa** ve **sadece veri saklamak istiyorsanız**, Record kullanımı oldukça mantıklıdır.
-
-## Record Örneği
-```sh 
-
-```
----
-
-
-Mevcut kodlarınıza **Java Record** özelliğini eklemek için, `StudentDto` sınıfını bir **Record** olarak yeniden yazabiliriz. Java 14 ile gelen **record** yapısı, sınıfları immutable (değiştirilemez) hale getirir ve **boilerplate kodları** (getter, setter, equals, hashCode, toString) otomatik oluşturur.
-
-### **Güncellenmiş StudentDto.java (Record Kullanımı)**
-Aşağıdaki gibi `StudentDto` sınıfınızı bir **Record** haline getirdim:
-
-```java
-package com.hamitmizrak.project_step2_file;
-
-import com.hamitmizrak.project.step2.EStudentType;
-
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
-
-// Java Record Kullanımı
-public record StudentDto(
-        Integer id,
-        String name,
-        String surname,
-        EStudentType eStudentType, // Enum Öğrenci Türü
-        Double midTerm,      // Vize notu
-        Double finalTerm,    // Final notu
-        Double resultTerm,   // Sonuç Notu: (Vize%40 + Final%60)
-        LocalDate birthDate, // Doğum günü
-        Date createdDate     // Sistem otomatik tarihi
-) implements Serializable {
-
-    // Serileştirme
-    private static final long serialVersionUID = 5563646556456565465L;
-
-    // Constructor (Vize ve Final notuna göre otomatik result hesaplama)
-    public StudentDto(Integer id, String name, String surname, Double midTerm, Double finalTerm, LocalDate birthDate, EStudentType eStudentType) {
-        this(id, name, surname, eStudentType, midTerm, finalTerm, calculateResult(midTerm, finalTerm), birthDate, new Date(System.currentTimeMillis()));
-    }
-
-    // Not hesaplama metodu
-    private static Double calculateResult(Double midTerm, Double finalTerm) {
-        if (midTerm == null || finalTerm == null) return 0.0;
-        return (midTerm * 0.4 + finalTerm * 0.6);
-    }
-}
-```
-
----
-
-### **Neden Record Kullandık? Avantajları Neler?**
-✅ **Immutable (Değiştirilemez) Yapı**: Record nesneleri varsayılan olarak final olduğu için değiştirilemez. Bu da çoklu iş parçacıklı (multithreading) ortamlarda veri bütünlüğünü korur.  
-✅ **Boilerplate Kodları Otomatik Üretiyor**: Getter, toString, equals ve hashCode metodları otomatik olarak tanımlanır, manuel yazmaya gerek yok.  
-✅ **Daha Az Kod**: Geleneksel Java sınıflarında birçok getter/setter tanımlamak yerine, sadece **record** ile ilgili alanları belirterek işlem yapabiliriz.  
-✅ **Veri Taşıma Nesneleri (DTO) için İdeal**: Özellikle veri transferi amacıyla kullanılan nesneler için **record** mükemmel bir seçimdir.  
-✅ **Thread-Safe**: İçeriği değiştirilemez olduğu için **eşzamanlı (concurrent)** çalışmalarda güvenli kullanım sağlar.
-
----
-
-### **Mevcut Sisteme Nasıl Entegre Edilecek?**
-1. **Güncellenmiş `StudentDto.java` dosyanızı ekleyin.**
-2. **`StudentManagementSystem` içinde `StudentDto` nesnesi oluştururken `new StudentDto(...)` yerine doğrudan `new StudentDto(..., ..., ..., ...)` kullanabilirsiniz.**
-3. **Getter metodlarına ihtiyacınız olmayacak.** Örneğin:
-   ```java
-   System.out.println(studentDto.name()); // Eskiden getName() idi
-   ```
-4. **Setter metodları olmadığı için `StudentDto` nesnesi immutable olacak.** Yeni değerlerle bir `StudentDto` nesnesi oluşturmanız gerekecek.
-
----
-
-Bu güncelleme ile kodunuz daha temiz, güvenli ve performanslı hale gelecektir. Record'ları kullanarak kodunuzu daha modern hale getirmiş oldunuz! 🚀
-
-
-## Record Dezavantajları
-```sh 
-
-```
----
-
-### **Java Record Kullanmanın Dezavantajları**
-Java'da **record** kullanımı birçok avantaj sağlasa da, bazı durumlarda **klasik sınıflara göre bazı dezavantajları** olabilir. İşte bu dezavantajlar:
-
----
-
-## **1. Immutable (Değiştirilemez) Yapı**
-**❌ Dezavantaj:**
-- `record` nesneleri değiştirilemez (immutable) olduğu için, bir alanın güncellenmesi gerektiğinde **yeni bir nesne oluşturmak** zorundayız.
-- Büyük veri nesnelerinde, **her güncelleme için yeni bir nesne yaratılması performans kaybına** yol açabilir.
-
-**Örnek:**
-```java
-StudentDto student = new StudentDto(1, "Ali", "Veli", 50.0, 80.0, LocalDate.of(2000, 5, 10), EStudentType.UNDERGRADUATE);
-student.name = "Ahmet"; // ❌ Derleme hatası! Record'lar değiştirilemez.
-```
-**Çözüm:**
-- Değişiklik gerektiğinde, eski nesne yerine yeni bir `StudentDto` oluşturmalısınız:
-```java
-StudentDto updatedStudent = new StudentDto(student.id(), "Ahmet", student.surname(), student.midTerm(), student.finalTerm(), student.birthDate(), student.eStudentType());
-```
-Bu, özellikle sık güncellenen nesnelerde **gereksiz bellek kullanımı (memory overhead)** ve **GC (Garbage Collection) yükü** oluşturabilir.
-
----
-
-## **2. Kalıtımı (Inheritance) Desteklemez**
-**❌ Dezavantaj:**
-- `record` sınıfları **kalıtımı desteklemez** (`extends` kullanamazsınız).
-- Java’da OOP prensiplerine uyan klasik sınıflarda **bir temel sınıfı (base class) genişletebilirken**, `record` kullanarak bunu yapamazsınız.
-
-**Örnek:**
-```java
-public record StudentDto(Integer id, String name) extends Person { } // ❌ Hata! Record'lar kalıtım desteklemez.
-```
-**Çözüm:**
-- Eğer miras almanız gereken bir sınıf varsa, klasik bir **sınıf (class)** kullanmalısınız.
-- Ancak `record`, **interface (arayüz) uygulayabilir**:
-```java
-public record StudentDto(Integer id, String name) implements Serializable { }
-```
-
----
-
-## **3. Getter ve Setter Özelleştirememe**
-**❌ Dezavantaj:**
-- `record` otomatik olarak `getter` metotları oluşturur. Ancak, bu metotların adını değiştiremez veya özelleştiremezsiniz.
-- Setter metodu olmadığı için, özel validasyon (doğrulama) ekleyemezsiniz.
-
-**Örnek:**
-```java
-public record StudentDto(Integer id, String name) {
-    public String getFullName() { // ❌ Klasik getter metodu yazamazsınız!
-        return name();
-    }
-}
-```
-**Çözüm:**
-- Özel bir metot tanımlayabilirsiniz ama `getter` adlarını değiştiremezsiniz.
-```java
-public record StudentDto(Integer id, String name) {
-    public String fullName() {  // ✅ Getter değil, normal bir metod!
-        return name.toUpperCase();
-    }
-}
-```
----
-
-## **4. Büyük Veriler İçin Performans Sorunları**
-**❌ Dezavantaj:**
-- `record` nesneleri immutable olduğu için, **büyük veri yapılarında gereksiz kopyalama (copying overhead)** oluşabilir.
-- Çok fazla alan içeren bir `record`, her değişiklikte **yeni bir nesne oluşturduğu için bellek tüketimi artabilir**.
-
-**Örnek:**
-```java
-StudentDto student1 = new StudentDto(1, "Ali", "Veli", 50.0, 80.0, LocalDate.of(2000, 5, 10), EStudentType.UNDERGRADUATE);
-StudentDto student2 = new StudentDto(student1.id(), student1.name(), student1.surname(), 55.0, student1.finalTerm(), student1.birthDate(), student1.eStudentType());
-```
-Burada, sadece `midTerm` değiştirilecek ama **tamamen yeni bir nesne oluşturuluyor**. Eğer milyonlarca `StudentDto` nesneniz varsa, bu **bellek (heap) yükü** oluşturabilir.
-
-**Çözüm:**
-- Eğer sık güncelleme gerektiren nesneleriniz varsa, `record` yerine klasik **mutable sınıflar** kullanın.
-
----
-
-## **5. Varsayılan Constructor Kısıtlamaları**
-**❌ Dezavantaj:**
-- `record`’lar, varsayılan olarak **tüm alanları parametre olarak almak zorundadır**.
-- Varsayılan (default) bir constructor tanımlamak ve bazı değerleri atlamak zordur.
-
-**Örnek:**
-```java
-public record StudentDto(Integer id, String name) {
-    public StudentDto() {  // ❌ Hata! Parametresiz constructor desteklenmez.
-        this(0, "Bilinmeyen");
-    }
-}
-```
-**Çözüm:**
-- `record` içinde, özel bir constructor tanımlayabilirsiniz ama **tüm alanları mutlaka vermeniz gerekir**.
-```java
-public record StudentDto(Integer id, String name) {
-    public StudentDto() {
-        this(0, "Bilinmeyen"); // ✅ Geçerli constructor
-    }
-}
-```
-
----
-
-## **6. Özel İşlevsellik (Business Logic) İçin Kısıtlamalar**
-**❌ Dezavantaj:**
-- `record` nesneleri **veri taşıma (DTO)** amacıyla tasarlandığı için, içinde **fazla iş mantığı (business logic) barındırmak uygun değildir**.
-- Eğer bir sınıfta iş mantığı (örneğin, **not hesaplama, validasyon, iş kuralları**) barındırmak istiyorsanız, **record yerine klasik sınıfları kullanmanız daha uygundur**.
-
-**Örnek:**
-```java
-public record StudentDto(Integer id, String name, Double midTerm, Double finalTerm) {
-    public Double calculateResult() { // ✅ İş mantığı ekleyebiliriz ama önerilmez.
-        return (midTerm * 0.4) + (finalTerm * 0.6);
-    }
-}
-```
-Burada küçük hesaplamalar yapabiliriz, ancak `record`'lar büyük iş mantıklarını içermemelidir.
-
-**Çözüm:**
-- İş mantıklarını başka bir hizmet (service) sınıfına taşıyın:
-```java
-public class StudentService {
-    public static Double calculateResult(StudentDto student) {
-        return (student.midTerm() * 0.4) + (student.finalTerm() * 0.6);
-    }
-}
-```
-
----
-
-## **Sonuç: Record Kullanmalı mıyım?**
-| **Özellik**               | **Record Kullanımı Uygun** | **Record Kullanımı Uygun Değil** |
-|---------------------------|---------------------------|---------------------------------|
-| **Immutable nesne**       | ✅ Evet                   | ❌ Hayır                        |
-| **DTO veya Veri Modeli**  | ✅ Evet                   | ❌ Hayır                        |
-| **Kapsamlı iş mantığı**   | ❌ Hayır                  | ✅ Evet                         |
-| **Kalıtım (Inheritance)** | ❌ Hayır                  | ✅ Evet                         |
-| **Sık güncellenen nesneler** | ❌ Hayır              | ✅ Evet                         |
-| **Getter/Setter özelleştirme** | ❌ Hayır          | ✅ Evet                         |
-
-### **Kullanmalısınız Eğer:**
-✅ **DTO (Data Transfer Object) gibi basit veri taşıma sınıfları** oluşturuyorsanız.  
-✅ **Immutable nesneler istiyorsanız** ve değişiklik gerekmiyorsa.  
-✅ **Kısa ve temiz kod yazmak istiyorsanız**.
-
-### **Kullanmamalısınız Eğer:**
-❌ **Veri değiştirmeniz (mutable nesneler) gerekiyorsa**.  
-❌ **Kapsamlı iş mantıkları barındıran bir sınıf oluşturuyorsanız**.  
-❌ **Büyük nesneler oluşturup sık güncelliyorsanız**, bellek yönetimi açısından sorun yaratabilir.  
-❌ **Kalıtım (inheritance) kullanmanız gerekiyorsa**.
-
----
-
-### **Genel Değerlendirme**
-- Küçük ve **basit veri sınıfları** için **Record** harika bir seçimdir. ✅
-- Büyük, sık değiştirilen veya **iş mantığı içeren sınıflar** için **klasik sınıflar daha iyi bir seçenektir**. 🚀
-
 ## Inner Class
 ```sh 
 
@@ -9699,137 +9231,6 @@ Java'da **MVC mimarisi**, uygulamaların sürdürülebilirliğini ve genişletil
 
 Bu mimariyi kullanarak, hem masaüstü hem de web tabanlı uygulamalar geliştirebilirsiniz! 🚀
 
-## Interface Nedir ?
-```sh 
-
-```
----
-
-# **Java'da Interface (Arayüz) Nedir?**
-Java'da **interface (arayüz)**, bir sınıfın uygulayabileceği bir **sözleşmeyi (contract)** tanımlayan bir yapıdır. Interface, bir sınıfın belirli metodları uygulamasını garanti eder, ancak metodların içeriğini (implementasyonunu) belirlemez. Yani, bir interface sadece metod imzalarını tanımlar ve bu metodları uygulayan sınıflar, bu metodları kendilerine uygun şekilde doldurmalıdır.
-
-Java'daki interface'ler **çoklu kalıtımı (multiple inheritance)** desteklemek ve **bağımsız modüler kod yazılmasını** sağlamak için kullanılır. **Polimorfizm (çok biçimlilik)** ve **bağımsızlık (decoupling)** gibi nesne yönelimli programlama (OOP) prensiplerini destekler.
-
----
-
-## **1. Interface Tanımı ve Kullanımı**
-### **Temel Interface Tanımı**
-Bir interface, **`interface`** anahtar kelimesiyle tanımlanır. İçinde **soyut (abstract) metodlar** ve **sabit değişkenler (constants)** barındırabilir.
-
-```java
-interface Animal {
-    void eat();  // Soyut metod
-    void sleep();
-}
-```
-- **Metodlar:** Varsayılan olarak **public ve abstract** olur, bu yüzden `public abstract` yazmaya gerek yoktur.
-- **Değişkenler:** Interface içindeki tüm değişkenler varsayılan olarak **public, static ve final** olur.
-
----
-
-## **2. Interface Kullanımı (Implement Edilmesi)**
-Bir sınıf, **`implements`** anahtar kelimesini kullanarak bir interface'i uygular (implement eder).
-
-### **Örnek: Bir Interface’i Uygulama**
-```java
-interface Animal {
-    void eat();
-    void sleep();
-}
-
-// Dog sınıfı, Animal interface'ini uyguluyor.
-class Dog implements Animal {
-    @Override
-    public void eat() {
-        System.out.println("Köpek yemek yiyor.");
-    }
-
-    @Override
-    public void sleep() {
-        System.out.println("Köpek uyuyor.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Dog dog = new Dog();
-        dog.eat();  // Çıktı: Köpek yemek yiyor.
-        dog.sleep(); // Çıktı: Köpek uyuyor.
-    }
-}
-```
-Burada:
-- **`Dog` sınıfı**, `Animal` interface'ini uygulamak zorunda olduğu için `eat()` ve `sleep()` metodlarını tanımlamak zorundadır.
-- Eğer bir sınıf, bir interface’i uygular ancak tüm metodlarını tanımlamazsa, **abstract** olarak işaretlenmelidir.
-
----
-
-## **3. Interface İçinde Değişkenler (Sabitler)**
-Bir interface içinde tanımlanan değişkenler, **otomatik olarak public, static ve final olur**. Yani interface içindeki değişkenler **sabit (constant)** değerlerdir.
-
-### **Örnek: Interface İçinde Sabit Kullanımı**
-```java
-interface MathConstants {
-    double PI = 3.141592653589793; // public, static, final olarak kabul edilir.
-}
-
-// PI değerini kullanan bir sınıf
-class Circle {
-    public double getArea(double radius) {
-        return MathConstants.PI * radius * radius;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Circle circle = new Circle();
-        System.out.println("Dairenin Alanı: " + circle.getArea(5));
-    }
-}
-```
-**Önemli Not:** Interface içindeki değişkenler **değiştirilemez**, çünkü **final** olarak kabul edilir.
-
----
-
-## **4. Çoklu Kalıtım (Multiple Inheritance) ve Interface**
-Java, **class’lar arasında çoklu kalıtımı (multiple inheritance) desteklemez**, ancak birden fazla interface uygulamaya izin verir. Bu, kodun daha esnek ve modüler olmasını sağlar.
-
-### **Örnek: Bir Sınıfın Birden Fazla Interface’i Uygulaması**
-```java
-interface Flyable {
-    void fly();
-}
-
-interface Swimmable {
-    void swim();
-}
-
-class Bird implements Flyable, Swimmable {
-    @Override
-    public void fly() {
-        System.out.println("Kuş uçuyor.");
-    }
-
-    @Override
-    public void swim() {
-        System.out.println("Kuş yüzebiliyor.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Bird bird = new Bird();
-        bird.fly();  // Çıktı: Kuş uçuyor.
-        bird.swim(); // Çıktı: Kuş yüzebiliyor.
-    }
-}
-```
-**Burada:**
-- `Bird` sınıfı hem `Flyable` hem de `Swimmable` interface’ini uyguluyor.
-- Java, birden fazla interface uygulamayı desteklediği için `Bird` sınıfı birden fazla interface'in metodlarını yazabiliyor.
-
----
-
 ## **5. Java 8 ve Sonrasında Interface Geliştirmeleri**
 Java 8 ile birlikte **interface'ler artık gövdesi olan metotlara sahip olabilir**. Bunlar:
 1. **Default Metodlar** (default methods)
@@ -9974,17 +9375,358 @@ Bu yüzden sizin kodunuzda **CSV formatı**, öğrencileri dosyaya yazmak ve tek
 👉 **Öğrenci bilgilerini bir satır olarak kaydediyor ve tekrar nesneye dönüştürüyor.** 🚀
 
 
+## Interface Nedir ?
+```sh 
+
+```
+---
+
+# **Java'da Interface (Arayüz) Nedir?**
+Java'da **interface (arayüz)**, bir sınıfın uygulayabileceği bir **sözleşmeyi (contract)** tanımlayan bir yapıdır. Interface, bir sınıfın belirli metodları uygulamasını garanti eder, ancak metodların içeriğini (implementasyonunu) belirlemez. Yani, bir interface sadece metod imzalarını tanımlar ve bu metodları uygulayan sınıflar, bu metodları kendilerine uygun şekilde doldurmalıdır.
+
+Java'daki interface'ler **çoklu kalıtımı (multiple inheritance)** desteklemek ve **bağımsız modüler kod yazılmasını** sağlamak için kullanılır. **Polimorfizm (çok biçimlilik)** ve **bağımsızlık (decoupling)** gibi nesne yönelimli programlama (OOP) prensiplerini destekler.
+
+---
+
+## **1. Interface Tanımı ve Kullanımı**
+### **Temel Interface Tanımı**
+Bir interface, **`interface`** anahtar kelimesiyle tanımlanır. İçinde **soyut (abstract) metodlar** ve **sabit değişkenler (constants)** barındırabilir.
+
+```java
+interface Animal {
+    void eat();  // Soyut metod
+    void sleep();
+}
+```
+- **Metodlar:** Varsayılan olarak **public ve abstract** olur, bu yüzden `public abstract` yazmaya gerek yoktur.
+- **Değişkenler:** Interface içindeki tüm değişkenler varsayılan olarak **public, static ve final** olur.
+
+---
+
+## **2. Interface Kullanımı (Implement Edilmesi)**
+Bir sınıf, **`implements`** anahtar kelimesini kullanarak bir interface'i uygular (implement eder).
+
+### **Örnek: Bir Interface’i Uygulama**
+```java
+interface Animal {
+    void eat();
+    void sleep();
+}
+
+// Dog sınıfı, Animal interface'ini uyguluyor.
+class Dog implements Animal {
+    @Override
+    public void eat() {
+        System.out.println("Köpek yemek yiyor.");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Köpek uyuyor.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();  // Çıktı: Köpek yemek yiyor.
+        dog.sleep(); // Çıktı: Köpek uyuyor.
+    }
+}
+```
+Burada:
+- **`Dog` sınıfı**, `Animal` interface'ini uygulamak zorunda olduğu için `eat()` ve `sleep()` metodlarını tanımlamak zorundadır.
+- Eğer bir sınıf, bir interface’i uygular ancak tüm metodlarını tanımlamazsa, **abstract** olarak işaretlenmelidir.
+
+---
+
+## **3. Interface İçinde Değişkenler (Sabitler)**
+Bir interface içinde tanımlanan değişkenler, **otomatik olarak public, static ve final olur**. Yani interface içindeki değişkenler **sabit (constant)** değerlerdir.
+
+### **Örnek: Interface İçinde Sabit Kullanımı**
+```java
+interface MathConstants {
+    double PI = 3.141592653589793; // public, static, final olarak kabul edilir.
+}
+
+// PI değerini kullanan bir sınıf
+class Circle {
+    public double getArea(double radius) {
+        return MathConstants.PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        System.out.println("Dairenin Alanı: " + circle.getArea(5));
+    }
+}
+```
+**Önemli Not:** Interface içindeki değişkenler **değiştirilemez**, çünkü **final** olarak kabul edilir.
+
+---
+
+## **4. Çoklu Kalıtım (Multiple Inheritance) ve Interface**
+Java, **class’lar arasında çoklu kalıtımı (multiple inheritance) desteklemez**, ancak birden fazla interface uygulamaya izin verir. Bu, kodun daha esnek ve modüler olmasını sağlar.
+
+### **Örnek: Bir Sınıfın Birden Fazla Interface’i Uygulaması**
+```java
+interface Flyable {
+    void fly();
+}
+
+interface Swimmable {
+    void swim();
+}
+
+class Bird implements Flyable, Swimmable {
+    @Override
+    public void fly() {
+        System.out.println("Kuş uçuyor.");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Kuş yüzebiliyor.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird = new Bird();
+        bird.fly();  // Çıktı: Kuş uçuyor.
+        bird.swim(); // Çıktı: Kuş yüzebiliyor.
+    }
+}
+```
+**Burada:**
+- `Bird` sınıfı hem `Flyable` hem de `Swimmable` interface’ini uyguluyor.
+- Java, birden fazla interface uygulamayı desteklediği için `Bird` sınıfı birden fazla interface'in metodlarını yazabiliyor.
+
+---
+
+
 ## Kalıtım Nedir ?
 ```sh 
 
 ```
 ---
+## **Java'da Kalıtım (Inheritance) Nedir?**
 
-## Abstract Nedir ?
-```sh 
+**Kalıtım (Inheritance)**, nesne yönelimli programlamada (OOP) en temel kavramlardan biridir. Kalıtım, bir sınıfın (class), başka bir sınıfın özelliklerini (alanlarını/field) ve davranışlarını (metotlarını) miras almasını sağlar. Java'da kalıtım, **code reusability (kod tekrar kullanımı)** ve **hiyerarşik organizasyon** sağlamak için kullanılır.
 
-```
 ---
+
+## **1. Kalıtımın Temel Mantığı**
+Bir **alt sınıf (subclass, child class)**, bir **üst sınıftan (superclass, parent class)** miras alır. Alt sınıf, üst sınıfta tanımlanan değişkenleri ve metotları tekrar yazmaya gerek kalmadan kullanabilir ve üzerine yeni özellikler ekleyebilir.
+
+Java'da bir sınıf başka bir sınıfı miras almak için **`extends`** anahtar kelimesini kullanır.
+
+### **Örnek: Basit Kalıtım**
+```java
+// Üst sınıf (Parent / Superclass)
+class Hayvan {
+    String isim;
+
+    void sesCikar() {
+        System.out.println("Hayvan ses çıkarıyor...");
+    }
+}
+
+// Alt sınıf (Child / Subclass)
+class Kedi extends Hayvan {
+    void miyavla() {
+        System.out.println("Kedi miyavlıyor: Miyav Miyav!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Kedi kedi = new Kedi();
+        kedi.isim = "Pamuk"; // Üst sınıftan miras alınan özellik
+        kedi.sesCikar();  // Üst sınıftan miras alınan metot
+        kedi.miyavla();  // Alt sınıfa özgü metot
+
+        System.out.println("Kedinin Adı: " + kedi.isim);
+    }
+}
+```
+### **Çıktı:**
+```
+Hayvan ses çıkarıyor...
+Kedi miyavlıyor: Miyav Miyav!
+Kedinin Adı: Pamuk
+```
+
+---
+
+## **2. Kalıtım Türleri**
+Java'da **çoklu kalıtım (multiple inheritance)** **sınıflar arasında desteklenmez**, ancak farklı türde kalıtımlar vardır:
+
+### **A. Tekli Kalıtım (Single Inheritance)**
+Bir sınıfın yalnızca **bir** sınıftan miras almasıdır.
+```java
+class A { /* ... */ }
+class B extends A { /* ... */ } // B sınıfı, A sınıfından türedi.
+```
+
+### **B. Çok Katmanlı Kalıtım (Multilevel Inheritance)**
+Bir sınıf, başka bir sınıftan türemiş bir sınıfı miras alır. **A → B → C** şeklinde bir zincir oluşur.
+```java
+class A {
+    void mesaj() {
+        System.out.println("Bu A sınıfı.");
+    }
+}
+
+class B extends A { }
+
+class C extends B { }
+
+public class Main {
+    public static void main(String[] args) {
+        C c = new C();
+        c.mesaj(); // A sınıfından miras alındı
+    }
+}
+```
+### **Çıktı:**
+```
+Bu A sınıfı.
+```
+
+### **C. Hiyerarşik Kalıtım (Hierarchical Inheritance)**
+Birden fazla alt sınıfın aynı üst sınıftan türemesi durumudur.
+```java
+class Hayvan {
+    void beslen() {
+        System.out.println("Hayvan besleniyor...");
+    }
+}
+
+class Kedi extends Hayvan {
+    void miyavla() {
+        System.out.println("Kedi miyavlıyor.");
+    }
+}
+
+class Köpek extends Hayvan {
+    void havla() {
+        System.out.println("Köpek havlıyor.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Kedi kedi = new Kedi();
+        kedi.beslen();
+        kedi.miyavla();
+
+        Köpek kopek = new Köpek();
+        kopek.beslen();
+        kopek.havla();
+    }
+}
+```
+### **Çıktı:**
+```
+Hayvan besleniyor...
+Kedi miyavlıyor.
+Hayvan besleniyor...
+Köpek havlıyor.
+```
+
+### **D. Java'da Çoklu Kalıtım (Multiple Inheritance) Desteklenmez**
+Java, **class** düzeyinde **çoklu kalıtımı** desteklemez. Çünkü **birden fazla üst sınıftan aynı isimde metodlar miras alınırsa** bir çakışma (ambiguity) sorunu ortaya çıkar.
+
+---
+
+## **3. `super` Anahtar Kelimesi**
+**`super`**, alt sınıftan üst sınıfa erişmek için kullanılır.
+
+- **Üst sınıfın constructor'ını çağırmak için**: `super(parametreler)`
+- **Üst sınıfın metodunu çağırmak için**: `super.metodAdi()`
+- **Üst sınıfın değişkenine erişmek için**: `super.degiskenAdi`
+
+### **Örnek: `super` Kullanımı**
+```java
+class Hayvan {
+    String isim = "Genel Hayvan";
+
+    void sesCikar() {
+        System.out.println("Hayvan sesi çıkarıyor...");
+    }
+}
+
+class Kedi extends Hayvan {
+    String isim = "Kedi";
+
+    void sesCikar() {
+        super.sesCikar(); // Üst sınıfın metodunu çağırır
+        System.out.println("Miyav Miyav!");
+    }
+
+    void yazdir() {
+        System.out.println("Alt sınıftaki isim: " + isim);
+        System.out.println("Üst sınıftaki isim: " + super.isim);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Kedi kedi = new Kedi();
+        kedi.sesCikar();
+        kedi.yazdir();
+    }
+}
+```
+### **Çıktı:**
+```
+Hayvan sesi çıkarıyor...
+Miyav Miyav!
+Alt sınıftaki isim: Kedi
+Üst sınıftaki isim: Genel Hayvan
+```
+
+---
+
+## **4. `final` Anahtar Kelimesi ile Kalıtım Kısıtlaması**
+**`final`** anahtar kelimesiyle bir sınıfın veya metodun miras alınması engellenebilir:
+
+### **A. `final` ile Sınıfın Miras Alınmasını Engelleme**
+```java
+final class Hayvan { } 
+
+class Kedi extends Hayvan { } // HATA: 'Hayvan' miras alınamaz!
+```
+
+### **B. `final` ile Metodun Override Edilmesini Engelleme**
+```java
+class Hayvan {
+    final void sesCikar() {
+        System.out.println("Hayvan sesi çıkarıyor...");
+    }
+}
+
+class Kedi extends Hayvan {
+    void sesCikar() { // HATA: final metod override edilemez!
+        System.out.println("Miyav Miyav!");
+    }
+}
+```
+
+---
+
+## **Sonuç**
+- **Kalıtım**, **kod tekrarını azaltır** ve **daha düzenli kod yazmayı sağlar**.
+- **`extends` anahtar kelimesi** ile miras alınır.
+- **`super` anahtar kelimesi** üst sınıfın özelliklerine/metotlarına erişmek için kullanılır.
+- **`final` anahtar kelimesi**, miras alınmayı veya metodun override edilmesini engelleyebilir.
+- Java **çoklu kalıtımı desteklemez**, ancak **hiyerarşik ve çok katmanlı kalıtım** mümkündür.
+
+Bu bilgilerle, Java'da kalıtımı verimli bir şekilde kullanabilir ve OOP prensiplerini daha iyi anlayabilirsiniz! 🚀
+
 
 ## Polymorphism Nedir ?
 ```sh 
@@ -9992,6 +9734,1414 @@ Bu yüzden sizin kodunuzda **CSV formatı**, öğrencileri dosyaya yazmak ve tek
 ```
 ---
 
+# **Java'da Polymorphism (Çok Biçimlilik) Nedir?**
+
+**Polymorphism (Çok Biçimlilik)**, nesne yönelimli programlamanın (OOP) en önemli kavramlarından biridir. **"Poly" (çok) ve "Morph" (biçim)"** kelimelerinden türemiştir. **Aynı isimli bir metodun, farklı şekillerde davranabilmesini sağlar**. Bu sayede, **kod tekrarını azaltır**, **esneklik sağlar** ve **bakımı kolaylaştırır**.
+
+Java'da **Polymorphism** iki şekilde gerçekleşir:
+1. **Metot Overloading (Metot Aşırı Yükleme) → Compile-time Polymorphism**
+2. **Metot Overriding (Metot Geçersiz Kılma) → Runtime Polymorphism**
+
+---
+
+## **1. Compile-Time Polymorphism (Derleme Zamanı Polymorphism - Metot Overloading)**
+Bu tür **polymorphism**, **aynı isimde bir metodun farklı parametreler ile tanımlanmasıyla** elde edilir. Derleme zamanında hangi metodun çağrılacağı bellidir.
+
+### **Metot Overloading (Metot Aşırı Yükleme)**
+- Aynı sınıf içinde **aynı isimli metodun farklı parametreler** ile tanımlanmasıdır.
+- **Dönüş tipi değişse bile**, sadece dönüş tipinin değişmesi **overloading için yeterli değildir**.
+- **JVM (Java Virtual Machine) hangi metodun çağrılacağını derleme (compile-time) sırasında belirler.**
+
+### **Örnek 1: Metot Overloading**
+```java
+class HesapMakinesi {
+    // İki sayıyı toplama metodu
+    int topla(int a, int b) {
+        return a + b;
+    }
+
+    // Üç sayıyı toplama metodu (Aynı isim, farklı parametre sayısı)
+    int topla(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Ondalıklı sayıları toplama metodu (Aynı isim, farklı parametre türü)
+    double topla(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        HesapMakinesi h = new HesapMakinesi();
+
+        System.out.println(h.topla(5, 10));        // 15
+        System.out.println(h.topla(5, 10, 20));    // 35
+        System.out.println(h.topla(3.5, 2.5));     // 6.0
+    }
+}
+```
+### **Çıktı:**
+```
+15
+35
+6.0
+```
+> **Not:** Java, hangi metodun çalıştırılacağını **parametre türlerine ve sayısına göre** derleme zamanında belirler.
+
+---
+
+## **2. Runtime Polymorphism (Çalışma Zamanı Polymorphism - Metot Overriding)**
+Bu tür **polymorphism**, **alt sınıfın (subclass), üst sınıftan (superclass) aldığı bir metodu kendi içinde tekrar tanımlamasıyla** sağlanır. **Hangi metodun çağrılacağı çalışma zamanında belirlenir.**
+
+### **Metot Overriding (Metot Geçersiz Kılma)**
+- **Üst sınıfta (parent class) tanımlı bir metodun, alt sınıfta (child class) tekrar tanımlanmasıdır.**
+- **Metod ismi, dönüş tipi ve parametre listesi aynı olmalıdır.**
+- **Alt sınıfta metodun davranışı değiştirilebilir.**
+- **Overriding işlemi için `@Override` anotasyonu kullanılır (zorunlu değildir ama önerilir).**
+- **Polymorphism sayesinde, bir üst sınıf referansı ile alt sınıf nesneleri çağrılabilir.**
+
+### **Örnek 2: Metot Overriding**
+```java
+class Hayvan {
+    void sesCikar() {
+        System.out.println("Hayvan ses çıkarıyor...");
+    }
+}
+
+class Kedi extends Hayvan {
+    @Override
+    void sesCikar() {
+        System.out.println("Miyav Miyav!");
+    }
+}
+
+class Köpek extends Hayvan {
+    @Override
+    void sesCikar() {
+        System.out.println("Hav Hav!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Hayvan h1 = new Kedi();  // Üst sınıf referansı ile alt sınıf nesnesi
+        Hayvan h2 = new Köpek(); // Üst sınıf referansı ile alt sınıf nesnesi
+
+        h1.sesCikar(); // Çalışma zamanında "Miyav Miyav!" çalışır
+        h2.sesCikar(); // Çalışma zamanında "Hav Hav!" çalışır
+    }
+}
+```
+### **Çıktı:**
+```
+Miyav Miyav!
+Hav Hav!
+```
+> **Not:** `h1` ve `h2` nesneleri **üst sınıfın (Hayvan) referansı ile tanımlandı**, ancak **alt sınıfların (Kedi, Köpek) metodları çalıştırıldı**. İşte bu çalışma zamanı polymorphism'idir.
+
+---
+
+## **3. Polymorphism'in Faydaları**
+1. **Kod tekrarını azaltır ve yeniden kullanılabilirliği artırır.**
+2. **Esnek ve ölçeklenebilir kod yazmayı sağlar.**
+3. **İlerleyen seviyede "Abstraction" ve "Interface" ile birlikte güçlü tasarımlar oluşturulmasını sağlar.**
+
+---
+
+## **4. `super` Anahtar Kelimesi ile Overriding Kullanımı**
+Bir alt sınıfta, **üst sınıfın metodunu çağırmak için** `super.metodAdi()` kullanılır.
+
+### **Örnek 3: `super` ile Overriding**
+```java
+class Arac {
+    void hizGoster() {
+        System.out.println("Araç hız gösteriyor...");
+    }
+}
+
+class Araba extends Arac {
+    @Override
+    void hizGoster() {
+        super.hizGoster(); // Üst sınıfın metodunu çağırır
+        System.out.println("Araba 120 km/h hız gösteriyor.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Araba araba = new Araba();
+        araba.hizGoster();
+    }
+}
+```
+### **Çıktı:**
+```
+Araç hız gösteriyor...
+Araba 120 km/h hız gösteriyor.
+```
+---
+
+## **5. `final` ile Polymorphism'i Kısıtlama**
+Java'da `final` anahtar kelimesi kullanılarak bir metodun **override edilmesi engellenebilir**.
+
+### **Örnek 4: `final` ile Overriding Engelleme**
+```java
+class Hayvan {
+    final void sesCikar() {
+        System.out.println("Hayvan sesi çıkarıyor...");
+    }
+}
+
+class Kedi extends Hayvan {
+    // @Override
+    // void sesCikar() { // HATA! final metod override edilemez
+    //     System.out.println("Miyav Miyav!");
+    // }
+}
+```
+> `sesCikar` metodu `final` olduğu için **Kedi sınıfında değiştirilemez (override edilemez).**
+
+---
+
+## **Özet**
+| Polymorphism Türü | Açıklama | Kullanılan Teknik |
+|-------------------|----------|------------------|
+| **Compile-time Polymorphism** | Aynı sınıf içinde aynı isimde metodlar, farklı parametrelerle tanımlanır. | **Method Overloading (Metot Aşırı Yükleme)** |
+| **Runtime Polymorphism** | Üst sınıftaki bir metod, alt sınıfta tekrar tanımlanır ve çalışma zamanında çağrılır. | **Method Overriding (Metot Geçersiz Kılma)** |
+
+### **Sonuç**
+- **Overloading**, aynı metodun **farklı parametrelerle** tanımlanmasını sağlar.
+- **Overriding**, alt sınıfların **üst sınıf metodlarını değiştirerek özelleştirmesine** olanak tanır.
+- **Polymorphism**, kodu daha **esnek, yönetilebilir ve genişletilebilir** hale getirir.
+
+Bu kavramlar Java'nın temel prensiplerinden biridir ve yazılım geliştirmede büyük avantajlar sağlar. 🚀
+
+
+## Abstract Nedir ?
+```sh 
+
+```
+---
+
+# **Java'da Abstract Nedir? (Detaylı Açıklama)**
+
+Java'da **abstract** kelimesi, "soyut" anlamına gelir ve nesne yönelimli programlamada (OOP - Object Oriented Programming) kullanılan önemli bir kavramdır. Java'da **abstract sınıflar (abstract class)** ve **abstract metotlar (abstract methods)**, kodun daha esnek ve yeniden kullanılabilir olmasını sağlamak için kullanılır.
+
+Bu yazıda, **abstract** kavramını en ince detayına kadar inceleyeceğiz.
+
+---
+
+## **1. Java'da Abstract Sınıf (Abstract Class) Nedir?**
+### **Tanım:**
+- **Abstract sınıf**, doğrudan bir nesnesi oluşturulamayan (instantiate edilemeyen) ve alt sınıflar tarafından miras alınması gereken bir sınıftır.
+- İçinde **abstract (soyut) metotlar** ve **normal metotlar** bulunabilir.
+- **Abstract metotlar**, gövdesi olmayan (sadece tanımı yapılan) metotlardır. Alt sınıflar tarafından **override (ezilerek uygulanması)** zorunludur.
+
+### **Örnek Durum:**
+Gerçek dünyadan bir örnek düşünelim:
+- "Hayvan" genel bir kavramdır. Ancak bir **"Hayvan" nesnesi oluşturamayız** çünkü hayvanın türü belli değildir.
+- Ancak **"Kedi", "Köpek" gibi türetilmiş sınıflar** oluşturabiliriz.
+- İşte bu noktada, **"Hayvan" sınıfını abstract olarak tanımlarız** ve alt sınıfların ("Kedi", "Köpek") bu yapıyı kullanmasını sağlarız.
+
+---
+
+## **2. Java'da Abstract Sınıf Kullanımı (Örnekler ve Açıklamalar)**
+
+### **2.1 Basit Bir Abstract Sınıf Örneği**
+```java
+// Abstract sınıf oluşturuluyor
+abstract class Hayvan {
+    // Abstract metod (gövdesi yok, alt sınıflar implement etmek zorunda)
+    abstract void sesCikar();
+    
+    // Normal metod (gövdesi var, alt sınıflar miras alabilir)
+    void yasamDongusu() {
+        System.out.println("Bütün hayvanlar doğar, büyür ve ölür.");
+    }
+}
+
+// Kedi sınıfı, Hayvan sınıfından miras alıyor
+class Kedi extends Hayvan {
+    // Abstract metodu override ediyor
+    void sesCikar() {
+        System.out.println("Miyav!");
+    }
+}
+
+// Köpek sınıfı, Hayvan sınıfından miras alıyor
+class Kopek extends Hayvan {
+    // Abstract metodu override ediyor
+    void sesCikar() {
+        System.out.println("Hav hav!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Hayvan sınıfının nesnesi oluşturulamaz!
+        // Hayvan h = new Hayvan();  // Hata verir!
+
+        Hayvan kedi = new Kedi();
+        kedi.sesCikar();  // Çıktı: Miyav!
+        kedi.yasamDongusu(); // Çıktı: Bütün hayvanlar doğar, büyür ve ölür.
+
+        Hayvan kopek = new Kopek();
+        kopek.sesCikar();  // Çıktı: Hav hav!
+        kopek.yasamDongusu(); // Çıktı: Bütün hayvanlar doğar, büyür ve ölür.
+    }
+}
+```
+
+### **Kod Açıklamaları:**
+- **`Hayvan` sınıfı abstract olarak tanımlandı.**
+- `sesCikar()` metodu **abstract metod** olarak tanımlandı, bu yüzden **alt sınıflar bunu kesinlikle override (ezerek) etmek zorunda.**
+- `yasamDongusu()` metodu ise **normal bir metod** olduğu için alt sınıflar bunu miras aldı.
+- `Kedi` ve `Köpek` sınıfları `Hayvan` sınıfını **extend (miras alarak)** etti ve `sesCikar()` metodunu kendi ihtiyaçlarına göre doldurdu.
+
+---
+
+## **3. Abstract Sınıfın Kuralları ve Özellikleri**
+### **3.1 Abstract Sınıfın İçinde Neler Olabilir?**
+| **Özellik** | **Abstract Sınıfta Kullanımı** |
+|------------|--------------------------------|
+| **Abstract metod** | Evet (Gövdesiz olarak tanımlanmalı) |
+| **Normal metod (gövdesi olan metodlar)** | Evet |
+| **Değişkenler (fields)** | Evet (Ancak `final` olmamalı) |
+| **Constructors (Yapıcı metodlar)** | Evet |
+| **Static metodlar** | Evet (Ancak abstract olamazlar) |
+
+---
+
+## **4. Abstract Metot Nedir?**
+### **Tanım:**
+- **Abstract metot**, sadece **tanımlanmış** ancak **gövdesi olmayan** bir metottur.
+- **Alt sınıflar (subclasses), bu metodu override etmek zorundadır.**
+
+### **Örnek:**
+```java
+abstract class Sekil {
+    abstract void alanHesapla(); // Gövdesi olmayan abstract metod
+}
+
+class Kare extends Sekil {
+    int kenar;
+
+    Kare(int kenar) {
+        this.kenar = kenar;
+    }
+
+    void alanHesapla() {
+        System.out.println("Karenin Alanı: " + (kenar * kenar));
+    }
+}
+
+class Daire extends Sekil {
+    double yaricap;
+
+    Daire(double yaricap) {
+        this.yaricap = yaricap;
+    }
+
+    void alanHesapla() {
+        System.out.println("Dairenin Alanı: " + (Math.PI * yaricap * yaricap));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Sekil kare = new Kare(4);
+        kare.alanHesapla(); // Çıktı: Karenin Alanı: 16
+
+        Sekil daire = new Daire(3);
+        daire.alanHesapla(); // Çıktı: Dairenin Alanı: 28.27
+    }
+}
+```
+- `Sekil` sınıfı abstract olarak tanımlandı.
+- `alanHesapla()` metodu **abstract metod** olduğu için alt sınıflar bunu kesinlikle implement etmek zorunda.
+- `Kare` ve `Daire` sınıfları bu metodu kendi ihtiyaçlarına göre doldurdu.
+
+---
+
+## **5. Abstract ile Interface Farkı**
+| **Karşılaştırma** | **Abstract Class** | **Interface** |
+|-------------------|-------------------|--------------|
+| **Tanım** | Normal ve abstract metodları içeren bir sınıf | Sadece metod imzaları (Java 8+ ile varsayılan metodlar eklenebilir) |
+| **Metodlar** | Abstract + Normal metodlar olabilir | Tüm metodlar varsayılan olarak abstract’tır (Java 8+ ile default metodlar eklenebilir) |
+| **Değişkenler** | Değişkenler olabilir | Değişkenler **public static final** olmalıdır |
+| **Miras (Inheritance)** | Sadece **bir abstract class** extend edilebilir | Birden fazla interface **implement edilebilir** |
+
+---
+
+## **6. Avantajları ve Dezavantajları**
+### **Avantajlar:**
+✅ **Kod tekrarını önler:** Soyut sınıflar, ortak davranışları miras yoluyla tekrar kullanmayı sağlar.  
+✅ **Geliştirmeyi kolaylaştırır:** Alt sınıflar, abstract metodları kendi ihtiyaçlarına göre doldurabilir.  
+✅ **Daha iyi yapı sağlar:** Programcıları belli metodları kullanmaya zorlar, böylece yapı korunur.
+
+### **Dezavantajlar:**
+❌ **Çok fazla kullanılırsa karmaşıklık yaratabilir.**  
+❌ **Bir sınıf yalnızca bir abstract sınıftan türeyebilir.** (Interface ile birden fazla kalıtım yapılabilir.)
+
+---
+
+## **Sonuç**
+- **Abstract sınıflar**, kalıtım (inheritance) kullanarak ortak özellikleri paylaşan sınıflar için idealdir.
+- **Abstract metotlar**, alt sınıfların override etmesini zorunlu kılar.
+- **Abstract sınıf ile interface arasındaki farkları bilmek**, en iyi uygulamaları seçmek için önemlidir.
+
+Java'da **abstract yapılar, kodun daha düzenli ve yönetilebilir olmasını sağlar.**
+
+
+
+## Record
+```sh 
+
+```
+---
+# **Java'da Record (Kayıt) Nedir?**
+Java 14 ile birlikte **Record** yapısı tanıtıldı ve Java 16 itibarıyla **tamamen kararlı (stable)** hale geldi. **Record**, özellikle veri taşıma nesneleri (DTO - Data Transfer Object) için optimize edilmiş, **immutable (değiştirilemez)** ve **daha az kod gerektiren** bir veri yapısıdır.
+
+### **Record Neden Kullanılır?**
+Record’lar, özellikle **veri saklamak** ve **bu verilere erişimi sağlamak** amacıyla kullanılan sınıflardır. Geleneksel Java sınıflarına göre avantajları şunlardır:
+- **Daha az kod yazma gereksinimi**: Getter, constructor, `equals()`, `hashCode()` ve `toString()` gibi metotları otomatik olarak oluşturur.
+- **Immutable (Değiştirilemez) yapı**: Bir Record nesnesinin alanları (`fields`) değiştirilemez.
+- **Daha iyi performans**: JVM tarafından optimize edilmiştir.
+
+---
+
+## **Record Tanımlama ve Kullanımı**
+Bir **Record** tanımlamak için `record` anahtar kelimesi kullanılır. İçerisinde **field’ları (alanları)** tanımladıktan sonra, Java otomatik olarak **constructor, getter metotları, `equals()`, `hashCode()` ve `toString()` metotlarını oluşturur.**
+
+Örnek:
+```java
+public record Kisi(String ad, int yas) { }
+```
+Bu tanımlama, aşağıdaki klasik sınıfın yaptığı işi otomatik olarak gerçekleştirir:
+
+```java
+public class Kisi {
+    private final String ad;
+    private final int yas;
+
+    public Kisi(String ad, int yas) {
+        this.ad = ad;
+        this.yas = yas;
+    }
+
+    public String getAd() { return ad; }
+    public int getYas() { return yas; }
+
+    @Override
+    public boolean equals(Object o) { /* eşitlik kontrolü */ }
+    
+    @Override
+    public int hashCode() { /* hash hesaplama */ }
+
+    @Override
+    public String toString() { return "Kisi[ad=" + ad + ", yas=" + yas + "]"; }
+}
+```
+**Görüldüğü gibi `record`, büyük miktarda kod yazmayı önlüyor!**
+
+---
+
+## **Record Kullanımı**
+Bir `record` nesnesi oluşturma ve kullanma:
+```java
+public class RecordOrnek {
+    public static void main(String[] args) {
+        Kisi kisi = new Kisi("Ahmet", 25);
+        
+        System.out.println(kisi.ad());  // "Ahmet"
+        System.out.println(kisi.yas()); // 25
+        System.out.println(kisi);       // Kisi[ad=Ahmet, yas=25]
+    }
+}
+```
+### **Çıktı:**
+```
+Ahmet
+25
+Kisi[ad=Ahmet, yas=25]
+```
+
+---
+
+## **Record Özellikleri**
+### **1. Getter Metotları**
+Record içindeki değişkenlere erişmek için `getter` metotları kullanılır. Ancak, **getter metotlarının adı, değişken adıyla aynıdır** (Yani `getAd()` yerine doğrudan `ad()` kullanılır):
+
+```java
+public record Kitap(String ad, String yazar) { }
+
+public class Test {
+    public static void main(String[] args) {
+        Kitap kitap = new Kitap("1984", "George Orwell");
+        System.out.println(kitap.ad());   // 1984
+        System.out.println(kitap.yazar()); // George Orwell
+    }
+}
+```
+
+### **2. Immutable (Değiştirilemez) Olması**
+Bir `record` nesnesi **değiştirilemez (immutable)** olduğu için, bir nesne oluşturulduktan sonra **alanları değiştirilemez**:
+
+```java
+Kisi kisi = new Kisi("Mehmet", 30);
+kisi.ad = "Ali"; // HATA! Record'lar immutable’dır.
+```
+Bu özellik sayesinde, Record’lar **veri taşıma nesneleri** (DTO) olarak çok güvenlidir.
+
+### **3. equals(), hashCode() ve toString() Otomatik Oluşturulur**
+Record kullanımı ile Java, `equals()`, `hashCode()` ve `toString()` metotlarını otomatik oluşturur.
+
+Örnek:
+```java
+Kisi kisi1 = new Kisi("Ahmet", 25);
+Kisi kisi2 = new Kisi("Ahmet", 25);
+
+System.out.println(kisi1.equals(kisi2)); // true
+System.out.println(kisi1.hashCode()); // Aynı hashCode üretir
+System.out.println(kisi2.hashCode());
+```
+
+**Çıktı:**
+```
+true
+1034248974
+1034248974
+```
+Bu metotlar **içerik bazlı karşılaştırma** yapar, yani iki nesne içindeki **alanlar aynıysa, nesneler eşit kabul edilir.**
+
+---
+
+## **Record İçinde Metot Tanımlama**
+Record'lar içinde normal Java sınıflarında olduğu gibi metotlar tanımlanabilir:
+
+```java
+public record Daire(double yariCap) {
+    public double alan() {
+        return Math.PI * yariCap * yariCap;
+    }
+}
+```
+Kullanımı:
+```java
+Daire daire = new Daire(10);
+System.out.println(daire.alan()); // 314.159...
+```
+
+---
+
+## **Record İçinde Statik Alan ve Metotlar**
+Record içinde **static alanlar** ve **static metotlar** kullanılabilir:
+
+```java
+public record Araba(String marka, String model) {
+    static String kategori = "Otomobil";
+
+    public static String getKategori() {
+        return kategori;
+    }
+}
+```
+Kullanımı:
+```java
+System.out.println(Araba.getKategori()); // "Otomobil"
+```
+
+---
+
+## **Record İçinde Custom Constructor Kullanımı**
+Record'larda **custom constructor (özelleştirilmiş yapıcı metot)** tanımlanabilir.
+
+Örnek:
+```java
+public record Person(String ad, int yas) {
+    public Person {
+        if (yas < 0) {
+            throw new IllegalArgumentException("Yaş negatif olamaz!");
+        }
+    }
+}
+```
+Eğer negatif bir yaş verilirse, `IllegalArgumentException` fırlatılır:
+
+```java
+Person kisi = new Person("Ali", -5); // HATA!
+```
+**Çıktı:**
+```
+Exception in thread "main" java.lang.IllegalArgumentException: Yaş negatif olamaz!
+```
+
+---
+
+## **Record ve Interface Kullanımı**
+Record'lar **interface** implement edebilir:
+
+```java
+interface Sekil {
+    double alan();
+}
+
+public record Dikdortgen(double genislik, double yukseklik) implements Sekil {
+    public double alan() {
+        return genislik * yukseklik;
+    }
+}
+```
+Kullanımı:
+```java
+Dikdortgen dikdortgen = new Dikdortgen(10, 5);
+System.out.println(dikdortgen.alan()); // 50.0
+```
+
+---
+
+## **Record'ların Kısıtlamaları**
+1. **Değiştirilemez (Immutable) Olması**
+    - Record içindeki değişkenler `final` olduğu için **değiştirilemez**.
+
+2. **Extends Kullanılamaz (Miras Alamaz)**
+    - Record'lar **kalıtım desteklemez** (`extends` kullanamazsınız). Çünkü zaten `final` olarak tanımlıdır.
+
+   ```java
+   public class AltKisi extends Kisi { } // HATA! Record’lar extend edilemez.
+   ```
+
+3. **Lombok'a Alternatif Ama Her Zaman Uygun Değil**
+    - Record, `Lombok` gibi kütüphanelere bir alternatif olsa da **tüm projeler için uygun olmayabilir**. Eğer mutable (değiştirilebilir) veri modelleri gerekiyorsa, klasik `class` kullanımı daha uygun olur.
+
+---
+
+## **Sonuç**
+Java Record'lar, özellikle **veri taşıma nesneleri (DTO)** oluşturmak için harika bir özelliktir. Geleneksel `class`'lara kıyasla **daha az kod** yazarak, **immutable** ve **performanslı** veri yapıları oluşturmanızı sağlar. Eğer **kalıtım gerekmiyorsa** ve **sadece veri saklamak istiyorsanız**, Record kullanımı oldukça mantıklıdır.
+
+## Record Örneği
+```sh 
+
+```
+---
+
+
+Mevcut kodlarınıza **Java Record** özelliğini eklemek için, `StudentDto` sınıfını bir **Record** olarak yeniden yazabiliriz. Java 14 ile gelen **record** yapısı, sınıfları immutable (değiştirilemez) hale getirir ve **boilerplate kodları** (getter, setter, equals, hashCode, toString) otomatik oluşturur.
+
+### **Güncellenmiş StudentDto.java (Record Kullanımı)**
+Aşağıdaki gibi `StudentDto` sınıfınızı bir **Record** haline getirdim:
+
+```java
+package com.hamitmizrak.project_step2_file;
+
+import com.hamitmizrak.project.step2.EStudentType;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
+
+// Java Record Kullanımı
+public record StudentDto(
+        Integer id,
+        String name,
+        String surname,
+        EStudentType eStudentType, // Enum Öğrenci Türü
+        Double midTerm,      // Vize notu
+        Double finalTerm,    // Final notu
+        Double resultTerm,   // Sonuç Notu: (Vize%40 + Final%60)
+        LocalDate birthDate, // Doğum günü
+        Date createdDate     // Sistem otomatik tarihi
+) implements Serializable {
+
+    // Serileştirme
+    private static final long serialVersionUID = 5563646556456565465L;
+
+    // Constructor (Vize ve Final notuna göre otomatik result hesaplama)
+    public StudentDto(Integer id, String name, String surname, Double midTerm, Double finalTerm, LocalDate birthDate, EStudentType eStudentType) {
+        this(id, name, surname, eStudentType, midTerm, finalTerm, calculateResult(midTerm, finalTerm), birthDate, new Date(System.currentTimeMillis()));
+    }
+
+    // Not hesaplama metodu
+    private static Double calculateResult(Double midTerm, Double finalTerm) {
+        if (midTerm == null || finalTerm == null) return 0.0;
+        return (midTerm * 0.4 + finalTerm * 0.6);
+    }
+}
+```
+
+---
+
+### **Neden Record Kullandık? Avantajları Neler?**
+✅ **Immutable (Değiştirilemez) Yapı**: Record nesneleri varsayılan olarak final olduğu için değiştirilemez. Bu da çoklu iş parçacıklı (multithreading) ortamlarda veri bütünlüğünü korur.  
+✅ **Boilerplate Kodları Otomatik Üretiyor**: Getter, toString, equals ve hashCode metodları otomatik olarak tanımlanır, manuel yazmaya gerek yok.  
+✅ **Daha Az Kod**: Geleneksel Java sınıflarında birçok getter/setter tanımlamak yerine, sadece **record** ile ilgili alanları belirterek işlem yapabiliriz.  
+✅ **Veri Taşıma Nesneleri (DTO) için İdeal**: Özellikle veri transferi amacıyla kullanılan nesneler için **record** mükemmel bir seçimdir.  
+✅ **Thread-Safe**: İçeriği değiştirilemez olduğu için **eşzamanlı (concurrent)** çalışmalarda güvenli kullanım sağlar.
+
+---
+
+### **Mevcut Sisteme Nasıl Entegre Edilecek?**
+1. **Güncellenmiş `StudentDto.java` dosyanızı ekleyin.**
+2. **`StudentManagementSystem` içinde `StudentDto` nesnesi oluştururken `new StudentDto(...)` yerine doğrudan `new StudentDto(..., ..., ..., ...)` kullanabilirsiniz.**
+3. **Getter metodlarına ihtiyacınız olmayacak.** Örneğin:
+   ```java
+   System.out.println(studentDto.name()); // Eskiden getName() idi
+   ```
+4. **Setter metodları olmadığı için `StudentDto` nesnesi immutable olacak.** Yeni değerlerle bir `StudentDto` nesnesi oluşturmanız gerekecek.
+
+---
+
+Bu güncelleme ile kodunuz daha temiz, güvenli ve performanslı hale gelecektir. Record'ları kullanarak kodunuzu daha modern hale getirmiş oldunuz! 🚀
+
+
+## Record Dezavantajları
+```sh 
+
+```
+---
+
+### **Java Record Kullanmanın Dezavantajları**
+Java'da **record** kullanımı birçok avantaj sağlasa da, bazı durumlarda **klasik sınıflara göre bazı dezavantajları** olabilir. İşte bu dezavantajlar:
+
+---
+
+## **1. Immutable (Değiştirilemez) Yapı**
+**❌ Dezavantaj:**
+- `record` nesneleri değiştirilemez (immutable) olduğu için, bir alanın güncellenmesi gerektiğinde **yeni bir nesne oluşturmak** zorundayız.
+- Büyük veri nesnelerinde, **her güncelleme için yeni bir nesne yaratılması performans kaybına** yol açabilir.
+
+**Örnek:**
+```java
+StudentDto student = new StudentDto(1, "Ali", "Veli", 50.0, 80.0, LocalDate.of(2000, 5, 10), EStudentType.UNDERGRADUATE);
+student.name = "Ahmet"; // ❌ Derleme hatası! Record'lar değiştirilemez.
+```
+**Çözüm:**
+- Değişiklik gerektiğinde, eski nesne yerine yeni bir `StudentDto` oluşturmalısınız:
+```java
+StudentDto updatedStudent = new StudentDto(student.id(), "Ahmet", student.surname(), student.midTerm(), student.finalTerm(), student.birthDate(), student.eStudentType());
+```
+Bu, özellikle sık güncellenen nesnelerde **gereksiz bellek kullanımı (memory overhead)** ve **GC (Garbage Collection) yükü** oluşturabilir.
+
+---
+
+## **2. Kalıtımı (Inheritance) Desteklemez**
+**❌ Dezavantaj:**
+- `record` sınıfları **kalıtımı desteklemez** (`extends` kullanamazsınız).
+- Java’da OOP prensiplerine uyan klasik sınıflarda **bir temel sınıfı (base class) genişletebilirken**, `record` kullanarak bunu yapamazsınız.
+
+**Örnek:**
+```java
+public record StudentDto(Integer id, String name) extends Person { } // ❌ Hata! Record'lar kalıtım desteklemez.
+```
+**Çözüm:**
+- Eğer miras almanız gereken bir sınıf varsa, klasik bir **sınıf (class)** kullanmalısınız.
+- Ancak `record`, **interface (arayüz) uygulayabilir**:
+```java
+public record StudentDto(Integer id, String name) implements Serializable { }
+```
+
+---
+
+## **3. Getter ve Setter Özelleştirememe**
+**❌ Dezavantaj:**
+- `record` otomatik olarak `getter` metotları oluşturur. Ancak, bu metotların adını değiştiremez veya özelleştiremezsiniz.
+- Setter metodu olmadığı için, özel validasyon (doğrulama) ekleyemezsiniz.
+
+**Örnek:**
+```java
+public record StudentDto(Integer id, String name) {
+    public String getFullName() { // ❌ Klasik getter metodu yazamazsınız!
+        return name();
+    }
+}
+```
+**Çözüm:**
+- Özel bir metot tanımlayabilirsiniz ama `getter` adlarını değiştiremezsiniz.
+```java
+public record StudentDto(Integer id, String name) {
+    public String fullName() {  // ✅ Getter değil, normal bir metod!
+        return name.toUpperCase();
+    }
+}
+```
+---
+
+## **4. Büyük Veriler İçin Performans Sorunları**
+**❌ Dezavantaj:**
+- `record` nesneleri immutable olduğu için, **büyük veri yapılarında gereksiz kopyalama (copying overhead)** oluşabilir.
+- Çok fazla alan içeren bir `record`, her değişiklikte **yeni bir nesne oluşturduğu için bellek tüketimi artabilir**.
+
+**Örnek:**
+```java
+StudentDto student1 = new StudentDto(1, "Ali", "Veli", 50.0, 80.0, LocalDate.of(2000, 5, 10), EStudentType.UNDERGRADUATE);
+StudentDto student2 = new StudentDto(student1.id(), student1.name(), student1.surname(), 55.0, student1.finalTerm(), student1.birthDate(), student1.eStudentType());
+```
+Burada, sadece `midTerm` değiştirilecek ama **tamamen yeni bir nesne oluşturuluyor**. Eğer milyonlarca `StudentDto` nesneniz varsa, bu **bellek (heap) yükü** oluşturabilir.
+
+**Çözüm:**
+- Eğer sık güncelleme gerektiren nesneleriniz varsa, `record` yerine klasik **mutable sınıflar** kullanın.
+
+---
+
+## **5. Varsayılan Constructor Kısıtlamaları**
+**❌ Dezavantaj:**
+- `record`’lar, varsayılan olarak **tüm alanları parametre olarak almak zorundadır**.
+- Varsayılan (default) bir constructor tanımlamak ve bazı değerleri atlamak zordur.
+
+**Örnek:**
+```java
+public record StudentDto(Integer id, String name) {
+    public StudentDto() {  // ❌ Hata! Parametresiz constructor desteklenmez.
+        this(0, "Bilinmeyen");
+    }
+}
+```
+**Çözüm:**
+- `record` içinde, özel bir constructor tanımlayabilirsiniz ama **tüm alanları mutlaka vermeniz gerekir**.
+```java
+public record StudentDto(Integer id, String name) {
+    public StudentDto() {
+        this(0, "Bilinmeyen"); // ✅ Geçerli constructor
+    }
+}
+```
+
+---
+
+## **6. Özel İşlevsellik (Business Logic) İçin Kısıtlamalar**
+**❌ Dezavantaj:**
+- `record` nesneleri **veri taşıma (DTO)** amacıyla tasarlandığı için, içinde **fazla iş mantığı (business logic) barındırmak uygun değildir**.
+- Eğer bir sınıfta iş mantığı (örneğin, **not hesaplama, validasyon, iş kuralları**) barındırmak istiyorsanız, **record yerine klasik sınıfları kullanmanız daha uygundur**.
+
+**Örnek:**
+```java
+public record StudentDto(Integer id, String name, Double midTerm, Double finalTerm) {
+    public Double calculateResult() { // ✅ İş mantığı ekleyebiliriz ama önerilmez.
+        return (midTerm * 0.4) + (finalTerm * 0.6);
+    }
+}
+```
+Burada küçük hesaplamalar yapabiliriz, ancak `record`'lar büyük iş mantıklarını içermemelidir.
+
+**Çözüm:**
+- İş mantıklarını başka bir hizmet (service) sınıfına taşıyın:
+```java
+public class StudentService {
+    public static Double calculateResult(StudentDto student) {
+        return (student.midTerm() * 0.4) + (student.finalTerm() * 0.6);
+    }
+}
+```
+
+---
+
+## **Sonuç: Record Kullanmalı mıyım?**
+| **Özellik**               | **Record Kullanımı Uygun** | **Record Kullanımı Uygun Değil** |
+|---------------------------|---------------------------|---------------------------------|
+| **Immutable nesne**       | ✅ Evet                   | ❌ Hayır                        |
+| **DTO veya Veri Modeli**  | ✅ Evet                   | ❌ Hayır                        |
+| **Kapsamlı iş mantığı**   | ❌ Hayır                  | ✅ Evet                         |
+| **Kalıtım (Inheritance)** | ❌ Hayır                  | ✅ Evet                         |
+| **Sık güncellenen nesneler** | ❌ Hayır              | ✅ Evet                         |
+| **Getter/Setter özelleştirme** | ❌ Hayır          | ✅ Evet                         |
+
+### **Kullanmalısınız Eğer:**
+✅ **DTO (Data Transfer Object) gibi basit veri taşıma sınıfları** oluşturuyorsanız.  
+✅ **Immutable nesneler istiyorsanız** ve değişiklik gerekmiyorsa.  
+✅ **Kısa ve temiz kod yazmak istiyorsanız**.
+
+### **Kullanmamalısınız Eğer:**
+❌ **Veri değiştirmeniz (mutable nesneler) gerekiyorsa**.  
+❌ **Kapsamlı iş mantıkları barındıran bir sınıf oluşturuyorsanız**.  
+❌ **Büyük nesneler oluşturup sık güncelliyorsanız**, bellek yönetimi açısından sorun yaratabilir.  
+❌ **Kalıtım (inheritance) kullanmanız gerekiyorsa**.
+
+---
+
+### **Genel Değerlendirme**
+- Küçük ve **basit veri sınıfları** için **Record** harika bir seçimdir. ✅
+- Büyük, sık değiştirilen veya **iş mantığı içeren sınıflar** için **klasik sınıflar daha iyi bir seçenektir**. 🚀
+
+## Record Dezavantajları
+```sh 
+
+```
+---
+
+## Inner Class Nedir ?
+```sh 
+
+```
+---
+
+# **Java’da Inner Class (İç İçe Sınıflar) Detaylı Anlatım**
+
+Java'da **Inner Class** (İç İçe Sınıf), bir sınıfın içinde tanımlanmış başka bir sınıftır. Java’da inner class kullanımı, kodun organize edilmesini kolaylaştırır, dış sınıfın üyelerine erişimi sağlar ve kapsülleme (encapsulation) avantajları sunar.
+
+---
+
+## **1. Inner Class Nedir?**
+Java'da bir sınıfı başka bir sınıfın içinde tanımlarsak, buna **Inner Class** (İç Sınıf) denir. **Inner Class**, genellikle dış (outer) sınıfa bağlıdır ve bağımsız olarak çalışamaz.
+
+- **Dış sınıf (Outer Class)**: İç sınıfı kapsayan ana sınıftır.
+- **İç sınıf (Inner Class)**: Dış sınıfın içinde tanımlanan sınıftır.
+
+### **Örnek: Basit Inner Class Kullanımı**
+```java
+class OuterClass { // Dış Sınıf
+    private String outerField = "Dış sınıf değişkeni";
+
+    // İç Sınıf
+    class InnerClass {
+        void display() {
+            System.out.println("İç sınıftan erişilen: " + outerField);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();  // Dış sınıf nesnesi oluştur
+        OuterClass.InnerClass inner = outer.new InnerClass();  // İç sınıf nesnesi oluştur
+        inner.display();  // Çıktı: İç sınıftan erişilen: Dış sınıf değişkeni
+    }
+}
+```
+**Açıklamalar:**
+- **InnerClass**, **OuterClass** içinde tanımlanmıştır.
+- **InnerClass**, **OuterClass**'ın özel değişkenlerine (`private outerField`) doğrudan erişebilir.
+- **InnerClass** nesnesi oluşturmak için önce **OuterClass** nesnesi oluşturulmalıdır.
+
+---
+
+## **2. Inner Class Türleri**
+Java'da **4 çeşit inner class** vardır:
+
+1. **Regular Inner Class (Normal İç Sınıf)**
+2. **Static Nested Class (Statik İç Sınıf)**
+3. **Method Local Inner Class (Metod İçinde Tanımlanan İç Sınıf)**
+4. **Anonymous Inner Class (Anonim İç Sınıf)**
+
+---
+
+## **2.1. Regular Inner Class (Normal İç Sınıf)**
+**Dış sınıfın içinde, statik olmayan bir sınıftır.** İç sınıfa erişmek için önce dış sınıfın nesnesi oluşturulmalıdır.
+
+### **Örnek: Normal Inner Class Kullanımı**
+```java
+class Outer {
+    private String message = "Merhaba, ben dış sınıfım!";
+
+    class Inner {
+        void showMessage() {
+            System.out.println(message);  // Dış sınıfın private değişkenine erişim
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer();  // Dış sınıf nesnesi
+        Outer.Inner inner = outer.new Inner();  // İç sınıf nesnesi
+        inner.showMessage();  // Çıktı: Merhaba, ben dış sınıfım!
+    }
+}
+```
+### **Özellikler:**
+✔ Dış sınıfın private değişkenlerine erişebilir.  
+✔ İç sınıfa, dış sınıfın nesnesi üzerinden ulaşılır.  
+✔ Dış sınıf olmadan iç sınıfın bağımsız çalışması mümkün değildir.
+
+---
+
+## **2.2. Static Nested Class (Statik İç Sınıf)**
+**Statik iç sınıflar**, **dış sınıfın bir örneğine (instance) ihtiyaç duymadan doğrudan kullanılabilir.**
+
+### **Örnek: Static Inner Class Kullanımı**
+```java
+class Outer {
+    static String staticMessage = "Statik değişken!";
+
+    // Statik İç Sınıf
+    static class StaticInner {
+        void display() {
+            System.out.println("Statik İç Sınıf: " + staticMessage);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer.StaticInner inner = new Outer.StaticInner();  // Dış sınıfın nesnesine gerek yok
+        inner.display();  // Çıktı: Statik İç Sınıf: Statik değişken!
+    }
+}
+```
+### **Özellikler:**
+✔ **Dış sınıfın nesnesine ihtiyaç duymaz.**  
+✔ **Sadece dış sınıfın `static` üyelerine erişebilir.**  
+✔ **Bağımsız bir sınıf gibi çalışabilir.**
+
+---
+
+## **2.3. Method Local Inner Class (Metod İçinde Tanımlanan İç Sınıf)**
+**Bir metodun içinde tanımlanan iç sınıftır.** Yalnızca o metodun içinde kullanılabilir.
+
+### **Örnek: Method Local Inner Class Kullanımı**
+```java
+class Outer {
+    void outerMethod() {
+        class MethodInner {  // Metodun içinde tanımlı iç sınıf
+            void show() {
+                System.out.println("Merhaba, ben metod içindeki iç sınıfım!");
+            }
+        }
+        MethodInner inner = new MethodInner(); // İç sınıf nesnesi oluştur
+        inner.show();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        outer.outerMethod();  // Çıktı: Merhaba, ben metod içindeki iç sınıfım!
+    }
+}
+```
+### **Özellikler:**
+✔ **Sadece tanımlandığı metod içinde kullanılabilir.**  
+✔ **Dış sınıfın üyelerine erişebilir.**  
+✔ **Metod tamamlandığında bellekten silinir.**
+
+---
+
+## **2.4. Anonymous Inner Class (Anonim İç Sınıf)**
+**İsmi olmayan (anonymous) ve genellikle bir arayüzü veya sınıfı genişleten (extend) veya bir arayüzü uygulayan (implement) tek seferlik sınıflardır.**
+
+### **Örnek: Anonim İç Sınıf ile Arayüz Kullanımı**
+```java
+interface Message {
+    void showMessage();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Anonim İç Sınıf
+        Message obj = new Message() {
+            public void showMessage() {
+                System.out.println("Anonim İç Sınıftan Merhaba!");
+            }
+        };
+        obj.showMessage();  // Çıktı: Anonim İç Sınıftan Merhaba!
+    }
+}
+```
+### **Örnek: Anonim İç Sınıf ile Abstract Sınıf Kullanımı**
+```java
+abstract class Animal {
+    abstract void makeSound();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Animal() {
+            void makeSound() {
+                System.out.println("Hav hav! (Anonim Sınıf)");
+            }
+        };
+        dog.makeSound();  // Çıktı: Hav hav! (Anonim Sınıf)
+    }
+}
+```
+### **Özellikler:**
+✔ **Tek seferlik kullanım içindir.**  
+✔ **Soyut sınıfları ve arayüzleri doğrudan implemente edebilir.**  
+✔ **Yeni bir sınıf tanımlamadan anında kullanılabilir.**
+
+---
+
+## **Sonuç ve Karşılaştırma**
+| Inner Class Türü | Bağımsız mı? | Dış Sınıfın Nesnesine İhtiyaç Duyar mı? | Kullanım Alanı |
+|------------------|-------------|---------------------------------|-----------------|
+| **Regular Inner Class** | ❌ Hayır | ✅ Evet | Dış sınıfın üyelerine erişim sağlamak için |
+| **Static Nested Class** | ✅ Evet | ❌ Hayır | Dış sınıf nesnesi olmadan bağımsız çalışma |
+| **Method Local Inner Class** | ❌ Hayır | ✅ Evet | Sadece belirli bir metod içinde kullanılmak üzere |
+| **Anonymous Inner Class** | ❌ Hayır | ✅ Evet | Tek seferlik kullanım için (arayüz veya abstract class) |
+
+---
+
+## **Sonuç**
+Java’daki **inner class’lar**, kodu daha organize hale getirmek, dış sınıfın üyelerine erişmek ve encapsulation sağlamak için güçlü bir mekanizmadır. **Hangi tür iç sınıfı kullanacağınızı, ihtiyacınıza göre seçmelisiniz!** 🚀
+
+## Generics Nedir ?
+```sh 
+
+```
+---
+# **Java'da Generics (Jenerikler) Nedir?**
+Generics, Java'da **tip güvenliğini artırmak, kod tekrarını azaltmak ve runtime hatalarını compile-time'da yakalamak için** kullanılan bir özelliktir. **Jenerik yapılar, sınıflara, arayüzlere ve metotlara farklı veri tiplerini dinamik olarak atayabilmemizi sağlar.**
+
+---
+
+## **📌 Neden Generics Kullanılır?**
+Generics kullanılmadan önce, `Object` sınıfı yaygın olarak kullanılıyordu. Ancak `Object`, farklı türleri saklayabildiği için **tip dönüşümleri (type casting) gerektiğinden** runtime hatalarına sebep olabiliyordu.
+
+### 🔴 **Generics Olmadan (Eski Yöntem – Type Safety Yok)**
+```java
+import java.util.ArrayList;
+
+public class WithoutGenerics {
+    public static void main(String[] args) {
+        ArrayList list = new ArrayList(); // Tip belirtilmemiş
+        list.add("Merhaba");
+        list.add(100); // Farklı bir tür eklenebiliyor
+
+        String message = (String) list.get(0); // Type casting gerekiyor
+        System.out.println(message);
+
+        String number = (String) list.get(1); // ClassCastException HATASI!
+        System.out.println(number);
+    }
+}
+```
+### ❌ **Sorunlar:**
+- **Tip güvenliği yok:** Aynı `ArrayList` içine farklı türler eklenebilir.
+- **Type casting zorunlu:** `Object` tipinden spesifik tipe dönüşüm gerekir.
+- **Runtime hataları:** Yanlış casting yapılırsa **`ClassCastException`** oluşur.
+
+---
+
+## **✅ Generics ile Daha Güvenli Kod**
+```java
+import java.util.ArrayList;
+
+public class WithGenerics {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>(); // Generics ile tür belirtilmiş
+        list.add("Merhaba");
+        // list.add(100); // ❌ Derleme hatası verir!
+
+        String message = list.get(0); // Type casting gerekmez
+        System.out.println(message);
+    }
+}
+```
+### **🎯 Avantajlar:**
+✔ **Tip güvenliği sağlanır:** Yanlış veri eklenemez.  
+✔ **Type casting ihtiyacı ortadan kalkar:** Direkt doğru tipte veri çekilir.  
+✔ **Daha okunaklı ve güvenli kod yazılır.**
+
+---
+
+# **📌 Generics Nerelerde Kullanılır?**
+- **Sınıflar (`Generic Class`)**
+- **Arayüzler (`Generic Interface`)**
+- **Metotlar (`Generic Method`)**
+- **Wildcard (`?` ile jenerik parametreler)**
+
+---
+
+# **1️⃣ Generics ile Sınıf Tanımlama (`Generic Class`)**
+Bir sınıfı **herhangi bir veri tipiyle çalışabilecek hale getirmek** için generics kullanabiliriz.
+
+### 🎯 **Örnek 1: Generic Bir Kutu (`Box<T>`) Sınıfı**
+```java
+// T => Type (Kullanıcı tarafından belirlenecek)
+public class Box<T> {
+    private T item; // Değişken türü dinamik
+
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public T getItem() {
+        return item;
+    }
+}
+
+// Kullanımı
+public class Main {
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.setItem("Merhaba, Java!");
+        System.out.println(stringBox.getItem()); // Çıktı: Merhaba, Java!
+
+        Box<Integer> intBox = new Box<>();
+        intBox.setItem(42);
+        System.out.println(intBox.getItem()); // Çıktı: 42
+    }
+}
+```
+### **💡 Açıklamalar:**
+✔ `T` (Type Parameter) yerine **String, Integer, Double gibi veri tipleri** atanabilir.  
+✔ **Tek bir sınıf ile** farklı veri tipleri saklanabilir.  
+✔ **Kod tekrarını önler.**
+
+---
+
+# **2️⃣ Generics ile Arayüz Tanımlama (`Generic Interface`)**
+Bir interface’in farklı türler ile çalışmasını sağlamak için generics kullanılabilir.
+
+### 🎯 **Örnek: Generics Kullanarak DAO Arayüzü (`IDaoGenerics<T>`)**
+```java
+// T: Öğrenci, Öğretmen gibi herhangi bir nesne olabilir.
+public interface IDaoGenerics<T> {
+    void save(T t);
+    T findById(int id);
+    void delete(int id);
+}
+```
+
+**Arayüzü Kullanacak Bir Sınıf:**
+```java
+public class StudentDao implements IDaoGenerics<StudentDto> {
+    @Override
+    public void save(StudentDto student) {
+        System.out.println("Öğrenci kaydedildi: " + student.getName());
+    }
+
+    @Override
+    public StudentDto findById(int id) {
+        return new StudentDto(id, "Ahmet", "Yılmaz", 85.0, 90.0, java.time.LocalDate.of(2000, 5, 10), EStudentType.UNDERGRADUATE);
+    }
+
+    @Override
+    public void delete(int id) {
+        System.out.println("Öğrenci silindi: " + id);
+    }
+}
+```
+✔ **Kod tekrarını önler**  
+✔ **Farklı veri türleriyle çalışabilir** (Öğrenci, Öğretmen, Ders vs.)
+
+---
+
+# **3️⃣ Generics ile Metot Tanımlama (`Generic Method`)**
+Belirli bir sınıfa bağlı olmadan **herhangi bir veri tipiyle çalışan metotlar** yazabiliriz.
+
+### 🎯 **Örnek: Generic Bir Swap (Değiştirme) Metodu**
+```java
+public class GenericMethodExample {
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        Integer[] numbers = {1, 2, 3, 4};
+        swap(numbers, 0, 2);
+        for (int num : numbers) {
+            System.out.print(num + " "); // Çıktı: 3 2 1 4
+        }
+    }
+}
+```
+✔ **Her türde veri ile çalışabilir**  
+✔ **Kod tekrarını azaltır**
+
+---
+
+# **4️⃣ Wildcard (`?` - Joker Karakter) Kullanımı**
+Bazen bir generics sınıfında **herhangi bir tipte veri kullanabileceğimiz bir yapı** isteriz.
+
+### 🎯 **Örnek: Üst Sınıf Kısıtlaması (`? extends Number`)**
+```java
+public class WildcardExample {
+    public static void printList(List<? extends Number> list) {
+        for (Number num : list) {
+            System.out.println(num);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Integer> intList = List.of(1, 2, 3);
+        List<Double> doubleList = List.of(2.5, 3.6);
+
+        printList(intList);   // Çalışır
+        printList(doubleList); // Çalışır
+    }
+}
+```
+✔ **? extends Number** → Sadece `Integer`, `Double`, `Float` gibi `Number` türevleri kabul edilir.  
+✔ **Joker karakter sayesinde** farklı türleri destekleyen metotlar yazabiliriz.
+
+---
+
+# **🚀 Sonuç: Generics Kullanmanın Avantajları**
+✅ **Tip güvenliği sağlar** (Yanlış veri eklenemez)  
+✅ **Kod tekrarını azaltır** (Aynı kod farklı veri türleriyle çalışır)  
+✅ **Okunabilirliği artırır** (Casting ihtiyacını ortadan kaldırır)  
+✅ **Performansı artırır** (Compile-time hatalarını yakalar)
+
+Java generics sayesinde daha **esnek, güvenli ve performanslı kod** yazabiliriz. 🚀
+
+
+## Collection Nedir ?
+```sh 
+
+```
+---
+
+# **Java'da Collection Nedir? (Detaylı Açıklama)**
+
+Java'da **Collection (Koleksiyonlar)**, birden fazla veriyi belirli bir yapı içerisinde saklamak, yönetmek ve işlemek için kullanılan bir çerçevedir (framework). Java Collection Framework (JCF), çeşitli veri yapıları ve algoritmalar içerir ve bunlar, Java'da veri yönetimini oldukça esnek ve verimli hale getirir.
+
+## **1. Collection Framework Nedir?**
+Java Collection Framework, Java’nın veri yapılarıyla çalışma yeteneğini geliştiren bir yapıdır. Java SE 2 ile birlikte gelmiştir ve veri yapıları ile algoritmaları içeren, **verimli veri depolama, erişim ve manipülasyon mekanizmaları** sağlayan bir çerçevedir.
+
+Collection framework, **Array, LinkedList, Stack, Queue, HashMap, TreeSet gibi çeşitli veri yapıları** içerir. Bu framework, koleksiyonları oluşturma, düzenleme, sıralama ve arama işlemlerini kolaylaştıran birçok yardımcı sınıf ve metod içerir.
+
+## **2. Java Collection Framework İçerisindeki Bileşenler**
+Java Collection Framework, temel olarak şu bileşenlerden oluşur:
+1. **Interfaces (Arayüzler)** → Collection, List, Set, Queue, Map vb.
+2. **Classes (Sınıflar)** → ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap vb.
+3. **Algorithms (Algoritmalar)** → Sıralama, arama, değiştirme vb.
+
+---
+
+# **3. Collection Arayüzleri (Interfaces)**
+Java'daki Collection Framework, çeşitli **arayüzler** kullanarak farklı veri yapılarını temsil eder. Bu arayüzler, koleksiyonların nasıl çalışması gerektiğini belirleyen kuralları tanımlar. En temel arayüz **Collection** arayüzüdür ve diğer arayüzler buradan türetilmiştir.
+
+## **3.1 Collection Arayüzü (Temel Arayüz)**
+Tüm koleksiyon türleri için ortak olan temel bir arayüzdür. List, Set ve Queue gibi arayüzler **Collection** arayüzünden türetilmiştir. **Map arayüzü** ise Collection’dan türetilmemiştir çünkü Map bir anahtar-değer (key-value) tabanlı veri yapısıdır.
+
+```java
+public interface Collection<E> extends Iterable<E> { 
+    boolean add(E e);
+    boolean remove(Object o);
+    boolean contains(Object o);
+    int size();
+    boolean isEmpty();
+    Iterator<E> iterator();
+}
+```
+
+---
+
+## **3.2 List Arayüzü (Ordered - Sıralı Veri)**
+- **List**, öğeleri belirli bir sıralamada saklayan ve aynı elemandan birden fazla içerebilen bir koleksiyon türüdür.
+- Elemanlara **indeks** ile erişilebilir.
+- List'ler veri ekleme, çıkarma ve güncelleme gibi işlemler için kullanılır.
+
+### **List’i Uygulayan Sınıflar:**
+- **ArrayList**
+- **LinkedList**
+- **Vector** (Çok nadiren kullanılır)
+- **Stack** (Vector'dan türetilmiştir)
+
+```java
+List<String> myList = new ArrayList<>();
+myList.add("Java");
+myList.add("Python");
+myList.add("C++");
+System.out.println(myList.get(1)); // Python
+```
+
+### **ArrayList vs LinkedList**
+| Özellik | ArrayList | LinkedList |
+|---------|----------|------------|
+| Erişim Hızı | Hızlı (O(1)) | Yavaş (O(n)) |
+| Ekleme/Silme | Yavaş (O(n)) | Hızlı (O(1) baştan/baştan silme) |
+| Bellek Kullanımı | Daha az bellek kullanır | Daha fazla bellek kullanır (düğümler nedeniyle) |
+
+---
+
+## **3.3 Set Arayüzü (Benzersiz - Unique Elemanlar)**
+- **Set**, **aynı elemandan birden fazla içeremez**.
+- Elemanlar sırasız olabilir.
+- Elemanlar, koleksiyona belirli bir kurala göre eklenir.
+
+### **Set’i Uygulayan Sınıflar:**
+- **HashSet** (Hızlıdır, sıralama yok)
+- **LinkedHashSet** (Ekleme sırasını korur)
+- **TreeSet** (Kendi içinde sıralı)
+
+```java
+Set<String> mySet = new HashSet<>();
+mySet.add("Java");
+mySet.add("Python");
+mySet.add("Java");  // Tekrar eden eleman eklenmez!
+System.out.println(mySet); // [Java, Python]
+```
+
+---
+
+## **3.4 Queue Arayüzü (İlk Giren İlk Çıkar - FIFO)**
+- **Queue**, elemanları bir sıraya koyar ve ekleme/çıkarmayı belirli bir düzene göre yapar.
+- **FIFO (First In, First Out)** mantığıyla çalışır.
+
+### **Queue’yi Uygulayan Sınıflar:**
+- **PriorityQueue** (Öncelik bazlı sıralama)
+- **LinkedList** (Queue olarak kullanılabilir)
+- **ArrayDeque** (Çift yönlü kuyruk)
+
+```java
+Queue<Integer> queue = new LinkedList<>();
+queue.add(10);
+queue.add(20);
+queue.add(30);
+System.out.println(queue.poll()); // 10 (ilk eklenen çıkar)
+```
+
+---
+
+## **3.5 Map Arayüzü (Key-Value - Anahtar-Değer)**
+- **Map**, bir anahtar (key) ve bu anahtara bağlı bir değer (value) saklayan koleksiyon türüdür.
+- **Anahtarlar benzersizdir**, ancak değerler tekrar edebilir.
+- **Collection arayüzünden türememiştir.**
+
+### **Map’i Uygulayan Sınıflar:**
+- **HashMap** (Sırasız, en hızlı performans)
+- **LinkedHashMap** (Eklenme sırasını korur)
+- **TreeMap** (Anahtarları sıralı tutar)
+
+```java
+Map<String, Integer> myMap = new HashMap<>();
+myMap.put("Elma", 3);
+myMap.put("Armut", 5);
+myMap.put("Muz", 7);
+System.out.println(myMap.get("Elma")); // 3
+```
+
+---
+
+# **4. Collection Framework’te Kullanılan Önemli Metotlar**
+Collection sınıflarında en yaygın kullanılan metodlar şunlardır:
+
+| Metot | Açıklama |
+|------------|-------------|
+| `add(E e)` | Eleman ekler |
+| `remove(Object o)` | Elemanı kaldırır |
+| `size()` | Eleman sayısını döndürür |
+| `isEmpty()` | Boş olup olmadığını kontrol eder |
+| `clear()` | Tüm elemanları temizler |
+| `contains(Object o)` | Elemanın var olup olmadığını kontrol eder |
+| `iterator()` | Koleksiyon üzerinde döngü yapmayı sağlar |
+
+---
+
+# **5. Java Collections Algoritmaları (Collections Utility Sınıfı)**
+Java, `Collections` sınıfı altında birçok yardımcı algoritma sunar. Bunlar:
+- **sort()** → Listeyi sıralar
+- **reverse()** → Listeyi ters çevirir
+- **shuffle()** → Liste elemanlarını karıştırır
+- **binarySearch()** → Liste içinde ikili arama yapar
+- **max()** ve **min()** → En büyük ve en küçük elemanı bulur
+
+```java
+List<Integer> numbers = new ArrayList<>(Arrays.asList(10, 5, 8, 3, 2));
+Collections.sort(numbers);
+System.out.println(numbers); // [2, 3, 5, 8, 10]
+```
+
+---
+
+# **Sonuç**
+Java Collection Framework, büyük veri kümelerini yönetmeyi kolaylaştırır ve verimli veri işleme sağlar. **List, Set, Queue ve Map** arayüzleri, farklı ihtiyaçlara göre özelleştirilmiş veri yapıları sunar.
+
+Koleksiyonlarla çalışırken hangi yapının kullanılacağını **veri yapısının gereksinimlerine göre** seçmek önemlidir.
 
 ## Java 8 gelen özellikler Nedir ?
 ```sh 
@@ -10239,6 +11389,7 @@ public class NashornExample {
 Bu detaylı açıklamalar ile Java 8’in sunduğu tüm önemli yenilikleri kapsadık! 🚀
 
 
+
 ## Java 8 gelen özelliklerden stream nedir ?
 ```sh 
 
@@ -10470,21 +11621,6 @@ public class StreamReduceExample {
 - `parallelStream()` ile paralel işlemler yapılabilir.
 
 Stream API, Java 8’in getirdiği en güçlü özelliklerden biridir ve modern Java programlamada oldukça yaygın kullanılmaktadır. 🚀
-
-
-## Cipher (AES/DES/RSA/HASHING)
-```sh 
-
-```
----
-
-
-
-## Diğer
-```sh 
-
-```
----
 
 
 

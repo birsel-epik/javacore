@@ -1,9 +1,6 @@
 package com.birselepik.dao;
 
-import com.birselepik.dto.StudentDto;
-
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IDaoGenerics<T> {

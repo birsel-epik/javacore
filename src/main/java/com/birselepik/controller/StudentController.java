@@ -3,6 +3,7 @@ package com.birselepik.controller;
 import com.birselepik.dao.IDaoGenerics;
 import com.birselepik.dao.StudentDao;
 import com.birselepik.dto.StudentDto;
+import com.birselepik.utils.SpecialColor;
 
 import java.util.List;
 
@@ -19,8 +20,13 @@ public class StudentController implements IDaoGenerics<StudentDto> {
     // CREATE
     @Override
     public StudentDto create(StudentDto studentDto) {
-        return studentDao.create(studentDto);
+        StudentDto createdStudent = studentDao.create(studentDto);
+        if (createdStudent == null) {
+            System.out.println(SpecialColor.RED + "❌ Öğrenci oluşturulamadı. Geçerli bilgiler giriniz." + SpecialColor.RESET);
+        }
+        return createdStudent;
     }
+
 
     // FIND BY NAME
     @Override
