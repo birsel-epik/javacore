@@ -157,6 +157,7 @@ public class StudentDao implements IDaoGenerics<StudentDto> {
             validateStudent(studentDto);
 
             // Öğrenci Listesindeki En büyük ID Al
+            // studentDtoList listesinin içerisinden dataları eşleme yap (mapToInt), StudentDto içerisinden al getId olan, en yüksek ID yi ver.
             maxId = studentDtoList
                     .stream()
                     .mapToInt(StudentDto::getId)

@@ -37,7 +37,6 @@ public class StudentDto extends PersonDto implements Serializable {
         super();
         this.midTerm=0.0;
         this.finalTerm=0.0;
-        this.resultTerm=0.0;
         this.resultTerm=0.0; // varsayılan olarak
     }
 
