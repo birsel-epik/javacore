@@ -3,6 +3,7 @@ package com.birselepik.dto;
 import java.time.LocalDate;
 import java.util.Date;
 
+//Dikkat: Record'ta abstract, inheritance kullanamazsınız.
 abstract public class PersonDto {
 
     protected Integer id;
@@ -88,3 +89,4 @@ abstract public class PersonDto {
     }
 
 }
+
