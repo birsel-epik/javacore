@@ -1,1 +1,1 @@
-1,Birsel,Epik,1950-10-10,Developer,20,true,10.0
+1,Birsel,Epik,1111-11-12,COMPUTER_SCIENCE,15,true,1.0

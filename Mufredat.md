@@ -114,29 +114,30 @@ Cumartesi (1 Mart) - 4 Saat
 Salı (4 Mart) - 3 Saat
 - Record
 - Lamda Expression
-
+- Inner Class
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 🚀  5. Hafta 2-Dersi
 Perşembe (6 Mart) - 3 Saat
 - Generics (Tür Belirleyici)
   . Tip güvenliği
   . Iterator ve ListIterator
-- Genel Örnek: Öğrenci Bilgi Sistem Devam
 - Koleksiyonlar (Collections) ve Generics
   . Collection Framework Genel Bakış (List, Set, Map)
   . Temel implementasyonlar (ArrayList, LinkedList vb.)
-
+- Genel Örnek: Öğrenci Bilgi Sistem Devam
 
 🚀  5. Hafta 3-Dersi
 Cumartesi (8 Mart) - 4 Saat
 - Annotation
-- Inner Class
 - Cipher (AES/DES/RSA/HASHING)
 - Java 8+ Yenilikleri
   . Lambda İfadeleri
-  . Fonksiyonel Arabirimler
+  . @FunctionalInterface
+  . Fonksiyonel Arabirimler (filter, map, reduce gibi fonksiyonlar)
 - Stream API
   . filter, map, reduce gibi fonksiyonlar
+- Optional
 
 ----------------------------------------------------------------------
 ### 6. Hafta
@@ -149,16 +150,14 @@ Salı (11 Mart) - 3 Saat
 - Çoklu İş Parçacığı (Multithreading)
   . Thread Oluşturma ve Yönetimi
   . Senkronizasyon
-- - Eşzamanlılık (Concurrency)
-    . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
-    . Concurrency API
+- Eşzamanlılık (Concurrency)
+  . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
+  . Concurrency API
 
 - Genel Örnek: Öğrenci Bilgi Sistem Devam
 
-
 🚀  6. Hafta 2-Dersi
 Perşembe (13 Mart) - 3 Saat
-
 
 🚀  6. Hafta 3-Dersi
 Cumartesi (15 Mart) - 4 Saat
