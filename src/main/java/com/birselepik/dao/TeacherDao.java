@@ -1,7 +1,9 @@
 package com.birselepik.dao;
 
+import com.birselepik.dto.ETeacherSubject;
 import com.birselepik.dto.TeacherDto;
 import com.birselepik.exeptions.TeacherNotFoundException;
+import com.birselepik.utils.SpecialColor;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -17,16 +19,22 @@ import java.util.*;
 // TeacherDto
 public class TeacherDao implements IDaoGenerics<TeacherDto> {
 
-    private final List<TeacherDto> teacherList = new ArrayList<>();
+    // Field
+    private final List<TeacherDto> teacherList;
     private final Scanner scanner = new Scanner(System.in);
     private static final Random random = new Random();
     private static final String FILE_NAME = "teachers.txt";
 
+    // Parametresiz Constructor
     public TeacherDao() {
+        // Default
+        teacherList = new ArrayList<>();
         createFileIfNotExists();
         loadTeachersFromFile();
     }
 
+    /// /////////////////////////////////////////////////////////////
+    // FileIO => Eğer teachers.txt oluşturulmamışsa oluştur
     private void createFileIfNotExists() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
@@ -38,6 +46,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         }
     }
 
+    // 📌 Öğretmenleri dosyaya kaydetme (BufferedWriter)
     private void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (TeacherDto teacher : teacherList) {
@@ -48,6 +57,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         }
     }
 
+    // 📌 Öğretmenleri dosyadan yükleme (BufferedReader)
     private void loadTeachersFromFile() {
         teacherList.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
@@ -63,12 +73,20 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         }
     }
 
+    /// /////////////////////////////////////////////////////////////
+    // 📌 Öğretmen nesnesini CSV formatına çevirme
+    // Bu metod, bir StudentDto nesnesini virgülle ayrılmış bir metin (CSV) formatına çevirir.
+    // Böylece Öğretmen verileri bir dosyada satır bazlı olarak saklanabilir.
     private String teacherToCsv(TeacherDto teacher) {
         return teacher.id() + "," + teacher.name() + "," + teacher.surname() + "," +
                 teacher.birthDate() + "," + teacher.subject() + "," +
                 teacher.yearsOfExperience() + "," + teacher.isTenured() + "," + teacher.salary();
     }
 
+    // 📌 CSV formatındaki satırı StudentDto nesnesine çevirme
+    // Bu metod, CSV formatındaki bir satırı parçalayarak bir StudentDto nesnesine dönüştürür.
+    // Dosyadan okunan her satır için çağrılır ve veriyi uygun şekilde nesneye aktarır.
+    // 📌 CSV formatındaki satırı StudentDto nesnesine çevirme (Dosyadan okurken)
     private TeacherDto csvToTeacher(String csvLine) {
         try {
             String[] parts = csvLine.split(",");
@@ -76,9 +94,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
                 System.err.println("Hatalı CSV formatı: " + csvLine);
                 return null;
             }
-
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
             LocalDate birthDate = null;
             try {
                 if (!parts[3].isBlank()) {
@@ -88,13 +104,13 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
                 System.err.println("Geçersiz tarih formatı: " + parts[3] + " (Beklenen format: yyyy-MM-dd)");
                 return null;
             }
-
             return new TeacherDto(
                     Integer.parseInt(parts[0]),
                     parts[1],
                     parts[2],
                     birthDate,
-                    parts[4],
+                    //parts[4], //String
+                    ETeacherSubject.valueOf(parts[4]) ,
                     Integer.parseInt(parts[5]),
                     Boolean.parseBoolean(parts[6]),
                     Double.parseDouble(parts[7])
@@ -106,6 +122,10 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         }
     }
 
+    /// /////////////////////////////////////////////////////////////
+    // C-R-U-D
+    // Öğretmen Ekle
+    // 📌 Öğretmen Ekleme (Create)
     @Override
     public TeacherDto create(TeacherDto teacher) {
         teacherList.add(teacher);
@@ -113,6 +133,13 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         return teacher;
     }
 
+    // Öğretmen Listesi
+    @Override
+    public List<TeacherDto> list() {
+        return new ArrayList<>(teacherList); // Liste dışarıdan değiştirilemesin diye kopya veriyoruz.
+    }
+
+    // FindByName
     @Override
     public TeacherDto findByName(String name) {
         return teacherList.stream()
@@ -121,6 +148,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
                 .orElseThrow(() -> new TeacherNotFoundException(name + " isimli öğretmen bulunamadı."));
     }
 
+    // FindById
     @Override
     public TeacherDto findById(int id) {
         return teacherList.stream()
@@ -129,11 +157,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
                 .orElseThrow(() -> new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı."));
     }
 
-    @Override
-    public List<TeacherDto> list() {
-        return new ArrayList<>(teacherList); // Liste dışarıdan değiştirilemesin diye kopya veriyoruz.
-    }
-
+    // Öğretmen Güncelle
     @Override
     public TeacherDto update(int id, TeacherDto updatedTeacher) {
         for (int i = 0; i < teacherList.size(); i++) {
@@ -146,6 +170,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         throw new TeacherNotFoundException("Güncellenecek öğretmen bulunamadı.");
     }
 
+    // Öğretmen Sil
     @Override
     public TeacherDto delete(int id) {
         Optional<TeacherDto> teacher = teacherList.stream()
@@ -156,6 +181,25 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         return teacher.orElseThrow(() -> new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı."));
     }
 
+
+    /// //////////////////////////////////////////////////////////////////////
+    // Enum Öğretmen Türü Method
+    public ETeacherSubject teacherTypeMethod() {
+        System.out.println("\n"+ SpecialColor.GREEN+"Öğretmen türünü seçiniz.\n1-)Tarih\n2-)Bioloji\n3-)Kimya\n4-)Bilgisayar Bilimleri\n5-)Diğer"+SpecialColor.RESET);
+        int typeChooise = scanner.nextInt();
+        ETeacherSubject swichcaseTeacher = switch (typeChooise) {
+            case 1 -> ETeacherSubject.HISTORY;
+            case 2 -> ETeacherSubject.BIOLOGY;
+            case 3 -> ETeacherSubject.CHEMISTRY;
+            case 4 -> ETeacherSubject.COMPUTER_SCIENCE;
+            case 5 -> ETeacherSubject.MATHEMATICS;
+            default -> ETeacherSubject.OTHER;
+        };
+        return swichcaseTeacher;
+    }
+
+    /// ///////////////////////////////////////////////////////////////////////
+    // Console Seçim (Öğretmen)
     @Override
     public void chooise() {
         while (true) {
@@ -210,7 +254,8 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         LocalDate birthDate = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         System.out.print("Uzmanlık Alanı: ");
-        String subject = scanner.nextLine();
+        // 📌 Öğrenci türünü seçme
+        ETeacherSubject subject = teacherTypeMethod();
 
         System.out.print("Deneyim Yılı: ");
         int yearsOfExperience = scanner.nextInt();
@@ -233,7 +278,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
             return;
         }
         System.out.println("\n=== Öğretmen Listesi ===");
-        teacherList.forEach(t -> System.out.println(t.fullName() + " - " + t.subject()));
+        teacherList.forEach(t -> System.out.println( t.fullName() + " - " + t.subject()));
     }
 
     private void searchTeacher() {

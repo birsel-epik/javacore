@@ -1,10 +1,10 @@
 package com.birselepik;
 
-
 import com.birselepik.controller.StudentController;
-import com.birselepik.dao.TeacherDao;
+import com.birselepik.controller.TeacherController;
 
 import java.util.Scanner;
+
 
 public class Main {
     // Scanner
@@ -52,8 +52,10 @@ public class Main {
     // TEACHER
     private static void teacher() {
         try {
-            TeacherDao teacherDao = new TeacherDao();
-            teacherDao.chooise();
+            TeacherController teacherController= new TeacherController();
+            //TeacherDao teacherDao = new TeacherDao();
+            //teacherDao.chooise();
+            teacherController.chooise();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,4 +65,4 @@ public class Main {
     public static void main(String[] args) {
         chooise();
     } //end psvm
-} // Main
+} // Main// Main
