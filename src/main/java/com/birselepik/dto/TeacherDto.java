@@ -4,22 +4,22 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- *
- * @param teacherDto
- * @param birthDate
  * @param subject
  * @param yearsOfExperience
+ * @param isTenured
  * @param salary
  * TeacherDto bir Record olarak tanımlanmıştır.
- * Record'lar Javada Immutable (değiştirilemez) veri taşıma nesneleridir.
- * Inheritance (Desteklemez) ancak Composition yöntemi ile PersonDto kullanabiliriz.
+ * Record'lar Javada Immutable(değiştirilemez)  veri taşıma nesneleridir.
+ * Inheritance (Desteklemez)  ancak Composition yöntemiyle PersonDto kullanabiliriz
  */
 
 /*
-    Dikkat:
-    1-) Record => public record Deneme(PARAMETRELER) {}
-    2-) Constructor => ublic Deneme {}
+Dikkat:
+1-) Record => public record Deneme(PARAMETRELER){}
+2-) Constructor public Deneme {}
 */
+
+
 
 // Record : TeacherDto
 public record TeacherDto(

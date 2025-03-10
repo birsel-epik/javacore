@@ -6,6 +6,7 @@ import com.birselepik.dto.TeacherDto;
 import com.birselepik.utils.SpecialColor;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TeacherController implements IDaoGenerics<TeacherDto> {
 
@@ -30,12 +31,12 @@ public class TeacherController implements IDaoGenerics<TeacherDto> {
 
     // FIND BY NAME
     @Override
-    public TeacherDto findByName(String name) {
-        return teacherDao.findByName(name);
+    public Optional<TeacherDto> findByName(String name) {
+        return teacherDao.findByName(name) ;
     }
 
     @Override
-    public TeacherDto findById(int id) {
+    public Optional<TeacherDto> findById(int id) {
         return null;
     }
 
@@ -47,13 +48,13 @@ public class TeacherController implements IDaoGenerics<TeacherDto> {
 
     // UPDATE
     @Override
-    public TeacherDto update(int id, TeacherDto teacherDto) {
+    public Optional<TeacherDto> update(int id, TeacherDto teacherDto) {
         return teacherDao.update(id, teacherDto);
     }
 
     // DELETE
     @Override
-    public TeacherDto delete(int id) {
+    public Optional<TeacherDto> delete(int id) {
         return teacherDao.delete(id);
     }
 
