@@ -972,13 +972,13 @@ public class MemoryTest {
     public static void main(String[] args) {
         int a = 5;
         Integer b = new Integer(5);
-        
+
         modify(a, b);
-        
+
         System.out.println("a: " + a);  // 5
         System.out.println("b: " + b);  // 5
     }
-    
+
     public static void modify(int x, Integer y) {
         x = 10;       // Stack içindeki x değişir
         y = new Integer(10); // Yeni bir nesne oluşturulur (Heap)
@@ -1092,13 +1092,13 @@ public class ShortComparison {
     public static void main(String[] args) {
         Short wrapperTypeShort1 = new Short((short) 127);
         Short wrapperTypeShort2 = 127; // Autoboxing
-        
+
         Short wrapperTypeShort3 = new Short((short) 127);
         Short wrapperTypeShort4 = 127; // Autoboxing
-        
+
         System.out.println(wrapperTypeShort1 == wrapperTypeShort3); // false (Heap'te farklı nesneler)
         System.out.println(wrapperTypeShort2 == wrapperTypeShort4); // true (Cache mekanizması sayesinde aynı nesne)
-        
+
         Short wrapperTypeShort5 = 32767;
         Short wrapperTypeShort6 = 32767;
 
@@ -1467,7 +1467,7 @@ public class WideningExample {
     public static void main(String[] args) {
         int sayi = 100;
         double genisSayi = sayi; // Otomatik dönüşüm (int → double)
-        
+
         System.out.println("int değer: " + sayi);
         System.out.println("double değere dönüştü: " + genisSayi);
     }
@@ -1632,10 +1632,10 @@ Kedi kedi = (Kedi) hayvan; // HATA! hayvan nesnesi aslında bir Kedi değil.
 
 ```java
 if (hayvan instanceof Kedi) {
-    Kedi kedi = (Kedi) hayvan;
+Kedi kedi = (Kedi) hayvan;
     kedi.miyavla();
 } else {
-    System.out.println("Nesne Kedi türüne ait değil.");
+        System.out.println("Nesne Kedi türüne ait değil.");
 }
 ```
 
@@ -1673,7 +1673,7 @@ public class StringToIntExample {
     public static void main(String[] args) {
         String sayiStr = "123"; // String veri
         int sayi = Integer.parseInt(sayiStr); // String → int dönüşümü
-        
+
         System.out.println("String: " + sayiStr);
         System.out.println("int: " + sayi);
     }
@@ -1703,7 +1703,7 @@ public class ValueOfExample {
     public static void main(String[] args) {
         String sayiStr = "456";
         int sayi = Integer.valueOf(sayiStr); // String → Integer
-        
+
         System.out.println("int değeri: " + sayi);
     }
 }
@@ -1723,7 +1723,7 @@ public class IntToStringExample {
     public static void main(String[] args) {
         int sayi = 789;
         String sayiStr = String.valueOf(sayi); // int → String
-        
+
         System.out.println("int: " + sayi);
         System.out.println("String: " + sayiStr);
     }
@@ -1739,7 +1739,7 @@ public class IntToStringExample2 {
     public static void main(String[] args) {
         int sayi = 1234;
         String sayiStr = Integer.toString(sayi); // int → String
-        
+
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1757,7 +1757,7 @@ public class PlusStringExample {
     public static void main(String[] args) {
         int sayi = 500;
         String sayiStr = sayi + ""; // int → String
-        
+
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1817,8 +1817,8 @@ Math sınıfı **mutlak değer, maksimum, minimum gibi işlemleri** kolayca yapa
 
 ```java
 System.out.println(Math.abs(-15)); // 15
-System.out.println(Math.max(100, 200)); // 200
-System.out.println(Math.min(50, 30)); // 30
+        System.out.println(Math.max(100, 200)); // 200
+        System.out.println(Math.min(50, 30)); // 30
 ```
 
 ---
@@ -1834,10 +1834,10 @@ System.out.println(Math.min(50, 30)); // 30
 
 ```java
 System.out.println(Math.sqrt(16)); // 4.0
-System.out.println(Math.pow(2, 5)); // 32.0
-System.out.println(Math.exp(1)); // 2.718
-System.out.println(Math.log(Math.E)); // 1.0
-System.out.println(Math.log10(1000)); // 3.0
+        System.out.println(Math.pow(2, 5)); // 32.0
+        System.out.println(Math.exp(1)); // 2.718
+        System.out.println(Math.log(Math.E)); // 1.0
+        System.out.println(Math.log10(1000)); // 3.0
 ```
 
 ---
@@ -1853,8 +1853,8 @@ Java Math sınıfı **yuvarlama işlemleri için** farklı fonksiyonlar sunar.
 
 ```java
 System.out.println(Math.round(4.5)); // 5
-System.out.println(Math.ceil(3.2)); // 4.0
-System.out.println(Math.floor(6.8)); // 6.0
+        System.out.println(Math.ceil(3.2)); // 4.0
+        System.out.println(Math.floor(6.8)); // 6.0
 ```
 ---
 
@@ -1872,8 +1872,8 @@ Trigonometri fonksiyonları **radyan cinsinden** hesaplama yapar.
 
 ```java
 System.out.println(Math.sin(Math.PI/2)); // 1.0
-System.out.println(Math.cos(0)); // 1.0
-System.out.println(Math.tan(Math.PI/4)); // 1.0
+        System.out.println(Math.cos(0)); // 1.0
+        System.out.println(Math.tan(Math.PI/4)); // 1.0
 ```
 
 ---
@@ -1884,8 +1884,8 @@ System.out.println(Math.tan(Math.PI/4)); // 1.0
 **Örnek Kullanımlar:**
 ```java
 System.out.println(Math.random()); // 0.0 ile 1.0 arasında rastgele sayı
-System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
-System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
+        System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
+        System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
 ```
 
 ---
@@ -2304,16 +2304,16 @@ import java.util.Scanner;
 public class ScannerLoopExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         while (true) {
             System.out.print("Bir sayı girin (Çıkış için -1): ");
             int sayi = scanner.nextInt();
-            
+
             if (sayi == -1) {
                 System.out.println("Çıkış yapıldı.");
                 break;
             }
-            
+
             System.out.println("Girdiğiniz sayı: " + sayi);
         }
 
@@ -2388,7 +2388,7 @@ Java'da kullanılan başlıca koşullu ifadeler şunlardır:
 public class IfExample {
     public static void main(String[] args) {
         int sayi = 10;
-        
+
         if (sayi > 5) { // Koşul doğru mu? Evet!
             System.out.println("Sayı 5'ten büyüktür.");
         }
@@ -2412,7 +2412,7 @@ Sayı 5'ten büyüktür.
 public class IfElseExample {
     public static void main(String[] args) {
         int sayi = 3;
-        
+
         if (sayi > 5) {
             System.out.println("Sayı 5'ten büyüktür.");
         } else {
@@ -2614,8 +2614,8 @@ Bu döngülerle birlikte **`break` ve `continue`** gibi kontrol ifadeleri kullan
 **Yapısı:**
 ```java
 for (başlangıç_değeri; koşul; artırma/azaltma) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 1: 1'den 5'e kadar yazdırma**
@@ -2672,8 +2672,8 @@ public class EvenNumbers {
 **Yapısı:**
 ```java
 while (koşul) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 3: `while` ile Sayı Yazdırma**
@@ -2681,7 +2681,7 @@ while (koşul) {
 public class WhileLoopExample {
     public static void main(String[] args) {
         int i = 1;
-        
+
         while (i <= 5) {
             System.out.println("i: " + i);
             i++; // i artırılıyor, yoksa sonsuz döngü olur.
@@ -2744,8 +2744,8 @@ Döngü sonlandı.
 **Yapısı:**
 ```java
 do {
-    // Döngü bloğu
-} while (koşul);
+        // Döngü bloğu
+        } while (koşul);
 ```
 
 ### **Örnek 5: `do-while` ile Kullanıcıdan Şifre Alma**
@@ -2784,8 +2784,8 @@ Giriş başarılı!
 **Yapısı:**
 ```java
 for (VeriTipi eleman : Dizi/Koleksiyon) {
-    // Döngü bloğu
-}
+        // Döngü bloğu
+        }
 ```
 
 ### **Örnek 6: `for-each` ile Dizi Elemanlarını Yazdırma**
@@ -2899,7 +2899,7 @@ Java'da `for` ve `while` döngüleri, tekrar eden işlemleri gerçekleştirmek i
 
 ```java
 for (int i = 0; i < 5; i++) {
-    System.out.println("i değeri: " + i);
+        System.out.println("i değeri: " + i);
 }
 ```
 ✅ **Avantajı**: Döngü değişkeni (`i`) döngü içinde tanımlandığı için **lokal kalır** ve kod daha okunaklıdır.
@@ -2913,9 +2913,9 @@ for (int i = 0; i < 5; i++) {
 ```java
 int i = 0;
 while (i < 5) {
-    System.out.println("i değeri: " + i);
-    i++;
-}
+        System.out.println("i değeri: " + i);
+i++;
+        }
 ```
 ✅ **Avantajı**: **Esnektir**, koşul başka bir yerden değiştirilebilir.
 
@@ -2942,9 +2942,9 @@ while (i < 5) {
 ```java
 int i = 0;
 do {
-    System.out.println("i değeri: " + i);
-    i++;
-} while (i < 5);
+        System.out.println("i değeri: " + i);
+i++;
+        } while (i < 5);
 ```
 ✅ **Avantajı**: Kullanıcıdan giriş alırken veya en az bir kez çalışması gereken işlemlerde idealdir.
 
@@ -3523,7 +3523,7 @@ System.out.println(text.length()); // 17
 ```java
 String text = "Java";
 System.out.println(text.charAt(0)); // J
-System.out.println(text.charAt(2)); // v
+        System.out.println(text.charAt(2)); // v
 ```
 
 ---
@@ -3532,7 +3532,7 @@ System.out.println(text.charAt(2)); // v
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.substring(8)); // "Dünya"
-System.out.println(text.substring(0, 7)); // "Merhaba"
+        System.out.println(text.substring(0, 7)); // "Merhaba"
 ```
 
 ---
@@ -3541,7 +3541,7 @@ System.out.println(text.substring(0, 7)); // "Merhaba"
 ```java
 String text = "Java";
 System.out.println(text.toUpperCase()); // "JAVA"
-System.out.println(text.toLowerCase()); // "java"
+        System.out.println(text.toLowerCase()); // "java"
 ```
 
 ---
@@ -3552,7 +3552,7 @@ String a = "Java";
 String b = "java";
 
 System.out.println(a.equals(b)); // false
-System.out.println(a.equalsIgnoreCase(b)); // true
+        System.out.println(a.equalsIgnoreCase(b)); // true
 ```
 📌 **Neden `==` kullanılmamalı?**
 - `==`, **referansları** karşılaştırır.
@@ -3565,14 +3565,14 @@ System.out.println(a.equalsIgnoreCase(b)); // true
 ```java
 String text = "Java öğrenmek çok eğlenceli!";
 System.out.println(text.contains("Java")); // true
-System.out.println(text.contains("Python")); // false
+        System.out.println(text.contains("Python")); // false
 ```
 
 #### **`startsWith()` & `endsWith()` → Başlangıç ve Bitiş Kontrolü**
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.startsWith("Merhaba")); // true
-System.out.println(text.endsWith("Dünya")); // true
+        System.out.println(text.endsWith("Dünya")); // true
 ```
 
 ---
@@ -3583,7 +3583,7 @@ String metin = "Java,Python,C++";
 String[] diller = metin.split(",");
 
 for (String dil : diller) {
-    System.out.println(dil);
+        System.out.println(dil);
 }
 ```
 **Çıktı:**
@@ -3723,11 +3723,11 @@ Java'da `switch-case` ve `if-else if` yapıları, akış kontrolü sağlamak iç
 int sayi = 5;
 
 if (sayi > 0 && sayi <= 10) {
-    System.out.println("Sayı 1 ile 10 arasında");
+        System.out.println("Sayı 1 ile 10 arasında");
 } else if (sayi > 10 && sayi <= 20) {
-    System.out.println("Sayı 11 ile 20 arasında");
+        System.out.println("Sayı 11 ile 20 arasında");
 } else {
-    System.out.println("Sayı 20’den büyük");
+        System.out.println("Sayı 20’den büyük");
 }
 ```
 ✅ **Avantaj**: Aralık bazlı kontroller için uygundur.
@@ -3738,16 +3738,16 @@ if (sayi > 0 && sayi <= 10) {
 ```java
 int gun = 3;
 switch (gun) {
-    case 1:
+        case 1:
         System.out.println("Pazartesi");
         break;
-    case 2:
-        System.out.println("Salı");
+                case 2:
+                System.out.println("Salı");
         break;
-    case 3:
-        System.out.println("Çarşamba");
+                case 3:
+                System.out.println("Çarşamba");
         break;
-    default:
+default:
         System.out.println("Geçersiz gün");
 }
 ```
@@ -3778,14 +3778,14 @@ Java'da `switch-case` ve `if-else if` yapılarının algoritmik analizi için **
 ### **İf-Else If-Else**
 ```java
 if (x == 1) {
-    // İşlem 1
-} else if (x == 2) {
-    // İşlem 2
-} else if (x == 3) {
-    // İşlem 3
-} else {
-    // Varsayılan işlem
-}
+        // İşlem 1
+        } else if (x == 2) {
+        // İşlem 2
+        } else if (x == 3) {
+        // İşlem 3
+        } else {
+        // Varsayılan işlem
+        }
 ```
 - **En iyi durum (Best Case) - O(1)**: Eğer ilk `if` koşulu doğruysa, yalnızca bir kontrol yapılır.
 - **En kötü durum (Worst Case) - O(n)**: Tüm `if` blokları kontrol edildikten sonra `else` bloğuna ulaşılırsa **n adet karşılaştırma** yapılır.
@@ -3798,18 +3798,18 @@ if (x == 1) {
 ### **Switch-Case**
 ```java
 switch (x) {
-    case 1:
+        case 1:
         // İşlem 1
         break;
-    case 2:
+        case 2:
         // İşlem 2
         break;
-    case 3:
+        case 3:
         // İşlem 3
         break;
-    default:
+default:
         // Varsayılan işlem
-}
+        }
 ```
 Switch-case’in algoritmik analizi derleyici tarafından nasıl optimize edildiğine bağlıdır:
 
@@ -4168,7 +4168,7 @@ public class PrimitiveStackExample {
         int a = 10;
         int b = a; // b, a'nın değerini alır (Kopyalanır, adres paylaşımı olmaz)
         b = 20;
-        
+
         System.out.println("a: " + a); // 10
         System.out.println("b: " + b); // 20
     }
@@ -4267,7 +4267,7 @@ araba1.model = "Audi";
 Araba araba2 = araba1; // Aynı heap adresini gösterir
 araba2.model = "Tesla";
 
-System.out.println(araba1.model); // Tesla
+        System.out.println(araba1.model); // Tesla
 ```
 
 ### **📌 Deep Copy (Derin Kopyalama - Yeni Bir Nesne Oluşturur)**
@@ -4280,7 +4280,7 @@ araba2.model = araba1.model; // Yeni nesneye ayrı değer atanıyor.
 
 araba2.model = "Tesla";
 
-System.out.println(araba1.model); // Audi (Değişmez!)
+        System.out.println(araba1.model); // Audi (Değişmez!)
 System.out.println(araba2.model); // Tesla
 ```
 ✅ **Deep Copy kullanarak heap bellekte farklı nesneler oluşturmuş olduk.**
@@ -4349,7 +4349,7 @@ public class DateFormatExample {
     public static void main(String[] args) {
         Date tarih = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        
+
         String formatliTarih = sdf.format(tarih);
         System.out.println("Formatlı Tarih: " + formatliTarih);
     }
@@ -4407,7 +4407,7 @@ public class LocalDateExample {
     public static void main(String[] args) {
         LocalDate bugun = LocalDate.now(); // Bugünün tarihi
         System.out.println("Bugünün Tarihi: " + bugun);
-        
+
         LocalDate ozelTarih = LocalDate.of(2025, 2, 12); // Özel bir tarih
         System.out.println("Özel Tarih: " + ozelTarih);
     }
@@ -11221,7 +11221,7 @@ Java'daki Collection Framework, çeşitli **arayüzler** kullanarak farklı veri
 Tüm koleksiyon türleri için ortak olan temel bir arayüzdür. List, Set ve Queue gibi arayüzler **Collection** arayüzünden türetilmiştir. **Map arayüzü** ise Collection’dan türetilmemiştir çünkü Map bir anahtar-değer (key-value) tabanlı veri yapısıdır.
 
 ```java
-public interface Collection<E> extends Iterable<E> {
+public interface Collection<E> extends Iterable<E> { 
     boolean add(E e);
     boolean remove(Object o);
     boolean contains(Object o);
@@ -11460,10 +11460,10 @@ Java 8 ile gelen **Stream API**, koleksiyonlar (List, Set, Map) üzerinde fonksi
 ```java
 List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
 for (String name : names) {
-        if (name.startsWith("A")) {
+    if (name.startsWith("A")) {
         System.out.println(name);
     }
-            }
+}
 ```
 
 ### **Java 8 ile (Stream API Kullanımı)**
@@ -11471,7 +11471,7 @@ for (String name : names) {
 List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
 names.stream()
      .filter(name -> name.startsWith("A"))
-        .forEach(System.out::println);
+     .forEach(System.out::println);
 ```
 ✅ **Faydaları:** Daha kısa ve okunabilir kod, paralel işlem yapma imkanı (parallelStream()), kodun fonksiyonel hale gelmesi.
 
@@ -11571,8 +11571,8 @@ public class CollectorsExample {
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
         List<String> filteredNames = names.stream()
-                .filter(name -> name.startsWith("A"))
-                .collect(Collectors.toList());
+                                          .filter(name -> name.startsWith("A"))
+                                          .collect(Collectors.toList());
 
         System.out.println(filteredNames); // ["Ali", "Ayşe"]
     }
@@ -11834,6 +11834,606 @@ public class StreamReduceExample {
 - `parallelStream()` ile paralel işlemler yapılabilir.
 
 Stream API, Java 8’in getirdiği en güçlü özelliklerden biridir ve modern Java programlamada oldukça yaygın kullanılmaktadır. 🚀
+
+
+## Javada Annotation Nedir ?
+```sh 
+
+```
+---
+Java'da **Annotation (Notasyon)**, kod hakkında ek bilgi sağlayan bir **metadata** (üst bilgi) mekanizmasıdır. Annotation'lar, kodun derlenmesi, çalıştırılması veya analiz edilmesi sırasında derleyici, çalışma zamanı araçları veya IDE tarafından işlenebilir.
+
+---
+
+# **Annotation Nedir?**
+Annotation’lar, bir programın kaynak koduna eklenen özel işaretlerdir ve **sınıflara, metotlara, değişkenlere, parametrelere ve diğer bileşenlere uygulanabilir**. Ancak, programın mantığını doğrudan etkilemezler. Annotation’lar, derleyici direktifleri, hata yakalama bilgileri ve çalışma zamanı işlemleri için kullanılır.
+
+Java'daki **annotation'lar genellikle framework'ler ve kütüphaneler tarafından kullanılır**. Örneğin, Spring, Hibernate ve JUnit gibi framework'lerde annotation’lar, yapılandırma ve otomasyon süreçlerini kolaylaştırır.
+
+---
+
+# **Annotation Kullanım Alanları**
+Annotation’lar üç ana kategoride kullanılır:
+
+1. **Derleyici Direktifleri (Compiler Instructions)**
+    - Derleyiciye hata veya uyarı mesajları hakkında bilgi verir.
+    - Örneğin: `@Override`, `@SuppressWarnings`
+
+2. **Kod Üretme (Code Generation)**
+    - Çeşitli araçlar tarafından kod üretmek için kullanılır.
+    - Örneğin: `@Entity`, `@Getter`, `@Setter` (Lombok)
+
+3. **Çalışma Zamanında (Runtime Processing)**
+    - Çalışma zamanı işlemleri için **Reflection API** ile kullanılabilir.
+    - Örneğin: `@Autowired`, `@Transactional` (Spring Framework)
+
+---
+
+# **Java'da Annotation Türleri**
+Java’da annotation’lar üç farklı şekilde sınıflandırılabilir:
+
+### **1. Java'nın Varsayılan (Built-in) Annotation’ları**
+Java’nın kendi içinde sunduğu bazı annotation’lar şunlardır:
+
+| Annotation | Açıklama |
+|------------|----------|
+| `@Override` | Bir metotun üst sınıftaki metodu ezdiğini belirtir. |
+| `@Deprecated` | Bir metot veya sınıfın kullanım dışı olduğunu belirtir. |
+| `@SuppressWarnings` | Derleyicinin belirli uyarıları göz ardı etmesini sağlar. |
+| `@FunctionalInterface` | Bir arayüzün yalnızca bir metot içermesi gerektiğini belirtir. |
+| `@SafeVarargs` | Değişken uzunlukta parametre listesi (varargs) kullanan metotlarda güvenli kullanım sağlanmasını belirtir. |
+| `@Native` | Sabit (constant) değişkenlerin `native code` içinde kullanılacağını belirtir. |
+
+Örnek:
+```java
+class Base {
+    void show() {
+        System.out.println("Base class");
+    }
+}
+
+class Derived extends Base {
+    @Override
+    void show() {  // `@Override` kullanımı
+        System.out.println("Derived class");
+    }
+}
+```
+
+---
+
+### **2. Meta-Annotation (Annotation’ları Anotasyonlama)**
+Java’da annotation’ların nasıl çalıştığını ve hangi alanlarda geçerli olduğunu belirleyen meta-annotation’lar vardır.
+
+| Meta-Annotation | Açıklama |
+|-----------------|----------|
+| `@Target` | Annotation’ın uygulanabileceği öğeleri belirtir (sınıf, metot, alan, parametre, vb.). |
+| `@Retention` | Annotation’ın ne kadar süreyle saklanacağını belirtir. |
+| `@Inherited` | Annotation’ın alt sınıflar tarafından miras alınmasını sağlar. |
+| `@Documented` | Annotation’ın Javadoc’ta görünmesini sağlar. |
+| `@Repeatable` | Aynı annotation’ın birden fazla kez kullanılmasını sağlar. |
+
+Örnek:
+```java
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+// Bu annotation yalnızca metodlara uygulanabilir.
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@interface MyAnnotation {
+    String value() default "Varsayılan Değer";
+}
+```
+
+---
+
+### **3. Kullanıcı Tanımlı (Custom) Annotation’lar**
+Kendi annotation’larımızı oluşturabiliriz.
+
+Örnek olarak bir **loglama** annotation’ı yapalım:
+```java
+import java.lang.annotation.*;
+
+@Retention(RetentionPolicy.RUNTIME) // Çalışma zamanında erişilebilir
+@Target(ElementType.METHOD) // Yalnızca metotlara uygulanabilir
+@interface LogExecutionTime {
+}
+```
+
+Şimdi bu annotation’ı bir metotta kullanalım:
+```java
+class Test {
+    @LogExecutionTime
+    void process() {
+        System.out.println("Bu metot loglanacak.");
+    }
+}
+```
+Bu annotation’ı **Reflection API** ile işleyebiliriz:
+```java
+import java.lang.reflect.Method;
+
+public class AnnotationProcessor {
+    public static void main(String[] args) throws Exception {
+        Method method = Test.class.getMethod("process");
+        
+        if (method.isAnnotationPresent(LogExecutionTime.class)) {
+            System.out.println("process() metodu LogExecutionTime annotation’ı ile işaretlenmiştir.");
+        }
+    }
+}
+```
+Bu kodun çıktısı:
+```
+process() metodu LogExecutionTime annotation’ı ile işaretlenmiştir.
+```
+
+---
+
+# **Annotation’ların Retention Policy (Saklama Politikaları)**
+Bir annotation’ın hangi aşamada saklanacağını belirlemek için `@Retention` kullanılır.
+
+| Retention Policy | Açıklama |
+|------------------|----------|
+| `SOURCE` | Yalnızca kaynak kodda bulunur, derleme sırasında atılır. |
+| `CLASS` | Derleme aşamasında derlenmiş kodda bulunur, ancak çalışma zamanında erişilemez. |
+| `RUNTIME` | Çalışma zamanında Reflection API ile erişilebilir. |
+
+Örnek:
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@interface RuntimeAnnotation {
+}
+```
+
+---
+
+# **İleri Düzey Kullanım: Annotation İşleyici (Processor)**
+Çalışma zamanında annotation'ları okumak için **Reflection API** kullanılır.
+
+Örneğin:
+```java
+import java.lang.reflect.Method;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface MyTest {
+}
+
+class Demo {
+    @MyTest
+    void testMethod() {
+        System.out.println("Test metodu çalıştı.");
+    }
+}
+
+public class AnnotationProcessor {
+    public static void main(String[] args) {
+        for (Method method : Demo.class.getDeclaredMethods()) {
+            if (method.isAnnotationPresent(MyTest.class)) {
+                try {
+                    method.invoke(new Demo()); // Metodu çağır
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+```
+Bu kod `@MyTest` annotation’ına sahip metotları çalıştırır.
+
+Çıktı:
+```
+Test metodu çalıştı.
+```
+
+---
+
+# **Sonuç**
+- **Annotation’lar**, Java’da meta-veri (metadata) eklemek için kullanılan mekanizmalardır.
+- **Framework ve kütüphanelerde yaygın olarak kullanılırlar** (Spring, Hibernate, Lombok, JUnit).
+- **Üç temel türü vardır**: Java’nın kendi annotation’ları, meta-annotation’lar ve kullanıcı tanımlı annotation’lar.
+- **Çalışma zamanında işlenebilir** ve **Reflection API** ile okunabilir.
+- **Modern Java uygulamalarında, özellikle Spring Boot gibi framework’lerde merkezi bir rol oynar.**
+
+
+## Javada Optional
+```sh 
+
+```
+---
+
+Java'da `Optional<T>` sınıfı, **null referanslarını güvenli bir şekilde ele almak için** kullanılır. `Optional`, **"null safety"** sağlayarak, `NullPointerException` hatalarını minimize etmeye yardımcı olur.
+
+---
+
+## **1. Optional Nedir?**
+`Optional`, `java.util` paketinde bulunan ve **içinde bir değer olup olmadığını temsil eden bir kapsayıcı (container)** sınıftır.
+
+- **Boş olabilir (`Optional.empty()`)**
+- **Bir değer içerebilir (`Optional.of(T value)`)**
+
+Java 8 ile tanıtılmıştır ve özellikle **null kontrollerini daha okunaklı ve güvenli hale getirmek için** kullanılır.
+
+---
+
+## **2. Optional Nasıl Kullanılır?**
+### **2.1. Optional ile Değer Oluşturma**
+```java
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        // Değer içeren bir Optional nesnesi
+        Optional<String> optionalWithValue = Optional.of("Merhaba, Java!");
+
+        // Boş bir Optional nesnesi
+        Optional<String> emptyOptional = Optional.empty();
+
+        // Nullable bir değer içerebilen Optional
+        Optional<String> nullableOptional = Optional.ofNullable(null); // Boş Optional döner
+
+        System.out.println("Optional Değer: " + optionalWithValue.orElse("Varsayılan Değer"));
+        System.out.println("Boş Optional: " + emptyOptional.orElse("Varsayılan Değer"));
+    }
+}
+```
+---
+## **3. Optional Kullanım Senaryoları**
+### **3.1. Optional ile Null Kontrolü**
+**Klasik Null Kontrolü:**
+```java
+public String getUserName(User user) {
+    if (user != null) {
+        return user.getName();
+    } else {
+        return "Bilinmeyen Kullanıcı";
+    }
+}
+```
+**Optional ile Null Kontrolü:**
+```java
+public String getUserName(User user) {
+    return Optional.ofNullable(user)
+                   .map(User::getName)
+                   .orElse("Bilinmeyen Kullanıcı");
+}
+```
+💡 **Avantaj:** Daha okunaklı ve hatasız bir kod yapısı sağlanır.
+
+---
+
+### **3.2. Optional ile Değer Varlığını Kontrol Etme**
+```java
+Optional<String> optionalValue = Optional.of("Java 8");
+
+// Eğer değer varsa, yazdır
+optionalValue.ifPresent(value -> System.out.println("Değer: " + value));
+```
+💡 **Avantaj:** `null` kontrolü yapmadan doğrudan işlem yapmamızı sağlar.
+
+---
+
+### **3.3. Optional ile Varsayılan Değer Kullanımı**
+```java
+String result = optionalValue.orElse("Varsayılan Değer");
+System.out.println(result);
+```
+💡 **Avantaj:** Eğer `optionalValue` içinde değer varsa onu döndürür, yoksa varsayılan değeri döndürür.
+
+Alternatif olarak:
+```java
+String result = optionalValue.orElseGet(() -> "Varsayılan Değer");
+```
+💡 **Fark:** `orElse()` her zaman çalışır, ancak `orElseGet()` sadece `Optional` boşsa çalışır.
+
+---
+
+### **3.4. Optional ile Exception Fırlatma**
+```java
+String value = optionalValue.orElseThrow(() -> new IllegalArgumentException("Değer bulunamadı!"));
+```
+💡 **Avantaj:** Eğer değer boşsa, belirli bir hata fırlatabiliriz.
+
+---
+
+## **4. Optional ile Fonksiyonel Programlama**
+### **4.1. map() Kullanımı**
+Eğer `Optional` içinde bir değer varsa, `map()` ile bu değeri dönüştürebiliriz.
+```java
+Optional<String> name = Optional.of("Java");
+Optional<Integer> nameLength = name.map(String::length);
+System.out.println(nameLength.orElse(0)); // Çıktı: 4
+```
+💡 **Avantaj:** Null kontrolü yapmadan, doğrudan değer üzerinde işlem yapabiliriz.
+
+---
+
+### **4.2. flatMap() Kullanımı**
+`Optional<Optional<T>>` gibi iç içe `Optional` oluşmasını engellemek için `flatMap()` kullanılır.
+```java
+class User {
+    private Optional<String> email;
+
+    public Optional<String> getEmail() {
+        return email;
+    }
+}
+
+User user = new User();
+Optional<String> email = Optional.of(user).flatMap(User::getEmail);
+```
+💡 **Avantaj:** İç içe Optional kullanımını önler.
+
+---
+
+## **5. Optional Kullanılmaması Gereken Durumlar**
+**1️⃣ DTO veya Entity içinde Optional Kullanımı:**
+- `Optional` bir sınıfın alanı olarak kullanılmamalıdır. Çünkü `Optional` serileştirilmeye uygun değildir.
+
+```java
+// KÖTÜ KULLANIM ❌
+class User {
+    private Optional<String> email; // Kullanılmamalı!
+}
+```
+- Bunun yerine, normal değişken kullanın:
+```java
+// DOĞRU KULLANIM ✅
+class User {
+    private String email;
+}
+```
+
+**2️⃣ Koleksiyonlar İçinde Optional Kullanımı:**
+- Koleksiyon içinde `Optional` kullanmak yerine, boş koleksiyon döndürmek daha iyidir.
+```java
+// KÖTÜ KULLANIM ❌
+List<Optional<String>> emails;
+
+// DOĞRU KULLANIM ✅
+List<String> emails = Collections.emptyList();
+```
+
+---
+
+## **Sonuç**
+✅ `Optional<T>` sınıfı, `null` kontrolünü daha okunaklı ve güvenli hale getirir.  
+✅ `if (obj != null)` gibi geleneksel `null` kontrollerini azaltır.  
+✅ Fonksiyonel programlama prensiplerine uygun olarak çalışır.  
+❌ DTO'lar ve koleksiyonlar içinde kullanılmamalıdır.
+
+💡 **Özetle**, Java'da `Optional`, **null kaynaklı hataları önlemek ve kodun daha temiz olmasını sağlamak** için harika bir araçtır! 🚀
+
+
+## Javada Cipher (AES/DES/HASHING) Nedir ?
+```sh 
+
+```
+---
+
+Java'da **Cipher** sınıfı, Java Cryptography Extension (JCE) API’si tarafından sağlanan bir şifreleme mekanizmasıdır ve şifreleme (encryption) ve şifre çözme (decryption) işlemleri için kullanılır. **Cipher** sınıfı, **AES, DES, RSA, HASHING (MD5, SHA-256 gibi)** gibi birçok algoritmayı destekler.
+
+---
+
+## **Cipher Sınıfı Nedir?**
+`javax.crypto.Cipher` sınıfı, Java'da **kriptografik dönüşümler** (cryptographic transformations) gerçekleştirmek için kullanılır. Bu dönüşümler şunları içerebilir:
+- Veri şifreleme (Encryption)
+- Veri şifre çözme (Decryption)
+- Veri imzalama (Signing)
+- Veri doğrulama (Verification)
+
+Bir **Cipher** nesnesi aşağıdaki **modlardan** biriyle çalışabilir:
+1. **ENCRYPT_MODE** → Şifreleme modu (Veriyi şifreler)
+2. **DECRYPT_MODE** → Şifre çözme modu (Şifrelenmiş veriyi çözer)
+3. **WRAP_MODE** → Anahtar sarmalama (Key Wrapping)
+4. **UNWRAP_MODE** → Anahtar çözme (Key Unwrapping)
+
+Cipher, genellikle bir anahtar (Key) ve bir algoritma belirterek kullanılır.
+
+---
+
+# **1. AES (Advanced Encryption Standard)**
+### **Nedir?**
+- AES, **simetrik şifreleme algoritmasıdır**. (Aynı anahtar hem şifreleme hem de şifre çözme için kullanılır.)
+- **Blok şifreleme algoritmasıdır** ve 128-bit blok boyutuna sahiptir.
+- **Anahtar boyutları**: 128-bit, 192-bit ve 256-bit olabilir.
+- **Güvenli ve yaygın olarak kullanılan bir algoritmadır.** (Bankacılık, VPN, Wi-Fi şifreleme vb.)
+
+### **AES ile Şifreleme ve Çözme Kodu**
+```java
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.util.Base64;
+
+public class AESExample {
+    public static void main(String[] args) throws Exception {
+        // AES Anahtarı oluştur
+        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+        keyGenerator.init(128); // 128-bit anahtar
+        SecretKey secretKey = keyGenerator.generateKey();
+
+        // Cipher nesnesini AES için başlat
+        Cipher cipher = Cipher.getInstance("AES");
+
+        String originalText = "Merhaba, AES Şifreleme!";
+        
+        // Şifreleme (Encryption)
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte[] encryptedBytes = cipher.doFinal(originalText.getBytes());
+        String encryptedText = Base64.getEncoder().encodeToString(encryptedBytes);
+        System.out.println("Şifrelenmiş Metin: " + encryptedText);
+
+        // Şifre Çözme (Decryption)
+        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
+        String decryptedText = new String(decryptedBytes);
+        System.out.println("Çözülen Metin: " + decryptedText);
+    }
+}
+```
+
+#### **AES ile Şifreleme Modları**
+AES şifreleme **farklı blok şifreleme modları** ile kullanılabilir:
+1. **ECB (Electronic Codebook)** → Zayıf, tekrar eden blokları aynı şekilde şifreler.
+2. **CBC (Cipher Block Chaining)** → Önceki bloğun çıktısını XOR ile karıştırarak daha güvenli hale getirir.
+3. **CFB (Cipher Feedback)** → Akış şifrelemesi gibi çalışır.
+4. **OFB (Output Feedback)** → Blokları bağımsız olarak şifreler.
+5. **GCM (Galois Counter Mode)** → Kimlik doğrulamalı şifreleme sağlar.
+
+AES **CBC Modu** kullanımı:
+```java
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+```
+
+---
+
+# **2. DES (Data Encryption Standard)**
+### **Nedir?**
+- **Simetrik bir şifreleme algoritmasıdır.** (AES gibi aynı anahtarı kullanır.)
+- **Blok boyutu**: 64-bit
+- **Anahtar uzunluğu**: 56-bit
+- **Eskimiş bir algoritmadır ve günümüzde pek güvenli değildir.** (AES’e göre zayıf)
+
+### **DES ile Şifreleme ve Çözme**
+```java
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.util.Base64;
+
+public class DESExample {
+    public static void main(String[] args) throws Exception {
+        // DES Anahtarı oluştur
+        KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
+        SecretKey secretKey = keyGenerator.generateKey();
+
+        // Cipher nesnesini DES için başlat
+        Cipher cipher = Cipher.getInstance("DES");
+
+        String originalText = "Merhaba, DES Şifreleme!";
+        
+        // Şifreleme
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte[] encryptedBytes = cipher.doFinal(originalText.getBytes());
+        String encryptedText = Base64.getEncoder().encodeToString(encryptedBytes);
+        System.out.println("Şifrelenmiş Metin: " + encryptedText);
+
+        // Şifre Çözme
+        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
+        String decryptedText = new String(decryptedBytes);
+        System.out.println("Çözülen Metin: " + decryptedText);
+    }
+}
+```
+**DES, zayıf olduğu için AES tercih edilmelidir.**
+
+---
+
+# **3. RSA (Rivest-Shamir-Adleman)**
+### **Nedir?**
+- **Asimetrik şifreleme algoritmasıdır.** (Şifreleme ve şifre çözme için farklı anahtarlar kullanılır.)
+- **Genellikle dijital imzalar ve anahtar değişimi için kullanılır.**
+- **Anahtar uzunluğu**: 1024-bit, 2048-bit, 4096-bit olabilir.
+- **Çok güvenlidir ancak yavaştır.**
+
+### **RSA ile Şifreleme ve Çözme**
+```java
+import javax.crypto.Cipher;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.util.Base64;
+
+public class RSAExample {
+    public static void main(String[] args) throws Exception {
+        // RSA Anahtar Çifti Oluştur
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048);
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+        // Cipher nesnesini RSA için başlat
+        Cipher cipher = Cipher.getInstance("RSA");
+
+        String originalText = "Merhaba, RSA Şifreleme!";
+        
+        // Şifreleme (Public Key kullanarak)
+        cipher.init(Cipher.ENCRYPT_MODE, keyPair.getPublic());
+        byte[] encryptedBytes = cipher.doFinal(originalText.getBytes());
+        String encryptedText = Base64.getEncoder().encodeToString(encryptedBytes);
+        System.out.println("Şifrelenmiş Metin: " + encryptedText);
+
+        // Şifre Çözme (Private Key kullanarak)
+        cipher.init(Cipher.DECRYPT_MODE, keyPair.getPrivate());
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
+        String decryptedText = new String(decryptedBytes);
+        System.out.println("Çözülen Metin: " + decryptedText);
+    }
+}
+```
+
+---
+
+# **4. HASHING (SHA-256, MD5, SHA-512)**
+- **Hash fonksiyonları tek yönlüdür ve geri çevrilemez.**
+- **Parola saklama ve veri bütünlüğü sağlama işlemlerinde kullanılır.**
+- **MD5, SHA-1 artık güvenli değildir. SHA-256 veya SHA-512 tercih edilmelidir.**
+
+### **SHA-256 Hashleme**
+```java
+import java.security.MessageDigest;
+import java.util.Base64;
+
+public class HashingExample {
+    public static void main(String[] args) throws Exception {
+        String password = "123456";
+        
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(password.getBytes());
+        
+        String hashedPassword = Base64.getEncoder().encodeToString(hash);
+        System.out.println("SHA-256 Hash: " + hashedPassword);
+    }
+}
+```
+
+---
+
+Bu açıklamalarla birlikte, **AES, DES, RSA ve Hashing algoritmalarının** Java'da nasıl kullanıldığını tam detaylı olarak öğrenmiş oldunuz. 🚀
+
+
+
+## Clean Code
+```sh 
+
+```
+---
+
+
+## Thread Oluşturma ve Yönetimi
+```sh 
+
+```
+---
+
+
+## Eşzamanlılık (Concurrency)
+```sh 
+
+```
+---
+
+
+## Diğer
+```sh 
+
+```
+---
 
 
 
