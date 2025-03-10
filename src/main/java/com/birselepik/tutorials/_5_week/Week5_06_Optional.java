@@ -8,7 +8,7 @@ Function<T, R> → R apply(T t)  → Bir değeri dönüştürmek için.
 Consumer → void accept(T t)    → Parametre alır, bir işlem yapar ama geriye değer döndürmez.
 Supplier → T get()             → Parametre almaz, bir değer üretir.
  */
-public class Week5_05_Optional {
+public class Week5_06_Optional {
 
 
 }
