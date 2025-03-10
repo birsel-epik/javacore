@@ -9,7 +9,7 @@ import java.util.Queue;
 // FIFO: First In First Out (İlk Giren İlk Çıkar)
 // import java.util.Queue;
 
-public class Week5_08_Queue {
+public class Week5_11_Queue {
 
     private static void stackData() {
         Queue<String> queueList = new LinkedList<>();

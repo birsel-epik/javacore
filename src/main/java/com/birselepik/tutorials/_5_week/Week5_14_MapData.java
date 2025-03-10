@@ -2,7 +2,7 @@ package com.birselepik.tutorials._5_week;
 
 import java.util.*;
 
-public class Week5_10_MapData {
+public class Week5_14_MapData {
 
     private static void hashMapData(){
         Map<String,String> frontendList=new HashMap<>();

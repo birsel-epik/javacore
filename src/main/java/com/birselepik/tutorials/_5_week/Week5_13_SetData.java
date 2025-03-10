@@ -2,7 +2,7 @@ package com.birselepik.tutorials._5_week;
 
 import java.util.*;
 
-public class Week5_09_SetData {
+public class Week5_13_SetData {
 
     // HASHSET: Tekrarsız veriler
     public static void setHashSet(){
@@ -26,9 +26,9 @@ public class Week5_09_SetData {
         System.out.println("contains: "+setList.contains("java me"));
 
         // Diziyi Stringe Çevirdi
-       String arrayToString= setList.toString();
+        String arrayToString= setList.toString();
 
-       //
+        //
     }
 
     public static Set<String> hashSetDataSet(){
@@ -62,7 +62,7 @@ public class Week5_09_SetData {
     }
 
     //////////////////////////////////////////////////////
- // LINKEDHASHSET: Tekrarsız eklediğimiz sırada gösteriliyor
+    // LINKEDHASHSET: Tekrarsız eklediğimiz sırada gösteriliyor
     public static void linkedHashSet(){
         // Diamon operators: 1.7
         Set<String> list= new LinkedHashSet<>();
@@ -168,7 +168,7 @@ public class Week5_09_SetData {
     }
 
     public static void main(String[] args) {
-       // setHashSet();
+        // setHashSet();
         //forEachLoopHashSet();
         //forEachLoopLinkedHashSet();
         forEachLoopTreeSet();

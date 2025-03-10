@@ -2,19 +2,19 @@ package com.birselepik.tutorials._5_week;
 
 
 // Generics Class
-public class Week5_04_Generics<T> {
+public class Week5_15_Generics<T> {
     // Data Types
     private String name;
     private T surname;// Generics Type
 
     // Constructor (Parametresiz)
-    public Week5_04_Generics() {
+    public Week5_15_Generics() {
 
     }
 
     // Constructor (Parametreli)
-    //  Generics Constructor
-    public Week5_04_Generics(String name, T surname) {
+    // Generics Constructor
+    public Week5_15_Generics(String name, T surname) {
         this.name = name;
         this.surname = surname;
     }
@@ -44,18 +44,18 @@ public class Week5_04_Generics<T> {
     //toString
     @Override
     public String toString() {
-        return "Week5_04_Generics{" +
+        return "Week5_15_Generics{" +
                 "name='" + name + '\'' +
                 ", surname=" + surname +
                 '}';
     }
 
     public static void main(String[] args) {
-        Week5_04_Generics genericsData=new Week5_04_Generics();
+        Week5_15_Generics genericsData=new Week5_15_Generics();
         genericsData.setName("Hamit");
         System.out.println(genericsData.getName());
 
-        Week5_04_Generics genericsData2=new Week5_04_Generics();
+        Week5_15_Generics genericsData2=new Week5_15_Generics();
         genericsData2.setName("Hamit");
         // genericsData2.setSurname(true);
         // genericsData2.setSurname(44);

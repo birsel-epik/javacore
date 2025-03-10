@@ -7,7 +7,7 @@ import java.util.Stack;
 // LIFO: Last In First Out (Son Giren İlk Çıkar)
 // import java.util.Stack;
 
-public class Week5_07_Stack {
+public class Week5_10_Stack {
 
     private static void stackData() {
         Stack<String> stack = new Stack<>();

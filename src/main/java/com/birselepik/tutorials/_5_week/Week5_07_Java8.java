@@ -5,7 +5,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Week5_11_Java8 {
+/*
+Java 8, bazı hazır fonksiyonel arayüzler de sunar:
+
+Predicate → boolean test(T t)  → Koşul kontrolleri için.
+Function<T, R> → R apply(T t)  → Bir değeri dönüştürmek için.
+Consumer → void accept(T t)    → Parametre alır, bir işlem yapar ama geriye değer döndürmez.
+Supplier → T get()             → Parametre almaz, bir değer üretir.
+ */
+
+public class Week5_07_Java8 {
 
     // List
     private static List<String> getArrayToDataList() {

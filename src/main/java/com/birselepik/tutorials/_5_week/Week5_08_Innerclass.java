@@ -1,11 +1,10 @@
 package com.birselepik.tutorials._5_week;
 
 
-
 // Javada;
 // 1 tane public class yazabilirsiniz (inner class hariç)
 // static class yazamayız (inner class hariç)
-public class Week5_03_Innerclass {
+public class Week5_08_Innerclass {
     // Variable
     private String countryName;
 
@@ -39,11 +38,11 @@ class MainInnerClass{
     public static void main(String[] args) {
 
         // Country
-        Week5_03_Innerclass country= new Week5_03_Innerclass();
+        Week5_08_Innerclass country= new Week5_08_Innerclass();
         country.setCountryName("Türkiye");
 
         // City
-        Week5_03_Innerclass.City city= new Week5_03_Innerclass.City();
+        Week5_08_Innerclass.City city= new Week5_08_Innerclass.City();
         city.setCityName("Malatya");
 
         System.out.println("Ulke: "+country.getCountryName()+" Sehir: "+city.getCityName());
