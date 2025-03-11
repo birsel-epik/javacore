@@ -128,11 +128,12 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
     // Öğretmen Ekle
     // 📌 Öğretmen Ekleme (Create)
     @Override
-    public TeacherDto create(TeacherDto teacher) {
+    public Optional<TeacherDto> create(TeacherDto teacher) {
         teacherList.add(teacher);
         fileHandler.saveToFile();
-        return teacher;
+        return Optional.of(teacher);
     }
+
 
     // Öğretmen Listesi
     @Override
@@ -142,20 +143,20 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
 
     // FindByName
     @Override
-    public  Optional<TeacherDto> findByName(String name) {
-        return Optional.ofNullable(teacherList.stream()
+    public Optional<TeacherDto> findByName(String name) {
+        return teacherList.stream()
                 .filter(t -> t.name().equalsIgnoreCase(name))
                 .findFirst()
-                .orElseThrow(() -> new TeacherNotFoundException(name + " isimli öğretmen bulunamadı.")));
+                .or(() -> Optional.empty());
     }
 
     // FindById
     @Override
     public Optional<TeacherDto> findById(int id) {
-        return Optional.ofNullable(teacherList.stream()
+        return teacherList.stream()
                 .filter(t -> t.id() == id)
                 .findFirst()
-                .orElseThrow(() -> new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı.")));
+                .or(() -> Optional.empty());
     }
 
     // Öğretmen Güncelle
@@ -165,22 +166,25 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
             if (teacherList.get(i).id() == id) {
                 teacherList.set(i, updatedTeacher);
                 fileHandler.saveToFile();
-                return Optional.ofNullable(updatedTeacher);
+                return Optional.of(updatedTeacher);
             }
         }
+        //return Optional.empty();
         throw new TeacherNotFoundException("Güncellenecek öğretmen bulunamadı.");
     }
 
     // Öğretmen Sil
     @Override
     public Optional<TeacherDto> delete(int id) {
-        Optional<TeacherDto> teacher = teacherList.stream()
-                .filter(t -> t.id() == id)
-                .findFirst();
-        teacher.ifPresent(teacherList::remove);
+        Optional<TeacherDto> teacher = findById(id);
+        teacher.ifPresentOrElse(
+                teacherList::remove,
+                () -> { throw new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı."); }
+        );
         fileHandler.saveToFile();
-        return Optional.ofNullable(teacher.orElseThrow(() -> new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı.")));
+        return teacher;
     }
+
 
 
     /// //////////////////////////////////////////////////////////////////////
@@ -285,13 +289,13 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
     private void searchTeacher() {
         System.out.print("Aranacak öğretmenin adı: ");
         String name = scanner.nextLine();
-        try {
-            Optional<TeacherDto> teacher = findByName(name);
-            System.out.println("Bulunan Öğretmen: " + teacher.fullName() + " - " + teacher.subject());
-        } catch (TeacherNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+
+        findByName(name).ifPresentOrElse(
+                teacher -> System.out.println("Bulunan Öğretmen: " + teacher.fullName() + " - " + teacher.subject()),
+                () -> System.out.println("Öğretmen bulunamadı.")
+        );
     }
+
 
     private void updateTeacher() {
         System.out.print("Güncellenecek öğretmenin ID'si: ");
@@ -299,7 +303,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         scanner.nextLine();
 
         try {
-            Optional<TeacherDto> existingTeacher = findById(id);
+            TeacherDto existingTeacher = findById(id).orElseThrow(() -> new TeacherNotFoundException(id + " ID'li öğretmen bulunamadı."));
 
             System.out.print("Yeni Adı (Mevcut: " + existingTeacher.name() + "): ");
             String name = scanner.nextLine();
@@ -351,6 +355,6 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         System.out.println("Öğretmenler yaşa göre sıralandı.");
         listTeachers();
     }
-
 }
+
 
