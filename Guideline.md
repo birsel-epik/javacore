@@ -972,13 +972,13 @@ public class MemoryTest {
     public static void main(String[] args) {
         int a = 5;
         Integer b = new Integer(5);
-
+        
         modify(a, b);
-
+        
         System.out.println("a: " + a);  // 5
         System.out.println("b: " + b);  // 5
     }
-
+    
     public static void modify(int x, Integer y) {
         x = 10;       // Stack içindeki x değişir
         y = new Integer(10); // Yeni bir nesne oluşturulur (Heap)
@@ -1092,13 +1092,13 @@ public class ShortComparison {
     public static void main(String[] args) {
         Short wrapperTypeShort1 = new Short((short) 127);
         Short wrapperTypeShort2 = 127; // Autoboxing
-
+        
         Short wrapperTypeShort3 = new Short((short) 127);
         Short wrapperTypeShort4 = 127; // Autoboxing
-
+        
         System.out.println(wrapperTypeShort1 == wrapperTypeShort3); // false (Heap'te farklı nesneler)
         System.out.println(wrapperTypeShort2 == wrapperTypeShort4); // true (Cache mekanizması sayesinde aynı nesne)
-
+        
         Short wrapperTypeShort5 = 32767;
         Short wrapperTypeShort6 = 32767;
 
@@ -1467,7 +1467,7 @@ public class WideningExample {
     public static void main(String[] args) {
         int sayi = 100;
         double genisSayi = sayi; // Otomatik dönüşüm (int → double)
-
+        
         System.out.println("int değer: " + sayi);
         System.out.println("double değere dönüştü: " + genisSayi);
     }
@@ -1632,10 +1632,10 @@ Kedi kedi = (Kedi) hayvan; // HATA! hayvan nesnesi aslında bir Kedi değil.
 
 ```java
 if (hayvan instanceof Kedi) {
-Kedi kedi = (Kedi) hayvan;
+    Kedi kedi = (Kedi) hayvan;
     kedi.miyavla();
 } else {
-        System.out.println("Nesne Kedi türüne ait değil.");
+    System.out.println("Nesne Kedi türüne ait değil.");
 }
 ```
 
@@ -1673,7 +1673,7 @@ public class StringToIntExample {
     public static void main(String[] args) {
         String sayiStr = "123"; // String veri
         int sayi = Integer.parseInt(sayiStr); // String → int dönüşümü
-
+        
         System.out.println("String: " + sayiStr);
         System.out.println("int: " + sayi);
     }
@@ -1703,7 +1703,7 @@ public class ValueOfExample {
     public static void main(String[] args) {
         String sayiStr = "456";
         int sayi = Integer.valueOf(sayiStr); // String → Integer
-
+        
         System.out.println("int değeri: " + sayi);
     }
 }
@@ -1723,7 +1723,7 @@ public class IntToStringExample {
     public static void main(String[] args) {
         int sayi = 789;
         String sayiStr = String.valueOf(sayi); // int → String
-
+        
         System.out.println("int: " + sayi);
         System.out.println("String: " + sayiStr);
     }
@@ -1739,7 +1739,7 @@ public class IntToStringExample2 {
     public static void main(String[] args) {
         int sayi = 1234;
         String sayiStr = Integer.toString(sayi); // int → String
-
+        
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1757,7 +1757,7 @@ public class PlusStringExample {
     public static void main(String[] args) {
         int sayi = 500;
         String sayiStr = sayi + ""; // int → String
-
+        
         System.out.println("String değeri: " + sayiStr);
     }
 }
@@ -1817,8 +1817,8 @@ Math sınıfı **mutlak değer, maksimum, minimum gibi işlemleri** kolayca yapa
 
 ```java
 System.out.println(Math.abs(-15)); // 15
-        System.out.println(Math.max(100, 200)); // 200
-        System.out.println(Math.min(50, 30)); // 30
+System.out.println(Math.max(100, 200)); // 200
+System.out.println(Math.min(50, 30)); // 30
 ```
 
 ---
@@ -1834,10 +1834,10 @@ System.out.println(Math.abs(-15)); // 15
 
 ```java
 System.out.println(Math.sqrt(16)); // 4.0
-        System.out.println(Math.pow(2, 5)); // 32.0
-        System.out.println(Math.exp(1)); // 2.718
-        System.out.println(Math.log(Math.E)); // 1.0
-        System.out.println(Math.log10(1000)); // 3.0
+System.out.println(Math.pow(2, 5)); // 32.0
+System.out.println(Math.exp(1)); // 2.718
+System.out.println(Math.log(Math.E)); // 1.0
+System.out.println(Math.log10(1000)); // 3.0
 ```
 
 ---
@@ -1853,8 +1853,8 @@ Java Math sınıfı **yuvarlama işlemleri için** farklı fonksiyonlar sunar.
 
 ```java
 System.out.println(Math.round(4.5)); // 5
-        System.out.println(Math.ceil(3.2)); // 4.0
-        System.out.println(Math.floor(6.8)); // 6.0
+System.out.println(Math.ceil(3.2)); // 4.0
+System.out.println(Math.floor(6.8)); // 6.0
 ```
 ---
 
@@ -1872,8 +1872,8 @@ Trigonometri fonksiyonları **radyan cinsinden** hesaplama yapar.
 
 ```java
 System.out.println(Math.sin(Math.PI/2)); // 1.0
-        System.out.println(Math.cos(0)); // 1.0
-        System.out.println(Math.tan(Math.PI/4)); // 1.0
+System.out.println(Math.cos(0)); // 1.0
+System.out.println(Math.tan(Math.PI/4)); // 1.0
 ```
 
 ---
@@ -1884,8 +1884,8 @@ System.out.println(Math.sin(Math.PI/2)); // 1.0
 **Örnek Kullanımlar:**
 ```java
 System.out.println(Math.random()); // 0.0 ile 1.0 arasında rastgele sayı
-        System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
-        System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
+System.out.println((int)(Math.random() * 100)); // 0-99 arası sayı
+System.out.println((int)(Math.random() * 50) + 1); // 1-50 arası sayı
 ```
 
 ---
@@ -2304,16 +2304,16 @@ import java.util.Scanner;
 public class ScannerLoopExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        
         while (true) {
             System.out.print("Bir sayı girin (Çıkış için -1): ");
             int sayi = scanner.nextInt();
-
+            
             if (sayi == -1) {
                 System.out.println("Çıkış yapıldı.");
                 break;
             }
-
+            
             System.out.println("Girdiğiniz sayı: " + sayi);
         }
 
@@ -2388,7 +2388,7 @@ Java'da kullanılan başlıca koşullu ifadeler şunlardır:
 public class IfExample {
     public static void main(String[] args) {
         int sayi = 10;
-
+        
         if (sayi > 5) { // Koşul doğru mu? Evet!
             System.out.println("Sayı 5'ten büyüktür.");
         }
@@ -2412,7 +2412,7 @@ Sayı 5'ten büyüktür.
 public class IfElseExample {
     public static void main(String[] args) {
         int sayi = 3;
-
+        
         if (sayi > 5) {
             System.out.println("Sayı 5'ten büyüktür.");
         } else {
@@ -2614,8 +2614,8 @@ Bu döngülerle birlikte **`break` ve `continue`** gibi kontrol ifadeleri kullan
 **Yapısı:**
 ```java
 for (başlangıç_değeri; koşul; artırma/azaltma) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 1: 1'den 5'e kadar yazdırma**
@@ -2672,8 +2672,8 @@ public class EvenNumbers {
 **Yapısı:**
 ```java
 while (koşul) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 3: `while` ile Sayı Yazdırma**
@@ -2681,7 +2681,7 @@ while (koşul) {
 public class WhileLoopExample {
     public static void main(String[] args) {
         int i = 1;
-
+        
         while (i <= 5) {
             System.out.println("i: " + i);
             i++; // i artırılıyor, yoksa sonsuz döngü olur.
@@ -2744,8 +2744,8 @@ Döngü sonlandı.
 **Yapısı:**
 ```java
 do {
-        // Döngü bloğu
-        } while (koşul);
+    // Döngü bloğu
+} while (koşul);
 ```
 
 ### **Örnek 5: `do-while` ile Kullanıcıdan Şifre Alma**
@@ -2784,8 +2784,8 @@ Giriş başarılı!
 **Yapısı:**
 ```java
 for (VeriTipi eleman : Dizi/Koleksiyon) {
-        // Döngü bloğu
-        }
+    // Döngü bloğu
+}
 ```
 
 ### **Örnek 6: `for-each` ile Dizi Elemanlarını Yazdırma**
@@ -2899,7 +2899,7 @@ Java'da `for` ve `while` döngüleri, tekrar eden işlemleri gerçekleştirmek i
 
 ```java
 for (int i = 0; i < 5; i++) {
-        System.out.println("i değeri: " + i);
+    System.out.println("i değeri: " + i);
 }
 ```
 ✅ **Avantajı**: Döngü değişkeni (`i`) döngü içinde tanımlandığı için **lokal kalır** ve kod daha okunaklıdır.
@@ -2913,9 +2913,9 @@ for (int i = 0; i < 5; i++) {
 ```java
 int i = 0;
 while (i < 5) {
-        System.out.println("i değeri: " + i);
-i++;
-        }
+    System.out.println("i değeri: " + i);
+    i++;
+}
 ```
 ✅ **Avantajı**: **Esnektir**, koşul başka bir yerden değiştirilebilir.
 
@@ -2942,9 +2942,9 @@ i++;
 ```java
 int i = 0;
 do {
-        System.out.println("i değeri: " + i);
-i++;
-        } while (i < 5);
+    System.out.println("i değeri: " + i);
+    i++;
+} while (i < 5);
 ```
 ✅ **Avantajı**: Kullanıcıdan giriş alırken veya en az bir kez çalışması gereken işlemlerde idealdir.
 
@@ -3523,7 +3523,7 @@ System.out.println(text.length()); // 17
 ```java
 String text = "Java";
 System.out.println(text.charAt(0)); // J
-        System.out.println(text.charAt(2)); // v
+System.out.println(text.charAt(2)); // v
 ```
 
 ---
@@ -3532,7 +3532,7 @@ System.out.println(text.charAt(0)); // J
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.substring(8)); // "Dünya"
-        System.out.println(text.substring(0, 7)); // "Merhaba"
+System.out.println(text.substring(0, 7)); // "Merhaba"
 ```
 
 ---
@@ -3541,7 +3541,7 @@ System.out.println(text.substring(8)); // "Dünya"
 ```java
 String text = "Java";
 System.out.println(text.toUpperCase()); // "JAVA"
-        System.out.println(text.toLowerCase()); // "java"
+System.out.println(text.toLowerCase()); // "java"
 ```
 
 ---
@@ -3552,7 +3552,7 @@ String a = "Java";
 String b = "java";
 
 System.out.println(a.equals(b)); // false
-        System.out.println(a.equalsIgnoreCase(b)); // true
+System.out.println(a.equalsIgnoreCase(b)); // true
 ```
 📌 **Neden `==` kullanılmamalı?**
 - `==`, **referansları** karşılaştırır.
@@ -3565,14 +3565,14 @@ System.out.println(a.equals(b)); // false
 ```java
 String text = "Java öğrenmek çok eğlenceli!";
 System.out.println(text.contains("Java")); // true
-        System.out.println(text.contains("Python")); // false
+System.out.println(text.contains("Python")); // false
 ```
 
 #### **`startsWith()` & `endsWith()` → Başlangıç ve Bitiş Kontrolü**
 ```java
 String text = "Merhaba Dünya";
 System.out.println(text.startsWith("Merhaba")); // true
-        System.out.println(text.endsWith("Dünya")); // true
+System.out.println(text.endsWith("Dünya")); // true
 ```
 
 ---
@@ -3583,7 +3583,7 @@ String metin = "Java,Python,C++";
 String[] diller = metin.split(",");
 
 for (String dil : diller) {
-        System.out.println(dil);
+    System.out.println(dil);
 }
 ```
 **Çıktı:**
@@ -3723,11 +3723,11 @@ Java'da `switch-case` ve `if-else if` yapıları, akış kontrolü sağlamak iç
 int sayi = 5;
 
 if (sayi > 0 && sayi <= 10) {
-        System.out.println("Sayı 1 ile 10 arasında");
+    System.out.println("Sayı 1 ile 10 arasında");
 } else if (sayi > 10 && sayi <= 20) {
-        System.out.println("Sayı 11 ile 20 arasında");
+    System.out.println("Sayı 11 ile 20 arasında");
 } else {
-        System.out.println("Sayı 20’den büyük");
+    System.out.println("Sayı 20’den büyük");
 }
 ```
 ✅ **Avantaj**: Aralık bazlı kontroller için uygundur.
@@ -3738,16 +3738,16 @@ if (sayi > 0 && sayi <= 10) {
 ```java
 int gun = 3;
 switch (gun) {
-        case 1:
+    case 1:
         System.out.println("Pazartesi");
         break;
-                case 2:
-                System.out.println("Salı");
+    case 2:
+        System.out.println("Salı");
         break;
-                case 3:
-                System.out.println("Çarşamba");
+    case 3:
+        System.out.println("Çarşamba");
         break;
-default:
+    default:
         System.out.println("Geçersiz gün");
 }
 ```
@@ -3778,14 +3778,14 @@ Java'da `switch-case` ve `if-else if` yapılarının algoritmik analizi için **
 ### **İf-Else If-Else**
 ```java
 if (x == 1) {
-        // İşlem 1
-        } else if (x == 2) {
-        // İşlem 2
-        } else if (x == 3) {
-        // İşlem 3
-        } else {
-        // Varsayılan işlem
-        }
+    // İşlem 1
+} else if (x == 2) {
+    // İşlem 2
+} else if (x == 3) {
+    // İşlem 3
+} else {
+    // Varsayılan işlem
+}
 ```
 - **En iyi durum (Best Case) - O(1)**: Eğer ilk `if` koşulu doğruysa, yalnızca bir kontrol yapılır.
 - **En kötü durum (Worst Case) - O(n)**: Tüm `if` blokları kontrol edildikten sonra `else` bloğuna ulaşılırsa **n adet karşılaştırma** yapılır.
@@ -3798,18 +3798,18 @@ if (x == 1) {
 ### **Switch-Case**
 ```java
 switch (x) {
-        case 1:
+    case 1:
         // İşlem 1
         break;
-        case 2:
+    case 2:
         // İşlem 2
         break;
-        case 3:
+    case 3:
         // İşlem 3
         break;
-default:
+    default:
         // Varsayılan işlem
-        }
+}
 ```
 Switch-case’in algoritmik analizi derleyici tarafından nasıl optimize edildiğine bağlıdır:
 
@@ -4168,7 +4168,7 @@ public class PrimitiveStackExample {
         int a = 10;
         int b = a; // b, a'nın değerini alır (Kopyalanır, adres paylaşımı olmaz)
         b = 20;
-
+        
         System.out.println("a: " + a); // 10
         System.out.println("b: " + b); // 20
     }
@@ -4267,7 +4267,7 @@ araba1.model = "Audi";
 Araba araba2 = araba1; // Aynı heap adresini gösterir
 araba2.model = "Tesla";
 
-        System.out.println(araba1.model); // Tesla
+System.out.println(araba1.model); // Tesla
 ```
 
 ### **📌 Deep Copy (Derin Kopyalama - Yeni Bir Nesne Oluşturur)**
@@ -4280,7 +4280,7 @@ araba2.model = araba1.model; // Yeni nesneye ayrı değer atanıyor.
 
 araba2.model = "Tesla";
 
-        System.out.println(araba1.model); // Audi (Değişmez!)
+System.out.println(araba1.model); // Audi (Değişmez!)
 System.out.println(araba2.model); // Tesla
 ```
 ✅ **Deep Copy kullanarak heap bellekte farklı nesneler oluşturmuş olduk.**
@@ -4349,7 +4349,7 @@ public class DateFormatExample {
     public static void main(String[] args) {
         Date tarih = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
+        
         String formatliTarih = sdf.format(tarih);
         System.out.println("Formatlı Tarih: " + formatliTarih);
     }
@@ -4407,7 +4407,7 @@ public class LocalDateExample {
     public static void main(String[] args) {
         LocalDate bugun = LocalDate.now(); // Bugünün tarihi
         System.out.println("Bugünün Tarihi: " + bugun);
-
+        
         LocalDate ozelTarih = LocalDate.of(2025, 2, 12); // Özel bir tarih
         System.out.println("Özel Tarih: " + ozelTarih);
     }
@@ -12213,8 +12213,23 @@ List<String> emails = Collections.emptyList();
 ## Javada Cipher (AES/DES/HASHING) Nedir ?
 ```sh 
 
-```
+```                                                                            
 ---
+
+Pom.xml
+<!-- Java Cryptography Extension (JCE) İçin Gerekli -->
+<dependency>
+<groupId>javax.xml.bind</groupId>
+<artifactId>jaxb-api</artifactId>
+<version>2.3.1</version>
+</dependency>
+
+<!-- Java'da Şifreleme (AES) İçin Apache Commons Codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.15</version>
+</dependency>
 
 Java'da **Cipher** sınıfı, Java Cryptography Extension (JCE) API’si tarafından sağlanan bir şifreleme mekanizmasıdır ve şifreleme (encryption) ve şifre çözme (decryption) işlemleri için kullanılır. **Cipher** sınıfı, **AES, DES, RSA, HASHING (MD5, SHA-256 gibi)** gibi birçok algoritmayı destekler.
 
@@ -12408,11 +12423,187 @@ Bu açıklamalarla birlikte, **AES, DES, RSA ve Hashing algoritmalarının** Jav
 
 
 
-## Clean Code
+## Javada Composition
 ```sh 
 
 ```
 ---
+
+## **Java'da Composition (Bileşim) Nedir?**
+
+### **1. Tanım**
+Composition (Bileşim), bir sınıfın başka bir sınıfı nesne olarak içermesi anlamına gelir. Bu, OOP'nin (Nesne Yönelimli Programlama) en önemli özelliklerinden biridir ve "Has-A (Sahip Olma)" ilişkisini ifade eder. Yani, bir sınıf başka bir sınıfa "sahiptir" ve onun özelliklerini kendi içinde kullanabilir.
+
+Inheritance (Miras) ile karşılaştırıldığında, composition genellikle **daha esnek ve güçlü bir ilişki** sunar. Çünkü miras (inheritance), kalıtım hiyerarşisi oluştururken, composition doğrudan nesneleri kullanarak sınıflar arasında ilişki kurar.
+
+---
+
+### **2. Composition’un Temel Mantığı**
+Composition şu mantık üzerine kuruludur:
+
+- Bir sınıfın, başka bir sınıfın yeteneklerini kullanabilmesi için, o sınıfın bir **örneğini (instance)** içinde bulundurur.
+- Bir nesne, içerdiği nesnenin metodlarını çağırarak, bileşen nesnenin fonksiyonlarını kendi içinde kullanabilir.
+- Kalıtımda olduğu gibi bir is-a (bir şeydir) ilişkisi değil, **has-a (bir şeye sahiptir) ilişkisi** oluşturur.
+
+---
+
+### **3. Composition’un Avantajları**
+1. **Daha Esnek ve Daha Az Bağımlı Kod:**
+    - Kalıtımda, bir sınıf başka bir sınıftan türediğinde tüm özelliklerini alır. Ancak, bu bağımlılığı artırır ve değişiklikleri zorlaştırır.
+    - Composition'da ise, yalnızca ihtiyacımız olan özellikleri nesne olarak dahil ederiz.
+
+2. **Çoklu Kullanım (Reusability):**
+    - Bileşim ile yazılan sınıflar, bağımsız bileşenlerden oluştuğu için birden fazla yerde tekrar kullanılabilir.
+
+3. **Daha Kolay Bakım (Maintainability):**
+    - Değişiklik yapmak daha kolaydır çünkü sınıflar birbirinden bağımsız çalışabilir.
+
+4. **Daha Güçlü Enkapsülasyon (Encapsulation):**
+    - Composition, kapsüllemeyi daha iyi destekler çünkü iç içe geçen nesneler arasında doğrudan bir kalıtım bağı bulunmaz.
+
+---
+
+### **4. Java'da Composition Örneği**
+
+Diyelim ki bir **Araba (Car)** sınıfımız var ve bir **Motor (Engine)** sınıfına ihtiyaç duyuyor. Burada **Araba**, bir **Motor**'a sahip olmalıdır.
+
+```java
+// Motor sınıfı
+class Engine {
+    private String type;
+    
+    public Engine(String type) {
+        this.type = type;
+    }
+    
+    public void start() {
+        System.out.println(type + " motor çalıştırıldı.");
+    }
+}
+
+// Araba sınıfı
+class Car {
+    private Engine engine; // Composition burada gerçekleşiyor
+    
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+    
+    public void startCar() {
+        System.out.println("Araba çalıştırılıyor...");
+        engine.start(); // İçerdiği motorun start() metodunu çağırıyoruz
+    }
+}
+
+// Ana sınıf (Main)
+public class Main {
+    public static void main(String[] args) {
+        Engine myEngine = new Engine("V8"); // Motor nesnesi oluşturduk
+        Car myCar = new Car(myEngine); // Arabayı motor ile ilişkilendirdik
+        myCar.startCar(); // Aracı çalıştır
+    }
+}
+```
+
+### **Çıktı**
+```
+Araba çalıştırılıyor...
+V8 motor çalıştırıldı.
+```
+
+Burada **Car (Araba) sınıfı, Engine (Motor) sınıfını içererek bir has-a ilişkisi oluşturdu**. Arabanın motoru olmadan çalışması mümkün değildir.
+
+---
+
+### **5. Inheritance (Kalıtım) ile Composition Karşılaştırması**
+Composition ve kalıtım farklı konseptlerdir. Peki, ne zaman composition ne zaman kalıtım kullanmalıyız?
+
+| **Özellik**         | **Inheritance (Kalıtım)** | **Composition (Bileşim)** |
+|---------------------|----------------------|----------------------|
+| **İlişki Türü**     | "Is-A" (Bir şeydir)   | "Has-A" (Bir şeye sahiptir) |
+| **Bağımlılık**      | Alt sınıf üst sınıfa bağımlıdır. | Daha bağımsızdır, sınıflar daha esnektir. |
+| **Esneklik**        | Değiştirmek zordur, miras alındığında tüm özellikler gelir. | Bir nesne içindeki bileşenler ayrı ayrı yönetilebilir. |
+| **Kullanım Durumu** | Mevcut bir sınıfın yeteneklerini genişletmek için. | Bir sınıfın başka bir sınıfın özelliklerine sahip olmasını sağlamak için. |
+
+#### **Örnek**
+- **Kalıtım (Inheritance) Kullanımı:**
+  ```java
+  class Animal {
+      void makeSound() {
+          System.out.println("Hayvan ses çıkarıyor.");
+      }
+  }
+  
+  class Dog extends Animal {
+      void bark() {
+          System.out.println("Köpek havlıyor.");
+      }
+  }
+  
+  public class Main {
+      public static void main(String[] args) {
+          Dog dog = new Dog();
+          dog.makeSound(); // Kalıtım yoluyla Animal sınıfının metodunu kullanabilir
+          dog.bark();
+      }
+  }
+  ```
+  **Çıktı:**
+  ```
+  Hayvan ses çıkarıyor.
+  Köpek havlıyor.
+  ```
+
+- **Composition Kullanımı:**
+  ```java
+  class Heart {
+      void pump() {
+          System.out.println("Kalp kan pompalıyor.");
+      }
+  }
+  
+  class Human {
+      private Heart heart;
+      
+      public Human() {
+          heart = new Heart(); // Composition
+      }
+      
+      void live() {
+          System.out.println("İnsan yaşıyor...");
+          heart.pump();
+      }
+  }
+  
+  public class Main {
+      public static void main(String[] args) {
+          Human human = new Human();
+          human.live();
+      }
+  }
+  ```
+  **Çıktı:**
+  ```
+  İnsan yaşıyor...
+  Kalp kan pompalıyor.
+  ```
+
+Burada **İnsan ve Kalp** arasında bir "Has-A" ilişkisi vardır. **İnsan bir kalp değildir, fakat bir kalbe sahiptir**. İşte bu, composition’un en büyük farkıdır.
+
+---
+
+### **6. Composition Kullanım Senaryoları**
+Composition genellikle şu durumlarda kullanılır:
+- **Karmaşık nesneleri modellemek için:** Örneğin, bir **Üniversite** içinde **Bölümler**, **Öğrenciler**, **Öğretmenler** bulunabilir.
+- **Kapsüllemeyi güçlendirmek için:** Sınıflar arasında sıkı bağımlılık olmadan yönetim sağlar.
+- **Kalıtımın gereksiz bağımlılığından kaçınmak için:** Örneğin, bir **Araç** sınıfı hem **Benzinli** hem **Elektrikli** motorları destekleyebilir. Kalıtım yerine motoru ayrı bir bileşen olarak tutmak daha mantıklıdır.
+
+---
+
+### **7. Sonuç**
+Composition, **OOP'de daha esnek ve modüler bir yapı sağlar**. Bir sınıfın başka bir sınıfın özelliklerini **kalıtım yerine bileşim yoluyla** kullanmasını sağlar. Özellikle **bağımlılıkları azaltmak, kod tekrarını önlemek ve daha sürdürülebilir yazılım geliştirmek** için önemlidir.
+
+Eğer bir nesne diğer bir nesneyi **sahipleniyorsa (has-a relationship)** ve o nesnenin fonksiyonlarını kullanıyorsa, Composition kullanmalısınız. Eğer bir nesne başka bir nesnenin özelliklerini tamamen devralıyorsa ve **o nesne onun bir türevidir (is-a relationship)**, o zaman kalıtım kullanabilirsiniz.
 
 
 ## Thread Oluşturma ve Yönetimi
@@ -12421,12 +12612,701 @@ Bu açıklamalarla birlikte, **AES, DES, RSA ve Hashing algoritmalarının** Jav
 ```
 ---
 
+# **Java'da Thread Oluşturma ve Yönetimi**
+
+Java'da **Thread (İş Parçacığı)**, programların paralel çalışmasını sağlamak için kullanılan bir mekanizmadır. Thread'ler, programın farklı bölümlerini aynı anda çalıştırarak performansı artırır ve CPU kullanımını optimize eder. Java'da **çoklu iş parçacığı (multithreading)**, bir uygulamanın birden fazla iş parçacığını aynı anda çalıştırmasını sağlar.
+
+---
+
+## **1. Thread Nedir?**
+Thread, bir programın bağımsız olarak çalıştırılabilen en küçük yürütülebilir birimidir. Java'da her uygulama, varsayılan olarak **main thread** ile başlar. Ekstra iş parçacıkları oluşturarak, işlemler paralel bir şekilde yürütülebilir.
+
+Örneğin, bir web sunucusu aynı anda birden fazla isteği işleyebilmek için birden fazla thread kullanır. Bir grafik arayüz uygulamasında, kullanıcı girişleri ve arka plan işlemleri farklı thread'ler tarafından yönetilir.
+
+---
+
+## **2. Java'da Thread Nasıl Oluşturulur?**
+Java'da thread oluşturmanın iki temel yolu vardır:
+
+1. **Thread sınıfını genişletmek (Extending the Thread Class)**
+2. **Runnable arayüzünü (Interface) uygulamak (Implementing Runnable Interface)**
+
+### **2.1 Thread Sınıfını Genişletmek**
+Java'da `Thread` sınıfını genişleterek (extend ederek) yeni bir thread oluşturabiliriz. `run()` metodu, thread çalıştırıldığında ne yapılacağını belirtir.
+
+**Örnek:**
+```java
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(Thread.currentThread().getName() + " - Değer: " + i);
+            try {
+                Thread.sleep(1000); // 1 saniye beklet
+            } catch (InterruptedException e) {
+                System.out.println("Thread kesintiye uğradı!");
+            }
+        }
+    }
+}
+
+public class ThreadExample {
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
+
+        thread1.start(); // Yeni bir iş parçacığı başlatır
+        thread2.start();
+    }
+}
+```
+**Çıktı:**
+```
+Thread-0 - Değer: 1
+Thread-1 - Değer: 1
+Thread-0 - Değer: 2
+Thread-1 - Değer: 2
+...
+```
+> **Not:** `start()` metodu `run()` metodunu çağırır ve thread'i başlatır. Eğer `run()` doğrudan çağrılırsa, thread olarak çalışmaz, normal bir metot çağrısı olur.
+
+---
+
+### **2.2 Runnable Arayüzünü Uygulamak**
+Thread oluşturmanın daha iyi bir yolu, `Runnable` arayüzünü uygulamaktır. Java'da bir sınıfın yalnızca bir üst sınıfı olabileceğinden (`Thread` sınıfını genişletmek kalıtımı sınırlar), `Runnable` arayüzü kullanmak daha esnek bir yaklaşımdır.
+
+**Örnek:**
+```java
+class MyRunnable implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(Thread.currentThread().getName() + " - Sayı: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println("Thread kesintiye uğradı!");
+            }
+        }
+    }
+}
+
+public class RunnableExample {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new MyRunnable());
+        Thread thread2 = new Thread(new MyRunnable());
+
+        thread1.start();
+        thread2.start();
+    }
+}
+```
+
+**Avantajları:**
+- Java çoklu kalıtımı desteklemediği için `Runnable` kullanarak başka bir sınıfı da genişletebiliriz.
+- Daha temiz bir kod yapısı sağlar.
+
+---
+
+## **3. Thread Yönetimi**
+Birden fazla iş parçacığı kullanırken, thread'leri yönetmek oldukça önemlidir. Java'da thread yönetimi için çeşitli metotlar ve teknikler vardır.
+
+### **3.1 Thread Metotları**
+Aşağıda `Thread` sınıfında bulunan önemli metotlar verilmiştir:
+
+| Metot | Açıklama |
+|--------|---------|
+| `start()` | Thread'i başlatır ve `run()` metodunu çağırır. |
+| `run()` | Thread içinde çalıştırılacak kodu içerir. |
+| `sleep(ms)` | Thread'in belirtilen milisaniye kadar uyumasını sağlar. |
+| `join()` | Çağrılan thread bitene kadar diğerlerini bekletir. |
+| `yield()` | Mevcut thread'in çalışmasını duraklatır ve diğer thread'lere şans verir. |
+| `setPriority(int)` | Thread'in önceliğini belirler (1-10 arası). |
+| `getPriority()` | Thread'in mevcut önceliğini döndürür. |
+| `isAlive()` | Thread çalışıyorsa `true`, değilse `false` döndürür. |
+| `interrupt()` | Thread'i kesmek için kullanılır. |
+
+---
+
+### **3.2 Thread Önceliği (Priority)**
+Her thread'in bir önceliği vardır ve **1 ile 10** arasında bir değer alabilir.
+
+- `Thread.MIN_PRIORITY` (1) → En düşük öncelik
+- `Thread.NORM_PRIORITY` (5) → Varsayılan öncelik
+- `Thread.MAX_PRIORITY` (10) → En yüksek öncelik
+
+**Örnek:**
+```java
+class PriorityThread extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " Öncelik: " + Thread.currentThread().getPriority());
+    }
+}
+
+public class PriorityExample {
+    public static void main(String[] args) {
+        PriorityThread t1 = new PriorityThread();
+        PriorityThread t2 = new PriorityThread();
+        
+        t1.setPriority(Thread.MIN_PRIORITY);
+        t2.setPriority(Thread.MAX_PRIORITY);
+
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+---
+
+### **3.3 Thread Senkronizasyonu**
+Çoklu thread'ler paylaşılan kaynaklara erişirken **veri tutarsızlığı** oluşabilir. Bunu önlemek için **synchronized** anahtar kelimesi kullanılır.
+
+**Örnek:**
+```java
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class SyncExample {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+
+        System.out.println("Final Count: " + counter.getCount());
+    }
+}
+```
+
+---
+
+## **4. Thread Havuzları (Thread Pools)**
+Çok fazla thread oluşturmak performans sorunlarına neden olabilir. **Executor Framework** kullanarak thread havuzu oluşturulabilir.
+
+**Örnek:**
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadPoolExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        for (int i = 1; i <= 5; i++) {
+            int taskNumber = i;
+            executor.execute(() -> System.out.println("Görev " + taskNumber + " Çalışıyor"));
+        }
+
+        executor.shutdown();
+    }
+}
+```
+
+---
+
+## **Sonuç**
+Java'da thread yönetimi, performansı artırmak ve işlemleri daha verimli hale getirmek için kritik öneme sahiptir. `Thread` ve `Runnable` kullanarak thread'ler oluşturabilir, senkronizasyon sağlayabilir ve thread havuzları ile kaynak yönetimi yapabilirsiniz. Bu teknikler, çok iş parçacıklı uygulamalarda veri bütünlüğünü ve verimliliği artırmak için kullanılır.
+
 
 ## Eşzamanlılık (Concurrency)
 ```sh 
 
 ```
 ---
+
+# **Java'da Eşzamanlılık (Concurrency) - Kapsamlı Rehber**
+
+## **1. Giriş: Java'da Eşzamanlılık (Concurrency) Nedir?**
+Java, çok iş parçacıklı (multithreading) ve çok işlemcili (multiprocessing) programlamayı destekleyen güçlü bir programlama dilidir. Eşzamanlılık (concurrency), bir Java programında birden fazla görevin (task, thread, process) aynı zaman dilimi içinde yürütülebilmesini ifade eder. Java, eşzamanlı programlama için kapsamlı kütüphaneler, API'ler ve veri yapıları sunarak geliştiricilerin yüksek performanslı ve ölçeklenebilir uygulamalar oluşturmasını sağlar.
+
+## **2. Java'da Eşzamanlılık ve Paralellik**
+Java'da eşzamanlılık ve paralellik farklı konseptlerdir:
+
+- **Eşzamanlılık (Concurrency):** Birden fazla görevin (task) zaman paylaşımlı olarak çalıştırılması.
+- **Paralellik (Parallelism):** Birden fazla görevin aynı anda fiziksel olarak çalıştırılması (çok çekirdekli işlemciler ile mümkün).
+
+**Örnek:**
+- **Concurrency:** Tek bir CPU çekirdeği üzerinde, zaman dilimlerine bölerek birden fazla görevin sırayla çalıştırılması.
+- **Parallelism:** Çok çekirdekli bir CPU’da görevlerin gerçekten aynı anda çalıştırılması.
+
+---
+
+## **3. Java'da İş Parçacıkları (Threads)**
+Java'da eşzamanlı işlemler **Thread** sınıfı veya **Runnable** arayüzü ile oluşturulabilir.
+
+### **3.1. Thread Sınıfını Kullanarak Thread Oluşturma**
+Java'da iş parçacığı oluşturmanın en basit yolu, `Thread` sınıfından türetilmiş bir sınıf oluşturmaktır.
+
+```java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread çalışıyor: " + Thread.currentThread().getName());
+    }
+    
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start(); // Thread'i başlatır
+    }
+}
+```
+- `run()` metodu, iş parçacığının çalıştırılmasını sağlar.
+- `start()` metodu iş parçacığını başlatır.
+
+### **3.2. Runnable Arayüzünü Kullanarak Thread Oluşturma**
+Daha esnek bir yöntem, `Runnable` arayüzünü kullanmaktır.
+
+```java
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable thread çalışıyor: " + Thread.currentThread().getName());
+    }
+    
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new MyRunnable());
+        t1.start();
+    }
+}
+```
+Bu yöntem, `Thread` sınıfını miras almadan iş parçacıkları oluşturmayı sağlar.
+
+### **3.3. Lambda İle Runnable Kullanımı**
+Java 8'den itibaren lambda ifadeleri ile daha kısa ve okunaklı bir şekilde `Runnable` nesnesi oluşturabiliriz:
+
+```java
+public class LambdaThread {
+    public static void main(String[] args) {
+        Thread thread = new Thread(() -> System.out.println("Lambda ile Thread çalışıyor."));
+        thread.start();
+    }
+}
+```
+
+---
+
+## **4. Java'da Thread Yönetimi**
+Java, iş parçacıklarını yönetmek ve kontrol etmek için çeşitli yöntemler sunar.
+
+### **4.1. Thread.sleep() ile İş Parçacığını Uyutma**
+`Thread.sleep(milisaniye)`, iş parçacığını belirtilen süre boyunca askıya alır.
+
+```java
+public class SleepExample {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            try {
+                System.out.println("Thread uyuyor...");
+                Thread.sleep(3000); // 3 saniye uyut
+                System.out.println("Thread uyandı.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        t1.start();
+    }
+}
+```
+
+### **4.2. Thread.join() ile İş Parçacıklarının Senkronizasyonu**
+`join()` metodu, bir iş parçacığının diğer iş parçacığının tamamlanmasını beklemesini sağlar.
+
+```java
+public class JoinExample {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Thread 1: " + i);
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            try {
+                t1.join(); // t1'in tamamlanmasını bekle
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Thread 2 başladı.");
+        });
+
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+---
+
+## **5. Java'da Eşzamanlılık için Yüksek Seviyeli API'ler**
+Java'da **java.util.concurrent** paketi, iş parçacıkları ile çalışmayı kolaylaştıran birçok sınıf içerir.
+
+### **5.1. Executor Framework ile Thread Yönetimi**
+`ExecutorService`, iş parçacıklarını yönetmek için kullanılır.
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        for (int i = 1; i <= 5; i++) {
+            executor.execute(() -> System.out.println("Çalışan thread: " + Thread.currentThread().getName()));
+        }
+        
+        executor.shutdown(); // Thread havuzunu kapat
+    }
+}
+```
+
+### **5.2. Future ve Callable ile Sonuç Döndüren İş Parçacıkları**
+`Callable`, `Runnable` arayüzünden farklı olarak bir sonuç döndürür.
+
+```java
+import java.util.concurrent.*;
+
+public class CallableExample {
+    public static void main(String[] args) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        Callable<Integer> task = () -> {
+            TimeUnit.SECONDS.sleep(2);
+            return 123;
+        };
+
+        Future<Integer> future = executor.submit(task);
+        System.out.println("İşlem sonucu bekleniyor...");
+        Integer result = future.get(); // Bloklayıcı çağrı
+        System.out.println("Sonuç: " + result);
+
+        executor.shutdown();
+    }
+}
+```
+
+---
+
+## **6. Java'da Eşzamanlılık Problemleri ve Çözümleri**
+Eşzamanlı programlama sırasında karşılaşılan bazı problemler şunlardır:
+
+### **6.1. Yarış Koşulları (Race Condition)**
+Birden fazla iş parçacığının aynı değişkeni güncellemesi sonucu veri tutarsızlığı oluşabilir.
+
+```java
+class Counter {
+    private int count = 0;
+
+    public void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+```
+**Çözüm:** `synchronized` anahtar kelimesi veya `ReentrantLock` kullanımı.
+
+```java
+class SafeCounter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+```
+
+### **6.2. Deadlock (Çıkmaz Durumu)**
+İki iş parçacığı birbirinden kaynak beklerken sonsuz bekleme durumuna girer.
+
+**Çözüm:** Kaynak tahsis sırasını belirlemek.
+
+```java
+// Avoiding deadlock with ordered locking
+```
+
+### **6.3. Starvation ve Livelock**
+Bazı iş parçacıklarının kaynaklara erişememesi.
+
+**Çözüm:** Adil planlama (`Fair locks`), zaman aşımı mekanizmaları.
+
+---
+
+## **7. Sonuç**
+Java'da eşzamanlılık, performansı artırırken yönetilmesi gereken kritik konular içerir. **Thread**, **ExecutorService**, **Callable**, **Locks** gibi araçları doğru kullanarak yüksek performanslı uygulamalar geliştirebilirsiniz.
+
+
+## Reflection API
+```sh 
+
+```
+---
+# **Reflection API Nedir? (Çok Detaylı Açıklama)**
+
+## **1. Giriş: Reflection API Nedir?**
+**Reflection API**, **Java sınıflarını, metotlarını, değişkenlerini ve anotasyonlarını çalışma zamanında (runtime) dinamik olarak incelemek ve değiştirmek** için kullanılan güçlü bir mekanizmadır. Normalde, bir Java sınıfı derleme zamanında belirlenen yapıya sahiptir ve çalışma zamanında değiştirilemez. Ancak **Reflection** ile çalışma zamanında **bir sınıfın yapısını öğrenebilir, yeni nesneler oluşturabilir ve metotlarını çağırabiliriz.**
+
+### **Kullanım Alanları**
+- **Framework ve Kütüphanelerde**: Spring, Hibernate gibi framework'ler **Reflection** kullanır.
+- **Dinamik Kod Üretimi**: Runtime'da obje oluşturup metodlarını çağırabiliriz.
+- **Test ve Debugging Araçları**: Unit test framework'leri Reflection ile metotları çağırabilir.
+- **Kod Analizi (Introspection)**: Bir sınıfın içindeki **private metotları ve değişkenleri** analiz etmek için kullanılabilir.
+
+---
+
+## **2. Reflection API’nin Ana Bileşenleri**
+Java Reflection API, `java.lang.reflect` paketinde bulunur ve aşağıdaki temel bileşenleri içerir:
+
+1. **`Class<?>`** → Bir sınıfın yapısını temsil eder.
+2. **`Method`** → Bir sınıfın metotlarını temsil eder.
+3. **`Field`** → Bir sınıfın değişkenlerini temsil eder.
+4. **`Constructor`** → Bir sınıfın constructor metodlarını temsil eder.
+5. **`Modifier`** → Sınıf, metot veya değişkenin erişim belirleyicilerini alır.
+
+---
+
+## **3. Reflection API Kullanımı**
+### **3.1. Bir Sınıfın Yapısını İnceleme**
+Bir sınıfın Reflection API ile analiz edilmesi için **Class** nesnesi kullanılır.
+
+```java
+class Student {
+    private String name;
+    private int age;
+
+    public Student() {}
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void study() {
+        System.out.println(name + " çalışıyor...");
+    }
+}
+
+public class ReflectionExample {
+    public static void main(String[] args) throws ClassNotFoundException {
+        // 1. Yöntem: Class.forName()
+        Class<?> studentClass = Class.forName("Student");
+
+        // 2. Yöntem: .class kullanımı
+        Class<?> studentClass2 = Student.class;
+
+        // 3. Yöntem: getClass()
+        Student student = new Student();
+        Class<?> studentClass3 = student.getClass();
+
+        // Sınıf adını yazdır
+        System.out.println("Sınıf Adı: " + studentClass.getName());
+    }
+}
+```
+**Çıktı:**
+```
+Sınıf Adı: Student
+```
+
+---
+
+### **3.2. Bir Sınıftaki Tüm Metotları ve Değişkenleri Listeleme**
+Bir sınıfın **tüm metotlarını, değişkenlerini ve constructor'larını** almak için aşağıdaki yöntemler kullanılır.
+
+```java
+import java.lang.reflect.*;
+
+class Teacher {
+    private String name;
+    private double salary;
+
+    public Teacher() {}
+
+    public Teacher(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public void teach() {
+        System.out.println(name + " ders anlatıyor.");
+    }
+}
+
+public class ReflectionDetails {
+    public static void main(String[] args) {
+        Class<?> clazz = Teacher.class;
+
+        // Constructor bilgilerini al
+        Constructor<?>[] constructors = clazz.getConstructors();
+        System.out.println("\n### Constructor Listesi:");
+        for (Constructor<?> constructor : constructors) {
+            System.out.println(constructor);
+        }
+
+        // Metotları listele
+        Method[] methods = clazz.getDeclaredMethods();
+        System.out.println("\n### Metot Listesi:");
+        for (Method method : methods) {
+            System.out.println(method);
+        }
+
+        // Değişkenleri listele
+        Field[] fields = clazz.getDeclaredFields();
+        System.out.println("\n### Değişken Listesi:");
+        for (Field field : fields) {
+            System.out.println(field);
+        }
+    }
+}
+```
+
+**Çıktı:**
+```
+### Constructor Listesi:
+public Teacher()
+public Teacher(java.lang.String,double)
+
+### Metot Listesi:
+public void teach()
+
+### Değişken Listesi:
+private java.lang.String name
+private double salary
+```
+
+---
+
+### **3.3. Reflection ile Özel (private) Değişkenlere ve Metotlara Erişme**
+Normalde bir sınıfın **private değişkenlerine doğrudan erişilemez**, ancak Reflection API ile erişebiliriz.
+
+```java
+import java.lang.reflect.*;
+
+class Secret {
+    private String hiddenMessage = "Bu bir sır!";
+
+    private void secretMethod() {
+        System.out.println("Bu özel bir metottur.");
+    }
+}
+
+public class AccessPrivateFields {
+    public static void main(String[] args) throws Exception {
+        Secret secret = new Secret();
+        Class<?> clazz = secret.getClass();
+
+        // Private değişkene erişim
+        Field field = clazz.getDeclaredField("hiddenMessage");
+        field.setAccessible(true);
+        System.out.println("Gizli Mesaj: " + field.get(secret));
+
+        // Private metodu çağırma
+        Method method = clazz.getDeclaredMethod("secretMethod");
+        method.setAccessible(true);
+        method.invoke(secret);
+    }
+}
+```
+
+**Çıktı:**
+```
+Gizli Mesaj: Bu bir sır!
+Bu özel bir metottur.
+```
+> **Burada `setAccessible(true)` kullandık çünkü normalde private alanlara erişim yasaktır.**
+
+---
+
+### **3.4. Reflection ile Dinamik Nesne Oluşturma ve Metot Çağırma**
+Reflection ile **çalışma zamanında (runtime) nesne oluşturabiliriz.**
+
+```java
+import java.lang.reflect.Constructor;
+
+class Person {
+    private String name;
+
+    public Person() {
+        this.name = "Bilinmeyen";
+    }
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void introduce() {
+        System.out.println("Benim adım " + name);
+    }
+}
+
+public class DynamicObjectCreation {
+    public static void main(String[] args) throws Exception {
+        // Person sınıfının class objesini al
+        Class<?> clazz = Person.class;
+
+        // Parametresiz Constructor ile nesne oluştur
+        Object obj1 = clazz.getDeclaredConstructor().newInstance();
+        Method method1 = clazz.getMethod("introduce");
+        method1.invoke(obj1); // Çıktı: Benim adım Bilinmeyen
+
+        // Parametreli Constructor ile nesne oluştur
+        Constructor<?> constructor = clazz.getConstructor(String.class);
+        Object obj2 = constructor.newInstance("Ahmet");
+        method1.invoke(obj2); // Çıktı: Benim adım Ahmet
+    }
+}
+```
+
+---
+
+## **4. Reflection API’nin Dezavantajları**
+**Her güçlü özellik gibi Reflection API’nin de bazı dezavantajları vardır:**
+1. **Performans Kaybı**: Reflection, normal metot çağrılarına kıyasla **%10-30 daha yavaştır**.
+2. **Güvenlik Riski**: Private metotlara erişebiliriz, ancak bu **güvenlik açığına neden olabilir**.
+3. **Kodun Okunabilirliğini Azaltır**: Normal kodlara kıyasla **daha karmaşık** ve **hata ayıklaması zor** olabilir.
+
+---
+
+## **5. Reflection API Nerelerde Kullanılır?**
+- **Spring Framework**: Dependency Injection için kullanır.
+- **JUnit, Mockito**: Unit test yazarken private metotları test edebiliriz.
+- **ORM Frameworkleri (Hibernate, JPA)**: Veritabanı nesnelerini dinamik olarak yönetir.
+- **Runtime Proxy Oluşturma**: Java Dynamic Proxy Pattern ile interface'lerin implementasyonlarını runtime'da oluşturabiliriz.
+
+---
+
+## **Sonuç**
+**Reflection API**, Java'nın **dinamik ve esnek bir dil olmasını sağlayan** en güçlü özelliklerinden biridir. Ancak, **dikkatli kullanılmalı** ve **performans düşüşü göz önünde bulundurulmalıdır**. Özellikle **Spring, Hibernate gibi framework'lerde** bu yapı yaygın olarak kullanılır.
+
+✔ **Eğer bir framework veya kütüphane geliştiriyorsan**, **Reflection API kesinlikle bilinmesi gereken** bir konudur. 🚀
+
+
 
 
 ## Diğer
