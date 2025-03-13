@@ -31,6 +31,11 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         fileHandler.loadTeachersFromFile();
     }
 
+    // static
+    static {
+        System.out.println(SpecialColor.RED+" Static: TeacherDao"+ SpecialColor.RESET);
+    }
+
     /// /////////////////////////////////////////////////////////////
     // INNER CLASS
     private class FileHandler{
@@ -357,4 +362,3 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
     }
 
 }
-
