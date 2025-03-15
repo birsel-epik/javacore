@@ -1,4 +1,4 @@
-package com.birselepik.utils;
+package com.birselepik.dto;
 
 public enum ERole {
     STUDENT,TEACHER,ADMIN

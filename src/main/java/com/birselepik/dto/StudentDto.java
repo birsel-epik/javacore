@@ -1,9 +1,6 @@
 package com.birselepik.dto;
 
-import com.birselepik.utils.ERole;
 import com.birselepik.utils.SpecialColor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;

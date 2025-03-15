@@ -3,10 +3,9 @@ package com.birselepik.dao;
 import com.birselepik.dto.EStudentType;
 import com.birselepik.dto.StudentDto;
 import com.birselepik.exeptions.StudentNotFoundException;
-import com.birselepik.utils.ERole;
+import com.birselepik.dto.ERole;
 import com.birselepik.utils.SpecialColor;
 
-import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 
-/// Öğrenci Yönetim Sistemi
+// Öğrenci Yönetim Sistemi
 public class StudentDao implements IDaoGenerics<StudentDto> {
 
     // Field
