@@ -3,14 +3,14 @@ package com.birselepik.dao;
 import com.birselepik.dto.ETeacherSubject;
 import com.birselepik.dto.TeacherDto;
 import com.birselepik.exeptions.TeacherNotFoundException;
+import com.birselepik.iofiles.FileHandler;
 import com.birselepik.utils.SpecialColor;
 
-import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.logging.FileHandler;
+
 
 // TeacherDto
 public class TeacherDao implements IDaoGenerics<TeacherDto> {
@@ -43,7 +43,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         private final FileHandler fileHandler;
 
         // Constructor
-        private InnerFileHandler() throws IOException {
+        private InnerFileHandler() {
             this.fileHandler = new FileHandler();
             fileHandler.setFilePath("teachers.txt");
         }
@@ -364,6 +364,5 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         System.out.println("Öğretmenler yaşa göre sıralandı.");
         listTeachers();
     }
-
 
 }
