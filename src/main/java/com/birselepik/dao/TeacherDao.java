@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.logging.FileHandler;
 
 // TeacherDto
 public class TeacherDao implements IDaoGenerics<TeacherDto> {
@@ -42,7 +43,7 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         private final FileHandler fileHandler;
 
         // Constructor
-        private InnerFileHandler() {
+        private InnerFileHandler() throws IOException {
             this.fileHandler = new FileHandler();
             fileHandler.setFilePath("teachers.txt");
         }
