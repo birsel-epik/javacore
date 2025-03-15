@@ -2,13 +2,10 @@ package com.birselepik.controller;
 
 import com.birselepik.dao.IDaoGenerics;
 import com.birselepik.dao.TeacherDao;
-import com.birselepik.dto.ETeacherSubject;
 import com.birselepik.dto.TeacherDto;
 import com.birselepik.log.LogExecutionTime;
-import com.birselepik.log.LoggingAspect;
 import com.birselepik.utils.SpecialColor;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -94,6 +91,7 @@ public class TeacherController implements IDaoGenerics<TeacherDto> {
 
 
     public static void main(String[] args) {
+        /*
         TeacherController teacherController = new TeacherController();
 
         // Parametresiz metodlar için
@@ -102,5 +100,6 @@ public class TeacherController implements IDaoGenerics<TeacherDto> {
         // Parametreli metod çağrısı için
         TeacherDto teacherDto = new TeacherDto(1, "Ali", "Veli", LocalDate.now(), ETeacherSubject.COMPUTER_SCIENCE, 5, true, 5000);
         LoggingAspect.invokeAnnotatedMethods(teacherController, 1, teacherDto);
+        */
     }
 }

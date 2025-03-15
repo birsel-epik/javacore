@@ -37,11 +37,6 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         System.out.println(SpecialColor.RED + " Static: TeacherDao" + SpecialColor.RESET);
     }
 
-    // static
-    static {
-        System.out.println(SpecialColor.RED+" Static: TeacherDao"+ SpecialColor.RESET);
-    }
-
     /// /////////////////////////////////////////////////////////////
     // INNER CLASS
     private class InnerFileHandler {
@@ -195,9 +190,8 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         return teacher;
     }
 
-    /// //////////////////////////////////////////////////////////////////////
-
-    /// //////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
     // Enum Öğretmen Türü Method
     public ETeacherSubject teacherTypeMethod() {
         System.out.println("\n" + SpecialColor.GREEN + "Öğretmen türünü seçiniz.\n1-)Tarih\n2-)Bioloji\n3-)Kimya\n4-)Bilgisayar Bilimleri\n5-)Diğer" + SpecialColor.RESET);
@@ -369,5 +363,6 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         System.out.println("Öğretmenler yaşa göre sıralandı.");
         listTeachers();
     }
+
 
 }
