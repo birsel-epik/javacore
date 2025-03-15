@@ -85,12 +85,12 @@ Cumartesi (22 Şubat) - 4 Saat
 
 ----------------------------------------------------------------------
 ### 4. Hafta
-🚀  4. Hafta 1-Dersi
+🚀  4. Hafta 1-Dersi (19:30-22:00)
 Salı (25 Şubat) - 3 Saat
 - Enum
 - Genel Örnek: Öğrenci Bilgi Sistem-2
 
-🚀  4. Hafta 2-Dersi
+🚀  4. Hafta 2-Dersi  (19:30-22:00)
 Perşembe (27 Şubat) - 3 Saat
 - MVC Nedir ?
 - Interface Nedir ?
@@ -98,7 +98,7 @@ Perşembe (27 Şubat) - 3 Saat
 - Genel Örnek: Öğrenci Bilgi Sistem-3
 
 
-🚀  4. Hafta 3-Dersi
+🚀  4. Hafta 3-Dersi (14:00-18:00)
 Cumartesi (1 Mart) - 4 Saat
 - Kalıtım (Inheritance)
   . Super ve Subclass kavramları
@@ -154,6 +154,7 @@ Salı (11 Mart) - 3 Saat
 - Design Pattern
 
 - Cipher (AES/DES/RSA/HASHING)
+- Reflection Nedir
 
 - Çoklu İş Parçacığı (Multithreading)
   . Thread Oluşturma ve Yönetimi
@@ -162,13 +163,14 @@ Salı (11 Mart) - 3 Saat
 - Eşzamanlılık (Concurrency)
   . Yardımcı sınıflar (CountDownLatch, CyclicBarrier vb.)
   . Concurrency API
-- Clean Code
 - Genel Örnek: Öğrenci Bilgi Sistem Devam
+
+🚀  6. Hafta 2-Dersi
+Perşembe (13 Mart) - 3 Saat
 
 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 🚀 PROJEYE BAŞLA
-🚀  6. Hafta 2-Dersi
-Perşembe (13 Mart) - 3 Saat
+Technology: Javafx, Javacore, H2DB
 
 🚀  6. Hafta 3-Dersi
 Cumartesi (15 Mart) - 4 Saat

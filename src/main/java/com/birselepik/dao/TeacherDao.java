@@ -37,6 +37,11 @@ public class TeacherDao implements IDaoGenerics<TeacherDto> {
         System.out.println(SpecialColor.RED + " Static: TeacherDao" + SpecialColor.RESET);
     }
 
+    // static
+    static {
+        System.out.println(SpecialColor.RED+" Static: TeacherDao"+ SpecialColor.RESET);
+    }
+
     /// /////////////////////////////////////////////////////////////
     // INNER CLASS
     private class InnerFileHandler {

@@ -54,6 +54,7 @@ public class FileHandler implements IFileHandlerInterface {
             String line="";
             while((line= bufferedReader.readLine())!=null){
                 //System.out.println("Dosyadan Okundu"+line);
+                System.out.println("Dosyadan Okundu"+line);
             }
         }catch (IOException ioException){
             ioException.printStackTrace();
@@ -72,4 +73,8 @@ public class FileHandler implements IFileHandlerInterface {
         this.filePath = filePath;
     }
 
+    // PSVM
+    public static void main(String[] args) {
+        // Reflection
+    }
 } // end

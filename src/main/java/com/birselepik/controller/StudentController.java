@@ -24,6 +24,12 @@ public class StudentController implements IDaoGenerics<StudentDto> {
     @Override
     @LogExecutionTime
     public Optional<StudentDto> create(StudentDto studentDto) {
+        // Eğer öğrenci oluşturulamazsa veya Var olan ID'li Öğrenciyi eklenmesin
+        if(studentDto ==null || studentDao.findById(studentDto.getId()).isPresent()){
+            System.out.println(SpecialColor.RED+"❌ Geçersiz veya Mevcut olan öğrenciden dolayı eklenemez "+ SpecialColor.RESET);
+            return Optional.empty();
+        }
+        // Create
         if (studentDto == null || studentDao.findById(studentDto.getId()).isPresent()) {
             System.out.println(SpecialColor.RED + "❌ Geçersiz veya mevcut olan öğrenciden dolayı eklenemez " + SpecialColor.RESET);
             return Optional.empty();
