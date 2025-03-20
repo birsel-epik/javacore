@@ -7324,8 +7324,8 @@ Spring’in eski sürümlerinde Bean tanımlamak için XML kullanılıyordu.
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="myBean" class="com.example.MyService"/>
@@ -9175,7 +9175,7 @@ public class User {
     private Long id;
     private String name;
     private String email;
-    
+
     // Getter - Setter
 }
 ```
@@ -9204,9 +9204,9 @@ public class UserController {
     <title>User Details</title>
 </head>
 <body>
-    <h1>User Details</h1>
-    <p>Name: <span th:text="${user.name}"></span></p>
-    <p>Email: <span th:text="${user.email}"></span></p>
+<h1>User Details</h1>
+<p>Name: <span th:text="${user.name}"></span></p>
+<p>Email: <span th:text="${user.email}"></span></p>
 </body>
 </html>
 ```
@@ -10735,12 +10735,12 @@ import java.util.List;
 public class LambdaListExample {
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Ahmet", "Mehmet", "Ayşe", "Fatma");
-        
+
         // Geleneksel Döngü
         for (String name : names) {
             System.out.println(name);
         }
-        
+
         // Lambda ile
         names.forEach(name -> System.out.println(name));
     }
@@ -11460,10 +11460,10 @@ Java 8 ile gelen **Stream API**, koleksiyonlar (List, Set, Map) üzerinde fonksi
 ```java
 List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
 for (String name : names) {
-    if (name.startsWith("A")) {
+        if (name.startsWith("A")) {
         System.out.println(name);
     }
-}
+            }
 ```
 
 ### **Java 8 ile (Stream API Kullanımı)**
@@ -11471,7 +11471,7 @@ for (String name : names) {
 List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
 names.stream()
      .filter(name -> name.startsWith("A"))
-     .forEach(System.out::println);
+        .forEach(System.out::println);
 ```
 ✅ **Faydaları:** Daha kısa ve okunabilir kod, paralel işlem yapma imkanı (parallelStream()), kodun fonksiyonel hale gelmesi.
 
@@ -11571,8 +11571,8 @@ public class CollectorsExample {
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Ali", "Veli", "Ayşe", "Fatma");
         List<String> filteredNames = names.stream()
-                                          .filter(name -> name.startsWith("A"))
-                                          .collect(Collectors.toList());
+                .filter(name -> name.startsWith("A"))
+                .collect(Collectors.toList());
 
         System.out.println(filteredNames); // ["Ali", "Ayşe"]
     }
@@ -11959,7 +11959,7 @@ import java.lang.reflect.Method;
 public class AnnotationProcessor {
     public static void main(String[] args) throws Exception {
         Method method = Test.class.getMethod("process");
-        
+
         if (method.isAnnotationPresent(LogExecutionTime.class)) {
             System.out.println("process() metodu LogExecutionTime annotation’ı ile işaretlenmiştir.");
         }

@@ -1,13 +1,14 @@
 package com.birselepik.utils;
 
 public class SpecialColor {
+
     /*
-  ⚠️ Önemli Notlar
-  ❌ Eclipse gibi IDE'lerde ANSI renkleri desteklenmez.
-  ✅ Terminal, IntelliJ IDEA ve VS Code Terminal'de çalışır.
-  ✅ Windows 10+ veya Linux/macOS’ta desteklenir.
-  ✅ Windows'ta CMD yerine PowerShell veya Windows Terminal kullanmalısınız.
-   */
+⚠️ Önemli Notlar
+❌ Eclipse gibi IDE'lerde ANSI renkleri desteklenmez.
+✅ Terminal, IntelliJ IDEA ve VS Code Terminal'de çalışır.
+✅ Windows 10+ veya Linux/macOS’ta desteklenir.
+✅ Windows'ta CMD yerine PowerShell veya Windows Terminal kullanmalısınız.
+ */
     public static final String RESET = "\033[0m";  // Renk sıfırlama
     public static final String RED = "\033[31m";   // Kırmızı
     public static final String GREEN = "\033[32m"; // Yeşil

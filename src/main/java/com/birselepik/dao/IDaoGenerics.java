@@ -1,6 +1,5 @@
 package com.birselepik.dao;
 
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,32 +17,16 @@ Consumer → void accept(T t)    → Parametre alır, bir işlem yapar ama geriy
 Supplier → T get()             → Parametre almaz, bir değer üretir.
  */
 
+/**
+ * 📌 Generic DAO Arayüzü
+ * CRUD işlemleri için temel arayüzdür.
+ */
 public interface IDaoGenerics<T> {
-
-    // CRUD Metotları
-    // CREATE
-    Optional<T> create(T t);
-
-    // LIST (List için Optional kullanmaya gerek yoktur)
+    Optional<T> create(T entity);
     List<T> list();
-
-    // FIND BY NAME
     Optional<T> findByName(String name);
-
-    // FIND BY ID
     Optional<T> findById(int id);
-
-    // UPDATE
-    Optional<T> update(int id, T t);
-
-    // DELETE
+    Optional<T> update(int id, T entity);
     Optional<T> delete(int id);
-
-    // CHOOISE - Kullanıcı işlemlerini yönlendirme metodu
-    void chooise();
-
-    // DATABASE CONNECTION (Varsayılan olarak null dönüyor)
-    default Connection getInterfaceConnection() {
-        return null;
-    }
+    void choose();
 }
